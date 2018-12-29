@@ -1,0 +1,506 @@
+<html manifest=node.manifest>
+<head>
+  <meta charset="utf-8">
+  <title>Blockly</title>
+  
+    <script src="blockly_compressed_vertical.js"></script>
+    <script src="messages.js"></script>
+    <script src="vertical_extensions.js"></script>
+    <script src="math.js"></script>
+    <script src="text.js"></script>
+    <script src="control.js"></script>
+    <script src="data.js"></script>
+	<script src="arduino_compressed.js"></script>
+	<script src="blocks_compressed.js"></script>
+    <script type="text/javascript" src="Blob.js"></script>
+    <script type="text/javascript" src="spin.js"></script>
+    <script type="text/javascript" src="FileSaver.min.js"></script>
+    <script type="text/javascript" src="blockly_helper.js"></script>	
+  <script>
+
+/**
+ * List of tab names.
+ * @private
+ */
+ 
+ Blockly.Blocks.controls_for = {
+	init:function(){
+		this.jsonInit(
+		{message0:"重复%2次 变量%1",args0:[{type:"field_variable",name:"VAR",variable:null},
+		{type:"input_value",name:"TO",check:"Number",align:"LEFT"}],
+		inputsInline:!0,
+		previousStatement:null,
+		nextStatement:null,
+		colour:Blockly.Blocks.loops.HUE,
+		helpUrl:Blockly.Msg.CONTROLS_FOR_HELPURL,
+		extensions: ["colours_control", "shape_statement"]});
+		this.appendStatementInput("DO").appendField("做");
+		var a=this;
+		this.setTooltip(function(){return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace("%1",a.getFieldValue("VAR"))})},
+	getVars:function(){return[this.getFieldValue("VAR")]},
+	renameVar:function(a,b){Blockly.Names.equals(a,this.getFieldValue("VAR"))&&this.setFieldValue(b,"VAR")},
+	customContextMenu:function(a){if(!this.isCollapsed()){var b={enabled:!0},c=this.getFieldValue("VAR");b.text=Blockly.Msg.VARIABLES_SET_CREATE_GET.replace("%1",c);c=goog.dom.createDom("field",null,c);c.setAttribute("name","VAR");
+		c=goog.dom.createDom("block",null,c);c.setAttribute("type","variables_get");b.callback=Blockly.ContextMenu.callbackFactory(this,c);a.push(b)}}
+};	
+	Blockly.Arduino.math_whole_number = function()
+	{	
+		var c = Blockly.Arduino.valueToCode(this,"NUM");
+		return c;
+	}; 
+    
+	Blockly.Arduino.control_forever = function()
+	{	
+		var c = Blockly.Arduino.statementToCode(this,"SUBSTACK");
+		var e="while(true){\n"+c+"\n}";
+		return e+"\n";
+	};
+	
+	
+	Blockly.Arduino.control_if = function()
+	{	
+		var b = Blockly.Arduino.valueToCode(this,"CONDITION",Blockly.Arduino.ORDER_NONE)||"false";
+		var c = Blockly.Arduino.statementToCode(this,"SUBSTACK")
+		var d="if ("+b+") {\n"+c+"\n}";
+		return d+"\n";
+	};
+
+	Blockly.Arduino.control_if_else = function()
+	{	
+		var b = Blockly.Arduino.valueToCode(this,"CONDITION",Blockly.Arduino.ORDER_NONE)||"false";
+		var c = Blockly.Arduino.statementToCode(this,"SUBSTACK");
+		var d = Blockly.Arduino.statementToCode(this,"SUBSTACK2");
+		var e="if ("+b+") {\n"+c+"\n}else{\n" + d + "\n}";
+		return e+"\n";
+	}; 
+ 
+Blockly.Arduino.controls_for=function(){var a = 
+Blockly.Arduino.variableDB_.getName(this.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE);
+var c=Blockly.Arduino.valueToCode(this,"TIMES",Blockly.Arduino.ORDER_ASSIGNMENT)||"0",d=Blockly.Arduino.statementToCode(this,"SUBSTACK");
+Blockly.Arduino.INFINITE_LOOP_TRAP&&(d=Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,"'"+this.id+"'")+d);
+if(c.match(/^-?\d+(\.\d+)?$/)){
+	var f="for ("+a+" = 0; "+a+ " < "+c+"; "+a+"++"+") {\n"+d+"}\n"
+	}
+return f};
+ 
+var TABS_ = ['blocks', 'arduino', 'xml'];
+var workspace = null;
+
+var selected = 'blocks';
+
+/**
+ * Switch the visible pane when a tab is clicked.
+ * @param {string} clickedName Name of tab clicked.
+ */
+function tabClick(clickedName) {
+  // If the XML tab was open, save and render the content.
+  if (document.getElementById('tab_xml').className == 'tabon') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlText = xmlTextarea.value;
+    var xmlDom = null;
+    try {
+      xmlDom = Blockly.Xml.textToDom(xmlText);
+    } catch (e) {
+      var q =
+          window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
+      if (!q) {
+        // Leave the user on the XML tab.
+        return;
+      }
+    }
+    if (xmlDom) {
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(xmlDom,Blockly.mainWorkspace);
+    }
+  }
+
+  if (document.getElementById('tab_blocks').className == 'tabon') {
+    Blockly.mainWorkspace.setVisible(false);
+  }
+  // Deselect all tabs and hide all panes.
+  for (var i = 0; i < TABS_.length; i++) {
+    var name = TABS_[i];
+    document.getElementById('tab_' + name).className = 'taboff';
+    document.getElementById('content_' + name).style.visibility = 'hidden';
+  }
+
+ // Select the active tab.
+  selected = clickedName;
+  document.getElementById('tab_' + clickedName).className = 'tabon';
+  // Show the selected pane.
+  document.getElementById('content_' + clickedName).style.visibility =
+      'visible';
+  renderContent();
+  if (clickedName == 'blocks') {
+    Blockly.mainWorkspace.setVisible(true);
+  }
+  var c = document.createEvent("UIEvents");
+  c.initEvent('resize',!0,!0);
+  window.dispatchEvent(c);  
+  //onresize(0);
+  //var container = document.getElementById('content_'+clickedName);  
+  //var bBox = getBBox_(container);
+  //alert('x:'+bBox.x+' y:'+bBox.y+' height:'+bBox.height+' width'+bBox.width);
+  //Blockly.fireUiEvent(window, 'resize');
+}
+
+/**
+ * Populate the currently selected pane with content generated from the blocks.
+ */
+function renderContent() {
+  var content = document.getElementById('content_' + selected);
+  // Initialize the pane.
+  if (content.id == 'content_blocks') {
+    // If the workspace was changed by the XML tab, Firefox will have performed
+    // an incomplete rendering due to Blockly being invisible.  Rerender.
+    Blockly.mainWorkspace.render();
+  } else if (content.id == 'content_xml') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    xmlTextarea.value = xmlText;
+    xmlTextarea.focus();
+  } else if (content.id == 'content_arduino') {
+    var arduinoTextarea = document.getElementById('content_arduino');
+    arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
+    arduinoTextarea.focus();
+  }
+}
+
+/**
+ * Compute the absolute coordinates and dimensions of an HTML element.
+ * @param {!Element} element Element to match.
+ * @return {!Object} Contains height, width, x, and y properties.
+ * @private
+ */
+function getBBox_(element) {
+  var height = element.offsetHeight;
+  var width = element.offsetWidth;
+  var x = 0;
+  var y = 0;
+  do {
+    x += element.offsetLeft;
+    y += element.offsetTop;
+    element = element.offsetParent;
+  } while (element);
+  return {
+    height: height,
+    width: width,
+    x: x,
+    y: y
+  };
+}
+
+/**
+ * Initialize Blockly.  Called on page load.
+ */
+var onresize = function(e) {
+	var container = document.getElementById('content_area');
+	var bBox = getBBox_(container);
+	for (var i = 0; i < TABS_.length; i++) {
+	  var el = document.getElementById('content_' + TABS_[i]);
+	  el.style.top = bBox.y + 'px';
+	  el.style.left = bBox.x + 'px';
+	  // Height and width need to be set, read back, then set again to
+	  // compensate for scrollbars.
+	  el.style.height = bBox.height + 'px';
+	  el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
+	  el.style.width = bBox.width + 'px';
+	  el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
+	}
+	//alert('x:'+bBox.x+' y:'+bBox.y+' height:'+bBox.height+' width'+bBox.width);
+};
+
+function init() {
+  //window.onbeforeunload = function() {
+  //  return 'Leaving this page will result in the loss of your work.';
+  //};
+
+
+  window.addEventListener('resize', onresize, false);
+		var toolbox = document.getElementById('toolbox-simple');
+        // Create main workspace.
+        workspace = Blockly.inject('content_blocks', {
+          comments: false,
+          disable: false,
+          collapse: true,
+          media: '../media/',
+          readOnly: false,
+          rtl: false,
+          scrollbars: true,
+          toolbox: toolbox,
+          toolboxPosition:  2,
+          horizontalLayout:  false,
+          sounds: true,
+          zoom: {
+            controls: true,
+            wheel: true,
+            startScale: 0.75,
+            maxScale: 4,
+            minScale: 0.25,
+            scaleSpeed: 1.1
+          },
+          colours: {
+            fieldShadow: 'rgba(188, 11, 255, 0.3)',
+            dragShadowOpacity: 0.6
+          }
+        });
+	tabClick('blocks');
+  //load from url parameter (single param)
+  //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
+//  var dest = unescape(location.search.replace(/^.*\=/, '')).replace(/\+/g, " ");
+//  if(dest){
+//    load_by_url(dest);
+//  }
+  //onresize(0);
+}
+  </script>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      overflow: hidden;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    /* Tabs */
+    #tabRow>td {
+      border: 1px solid #ccc;
+    }
+    td.tabon {
+      border-bottom-color: #ddd !important;
+      background-color: #ddd;
+      padding: 5px 19px;
+    }
+    td.taboff {
+      cursor: pointer;
+      padding: 5px 19px;
+    }
+    td.taboff:hover {
+      background-color: #eee;
+    }
+    td.tabmin {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+    }
+    td.tabmax {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+      width: 99%;
+      text-align: right;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    td {
+      padding: 0;
+      vertical-align: top;
+    }
+    .content {
+      visibility: hidden;
+      margin: 0;
+      padding: 1ex;
+      position: absolute;
+      direction: ltr;
+    }
+    pre.content {
+      overflow: scroll;
+    }
+    #content_blocks {
+      padding: 0;
+    }
+    .blocklySvg {
+      border-top: none !important;
+    }
+    #content_xml {
+      resize: none;
+      outline: none;
+      border: none;
+      font-family: monospace;
+      overflow: scroll;
+    }
+    button {
+      padding: 1px 1em;
+      font-size: 90%;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      background-color: #eee;
+      color: black;
+    }
+    button.launch {
+      border: 1px solid #d43;
+      background-color: #d43;
+      color: white;
+    }
+    button:active {
+      border: 1px solid blue !important;
+    }
+    button:hover {
+      box-shadow: 2px 2px 5px #888;
+    }
+  </style>
+
+</head>
+<body onload="init()">
+  <table height="100%" width="100%">
+    <tr>
+      <td>
+        <h1>Freduino 智能小车</h1>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon" onclick="tabClick('blocks')">Blocks</td>
+            <td class="tabmin">&nbsp;</td>
+            <!--td id="tab_javascript" class="taboff" onclick="tabClick(this.id)">JavaScript</td>
+            <td class="tabmin">&nbsp;</td-->
+            <!--td id="tab_dart" class="taboff" onclick="tabClick(this.id)">Dart</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_python" class="taboff" onclick="tabClick(this.id)">Python</td>
+            <td class="tabmin">&nbsp;</td-->
+            <td id="tab_arduino" class="taboff" onclick="tabClick('arduino')">Arduino</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <td class="tabmax">
+              <button type="button" onclick="uploadClick()">Upload</button>
+              <button type="button" onclick="resetClick()">Reset</button>
+              <button onclick="discard()">Discard</button>
+              <button onclick="saveCode()">Save Arduino Code</button>
+              <button onclick="save()">Save XML</button>
+              <button id="fakeload">Load XML</button>
+              <input type="file" id="load" style="display: none;"/>
+              <!--button class="launch" onclick="runJS()">Run Program</button-->
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" id="content_area"></td>
+    </tr>
+	</table>
+	<div id="content_blocks" class="content"></div>
+	<textarea id="content_arduino" class="content" readonly wrap="off"></textarea>
+	<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+	<xml id="toolbox-simple" style="display: none">	
+
+	<category name="传感器" colour="#00B295" secondaryColour="#0B8E69">
+      <block type="grove_temporature_sensor"></block>
+	  <block type="temporature"></block>
+	  <block type="sound"></block>
+	  <block type="light"></block>
+    </category>
+	<category name="电机" colour="#40BF4A" secondaryColour="#389438">
+      <block type="grove_motor_shield"></block>
+	  <block type="m_custom"><value name="a"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
+	  <value name="b"><shadow type="math_number"><field name="NUM">50</field></shadow></value></block>
+	  
+    </category>	
+	<category name="逻辑" colour="#FF6680" secondaryColour="#FF4D6A">
+      <block type="logic_compare">
+	     <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+    </category> 
+	<category name="控制" colour="#D65CD6" secondaryColour="#BD42BD">
+      <block type="base_delay">
+        <value name="DELAY_TIME">
+         <shadow type="math_number"><field name="NUM">10</field></shadow>	
+        </value>
+      </block>
+	  <block type="control_forever" id="control_forever"></block><block type="control_if" id="control_if"></block><block type="control_if_else" id="control_if_else"></block>	  
+      <block type="controls_whileUntil"></block>
+    </category>
+	<category name="数学" colour="#FFD500" secondaryColour="#CC9900">
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>		  
+	  </block>
+      <block type="base_map">
+        <value name="DMAX">
+          <shadow type="math_number">
+            <field name="NUM">180</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+	<category name="变量" custom="VARIABLE" colour="#FF8C1A" secondaryColour="#DB6E00"></category>
+	<sep></sep>
+	<category name="输入/输出" colour="#4CBFE6" secondaryColour="#2E8EB8">
+      <block type="inout_highlow"></block>
+      <block type="inout_digital_write"></block>
+      <block type="inout_digital_read"></block>
+      <block type="inout_analog_write">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="inout_analog_read"></block>
+      <block type="serial_print">
+        <value name="CONTENT">
+          <shadow type="text">
+            <field name="TEXT">hello</field>
+          </shadow>
+        </value>
+      </block>
+      
+      <block type="inout_buildin_led"></block>
+	  <block type="grove_lcd">
+	      <value name="string">
+          <shadow type="text">
+            <field name="TEXT">sTox</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="button">
+	  <value name="touch">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+      </value>
+	  </block>
+	  <block type="grove_piezo_buzzer"></block>
+	  <block type="rotary"></block>
+	  
+    </category>
+    
+
+    </xml>
+</body>
+</html>
