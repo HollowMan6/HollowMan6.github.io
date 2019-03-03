@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-<title>Hollow Man Home Page</title>
-<script type="text/javascript">
-  var insText = "&nbsp;";
-  var picData = "R0lGODlhFAATAHQAACH/C05FVFNDQVBFMi4wAwEAAAAh/jNDcmVhdGVkIHdpdGggdGhlIFdvbGZy\
+  <meta charset="UTF-8" name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <title>Hollow Man Home Page</title>
+  <script type="text/javascript">
+    var insText = "&nbsp;";
+    var picData = "R0lGODlhFAATAHQAACH/C05FVFNDQVBFMi4wAwEAAAAh/jNDcmVhdGVkIHdpdGggdGhlIFdvbGZy\
 YW0gTGFuZ3VhZ2UgOiB3d3cud29sZnJhbS5jb20AIfkEAAMAAAAsAAAAABQAEwCEQEBAQkJCRUVF\
 SEhIS0tLU1NTV1dXYmJiaWlpb29vfX19hYWFjY2Nm5uboqKisbGxuLi4wMDAz8/P1dXV3Nzc5ubm\
 6+vr8PDw9vb2+fn5/Pz8/v7+////AAAAAAAAAAAABUggIALExZ1omo4io74oK1LwKwNJrd5ApMc3\
@@ -38,211 +40,283 @@ Tk5OU1NTWFhYYmJiaWlpb29vfn5+hoaGjY2NnJyco6OjsbGxubm5wcHBz8/P1dXV3Nzc5+fn6+vr\
 BDR8P1sBgwRCkEkWAhpdTai2BbU6Gli2MceWCzBkxqzImJtYcynuEsPNCQEAIfkEAAMAAAAsAAAA\
 ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
 
-  function fill(td, command)
-  {
-    var target = document.getElementById("td" + td);
-    var color = command.split(" ")[0];
-    var timestamp = parseFloat(command.split(" ")[1]);
-    var currentTimestamp = parseFloat(target.dataset.timestamp);
-    if (color == 2) target.style.backgroundImage = "url(data:image/gif;base64," + picData + ")";
-    else if (color == "3") target.style.backgroundImage = "";
-    else if (target.style.backgroundImage == "" && timestamp >= currentTimestamp)
-    {
+    function fill(td, command) {
+      var target = document.getElementById("td" + td);
+      var color = command.split(" ")[0];
+      var timestamp = parseFloat(command.split(" ")[1]);
+      var currentTimestamp = parseFloat(target.dataset.timestamp);
+      if (color == 2) target.style.backgroundImage = "url(data:image/gif;base64," + picData + ")";
+      else if (color == "3") target.style.backgroundImage = "";
+      else if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
         if (color == "0") target.bgColor = "#FFFFFF";
         else if (color == "1") target.bgColor = "#404040";
         target.dataset.timestamp = timestamp;
+      }
     }
-  }
-  
-  function getXMLHttpRequest()
-  {
-    var xmlHttp = null;
-    try {
-       xmlHttp = new XMLHttpRequest();
-    }
-    catch (e) {
+
+    function getXMLHttpRequest() {
+      var xmlHttp = null;
       try {
-        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+        xmlHttp = new XMLHttpRequest();
       }
       catch (e) {
-        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-      }
-    }
-    return xmlHttp;
-  }
-  
-  function inverse(td)
-  {
-    if (document.getElementById("td" + td).style.backgroundImage==""){
-      var xmlhttp = getXMLHttpRequest();
-      xmlhttp.onreadystatechange = function(){
-        if (xmlhttp.readyState == 1) fill(td, "2 0");
-        else if (xmlhttp.readyState == 4){
-          if (xmlhttp.status == 200){
-            fill(td, "3 0");
-            fill(td, xmlhttp.responseText)
-          }
+        try {
+          xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch (e) {
+          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
       }
-      xmlhttp.open("GET", "", true);
-      xmlhttp.setRequestHeader("If-Modified-Since", "0");
-      xmlhttp.send("");
+      return xmlHttp;
     }
-  }
-  
-  function freshGrid(data)
-  {
-    timestamp = data.split("#")[1];
-    for(var i = 1; i <= 400 ; i++)
-          fill(i, data.charAt(i - 1) + " " + timestamp);        
-    window.clearInterval(timer1);
-  }
-  
-  function loading()
-  {
-    if (loadingGrid == 0) {
-      for (var i = 1; i <= 13; i++) fill(i, "1 0");
-	loadingGrid = 1;
+
+    function inverse(td) {
+      if (document.getElementById("td" + td).style.backgroundImage == "") {
+        var xmlhttp = getXMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+          if (xmlhttp.readyState == 1) fill(td, "2 0");
+          else if (xmlhttp.readyState == 4) {
+            if (xmlhttp.status == 200) {
+              fill(td, "3 0");
+              fill(td, xmlhttp.responseText)
+            }
+          }
+        }
+        xmlhttp.open("GET", "", true);
+        xmlhttp.setRequestHeader("If-Modified-Since", "0");
+        xmlhttp.send("");
+      }
     }
-    else {
-      fill(loadingGrid, "0 0");
-      fill((loadingGrid + 12) % 400 + 1, "1 0");
-      loadingGrid = loadingGrid + 1;
-      if (loadingGrid > 400) loadingGrid = 1;
+
+    function freshGrid(data) {
+      timestamp = data.split("#")[1];
+      for (var i = 1; i <= 400; i++)
+        fill(i, data.charAt(i - 1) + " " + timestamp);
+      window.clearInterval(timer1);
     }
-  }
-</script>
-<style type="text/css">
-  body {
-  background-color: #EEEEEE;
-  margin-top: 2%;
-  font-size: 83%;
-  color: #404040;
-  font-family: helvetica, tahoma;
-  }
-  table {
-  width: 80%;
-  height: 60%;
-  border: 0%;
-  }
-  td {
-  background-repeat: no-repeat;
-  background-position: center center;
-  }
-  a {font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-     font-size: 20%; border-left: 4px solid #009bdf; padding: 0 2% 0 2%; text-decoration: none; margin-left: 20%; }
-  a, a:visited { color: #0075c9; }
-  a:hover, a:focus, a:active { color: #009bdf; }
-  a.love, a.love:visited { color: #f73c42; }
-  a.love:hover, a.love:focus, a.love:active { color: #f86267; }
-</style>
+
+    function loading() {
+      if (loadingGrid == 0) {
+        for (var i = 1; i <= 13; i++) fill(i, "1 0");
+        loadingGrid = 1;
+      }
+      else {
+        fill(loadingGrid, "0 0");
+        fill((loadingGrid + 12) % 400 + 1, "1 0");
+        loadingGrid = loadingGrid + 1;
+        if (loadingGrid > 400) loadingGrid = 1;
+      }
+    }
+    $(document).click(function (e) {
+      var list = ['AutoVoting for Yunmai', 'ChaoXing ErYa Wisdom Tree Lessons Helper', 'Drawing Electron Cloud with Matlab',
+        'Drawing Using Fourier series', 'Smart Chatting Robot', 'A Scratch Introduction to AI', 'Making An Robot Car',
+        'English Word Statistics Program', 'Standard Sudoku Solve System', 'Retro Snaker', 'Gobang', 'Coding Practice', 'MOOCCSharp Programming Language', 'Guessing Game', 'Simple Programmes Coded by Blockly', 'Childhood VB Programs', 'Answersfor my C Programing Lesson'];
+      textUp(e, 2000, list, 200)
+    })
+    function textUp(e, time, arr, heightUp) {
+      var lists = Math.floor(Math.random() * arr.length);
+      var colors = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+      var $i = $('<span />').text(arr[lists]);
+      var xx = e.pageX || e.clientX + document.body.scroolLeft;
+      var yy = e.pageY || e.clientY + document.body.scrollTop;
+
+      $('body').append($i);
+      $i.css({
+        top: yy,
+        left: xx,
+        color: colors,
+        transform: 'translate(-50%, -50%)',
+        display: 'block',
+        position: 'absolute',
+        zIndex: 999999999999
+      })
+      $i.animate({
+        top: yy - (heightUp ? heightUp : 200),
+        opacity: 0
+      }, time, function () {
+        $i.remove();
+      })
+    }
+  </script>
+  <style type="text/css">
+    body {
+      background-color: #EEEEEE;
+      margin-top: 2%;
+      font-size: 83%;
+      color: #404040;
+      font-family: helvetica, tahoma;
+    }
+
+    table {
+      width: 80%;
+      height: 60%;
+      border: 0%;
+    }
+
+    td {
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    a {
+      font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      font-size: 20%;
+      border-left: 4px solid #009bdf;
+      padding: 0 2% 0 2%;
+      text-decoration: none;
+      margin-left: 20%;
+    }
+
+    a,
+    a:visited {
+      color: #0075c9;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      color: #009bdf;
+    }
+
+    a.love,
+    a.love:visited {
+      color: #f73c42;
+    }
+
+    a.love:hover,
+    a.love:focus,
+    a.love:active {
+      color: #f86267;
+    }
+  </style>
 
 </head>
 
 <body>
-<h1  align="center">Hollow Man Home Page</h1>
-<h2  align="center">Welcome! And have FUN!!!</h2>
-<a href="https://github.com/HollowMan6"  style="font-size: 0%" >
-  <svg height="50" style="margin-left: 25%;"  viewBox="0 0 16 16"  width="81">
-<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
-</path>
-</svg>
-</a>
-<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
-    </script>
-    <script>L2Dwidget.init({pluginRootPath:"live2dw/",model:{scale:.8,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/tororo.model.json"},display:{superSample:2,width:150,height:300,position:"right",hOffset:-70,vOffset:-100},mobile:{show:1,scale:0.5,motion:1},react:{opacityDefault:1,opacityOnHover:.2},log:!1,tagMode:!1})
-    </script>
-<div style="height: 500px;padding-top: 1%; position: absolute; left: 45%; width: 600px; margin-left: -160px;">
-	<table id="grid">
-		<script type="text/javascript">
-		var tdid = 0;
-		for(var i = 1; i <= 16; i++){
-			document.write("<tr>")
-			for(var j = 1; j <= 25; j++){
-				tdid = (i - 1) * 25 + j;
-				document.write("<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" onclick=\"inverse(" + tdid.toString() + ")\" />");
-			}
-			document.write("</tr>");
-		}
-		var loadingGrid = 0;
-		var timer1 = window.setInterval("loading()", 10);
-		var evtSource = new EventSource("");
-		evtSource.onmessage = function(e) {
-			freshGrid(e.data.split("\n").join(""));
-		}
-		</script>
-	</table>
-	<p>
-	<!--<a href="blog/main.html" target="_blank" style="margin-left: 150px; ">BLOG</a>
+  <h1 align="center">Hollow Man Home Page</h1>
+  <h2 align="center">Welcome! And have FUN!!!</h2>
+  <a href="https://github.com/HollowMan6" style="font-size: 0%">
+    <svg height="50" style="margin-left: 25%;" viewBox="0 0 16 16" width="81">
+      <path fill-rule="evenodd"
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+      </path>
+    </svg>
+  </a>
+  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  </script>
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  </script>
+  <div style="height: 500px;padding-top: 1%; position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+    <table id="grid">
+      <script type="text/javascript">
+        var tdid = 0;
+        for (var i = 1; i <= 16; i++) {
+          document.write("<tr>")
+          for (var j = 1; j <= 25; j++) {
+            tdid = (i - 1) * 25 + j;
+            document.write("<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" onclick=\"inverse(" + tdid.toString() + ")\" />");
+          }
+          document.write("</tr>");
+        }
+        var loadingGrid = 0;
+        var timer1 = window.setInterval("loading()", 10);
+        var evtSource = new EventSource("");
+        evtSource.onmessage = function (e) {
+          freshGrid(e.data.split("\n").join(""));
+        }
+      </script>
+    </table>
+    <p>
+      <!--<a href="blog/main.html" target="_blank" style="margin-left: 150px; ">BLOG</a>
 	<a href="archive/main.html" target="_blank">About ME</a>
 	<a href="https://github.com/hollowman6" target="_blank" style="margin-left: 150px" class="love">❤GitHub</a>-->
-	<a href="FreDuino/index.htm" target="_blank" style="margin-left: 15% ;font-size: 120%">FreDuino Cars</a>
-	<a href="LZU/index.html" target="_blank" style="margin-left: 15% ;font-size: 120%" class="love">❤Story of LZU</a>
-	</p>
-	<p>
-	<h1>Guides</h1>
-	</p>
-	<p>
-	<a href="https://github.com/hollowman6/AutoVoting-for-Yunmai" target="_blank" style="margin-left: 10%; font-size: 170%" class="love">AutoVoting for Yunmai</a>
-	</p>
-	<p>
-	<a href="https://github.com/hollowman6/ChaoXing-ErYa-Wisdom-Tree-Lessons-Helper" target="_blank" style="margin-left: 10%; font-size: 170%" class="love">ChaoXing ErYa Wisdom Tree Lessons Helper</a>
-	</p>
-	<p>
-	<a href="https://github.com/hollowman6/Drawing-Electron-Cloud-with-Matlab" target="_blank" style="margin-left: 10%; font-size: 170%" class="love">Drawing Electron Cloud with Matlab</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Drawing-Using-Fourier-series" style="margin-left: 10%; font-size: 170%" class="love" target="_blank">Drawing Using Fourier series</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Smart-Chatting-Robot" style="margin-left: 10%; font-size: 170%" class="love" target="_blank">Smart Chatting Robot</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/A-Scratch-Introduction-and-Application-of-AI" target="_blank" style="margin-left: 10%; font-size: 150%">A Scratch Introduction to AI</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Making-an-Robot-Car" target="_blank" style="margin-left: 10%; font-size: 150%">Making An Robot Car</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/English-Word-Frequency-Statistics-Program" target="_blank" style="margin-left: 10%; font-size: 150%">English Word Statistics Program</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Standard-Sudoku-Solve-System" target="_blank" style="margin-left: 10%; font-size: 150%">Standard Sudoku Solve System</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Retro-Snaker" target="_blank" style="margin-left: 10%; font-size: 150%">Retro Snaker</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Gobang" target="_blank" style="margin-left: 10%; font-size: 150%">Gobang</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Coding-Practice" target="_blank" style="margin-left: 10%; font-size: 150%">Coding Practice</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/MOOC-CSharp-Programming-Language" target="_blank" style="margin-left: 10%; font-size: 150%">MOOC CSharp Programming Language</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Guessing-Game" target="_blank" style="margin-left: 10%; font-size: 150%">Guessing Game</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Simple-Programmes-Coded-by-Blockly" target="_blank" style="margin-left: 10%; font-size: 150%">Simple Programmes Coded by Blockly</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/Childhood-s-VB-Programs" target="_blank" style="margin-left: 10%; font-size: 150%">Childhood's VB Programs</a>
-	</p>
-	<p>
-	<a href="https://github.com/HollowMan6/answers-for-my-C-programing-lesson" target="_blank" style="margin-left: 10%; font-size: 150%">Answers for my C Programing Lesson</a>
-	</p>
-	<h3  align="center">More waiting to be added ......</h1>
-	<p>
-	<h1>About</h1>
-	</p>
-<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-<div style="margin-left: 10%"class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="蒋嵩林"><a class="LI-simple-link" href='https://cn.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/en?trk=profile-badge'>Steven Chiang</a></div>
-	<p>
-	<h1>&nbsp;</h1>
-	</p>
-</div>
+      <a href="FreDuino/index.htm" target="_blank" style="margin-left: 15% ;font-size: 120%">FreDuino Cars</a>
+      <a href="LZU/index.html" target="_blank" style="margin-left: 15% ;font-size: 120%" class="love">❤Story of LZU</a>
+    </p>
+    <p>
+      <h1>Guides</h1>
+    </p>
+    <p>
+      <a href="https://github.com/hollowman6/AutoVoting-for-Yunmai" target="_blank"
+        style="margin-left: 10%; font-size: 170%" class="love">AutoVoting for Yunmai</a>
+    </p>
+    <p>
+      <a href="https://github.com/hollowman6/ChaoXing-ErYa-Wisdom-Tree-Lessons-Helper" target="_blank"
+        style="margin-left: 10%; font-size: 170%" class="love">ChaoXing ErYa Wisdom Tree Lessons Helper</a>
+    </p>
+    <p>
+      <a href="https://github.com/hollowman6/Drawing-Electron-Cloud-with-Matlab" target="_blank"
+        style="margin-left: 10%; font-size: 170%" class="love">Drawing Electron Cloud with Matlab</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Drawing-Using-Fourier-series" style="margin-left: 10%; font-size: 170%"
+        class="love" target="_blank">Drawing Using Fourier series</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Smart-Chatting-Robot" style="margin-left: 10%; font-size: 170%"
+        class="love" target="_blank">Smart Chatting Robot</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/A-Scratch-Introduction-and-Application-of-AI" target="_blank"
+        style="margin-left: 10%; font-size: 150%">A Scratch Introduction to AI</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Making-an-Robot-Car" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Making An Robot Car</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/English-Word-Frequency-Statistics-Program" target="_blank"
+        style="margin-left: 10%; font-size: 150%">English Word Statistics Program</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Standard-Sudoku-Solve-System" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Standard Sudoku Solve System</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Retro-Snaker" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Retro Snaker</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Gobang" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Gobang</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Coding-Practice" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Coding Practice</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/MOOC-CSharp-Programming-Language" target="_blank"
+        style="margin-left: 10%; font-size: 150%">MOOC CSharp Programming Language</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Guessing-Game" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Guessing Game</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Simple-Programmes-Coded-by-Blockly" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Simple Programmes Coded by Blockly</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/Childhood-s-VB-Programs" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Childhood's VB Programs</a>
+    </p>
+    <p>
+      <a href="https://github.com/HollowMan6/answers-for-my-C-programing-lesson" target="_blank"
+        style="margin-left: 10%; font-size: 150%">Answers for my C Programing Lesson</a>
+    </p>
+    <h3 align="center">More waiting to be added ......</h1>
+      <p>
+        <h1>About</h1>
+      </p>
+      <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+      <div style="margin-left: 10%" class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US"
+        data-type="horizontal" data-theme="light" data-vanity="蒋嵩林"><a class="LI-simple-link"
+          href='https://cn.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/en?trk=profile-badge'>Steven Chiang</a></div>
+      <p>
+        <h1>&nbsp;</h1>
+      </p>
+  </div>
 </body>
+
 </html>
