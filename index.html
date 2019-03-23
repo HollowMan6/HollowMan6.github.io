@@ -6,6 +6,62 @@
   <meta charset="UTF-8" name="viewport"
     content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
   <title>Hollow Man Home Page</title>
+  <script type='text/javascript'>
+    $({ property: 0 }).animate({ property: 100 }, {
+      duration: 3000,
+      step: function () {
+        var percentage = Math.round(this.property);
+
+        $('#progress').css('width', percentage + "%");
+
+        if (percentage == 100) {
+          $("#progress").addClass("done");//完成，隐藏进度条
+        }
+      }
+    });
+  </script>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    #progress {
+      position: fixed;
+      height: 2px;
+      background: #242323;
+      transition: opacity 500ms linear
+    }
+
+    #progress.done {
+      opacity: 0
+    }
+
+    #progress span {
+      position: absolute;
+      height: 2px;
+      -webkit-box-shadow: #535353 1px 0 6px 1px;
+      -webkit-border-radius: 100%;
+      opacity: 1;
+      width: 150px;
+      right: -10px;
+      -webkit-animation: pulse 2s ease-out 0s infinite;
+    }
+
+    @-webkit-keyframes pulse {
+      30% {
+        opacity: .6
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: .6
+      }
+    }
+  </style>
+
   <script type="text/javascript">
     var insText = "&nbsp;";
     var picData = "R0lGODlhFAATAHQAACH/C05FVFNDQVBFMi4wAwEAAAAh/jNDcmVhdGVkIHdpdGggdGhlIFdvbGZy\
@@ -194,6 +250,9 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
 </head>
 
 <body>
+  <div id="progress" style="margin-top: -2%; position: absolute;">
+    <span></span>
+  </div>
   <h1 align="center">Hollow Man Home Page</h1>
   <h2 align="center">Welcome! And have FUN!!!</h2>
   <a href="https://github.com/HollowMan6" style="font-size: 0%">
@@ -228,6 +287,7 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
         }
       </script>
     </table>
+
     <p>
       <!--<a href="blog/main.html" target="_blank" style="margin-left: 150px; ">BLOG</a>
 	<a href="archive/main.html" target="_blank">About ME</a>
