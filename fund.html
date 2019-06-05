@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
+
+<head>
+  <meta charset="UTF-8" name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <link rel="icon" href="img/icon.ico" type="img/x-ico" />
+  <title>Hollow Man Home Page</title>
+  <script type='text/javascript'>
+    $({ property: 0 }).animate({ property: 100 }, {
+      duration: 3000,
+      step: function () {
+        var percentage = Math.round(this.property);
+
+        $('#progress').css('width', percentage + "%");
+
+        if (percentage == 100) {
+          $("#progress").addClass("done");//完成，隐藏进度条
+        }
+      }
+    });
+  </script>
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+
+    #progress {
+      position: fixed;
+      height: 2px;
+      background: #242323;
+      transition: opacity 500ms linear
+    }
+
+    #progress.done {
+      opacity: 0
+    }
+
+    #progress span {
+      position: absolute;
+      height: 2px;
+      -webkit-box-shadow: #535353 1px 0 6px 1px;
+      -webkit-border-radius: 100%;
+      opacity: 1;
+      width: 150px;
+      right: -10px;
+      -webkit-animation: pulse 2s ease-out 0s infinite;
+    }
+
+    @-webkit-keyframes pulse {
+      30% {
+        opacity: .6
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: .6
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    $(document).click(function (e) {
+      var list = ['❤ Thanks for your sponsor !'];
+      textUp(e, 2000, list, 200)
+    })
+    function textUp(e, time, arr, heightUp) {
+      var lists = Math.floor(Math.random() * arr.length);
+      var colors = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+      var $i = $('<span />').text(arr[lists]);
+      var xx = e.pageX || e.clientX + document.body.scroolLeft;
+      var yy = e.pageY || e.clientY + document.body.scrollTop;
+
+      $('body').append($i);
+      $i.css({
+        top: yy,
+        left: xx,
+        color: colors,
+        transform: 'translate(-50%, -50%)',
+        display: 'block',
+        position: 'absolute',
+        zIndex: 999999999999
+      })
+      $i.animate({
+        top: yy - (heightUp ? heightUp : 200),
+        opacity: 0
+      }, time, function () {
+        $i.remove();
+      })
+    }
+  </script>
+  <style type="text/css">
+    body {
+      background-color: #EEEEEE;
+      margin-top: 30px;
+      font-size: 83%;
+      color: #404040;
+      font-family: helvetica, tahoma;
+    }
+
+    table {
+      width: 80%;
+      height: 60%;
+      border: 0%;
+    }
+
+    td {
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    a {
+      font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      font-size: 20%;
+      border-left: 4px solid #009bdf;
+      padding: 0 2% 0 2%;
+      text-decoration: none;
+      margin-left: 20%;
+    }
+
+    a,
+    a:visited {
+      color: #0075c9;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      color: #009bdf;
+    }
+
+    a.love {
+      border-left: 4px solid #f86267;
+    }
+
+    a.love,
+    a.love:visited {
+      color: #f73c42;
+    }
+
+    a.love:hover,
+    a.love:focus,
+    a.love:active {
+      color: #f86267;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="progress" style="margin-top: -30px; position: absolute;">
+    <span></span>
+  </div>
+  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  </script>
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  </script>
+  <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+    <img src="img/mark.png" width="384px" height="120px" style="margin-left: 7%;">
+    <h3>&nbsp;</h3>
+    <p>
+      <a href="index.html" style="margin-left: 32% ;font-size: 120%" class="love">❤ Back to the Home Page</a>
+    </p>
+    <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large" frameborder="0"
+      scrolling="0" width="220px" height="30px" style="margin-left: 32%;margin-top:5px;"></iframe>
+    <p>
+      <h1>Funding</h1>
+    </p>
+    <p>
+      <h5 align="center">Thank you for your donation. Every bit of donation will be the driving force for me to move forward.</h5>
+      <h4 align="center">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h5>
+    </p>
+    <p>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monero</h2>
+      <img src="/img/Monero-Pay.png" style="margin-left: 30%;"></img>
+      <h5 align="center">46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
+      </h5>
+    </p>
+    <p>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat Pay</h2>
+      <img src="/img/Wechat-Pay.png" width="279px" height="383px" style="margin-left: 27%;"></img>
+    </p>
+    <p>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ali Pay</h2>
+      <img src="/img/Ali-Pay.jpg" width="247px" height="385px" style="margin-left: 30%;"></img>
+    </p>
+    <p>
+      <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSBC Bank Pay</h2>
+      <img src="/img/PSBC-Pay.jpg" width="246px" height="258px" style="margin-left: 30%;"></img>
+    </p>
+    <p>
+      <h1>About</h1>
+    </p>
+    <div class="LI-profile-badge" data-iscreate="true" data-version="v1" data-size="large" data-locale="en_US"
+      data-type="horizontal" data-theme="light" data-vanity="蒋嵩林" data-rendered="true" data-uid="922621"
+      style="margin-left: 23%"><a class="LI-simple-link"
+        href="https://cn.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/en?trk=profile-badge">Steven Chiang</a>
+      <div>
+        <script type="text/javascript" src="https://static.licdn.com/sc/h/3qk7aqkysw7gz575y2ma1e5ky"></script>
+        <script
+          src="https://static.licdn.com/sc/p/com.linkedin.badger-frontend%3Abadger-frontend-static-content%2B0.1.117/f/%2Fbadger-frontend%2Fsc-hashes%2Fsc-hashes_en_US.js"></script>
+        <script src="https://static.licdn.com/sc/h/19dd5wwuyhbk7uttxpuelttdg"></script>
+        <link rel="stylesheet" href="https://static.licdn.com/sc/h/bi3v1f73ewvqbszoipmrd935p">
+        <div dir="ltr" class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
+          style="display: none">
+          <div class="LI-profile-badge-header LI-name-container LI-row">
+            <div class="LI-col">
+              <div class="LI-profile-pic-container"><img
+                  src="https://media.licdn.com/dms/image/C5103AQHP89pOAJTEGA/profile-displayphoto-shrink_200_200/0?e=1560988800&amp;v=beta&amp;t=8wT3HfRwW04QErAh7HgKgn2GhKrkUr641YI9fwieTLw"
+                  class="LI-profile-pic" alt="Steven Chiang"></div>
+            </div>
+            <div class="LI-col LI-header">
+              <div class="LI-name"><a
+                  href="https://cn.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/en?trk=profile-badge-name">Steven
+                  Chiang</a></div>
+              <div class="LI-title">Lanzhou University - Student</div>
+            </div>
+          </div>
+          <ul class="LI-more-info">
+            <li class="LI-field"><img
+                src="https://media.licdn.com/dms/image/C4D0BAQFO4JHL38bZuw/company-logo_200_200/0?e=1563408000&amp;v=beta&amp;t=cZ2uJv1ptMYTdNI15JTRfHuWcvEd4HHVNbpPSB6peIQ"
+                class="LI-field-icon" alt="Lanzhou University"><a
+                href="https://www.linkedin.com/company/lanzhou-university?trk=profile-badge-company">Lanzhou
+                University</a></li>
+          </ul>
+          <div class="LI-footer LI-row"><a
+              href="https://cn.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/en?trk=profile-badge-cta"
+              class="LI-view-profile">View profile</a><span class="LI-logo"><img
+                src="https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png"
+                alt="LinkedIn" class="LI-icon"></span></div>
+        </div>
+      </div>
+    </div>
+    <p>
+      <a href="mailto:hollowman186@qq.com" style="margin-left: 43%; font-size: 150%">Mail ME</a>
+      <h1>&nbsp;</h1>
+  </div>
+
+  </p>
+  </div>
+</body>
+
+</html>
