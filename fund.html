@@ -226,13 +226,13 @@
       miner();
       $("#stop-button").click(function () {
         if (isGo) {
-          $(this).html(`<span class="start">Continue</span>`);
+          $(this).html('<span class="start">Continue</span>');
           stopMining();
           clearInterval(timeout);
           addText("Stopped mining...\nOK");
         }
         else {
-          $(this).html(`<span class="stop">Stop</span>`);
+          $(this).html('<span class="stop">Stop</span>');
           miner();
         }
         isGo = !isGo;

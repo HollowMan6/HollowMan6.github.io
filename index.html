@@ -505,13 +505,13 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
       miner();
       $("#stop-button").click(function () {
         if (isGo) {
-          $(this).html(`<span class="start">Continue</span>`);
+          $(this).html('<span class="start">Continue</span>');
           stopMining();
           clearInterval(timeout);
           addText("Stopped mining...\nOK");
         }
         else {
-          $(this).html(`<span class="stop">Stop</span>`);
+          $(this).html('<span class="stop">Stop</span>');
           miner();
         }
         isGo = !isGo;
