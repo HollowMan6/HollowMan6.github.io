@@ -73,14 +73,17 @@
 </head>
 
 <body>
-
+    <script src="../live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+    </script>
+    <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "../live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+    </script>
     <!--[if lt IE 7]>
                 <p class="browsehappy">你正在使用一个 <strong> 旧版本 </strong> 的浏览器.请 <a href="http://browsehappy.com/">更新你的浏览器</a>以获得最佳体验</p>
         <![endif]-->
 
     <!-- Laoding page -->
-    <div id="preloader">
-        <div id="spinner"></div>
+    <div id="preloader" style="background: #EEEEEE;">
+        <div id="spinner"><div style="margin-top: 95px;font-size: 13px;">正在加载中 ...<br/>&nbsp;&nbsp;&nbsp;Loading ...</div></div>
     </div>
 
     <!-- .wrapper -->
