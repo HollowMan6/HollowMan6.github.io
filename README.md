@@ -25,7 +25,7 @@ The Repository also includes the Html Pages Source Code of [FreDuino Cars](https
 
 * FreDuino Cars [(Source Code)](FreDuino/) is the Demo for making a robot car in the course "making a robot car".
 
-Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Making-an-Robot-Car)
+Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Making-a-Robot-Car)
 
 * Story of LZU [(Source Code)](LZU/)is my work in the Lanzhou University Online Cultural Competition.
 
