@@ -129,13 +129,13 @@
 
                 async function loadModel(path = 'style/style1/model.json') {
                     var lbl = document.getElementById("status");
-                    lbl.innerText = "生成中 ..."
+                    lbl.innerHTML = "<img src='images/spinner.gif'></img><br/><br/>生成中 ...<br/>Generating ..."
                     let canvas = document.getElementById("combined");
                     let cT = preprocess(cImg)
                     const model = await createModel(path)
                     z = model.predict(cT)
                     toPixels(deprocess(z), canvas)
-                    lbl.innerText = "生成完成!"
+                    lbl.innerHTML = "<br/><div style='font-size:48px'>√</div><br/>完成！<br/>Complete!"
                 }
 
                 async function initialize() {
