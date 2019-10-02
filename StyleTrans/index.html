@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+
+    <title>快速风格迁移 -- 选择风格图像</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8085225986579534",
+            enable_page_level_ads: true
+        });
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- CSS | bootstrap -->
+    <!-- Credits: http://getbootstrap.com/ -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+
+    <!-- CSS | font-awesome -->
+    <!-- Credits: http://fortawesome.github.io/Font-Awesome/icons/ -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+    <!-- CSS | animate -->
+    <!-- Credits: http://daneden.github.io/animate.css/ -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+
+    <!-- CSS | Normalize -->
+    <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
+
+    <!-- CSS | Colors -->
+    <link rel="stylesheet" type="text/css" href="css/colors/DarkBlue.css" id="colors-style" />
+    <link rel="stylesheet" type="text/css" href="css/switcher.css" />
+
+    <!-- CSS | Style -->
+    <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <!-- CSS | prettyPhoto -->
+    <!-- Credits: http://www.no-margin-for-errors.com/ -->
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../img/icon.ico">
+
+    <!--[if IE 7]>
+                <link rel="stylesheet" type="text/css" href="css/icons/font-awesome-ie7.min.css"/>
+        <![endif]-->
+
+    <style>
+        @media only screen and (max-width : 991px) {
+            .resp-vtabs .resp-tabs-container {
+                margin-left: 13px;
+            }
+        }
+
+        @media only screen and (min-width : 800px) and (max-width : 991px) {
+            .resp-vtabs .resp-tabs-container {
+                margin-left: 13px;
+                width: 89%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--[if lt IE 7]>
+                <p class="browsehappy">你正在使用一个 <strong> 旧版本 </strong> 的浏览器.请 <a href="http://browsehappy.com/">更新你的浏览器</a>以获得最佳体验</p>
+        <![endif]-->
+
+    <!-- Laoding page -->
+    <div id="preloader">
+        <div id="spinner"></div>
+    </div>
+
+    <!-- .wrapper -->
+    <div class="wrapper">
+
+        <!--- .Content -->
+        <section class="tab-content">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="row">
+
+                            <div class="col-md-3 widget-profil">
+                                <div class="row">
+                                    <!-- Profile Image -->
+                                    <div class="col-lg-12 col-md-12 col-sm-3 col-xs-12 ">
+
+
+
+                                        <div class="image-holder one" id="pic_prof_1" style="display:block">
+
+                                            <img class="head-image front circle" src="images/icon.png" width="150"
+                                                height="150" alt="" />
+
+                                        </div>
+
+                                        <!-- style for simple image profile -->
+                                        <div class="circle-img" id="pic_prof_2" style="display:none"></div>
+
+
+                                    </div>
+                                    <!-- End Profile Image -->
+                                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
+                                        <!-- Profile info -->
+                                        <div id="profile_info">
+                                            <h1 id="name" class="transition-02">快速风格迁移 FNST Demo</h1>
+                                            <h4 class="line">Hollow Man</h4>
+                                            <h6><span class="fa fa-map-marker"></span> 兰州大学 Lanzhou University</h6>
+                                        </div>
+                                        <!-- End Profile info -->
+
+
+                                        <!-- Profile Description -->
+                                        <div id="profile_desc">
+
+                                            <p>
+                                                欢迎！这是一个基于快速风格迁移原理制作而成的Demo。
+                                                <br />
+                                                <br />
+                                                Welcome! This is a Demo based on the Fast Neural Style Transfer.
+                                            </p>
+
+                                        </div>
+                                        <!-- End Profile Description -->
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-9 flexy_content" style="padding-left: 0;padding-right: 0;">
+
+                                <!-- verticalTab menu -->
+                                <div id="verticalTab">
+
+                                    <ul class="resp-tabs-list">
+
+                                        <li class="tabs-resume hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a"
+                                            data-tab-name="resume">
+                                            <span class="tite-list">风格</span>
+                                            <i class="fa fa-tasks icon_menu"></i>
+                                        </li>
+
+                                        <li class="tabs-contact hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a"
+                                            data-tab-name="contact" style="margin-bottom: 48px !important;">
+                                            <span class="tite-list">联系</span>
+                                            <i class="fa fa-envelope icon_menu"></i>
+                                        </li>
+                                    </ul>
+                                    <!-- /resp-tabs-list -->
+
+
+
+                                    <!-- resp-tabs-container -->
+                                    <div class="resp-tabs-container">
+
+                                        <!-- .portfolio -->
+                                        <div id="portfolio" class="content_2">
+
+                                            <!-- .title -->
+                                            <h1 class="h-bloc">请选择风格图片 Please Choose Style Picture</h1>
+
+                                            <!-- .container-portfolio -->
+                                            <div class="container-portfolio">
+
+                                                <!-- #filters -->
+                                                <ul id="filters" class="clearfix">
+                                                    <li><span class="filter active" data-filter="1 2 3 4 5">所有
+                                                            All</span>
+                                                    </li>
+                                                    <li><span class="filter" data-filter="1">风格1</span></li>
+                                                    <li><span class="filter" data-filter="2">风格2</span></li>
+                                                    <li><span class="filter" data-filter="3">风格3</span></li>
+                                                    <li><span class="filter" data-filter="4">风格4</span></li>
+                                                    <li><span class="filter" data-filter="5">风格5</span></li>
+                                                </ul>
+                                                <!-- /#filters -->
+
+                                                <!-- #portfoliolist -->
+                                                <div id="portfoliolist">
+
+                                                    <!-- .portfolio -->
+                                                    <div class="portfolio 1" data-cat="1">
+                                                        <!-- .portfolio-wrapper -->
+                                                        <div class="portfolio-wrapper">
+                                                            <a href="images/portfolio/1.jpg" rel="portfolio"
+                                                                title="《拾穗者》 ——让·弗朗索瓦·米勒">
+                                                                <img src="images/portfolio/1.jpg" alt="1" />
+                                                                <div class="label">
+                                                                    <div class="label-text">
+                                                                        <a class="text-title">拾穗者</a>
+                                                                        <span class="text-category">让·弗朗索瓦·米勒</span>
+                                                                    </div>
+                                                                    <div class="label-bg"></div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <!-- /.portfolio-wrapper -->
+                                                    </div>
+                                                    <!-- /.portfolio -->
+
+
+                                                    <!-- .portfolio -->
+                                                    <div class="portfolio 2" data-cat="2">
+                                                        <!-- .portfolio-wrapper -->
+                                                        <div class="portfolio-wrapper">
+                                                            <a href="images/portfolio/2.jpg" rel="portfolio"
+                                                                title="《画家和沉思的模特》 ——巴勃罗·毕加索">
+                                                                <img src="images/portfolio/2.jpg" alt="2" />
+                                                                <div class="label">
+                                                                    <div class="label-text">
+                                                                        <a class="text-title">画家和沉思的模特</a>
+                                                                        <span class="text-category">巴勃罗·毕加索</span>
+                                                                    </div>
+                                                                    <div class="label-bg"></div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <!-- /.portfolio-wrapper -->
+                                                    </div>
+                                                    <!-- /.portfolio -->
+
+                                                    <!-- .portfolio -->
+                                                    <div class="portfolio 3" data-cat="3">
+                                                        <!-- .portfolio-wrapper -->
+                                                        <div class="portfolio-wrapper">
+                                                            <a href="images/portfolio/3.jpg" rel="portfolio"
+                                                                title="《镜前的少女》 ——巴勃罗·毕加索">
+                                                                <img src="images/portfolio/3.jpg" alt="3" />
+                                                                <div class="label">
+                                                                    <div class="label-text">
+                                                                        <a class="text-title">镜前的少女</a>
+                                                                        <span class="text-category">巴勃罗·毕加索</span>
+                                                                    </div>
+                                                                    <div class="label-bg"></div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <!-- /.portfolio-wrapper -->
+                                                    </div>
+                                                    <!-- /.portfolio -->
+
+                                                    <!-- .portfolio -->
+                                                    <div class="portfolio 4" data-cat="4">
+                                                        <!-- .portfolio-wrapper -->
+                                                        <div class="portfolio-wrapper">
+                                                            <a href="images/portfolio/4.jpg" rel="portfolio"
+                                                                title="抽象画 ——弗朗西斯·毕卡比亚">
+                                                                <img src="images/portfolio/4.jpg" alt="4" />
+                                                                <div class="label">
+                                                                    <div class="label-text">
+                                                                        <a class="text-title">抽象画</a>
+                                                                        <span class="text-category">弗朗西斯·毕卡比亚</span>
+                                                                    </div>
+                                                                    <div class="label-bg"></div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <!-- /.portfolio-wrapper -->
+                                                    </div>
+                                                    <!-- /.portfolio -->
+
+                                                    <!-- .portfolio -->
+                                                    <div class="portfolio 5" data-cat="5">
+                                                        <!-- .portfolio-wrapper -->
+                                                        <div class="portfolio-wrapper">
+                                                            <a href="images/portfolio/5.jpg" title="《神奈川海浪》 ——葛饰北斋"
+                                                                rel="portfolio">
+                                                                <img src="images/portfolio/5.jpg" alt="5" />
+                                                                <div class="label">
+                                                                    <div class="label-text">
+                                                                        <a class="text-title">神奈川海浪</a>
+                                                                        <span class="text-category">葛饰北斋</span>
+                                                                    </div>
+                                                                    <div class="label-bg"></div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <!-- /.portfolio-wrapper -->
+                                                    </div>
+                                                    <!-- /.portfolio -->
+                                                    <div class="clear"></div>
+
+                                                </div>
+                                                <!-- #portfoliolist -->
+                                            </div>
+                                            <!-- /.container-portfolio -->
+                                        </div>
+                                        <!-- End .portfolio -->
+                                        <!-- .contact -->
+                                        <div id="contact" class="content_2">
+
+                                            <h1 class="h-bloc">关于我 About Me</h1>
+
+                                            <div class="col-lg-12">
+                                                <div class="row" id="contact-user">
+                                                    <div class="col-md-5">
+                                                        <div class="contact-info">
+                                                            <!--<h3 class="main-heading"><span>contact-info</span></h3>-->
+                                                            <img src="../img/mark.png" width="384px" height="120px">
+                                                            <br />
+                                                            <br />
+                                                            <div class="title_content" style="float: none;">
+                                                                <div class="text_content">Hollow Man</div>
+                                                                <div class="clear"></div>
+                                                            </div>
+
+                                                            <ul>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-map-marker"></i>
+                                                                        Addr:</span> Lanzhou, Gansu, China</li>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-unchecked"></i>
+                                                                        Linkin:</span><a
+                                                                        href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/">Steven
+                                                                        Chiang</a></li>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-comment"></i>
+                                                                        Github:</span><a
+                                                                        href="https://github.com/HollowMan6">HollowMan6</a>
+                                                                </li>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-envelope"></i>
+                                                                        Email:</span><a
+                                                                        href="mailto:hollowman186@vip.qq.com">hollowman186@vip.qq.com</a>
+                                                                </li>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-globe"></i>
+                                                                        Website:</span><a
+                                                                        href="../index.html">HollowMan6.github.io</a>
+                                                                </li>
+                                                                <li><span class="span-info"><i
+                                                                            class="glyphicon glyphicon-thumbs-up"></i>
+                                                                        Fund:</span><a href="../fund.html"> Thanks for
+                                                                        you donation!</a></li>
+                                                            </ul>
+                                                            <!-- /contact-info -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <!-- End .contact -->
+
+                                    </div>
+                                    <!-- End #resp-tabs-container -->
+
+                                </div><!-- End verticalTab -->
+
+                            </div><!-- End flexy_content -->
+
+
+                        </div><!-- End row -->
+
+                    </div><!-- End col-md-12 -->
+
+                </div><!-- End row -->
+
+            </div><!-- End container -->
+
+        </section>
+        <!-- End Content -->
+
+    </div>
+    <!-- End wrapper -->
+
+    <!-- Switcher -->
+    <div id="custumize-style">
+        <h2>主题设定<a href="#" class="switcher"><i class="fa fa-cogs icon-switcher"></i></a></h2>
+        <div>
+            <h3>主题颜色</h3>
+            <ul class="colors-style" id="color1">
+
+                <li><a href="#" class="green"></a></li>
+                <li><a href="#" class="blue"></a></li>
+                <li><a href="#" class="red"></a></li>
+                <li><a href="#" class="yellow"></a></li>
+
+                <li><a href="#" class="DarkBlue"></a></li>
+                <li><a href="#" class="orange"></a></li>
+                <li><a href="#" class="rose"></a></li>
+                <li><a href="#" class="lightseagreen"></a></li>
+
+            </ul>
+        </div>
+
+        <h3 class="layouts" style="padding-top:5px">背景</h3>
+        <div id="show">
+
+            <div class="clean-check">
+
+                <div>
+                    <h3>纯色</h3>
+                    <ul class="colors-style bgsolid" id="bgsolid">
+                        <li><a href="#" class="gray-bg"></a></li>
+                        <li><a href="#" class="green-bg"></a></li>
+                        <li><a href="#" class="blue-bg"></a></li>
+                        <li><a href="#" class="red-bg"></a></li>
+                        <li><a href="#" class="yellow-bg"></a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>纹路</h3>
+                    <ul class="colors-style bg" id="bg">
+                        <li><a href="#" class="bg1"></a></li>
+                        <li><a href="#" class="bg2"></a></li>
+                        <li><a href="#" class="bg3"></a></li>
+                        <li><a href="#" class="bg4"></a></li>
+                        <li><a href="#" class="bg5"></a></li>
+                    </ul>
+                </div>
+
+                <div id="button-reset"><a href="#" class="button color blue boxed">重设</a></div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+    <!-- End Switcher -->
+
+    <script type="text/javascript">
+        function js_method() {
+            var pic = document.querySelector("#fullResImage").src;
+            var front = pic.lastIndexOf("/");
+            var end = pic.lastIndexOf(".");
+            pic = pic.substring(front + 1, end);
+            window.open("style-trans.html?" + pic);
+        }
+    </script>
+
+    <!-- jquery | jQuery 1.11.0 -->
+    <!-- Credits: http://jquery.com -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- Js | bootstrap -->
+    <!-- Credits: http://getbootstrap.com/ -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+    <!-- jquery | rotate and portfolio -->
+    <!-- Credits: http://jquery.com -->
+    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+
+    <!-- Js | easyResponsiveTabs -->
+    <!-- Credits: http://webtrendset.com/demo/easy-responsive-tabs/Index.html -->
+    <script type="text/javascript" src="js/easyResponsiveTabs.min.js"></script>
+
+    <!-- Js | switcher -->
+    <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+    <script type="text/javascript" src="js/jsSwitcher/switcher.js"></script>
+
+    <!-- Js | mCustomScrollbar -->
+    <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- jquery | prettyPhoto -->
+    <!-- Credits: http://www.no-margin-for-errors.com/ -->
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+
+
+    <!-- Js | Js -->
+    <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</body>
+
+</html>
