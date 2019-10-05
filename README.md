@@ -1,4 +1,4 @@
-# Hollow Man 主页 Home Page
+# 我的主页
 
 ![](img/mark.png)
 
@@ -29,7 +29,7 @@
 
 * FNST Demo [(源代码)](StyleTrans/)是我参与的校级大学生创新创业训练计划项目：“文艺复兴”—— AI+敦煌文化 的衍生作品，同时也是我参与的2019 Google InnoCamp 人工智能[DeepFlying](https://github.com/dslab-deepflying/deepflying/tree/master/InnoCamp)夏令营（张掖）的一个分支项目成果。
 
------
+# Hollow Man Home Page
 
 [Click here to visit](https://hollowman6.github.io)
 
