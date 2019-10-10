@@ -23,7 +23,7 @@
 
 * FreDuino Cars [(源代码)](FreDuino/) 是兰州大学“基于机器人的实践方法”制作机器车的Demo。
 
-相关仓库：[Making a Robot Car](https://github.com/HollowMan6/Making-a-Robot-Car)
+相关仓库：[Making a Robot Car](https://github.com/HollowMan6/Answers-for-LZU-CS-UG-Courses/tree/master/Making%20a%20Robot%20Car)
 
 * Story of LZU [(源代码)](LZU/)是由我制作的兰州大学网络文化作品大赛参赛作品。
 
@@ -37,7 +37,7 @@ The Repository also includes the Html Pages Source Code of [FreDuino Cars](https
 
 * FreDuino Cars [(Source Code)](FreDuino/) is the Demo for making a robot car in the course "making a robot car".
 
-Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Making-a-Robot-Car)
+Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-for-LZU-CS-UG-Courses/tree/master/Making%20a%20Robot%20Car)
 
 * Story of LZU [(Source Code)](LZU/)is my work in the Lanzhou University Online Cultural Competition.
 
