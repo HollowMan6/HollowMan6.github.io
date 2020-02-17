@@ -109,17 +109,6 @@
       font-family: helvetica, tahoma;
     }
 
-    table {
-      width: 80%;
-      height: 60%;
-      border: 0%;
-    }
-
-    td {
-      background-repeat: no-repeat;
-      background-position: center center;
-    }
-
     a {
       font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       font-size: 20%;
@@ -127,11 +116,13 @@
       padding: 0 2% 0 2%;
       text-decoration: none;
       margin-left: 20%;
+      -webkit-transition: color 1s, text-decoration 1s;
+      transition: color 1s, text-decoration 1s;
     }
 
     a,
     a:visited {
-      color: #0075c9;
+      color: rgb(147, 195, 199);
     }
 
     a:hover,
@@ -146,13 +137,27 @@
 
     a.love,
     a.love:visited {
-      color: #f73c42;
+      color: #d19597;
     }
 
     a.love:hover,
     a.love:focus,
     a.love:active {
       color: #f86267;
+    }
+
+    .pic {
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+      -webkit-transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
+      transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
+    }
+
+    .pic:hover {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      transform: scale(1.10);
+      box-shadow: 0px 0px 6px 4px #C0C1C0;
     }
   </style>
 
@@ -168,7 +173,7 @@
   <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
   </script>
   <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
-    <img src="img/mark.png" width="384px" height="120px" style="margin-left: 7%;">
+    <img src="img/mark.png" class="pic" width="384px" height="120px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
     <p>
       <a href="index.html" style="margin-left: 27% ;font-size: 120%">Back to the Home Page</a>
@@ -195,14 +200,15 @@
       <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h5>
     </p>
     <p>
-      <a href="https://github.com/sponsors/HollowMan6" class="love" style="margin-left: 20% ;font-size: 200%">❤ Github Sponsors</a>
+      <a href="https://github.com/sponsors/HollowMan6" class="love" style="margin-left: 20% ;font-size: 200%">❤ Github
+        Sponsors</a>
     </p>
     <p>
       <a href="https://www.paypal.me/hollowman6" style="margin-left: 34% ;font-size: 150%">Paypal</a>
     </p>
     <p>
       <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monero</h2>
-      <img src="/img/Monero.png" style="margin-left: 23%;"
+      <img class="pic" src="/img/Monero.png" style="margin-left: 23%;"
         onclick="window.open('https://www.getmonero.org','_blank')"></img>
       <h5 style="margin-left: 15%;">
         46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
@@ -210,12 +216,12 @@
     </p>
     <p>
       <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat Tip</h2>
-      <img src="/img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
+      <img class="pic" src="/img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
         onclick="window.open('https://www.wechat.com','_blank')"></img>
     </p>
     <p>
       <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alipay</h2>
-      <img src="/img/Alipay.jpg" width="247px" height="385px" style="margin-left: 23%;"
+      <img class="pic" src="/img/Alipay.jpg" width="247px" height="385px" style="margin-left: 23%;"
         onclick="window.open('https://www.alipay.com','_blank')"></img>
     </p>
     <p>
