@@ -76,6 +76,9 @@
     $(document).click(function (e) {
       var list = ['❤ Thanks for your sponsor !'];
       textUp(e, 2000, list, 200)
+      if (confetti.isRunning()) {
+        confetti.stop();
+      }
     })
     function textUp(e, time, arr, heightUp) {
       var lists = Math.floor(Math.random() * arr.length);
