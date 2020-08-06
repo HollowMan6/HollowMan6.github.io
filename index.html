@@ -51,6 +51,20 @@
       margin: 0;
     }
 
+    .ProgressBar {
+      position: fixed;
+      bottom: 0;
+      z-index: 1;
+      width: 100%;
+      height: 8px;
+    }
+
+    .progressbar {
+      height: 8px;
+      background: black;
+      width: 0%;
+    }
+
     #progress {
       position: fixed;
       height: 2px;
@@ -232,6 +246,16 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
         $i.remove();
       })
     }
+
+    function ProgressBar() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("Bar").style.width = scrolled + "%";
+    }
+
+    // call the function every time user scrolls
+    window.onscroll = function () { ProgressBar() };
   </script>
   <style type="text/css">
     body {
@@ -329,6 +353,9 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
 <body>
   <div id="progress" style="margin-top: -30px; position: absolute;">
     <span></span>
+  </div>
+  <div class="ProgressBar">
+    <div class="progressbar" id="Bar"></div>
   </div>
   <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
   <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
