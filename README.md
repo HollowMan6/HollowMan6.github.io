@@ -9,8 +9,8 @@
 [![stars](https://img.shields.io/github/stars/HollowMan6/HollowMan6.github.io?style=social)](../../stargazers)
 [![forks](https://img.shields.io/github/forks/HollowMan6/HollowMan6.github.io?style=social)](../../network/members)
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://hollowman6.github.io/fund.html)
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Open Source Love](https://img.shields.io/badge/-%E2%9D%A4%20Open%20Source-Green?style=flat-square&logo=Github&logoColor=white&link=https://hollowman6.github.io/fund.html)](https://hollowman6.github.io/fund.html)
+[![MIT Licence](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/mit-license.php)
 [![Repo-Size](https://img.shields.io/github/repo-size/HollowMan6/HollowMan6.github.io.svg)](../../archive/master.zip)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/HollowMan6/HollowMan6.github.io.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/HollowMan6.github.io/alerts/)
