@@ -10,10 +10,19 @@
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 	
-	window.addEventListener("load", function (){
-		if (getUrlParam('language')){
+	window.addEventListener("load", function () {
+		if (getUrlParam('language')) {
 			(window/document).location.href = "https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/?locale="+languages[getUrlParam('language')]
-		}
-		(window/document).location.href = "https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
+		} else {
+            (window/document).location.href = "https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
+        }
 	});
+</script>
+
+<script>
+    if (getUrlParam('language')) {
+        document.location = "https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/?locale="+languages[getUrlParam('language')]
+    } else {
+        document.location = "https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
+    }
 </script>
