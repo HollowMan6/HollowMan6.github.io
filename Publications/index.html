@@ -13,7 +13,17 @@
     <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js" integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
     <script src="https://g.alicdn.com/code/lib/axios/0.18.0/axios.min.js"></script>
 
-    <title>Hollow Man's CV</title>
+    <title>Hollow Man's Publications</title>
+
+    <style>
+        .dropdown-item-checked::before {
+        position: absolute;
+        left: .4rem;
+        content: '✓';
+        font-weight: 600;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -44,29 +54,27 @@
                         <a class="nav-link" href="https://github.com/HollowMan6" target="_blank">Github</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" v-bind:href="currentLinkedinUrl()" target="_blank">Linkedin</a>
+                        <a class="nav-link" href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/" target="_blank">Linkedin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mailto:hollowman186@vip.qq.com" target="_blank">Mail ME</a>
+
+                    <li class="nav-item dropdown active show">
+                        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-publications" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                            {{currentPublicationName()}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="bd-publications">
+                            <a v-for="publication in publications" v-bind:class="{ 'dropdown-item-checked': publication.id === publicationId }"
+                                class="dropdown-item" v-bind:href='currentUrl() + "?id=" + publication.id'>
+                                {{ publication.name }}
+                            </a>
+                        </div>
+
                     </li>
                 </ul>
             </div>
-            <h3 align="center">Hollow Man's Curriculum Vitae</h3>
-            <form class="form-inline my-2 my-lg-0">
-
-                <div class="col">
-                    <div class="input-group ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="language-addon">Language</span>
-                        </div>
-                        <select class="form-control" v-model="language" class="custom-select" v-on:change="languageChange($event)">
-                            <option v-for="l in languages" v-bind:value="l.value">
-                                {{ l.text }}
-                            </option>
-                        </select>
-                    </div>
-            </form>
-
+            <h3 align="center">Hollow Man's Publications</h3>
         </nav>
         <div id="showPdf"  class="container-fluid px-0">
             <iframe id="pdfContainer" v-bind:src="currentPdf()"
@@ -91,30 +99,34 @@
     var app = new Vue({
         el: '#app',
         data: {
-            pdfName:"CV-Songlin-Jiang-English.pdf",
-            language: 'en',
-            languages: [
-                { pdf: 'CV-Songlin-Jiang-English.pdf', text: 'English', value: 'en' },
-                { pdf: 'CV-Songlin-Jiang-Chinese.pdf', text: '中文', value: 'cn' }
+            pdfName : "Voting_System_Based_on_Wechat_Pay.pdf",
+            publicationId: "0",
+            publications: [
+                {
+                    id: "0",
+                    name: "基于微信支付平台的在线投票系统",
+                    loc: "Voting_System_Based_on_Wechat_Pay.pdf"
+                }
             ],
         },
         methods: {
-            languageChange: function (event) {
-                window.location = this.currentUrl() + "?language=" + this.language;
-            },
             currentUrl: function () {
                 return window.location.href.split(/[?#]/)[0];
             },
-            currentLinkedinUrl: function () {
-                return "../Linkedin/?language="+ this.language;
-            },
-            currentPdf: function () {
-                for (index in this.languages) {
-                    if (this.languages[index].value == this.language) {
-                        this.pdfName = this.languages[index].pdf;
+            currentPublicationName: function () {
+                for (index in this.publications) {
+                    if (this.publications[index].id == this.publicationId) {
+                        return this.publications[index].name;
                     }
                 }
-                return "pdfjs/web/viewer.html?file=../../"+ this.pdfName +"#page=1";
+            },
+            currentPdf: function () {
+                for (index in this.publications) {
+                    if (this.publications[index].id == this.publicationId) {
+                        this.pdfName = this.publications[index].loc;
+                    }
+                }
+                return "../CV/pdfjs/web/viewer.html?file=../../../Publications/"+ this.pdfName +"#page=1";
             },
             calculatePdfSize: function () {
                 var e = window;
@@ -129,14 +141,13 @@
             }
         },
         beforeMount() {
-            var l = getUrlParam('language');
-            if (l != null) {
-                this.language = l;
+            var id = getUrlParam('id');
+            if (id != null) {
+                this.publicationId = id;
             }
         }
     })
 
 </script>
-
 
 </html>
