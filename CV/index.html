@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+
+    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js" integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/axios/0.18.0/axios.min.js"></script>
+
+    <title>Hollow Man's CV</title>
+</head>
+
+<body>
+    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js" integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg==" crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <div id="app">
+
+        <nav class="navbar navbar-expand navbar-light bg-light flex-column flex-md-row bd-navbar">
+            <a href="../" target="_blank" title="" class="navbar-brand">
+                <img src="../img/mark.png" alt="Arthas" title="My Website" style="height: 35px;"
+                    class="img-responsive">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../fund.html" target="_blank">Funding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/HollowMan6" target="_blank">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" v-bind:href="currentLinkedinUrl()" target="_blank">Linkedin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mailto:hollowman186@vip.qq.com" target="_blank">Mail ME</a>
+                    </li>
+                </ul>
+            </div>
+            <h3 align="center">Hollow Man's Curriculum Vitae</h3>
+            <form class="form-inline my-2 my-lg-0">
+
+                <div class="col">
+                    <div class="input-group ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="language-addon">Language</span>
+                        </div>
+                        <select class="form-control" v-model="language" class="custom-select" v-on:change="languageChange($event)">
+                            <option v-for="l in languages" v-bind:value="l.value">
+                                {{ l.text }}
+                            </option>
+                        </select>
+                    </div>
+            </form>
+
+        </nav>
+        <div id="showPdf"  class="container-fluid px-0">
+            <iframe id="pdfContainer" v-bind:src="currentPdf()"
+            v-bind:style="{height: (calculatePdfSize()-5) + 'px' }" width="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    /** get params in url **/
+    function getUrlParam(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            pdfName:"CV-Songlin-Jiang-English.pdf",
+            language: 'en',
+            languages: [
+                { pdf: 'CV-Songlin-Jiang-English.pdf', text: 'English', value: 'en' },
+                { pdf: 'CV-Songlin-Jiang-Chinese.pdf', text: '中文', value: 'cn' }
+            ],
+        },
+        methods: {
+            languageChange: function (event) {
+                window.location = this.currentUrl() + "?language=" + this.language;
+            },
+            currentUrl: function () {
+                return window.location.href.split(/[?#]/)[0];
+            },
+            currentLinkedinUrl: function () {
+                return "../Linkedin/?language="+ this.language;
+            },
+            currentPdf: function () {
+                for (index in this.languages) {
+                    console.log(this.languages[index].value)
+                    if (this.languages[index].value == this.language) {
+                        this.pdfName = this.languages[index].pdf;
+                    }
+                }
+                return "pdfjs/web/viewer.html?file=../../"+ this.pdfName +"#page=1";
+            },
+            calculatePdfSize: function () {
+                var e = window;
+                var a = 'inner';
+                if (!('innerWidth' in window)) {
+                    a = 'client';
+                    e = document.documentElement || document.body;
+                }
+                var PdfDiv = document.getElementById("showPdf");
+                var PdfDivRect = PdfDiv.getBoundingClientRect();
+                return e[a + 'Height'] - PdfDivRect.top;
+            }
+        },
+        beforeMount() {
+            var l = getUrlParam('language');
+            if (l != null) {
+                this.language = l;
+            }
+        }
+    })
+
+</script>
+
+
+</html>
