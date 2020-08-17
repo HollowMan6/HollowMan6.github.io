@@ -31,6 +31,12 @@
 
 * Texter [(源代码)](Texter/)是我的[2019 InnoCamp Hangzhou BoostMakers 暑期创新特训营 —— TensorFlow Boost](https://blackwalnut.tech/tfboost/introduce)结业项目。
 
+* [个人简历](https://hollowman6.github.io/CV/?language=cn) 
+
+* [论文](https://hollowman6.github.io/Publications/)
+
+* [Linkedin](https://hollowman6.github.io/Linkedin/)
+
 # Hollow Man Home Page
 
 [Click here to visit](https://hollowman6.github.io)
@@ -46,4 +52,9 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 * FNST Demo [(Source Code)](StyleTrans/) is the my Derivative work of the University Student Innovation and Entrepreneurship Training Project: "Renaissance" - AI + Dunhuang Culture which I join in. Also it's my achivement of a sub project of 2019 Google InnoCamp AI [DeepFlying](https://github.com/dslab-deepflying/deepflying/tree/master/InnoCamp) that I join in; [Reports concerning DeepFlying](http://news.lzu.edu.cn/c/201909/59389.html)
 
 * Texter [(Source Code)](Texter/) is my completion project of [2019 innocamp Hangzhou boostmakers summer innovation special training camp -- tensorflow boost](https://blackwalnut.tech/tfboost/introduction).
-  
+
+* [Personal CV](https://hollowman6.github.io/CV/?language=en)
+
+* [Publications](https://hollowman6.github.io/Publications/)
+
+* [Linkedin](https://hollowman6.github.io/Linkedin/)
