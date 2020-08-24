@@ -8,44 +8,57 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-8085225986579534",
-        enable_page_level_ads: true
-      });
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8085225986579534",
+            enable_page_level_ads: true
+        });
     </script>
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
 
-    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js" integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js"
+        integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
     <script src="https://g.alicdn.com/code/lib/axios/0.18.0/axios.min.js"></script>
 
     <title>Hollow Man's Publications</title>
 
     <style>
+        .navbar {
+            background-color: transparent;
+            background-image: -webkit-linear-gradient(left, #009bdf, #f86267);
+            background-image: -moz-linear-gradient(left, #009bdf, #f86267);
+            background-image: -o-linear-gradient(left, #009bdf, #f86267);
+            background-image: -ms-linear-gradient(left, #009bdf, #f86267);
+            background-image: linear-gradient(left, #009bdf, #f86267);
+        }
+
         .dropdown-item-checked::before {
-        position: absolute;
-        left: .4rem;
-        content: '✓';
-        font-weight: 600;
+            position: absolute;
+            left: .4rem;
+            content: '✓';
+            font-weight: 600;
         }
     </style>
 
 </head>
 
 <body>
-    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js" integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg==" crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg=="
+        crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 
     <div id="app">
 
         <nav class="navbar navbar-expand navbar-light bg-light flex-column flex-md-row bd-navbar">
             <a href="../" target="_blank" title="" class="navbar-brand">
-                <img src="../img/mark.png" alt="Arthas" title="My Website" style="height: 35px;"
-                    class="img-responsive">
+                <img src="../img/mark.png" alt="Arthas" title="Back to Home Page" style="height: 35px;" class="img-responsive">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -62,18 +75,20 @@
                         <a class="nav-link" href="https://github.com/HollowMan6" target="_blank">Github</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/" target="_blank">Linkedin</a>
+                        <a class="nav-link" href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
+                            target="_blank">Linkedin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mailto:hollowman186@vip.qq.com" target="_blank">Mail ME</a>
 
                     <li class="nav-item dropdown active show">
-                        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-publications" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true">
+                        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-publications"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             {{currentPublicationName()}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="bd-publications">
-                            <a v-for="publication in publications" v-bind:class="{ 'dropdown-item-checked': publication.id === publicationId }"
+                            <a v-for="publication in publications"
+                                v-bind:class="{ 'dropdown-item-checked': publication.id === publicationId }"
                                 class="dropdown-item" v-bind:href='currentUrl() + "?id=" + publication.id'>
                                 {{ publication.name }}
                             </a>
@@ -84,9 +99,9 @@
             </div>
             <h3 align="center">Hollow Man's Publications</h3>
         </nav>
-        <div id="showPdf"  class="container-fluid px-0">
-            <iframe id="pdfContainer" v-bind:src="currentPdf()"
-            v-bind:style="{height: (calculatePdfSize()-5) + 'px' }" width="100%" frameborder="0"></iframe>
+        <div id="showPdf" class="container-fluid px-0">
+            <iframe id="pdfContainer" v-bind:src="currentPdf()" v-bind:style="{height: (calculatePdfSize()-5) + 'px' }"
+                width="100%" frameborder="0"></iframe>
         </div>
     </div>
 </body>
@@ -107,7 +122,7 @@
     var app = new Vue({
         el: '#app',
         data: {
-            pdfName : "Voting_System_Based_on_Wechat_Pay.pdf",
+            pdfName: "Voting_System_Based_on_Wechat_Pay.pdf",
             publicationId: "0",
             publications: [
                 {
@@ -134,7 +149,7 @@
                         this.pdfName = this.publications[index].loc;
                     }
                 }
-                return "../CV/pdfjs/web/viewer.html?file=../../../Publications/"+ this.pdfName +"#page=1";
+                return "../CV/pdfjs/web/viewer.html?file=../../../Publications/" + this.pdfName + "#page=1";
             },
             calculatePdfSize: function () {
                 var e = window;
