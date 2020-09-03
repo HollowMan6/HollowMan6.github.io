@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2017 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -31,8 +17,10 @@
 
 goog.provide('Blockly.Constants.VariablesDynamic');
 
-goog.require('Blockly.Blocks');
 goog.require('Blockly');
+goog.require('Blockly.Blocks');
+goog.require('Blockly.FieldLabel');
+goog.require('Blockly.FieldVariable');
 
 
 /**
@@ -52,7 +40,7 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
       "variable": "%{BKY_VARIABLES_DEFAULT_NAME}"
     }],
     "output": null,
-    "colour": "%{BKY_VARIABLES_DYNAMIC_HUE}",
+    "style": "variable_dynamic_blocks",
     "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
     "tooltip": "%{BKY_VARIABLES_GET_TOOLTIP}",
     "extensions": ["contextMenu_variableDynamicSetterGetter"]
@@ -73,7 +61,7 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
     ],
     "previousStatement": null,
     "nextStatement": null,
-    "colour": "%{BKY_VARIABLES_DYNAMIC_HUE}",
+    "style": "variable_dynamic_blocks",
     "tooltip": "%{BKY_VARIABLES_SET_TOOLTIP}",
     "helpUrl": "%{BKY_VARIABLES_SET_HELPURL}",
     "extensions": ["contextMenu_variableDynamicSetterGetter"]
@@ -93,7 +81,7 @@ Blockly.Constants.VariablesDynamic.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MI
   /**
    * Add menu option to create getter/setter block for this setter/getter.
    * @param {!Array} options List of menu options to add to.
-   * @this Blockly.Block
+   * @this {Blockly.Block}
    */
   customContextMenu: function(options) {
     // Getter blocks have the option to create a setter block, and vice versa.
@@ -114,11 +102,11 @@ Blockly.Constants.VariablesDynamic.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MI
       var option = {enabled: this.workspace.remainingCapacity() > 0};
       var name = this.getField('VAR').getText();
       option.text = contextMenuMsg.replace('%1', name);
-      var xmlField = document.createElement('field');
+      var xmlField = Blockly.utils.xml.createElement('field');
       xmlField.setAttribute('name', 'VAR');
       xmlField.setAttribute('variabletype', varType);
-      xmlField.appendChild(document.createTextNode(name));
-      var xmlBlock = document.createElement('block');
+      xmlField.appendChild(Blockly.utils.xml.createTextNode(name));
+      var xmlBlock = Blockly.utils.xml.createElement('block');
       xmlBlock.setAttribute('type', opposite_type);
       xmlBlock.appendChild(xmlField);
       option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
@@ -142,9 +130,15 @@ Blockly.Constants.VariablesDynamic.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MI
       }
     }
   },
-  onchange: function() {
+  /**
+   * Called whenever anything on the workspace changes.
+   * Set the connection type for this block.
+   * @param {!Blockly.Events.Abstract} _e Change event.
+   * @this {Blockly.Block}
+   */
+  onchange: function(_e) {
     var id = this.getFieldValue('VAR');
-    var variableModel = this.workspace.getVariableById(id);
+    var variableModel = Blockly.Variables.getVariable(this.workspace, id);
     if (this.type == 'variables_get_dynamic') {
       this.outputConnection.setCheck(variableModel.type);
     } else {

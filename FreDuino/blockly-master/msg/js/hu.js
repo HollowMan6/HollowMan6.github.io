@@ -2,19 +2,16 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.hu');
-
-goog.require('Blockly.Msg');
-
 Blockly.Msg["ADD_COMMENT"] = "Megjegyzés hozzáadása";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "A(z) „%1” változó nem törölhető, mert része a(z) „%2” függvény definíciójának.";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Érték módosítása:";
 Blockly.Msg["CLEAN_UP"] = "Blokkok kiürítése";
+Blockly.Msg["COLLAPSED_WARNINGS_WARNING"] = "Az összecsukott blokk figyelmeztetéseket tartalmaz.";
 Blockly.Msg["COLLAPSE_ALL"] = "Blokkok összecsukása";
 Blockly.Msg["COLLAPSE_BLOCK"] = "Blokk összecsukása";
 Blockly.Msg["COLOUR_BLEND_COLOUR1"] = "szín 1";
 Blockly.Msg["COLOUR_BLEND_COLOUR2"] = "szín 2";
-Blockly.Msg["COLOUR_BLEND_HELPURL"] = "http://meyerweb.com/eric/tools/color-blend/";  // untranslated
+Blockly.Msg["COLOUR_BLEND_HELPURL"] = "https://meyerweb.com/eric/tools/color-blend/#:::rgbp";  // untranslated
 Blockly.Msg["COLOUR_BLEND_RATIO"] = "arány";
 Blockly.Msg["COLOUR_BLEND_TITLE"] = "színkeverés";
 Blockly.Msg["COLOUR_BLEND_TOOLTIP"] = "Két színt kever össze a megadott arányban (0.0 - 1.0).";
@@ -25,7 +22,7 @@ Blockly.Msg["COLOUR_RANDOM_TITLE"] = "véletlen szín";
 Blockly.Msg["COLOUR_RANDOM_TOOLTIP"] = "Véletlenszerűen kiválasztott szín.";
 Blockly.Msg["COLOUR_RGB_BLUE"] = "kék";
 Blockly.Msg["COLOUR_RGB_GREEN"] = "zöld";
-Blockly.Msg["COLOUR_RGB_HELPURL"] = "http://www.december.com/html/spec/colorper.html";  // untranslated
+Blockly.Msg["COLOUR_RGB_HELPURL"] = "https://www.december.com/html/spec/colorpercompact.html";  // untranslated
 Blockly.Msg["COLOUR_RGB_RED"] = "vörös";
 Blockly.Msg["COLOUR_RGB_TITLE"] = "Szín";
 Blockly.Msg["COLOUR_RGB_TOOLTIP"] = "Szín előállítása a megadott vörös, zöld, és kék értékekkel.  Minden értéknek 0 és 100 közé kell esnie.";
@@ -206,9 +203,9 @@ Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Két szám hányadosa.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Két szám különbsége.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Két szám szorzata.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Az első számnak a második számmal megegyező hatványa.";
-Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated
-Blockly.Msg["MATH_ATAN2_TITLE"] = "atan2 of X:%1 Y:%2";  // untranslated
-Blockly.Msg["MATH_ATAN2_TOOLTIP"] = "Return the arctangent of point (X, Y) in degrees from -180 to 180.";  // untranslated
+Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://hu.wikipedia.org/wiki/Arctg2";
+Blockly.Msg["MATH_ATAN2_TITLE"] = "Arctg2 X:%1 Y:%2";
+Blockly.Msg["MATH_ATAN2_TOOLTIP"] = "Az (X,Y) pont arkusz tangens értéke fokban -180 és 180 között.";
 Blockly.Msg["MATH_CHANGE_HELPURL"] = "https://hu.wikipedia.org/wiki/JavaScript#Aritmetikai_oper.C3.A1torok";
 Blockly.Msg["MATH_CHANGE_TITLE"] = "növeld %1 értékét %2 -vel";
 Blockly.Msg["MATH_CHANGE_TOOLTIP"] = "A \"%1\" változó értékének növelése egy számmal.";
@@ -290,7 +287,7 @@ Blockly.Msg["NEW_NUMBER_VARIABLE"] = "Create number variable...";  // untranslat
 Blockly.Msg["NEW_STRING_VARIABLE"] = "Create string variable...";  // untranslated
 Blockly.Msg["NEW_VARIABLE"] = "Változó létrehozása…";
 Blockly.Msg["NEW_VARIABLE_TITLE"] = "Az új változó neve:";
-Blockly.Msg["NEW_VARIABLE_TYPE_TITLE"] = "New variable type:";  // untranslated
+Blockly.Msg["NEW_VARIABLE_TYPE_TITLE"] = "Az új változó típusa:";
 Blockly.Msg["ORDINAL_NUMBER_SUFFIX"] = ".";
 Blockly.Msg["PROCEDURES_ALLOW_STATEMENTS"] = "utasítások engedélyezése";
 Blockly.Msg["PROCEDURES_BEFORE_PARAMS"] = "paraméterlistaː";
@@ -392,6 +389,7 @@ Blockly.Msg["TEXT_TRIM_OPERATOR_RIGHT"] = "szóközök levágása a végéről";
 Blockly.Msg["TEXT_TRIM_TOOLTIP"] = "Levágja a megadott szöveg végeiről a szóközöket.";
 Blockly.Msg["TODAY"] = "Ma";
 Blockly.Msg["UNDO"] = "Visszavonás";
+Blockly.Msg["UNNAMED_KEY"] = "névtelen";
 Blockly.Msg["VARIABLES_DEFAULT_NAME"] = "változó";
 Blockly.Msg["VARIABLES_GET_CREATE_SET"] = "Készíts \"%1=\"";
 Blockly.Msg["VARIABLES_GET_HELPURL"] = "https://github.com/google/blockly/wiki/Variables#get";  // untranslated
@@ -402,7 +400,8 @@ Blockly.Msg["VARIABLES_SET_HELPURL"] = "https://github.com/google/blockly/wiki/V
 Blockly.Msg["VARIABLES_SET_TOOLTIP"] = "A változónak adhatunk értéket.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS"] = "A(z) „%1” nevű változó már létezik.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] = "Egy „%1” nevű változó már létezik egy másik típussal: „%2”.";
-Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Say something...";  // untranslated
+Blockly.Msg["WORKSPACE_ARIA_LABEL"] = "Blockly munkaterület";
+Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Mondj valamit...";
 Blockly.Msg["CONTROLS_FOREACH_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
 Blockly.Msg["CONTROLS_FOR_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
 Blockly.Msg["CONTROLS_IF_ELSEIF_TITLE_ELSEIF"] = Blockly.Msg["CONTROLS_IF_MSG_ELSEIF"];

@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2017 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -26,6 +12,7 @@
 
 goog.provide('Blockly.VariableModel');
 
+goog.require('Blockly.Events');
 goog.require('Blockly.Events.VarCreate');
 goog.require('Blockly.utils');
 
@@ -34,7 +21,7 @@ goog.require('Blockly.utils');
  * Class for a variable model.
  * Holds information for the variable including name, ID, and type.
  * @param {!Blockly.Workspace} workspace The variable's workspace.
- * @param {!string} name The name of the variable. This must be unique across
+ * @param {string} name The name of the variable. This must be unique across
  *     variables and procedures.
  * @param {string=} opt_type The type of the variable like 'int' or 'string'.
  *     Does not need to be unique. Field_variable can filter variables based on
@@ -81,7 +68,7 @@ Blockly.VariableModel = function(workspace, name, opt_type, opt_id) {
 };
 
 /**
- * @return {!string} The ID for the variable.
+ * @return {string} The ID for the variable.
  */
 Blockly.VariableModel.prototype.getId = function() {
   return this.id_;

@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Language
- *
- * Copyright 2015 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2015 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -27,6 +13,7 @@
 goog.provide('Blockly.PHP');
 
 goog.require('Blockly.Generator');
+goog.require('Blockly.utils.string');
 
 
 /**
@@ -163,7 +150,7 @@ Blockly.PHP.init = function(workspace) {
   var variables = Blockly.Variables.allUsedVarModels(workspace);
   for (var i = 0, variable; variable = variables[i]; i++) {
     defvars.push(Blockly.PHP.variableDB_.getName(variable.getId(),
-        Blockly.Variables.NAME_TYPE) + ';');
+        Blockly.VARIABLE_CATEGORY_NAME) + ';');
   }
 
   // Declare all of the variables.
@@ -213,6 +200,17 @@ Blockly.PHP.quote_ = function(string) {
 };
 
 /**
+ * Encode a string as a properly escaped multiline PHP string, complete with
+ * quotes.
+ * @param {string} string Text to encode.
+ * @return {string} PHP string.
+ * @private
+ */
+Blockly.PHP.multiline_quote_ = function(string) {
+  return '<<<EOT\n' + string + '\nEOT';
+};
+
+/**
  * Common tasks for generating PHP from blocks.
  * Handles comments for the specified block and any connected value blocks.
  * Calls any statements following this block.
@@ -228,8 +226,9 @@ Blockly.PHP.scrub_ = function(block, code, opt_thisOnly) {
   if (!block.outputConnection || !block.outputConnection.targetConnection) {
     // Collect comment for this block.
     var comment = block.getCommentText();
-    comment = Blockly.utils.wrap(comment, Blockly.PHP.COMMENT_WRAP - 3);
     if (comment) {
+      comment = Blockly.utils.string.wrap(comment,
+          Blockly.PHP.COMMENT_WRAP - 3);
       commentCode += Blockly.PHP.prefixLines(comment, '// ') + '\n';
     }
     // Collect comments for all value arguments.
@@ -238,7 +237,7 @@ Blockly.PHP.scrub_ = function(block, code, opt_thisOnly) {
       if (block.inputList[i].type == Blockly.INPUT_VALUE) {
         var childBlock = block.inputList[i].connection.targetBlock();
         if (childBlock) {
-          var comment = Blockly.PHP.allNestedComments(childBlock);
+          comment = Blockly.PHP.allNestedComments(childBlock);
           if (comment) {
             commentCode += Blockly.PHP.prefixLines(comment, '// ');
           }
@@ -284,7 +283,7 @@ Blockly.PHP.getAdjusted = function(block, atId, opt_delta, opt_negate,
 
   if (Blockly.isNumber(at)) {
     // If the index is a naked number, adjust it right now.
-    at = parseFloat(at) + delta;
+    at = Number(at) + delta;
     if (opt_negate) {
       at = -at;
     }

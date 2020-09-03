@@ -2,20 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Christian List",
-			"RickiRunge",
+			"Joedalton",
+			"JonNPoulsen",
 			"MGA73",
 			"Mads Haupt",
-			"Tjernobyl",
-			"Joedalton",
-			"Saederup92"
+			"RickiRunge",
+			"Saederup92",
+			"Tjernobyl"
 		]
 	},
 	"VARIABLES_DEFAULT_NAME": "element",
+	"UNNAMED_KEY": "unavngivet",
 	"TODAY": "I dag",
 	"DUPLICATE_BLOCK": "Duplikér",
-	"ADD_COMMENT": "Tilføj kommentar",
-	"REMOVE_COMMENT": "Fjern kommentar",
-	"DUPLICATE_COMMENT": "Dupliker kommentar",
+	"ADD_COMMENT": "Tilføj Kommentar",
+	"REMOVE_COMMENT": "Fjern Kommentar",
+	"DUPLICATE_COMMENT": "Duplikér Kommentar",
 	"EXTERNAL_INPUTS": "Udvendige inputs",
 	"INLINE_INPUTS": "Indlejrede inputs",
 	"DELETE_BLOCK": "Slet blok",

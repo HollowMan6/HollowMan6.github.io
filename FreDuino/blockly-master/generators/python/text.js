@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Language
- *
- * Copyright 2012 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2012 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -32,6 +18,12 @@ goog.require('Blockly.Python');
 Blockly.Python['text'] = function(block) {
   // Text value.
   var code = Blockly.Python.quote_(block.getFieldValue('TEXT'));
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python['text_multiline'] = function(block) {
+  // Text value.
+  var code = Blockly.Python.multiline_quote_(block.getFieldValue('TEXT'));
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -83,7 +75,7 @@ Blockly.Python['text_join'] = function(block) {
                 Blockly.Python.ORDER_NONE) || '\'\'';
       }
       var tempVar = Blockly.Python.variableDB_.getDistinctName('x',
-          Blockly.Variables.NAME_TYPE);
+          Blockly.VARIABLE_CATEGORY_NAME);
       var code = '\'\'.join([str(' + tempVar + ') for ' + tempVar + ' in [' +
           elements.join(', ') + ']])';
       return [code, Blockly.Python.ORDER_FUNCTION_CALL];
@@ -93,7 +85,7 @@ Blockly.Python['text_join'] = function(block) {
 Blockly.Python['text_append'] = function(block) {
   // Append to a variable in place.
   var varName = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+      Blockly.VARIABLE_CATEGORY_NAME);
   var value = Blockly.Python.valueToCode(block, 'TEXT',
       Blockly.Python.ORDER_NONE) || '\'\'';
   return varName + ' = str(' + varName + ') + ' +

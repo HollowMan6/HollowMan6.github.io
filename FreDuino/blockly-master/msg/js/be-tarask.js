@@ -2,19 +2,16 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.be.tarask');
-
-goog.require('Blockly.Msg');
-
 Blockly.Msg["ADD_COMMENT"] = "Дадаць камэнтар";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Немагчыма выдаліць зьменную «%1», таму што яна зьяўляецца часткай вызначэньня функцыі «%2»";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Зьмяніць значэньне:";
 Blockly.Msg["CLEAN_UP"] = "Ачысьціць блёкі";
+Blockly.Msg["COLLAPSED_WARNINGS_WARNING"] = "Згорнутыя блёкі ўтрымліваюць папярэджаньні.";
 Blockly.Msg["COLLAPSE_ALL"] = "Згарнуць блёкі";
 Blockly.Msg["COLLAPSE_BLOCK"] = "Згарнуць блёк";
 Blockly.Msg["COLOUR_BLEND_COLOUR1"] = "колер 1";
 Blockly.Msg["COLOUR_BLEND_COLOUR2"] = "колер 2";
-Blockly.Msg["COLOUR_BLEND_HELPURL"] = "http://meyerweb.com/eric/tools/color-blend/";  // untranslated
+Blockly.Msg["COLOUR_BLEND_HELPURL"] = "https://meyerweb.com/eric/tools/color-blend/#:::rgbp";  // untranslated
 Blockly.Msg["COLOUR_BLEND_RATIO"] = "дзеля";
 Blockly.Msg["COLOUR_BLEND_TITLE"] = "зьмяшаць";
 Blockly.Msg["COLOUR_BLEND_TOOLTIP"] = "Зьмешвае два колеры ў дадзенай прапорцыі (0.0 — 1.0)";
@@ -25,7 +22,7 @@ Blockly.Msg["COLOUR_RANDOM_TITLE"] = "выпадковы колер";
 Blockly.Msg["COLOUR_RANDOM_TOOLTIP"] = "Абраць выпадковы колер.";
 Blockly.Msg["COLOUR_RGB_BLUE"] = "сіняга";
 Blockly.Msg["COLOUR_RGB_GREEN"] = "зялёнага";
-Blockly.Msg["COLOUR_RGB_HELPURL"] = "http://www.december.com/html/spec/colorper.html";  // untranslated
+Blockly.Msg["COLOUR_RGB_HELPURL"] = "https://www.december.com/html/spec/colorpercompact.html";  // untranslated
 Blockly.Msg["COLOUR_RGB_RED"] = "чырвонага";
 Blockly.Msg["COLOUR_RGB_TITLE"] = "колер з";
 Blockly.Msg["COLOUR_RGB_TOOLTIP"] = "Стварыць колер з абранымі прапорцыямі чырвонага, зялёнага і сіняга. Усе значэньні павінны быць ад 0 да 100.";
@@ -218,11 +215,11 @@ Blockly.Msg["MATH_CONSTRAIN_HELPURL"] = "https://en.wikipedia.org/wiki/Clamping_
 Blockly.Msg["MATH_CONSTRAIN_TITLE"] = "абмежаваць %1 зьнізу %2 зьверху %3";
 Blockly.Msg["MATH_CONSTRAIN_TOOLTIP"] = "Абмяжоўвае колькасьць ніжняй і верхняй межамі (уключна).";
 Blockly.Msg["MATH_DIVISION_SYMBOL"] = "÷";  // untranslated
-Blockly.Msg["MATH_IS_DIVISIBLE_BY"] = "дзяліць на";
+Blockly.Msg["MATH_IS_DIVISIBLE_BY"] = "дзеліцца на";
 Blockly.Msg["MATH_IS_EVEN"] = "парная";
 Blockly.Msg["MATH_IS_NEGATIVE"] = "адмоўная";
 Blockly.Msg["MATH_IS_ODD"] = "няпарная";
-Blockly.Msg["MATH_IS_POSITIVE"] = "станоўчая";
+Blockly.Msg["MATH_IS_POSITIVE"] = "дадатная";
 Blockly.Msg["MATH_IS_PRIME"] = "простая";
 Blockly.Msg["MATH_IS_TOOLTIP"] = "Правярае, ці зьяўляецца лік парным, няпарным, простым, станоўчым, адмоўным, ці ён дзеліцца на пэўны лік без астатку. Вяртае значэньне ісьціна або няпраўда.";
 Blockly.Msg["MATH_IS_WHOLE"] = "цэлая";
@@ -392,6 +389,7 @@ Blockly.Msg["TEXT_TRIM_OPERATOR_RIGHT"] = "абрэзаць прабелы з п
 Blockly.Msg["TEXT_TRIM_TOOLTIP"] = "Вяртае копію тэксту з прабеламі, выдаленымі ад аднаго ці абодвух бакоў.";
 Blockly.Msg["TODAY"] = "Сёньня";
 Blockly.Msg["UNDO"] = "Скасаваць";
+Blockly.Msg["UNNAMED_KEY"] = "безназоўны";
 Blockly.Msg["VARIABLES_DEFAULT_NAME"] = "аб’ект";
 Blockly.Msg["VARIABLES_GET_CREATE_SET"] = "Стварыць блёк «усталяваць %1»";
 Blockly.Msg["VARIABLES_GET_HELPURL"] = "https://github.com/google/blockly/wiki/Variables#get";  // untranslated
@@ -402,6 +400,7 @@ Blockly.Msg["VARIABLES_SET_HELPURL"] = "https://github.com/google/blockly/wiki/V
 Blockly.Msg["VARIABLES_SET_TOOLTIP"] = "Надаць гэтай зьменнай значэньне ўстаўкі.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS"] = "Зьменная з назвай «%1» ужо існуе.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] = "Зьменная з назвай «%1» ужо існуе зь іншым тыпам: «%2».";
+Blockly.Msg["WORKSPACE_ARIA_LABEL"] = "Працоўная прастора Blockly";
 Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Напішыце што-небудзь…";
 Blockly.Msg["CONTROLS_FOREACH_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
 Blockly.Msg["CONTROLS_FOR_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];

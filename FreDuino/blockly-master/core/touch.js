@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2016 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -31,9 +17,22 @@
 goog.provide('Blockly.Touch');
 
 goog.require('Blockly.utils');
+goog.require('Blockly.utils.global');
+goog.require('Blockly.utils.string');
 
-goog.require('goog.events.BrowserFeature');
 
+/**
+  * Whether touch is enabled in the browser.
+  * Copied from Closure's goog.events.BrowserFeature.TOUCH_ENABLED
+  */
+Blockly.Touch.TOUCH_ENABLED =
+    ('ontouchstart' in Blockly.utils.global ||
+     !!(Blockly.utils.global['document'] && document.documentElement &&
+        'ontouchstart' in document.documentElement) ||
+     // IE10 uses non-standard touch events, so it has a different check.
+     !!(Blockly.utils.global['navigator'] &&
+        (Blockly.utils.global['navigator']['maxTouchPoints'] ||
+         Blockly.utils.global['navigator']['msMaxTouchPoints'])));
 
 /**
  * Which touch events are we currently paying attention to?
@@ -48,7 +47,7 @@ Blockly.Touch.touchIdentifier_ = null;
  * @type {Object}
  */
 Blockly.Touch.TOUCH_MAP = {};
-if (goog.global.PointerEvent) {
+if (Blockly.utils.global['PointerEvent']) {
   Blockly.Touch.TOUCH_MAP = {
     'mousedown': ['pointerdown'],
     'mouseenter': ['pointerenter'],
@@ -60,7 +59,7 @@ if (goog.global.PointerEvent) {
     'touchend': ['pointerup'],
     'touchcancel': ['pointercancel']
   };
-} else if (goog.events.BrowserFeature.TOUCH_ENABLED) {
+} else if (Blockly.Touch.TOUCH_ENABLED) {
   Blockly.Touch.TOUCH_MAP = {
     'mousedown': ['touchstart'],
     'mousemove': ['touchmove'],
@@ -82,9 +81,9 @@ Blockly.longPid_ = 0;
  * if the touch event terminates early.
  * @param {!Event} e Touch start event.
  * @param {Blockly.Gesture} gesture The gesture that triggered this longStart.
- * @private
+ * @package
  */
-Blockly.longStart_ = function(e, gesture) {
+Blockly.longStart = function(e, gesture) {
   Blockly.longStop_();
   // Punt on multitouch events.
   if (e.changedTouches && e.changedTouches.length != 1) {
@@ -111,7 +110,7 @@ Blockly.longStart_ = function(e, gesture) {
 /**
  * Nope, that's not a long-press.  Either touchend or touchcancel was fired,
  * or a drag hath begun.  Kill the queued long-press task.
- * @private
+ * @package
  */
 Blockly.longStop_ = function() {
   if (Blockly.longPid_) {
@@ -199,7 +198,7 @@ Blockly.Touch.checkTouchIdentifier = function(e) {
  * @param {!Event} e A touch event.
  */
 Blockly.Touch.setClientFromTouch = function(e) {
-  if (Blockly.utils.startsWith(e.type, 'touch')) {
+  if (Blockly.utils.string.startsWith(e.type, 'touch')) {
     // Map the touch event's properties to the event.
     var touchPoint = e.changedTouches[0];
     e.clientX = touchPoint.clientX;
@@ -210,22 +209,22 @@ Blockly.Touch.setClientFromTouch = function(e) {
 /**
  * Check whether a given event is a mouse or touch event.
  * @param {!Event} e An event.
- * @return {boolean} true if it is a mouse or touch event; false otherwise.
+ * @return {boolean} True if it is a mouse or touch event; false otherwise.
  */
 Blockly.Touch.isMouseOrTouchEvent = function(e) {
-  return Blockly.utils.startsWith(e.type, 'touch') ||
-      Blockly.utils.startsWith(e.type, 'mouse') ||
-      Blockly.utils.startsWith(e.type, 'pointer');
+  return Blockly.utils.string.startsWith(e.type, 'touch') ||
+      Blockly.utils.string.startsWith(e.type, 'mouse') ||
+      Blockly.utils.string.startsWith(e.type, 'pointer');
 };
 
 /**
  * Check whether a given event is a touch event or a pointer event.
  * @param {!Event} e An event.
- * @return {boolean} true if it is a touch event; false otherwise.
+ * @return {boolean} True if it is a touch event; false otherwise.
  */
 Blockly.Touch.isTouchEvent = function(e) {
-  return Blockly.utils.startsWith(e.type, 'touch') ||
-      Blockly.utils.startsWith(e.type, 'pointer');
+  return Blockly.utils.string.startsWith(e.type, 'touch') ||
+      Blockly.utils.string.startsWith(e.type, 'pointer');
 };
 
 /**
@@ -244,8 +243,8 @@ Blockly.Touch.splitEventByTouches = function(e) {
         type: e.type,
         changedTouches: [e.changedTouches[i]],
         target: e.target,
-        stopPropagation: function(){ e.stopPropagation(); },
-        preventDefault: function(){ e.preventDefault(); }
+        stopPropagation: function() { e.stopPropagation(); },
+        preventDefault: function() { e.preventDefault(); }
       };
       events[i] = newEvent;
     }

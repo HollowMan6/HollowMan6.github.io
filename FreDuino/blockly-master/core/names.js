@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2012 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2012 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -25,6 +11,8 @@
 'use strict';
 
 goog.provide('Blockly.Names');
+
+goog.require('Blockly.Msg');
 
 
 /**
@@ -77,7 +65,6 @@ Blockly.Names.prototype.reset = function() {
 /**
  * Set the variable map that maps from variable name to variable object.
  * @param {!Blockly.VariableMap} map The map to track.
- * @package
  */
 Blockly.Names.prototype.setVariableMap = function(map) {
   this.variableMap_ = map;
@@ -85,7 +72,8 @@ Blockly.Names.prototype.setVariableMap = function(map) {
 
 /**
  * Get the name for a user-defined variable, based on its ID.
- * This should only be used for variables of type Blockly.Variables.NAME_TYPE.
+ * This should only be used for variables of type
+ * Blockly.VARIABLE_CATEGORY_NAME.
  * @param {string} id The ID to look up in the variable map.
  * @return {?string} The name of the referenced variable, or null if there was
  *     no variable map or the variable was not found in the map.
@@ -94,7 +82,7 @@ Blockly.Names.prototype.setVariableMap = function(map) {
 Blockly.Names.prototype.getNameForUserVariable_ = function(id) {
   if (!this.variableMap_) {
     console.log('Deprecated call to Blockly.Names.prototype.getName without ' +
-        'defining a variable map. To fix, add the folowing code in your ' +
+        'defining a variable map. To fix, add the following code in your ' +
         'generator\'s init() function:\n' +
         'Blockly.YourGeneratorName.variableDB_.setVariableMap(' +
         'workspace.getVariableMap());');
@@ -116,7 +104,7 @@ Blockly.Names.prototype.getNameForUserVariable_ = function(id) {
  * @return {string} An entity name that is legal in the exported language.
  */
 Blockly.Names.prototype.getName = function(name, type) {
-  if (type == Blockly.Variables.NAME_TYPE) {
+  if (type == Blockly.VARIABLE_CATEGORY_NAME) {
     var varName = this.getNameForUserVariable_(name);
     if (varName) {
       name = varName;
@@ -124,7 +112,7 @@ Blockly.Names.prototype.getName = function(name, type) {
   }
   var normalized = name.toLowerCase() + '_' + type;
 
-  var isVarType = type == Blockly.Variables.NAME_TYPE ||
+  var isVarType = type == Blockly.VARIABLE_CATEGORY_NAME ||
       type == Blockly.Names.DEVELOPER_VARIABLE_TYPE;
 
   var prefix = isVarType ? this.variablePrefix_ : '';
@@ -156,7 +144,7 @@ Blockly.Names.prototype.getDistinctName = function(name, type) {
   }
   safeName += i;
   this.dbReverse_[safeName] = true;
-  var isVarType = type == Blockly.Variables.NAME_TYPE ||
+  var isVarType = type == Blockly.VARIABLE_CATEGORY_NAME ||
       type == Blockly.Names.DEVELOPER_VARIABLE_TYPE;
   var prefix = isVarType ? this.variablePrefix_ : '';
   return prefix + safeName;
@@ -172,7 +160,7 @@ Blockly.Names.prototype.getDistinctName = function(name, type) {
  */
 Blockly.Names.prototype.safeName_ = function(name) {
   if (!name) {
-    name = 'unnamed';
+    name = Blockly.Msg['UNNAMED_KEY'] || 'unnamed';
   } else {
     // Unfortunately names in non-latin characters will look like
     // _E9_9F_B3_E4_B9_90 which is pretty meaningless.

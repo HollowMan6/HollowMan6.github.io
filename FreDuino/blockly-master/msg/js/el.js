@@ -2,14 +2,11 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.el');
-
-goog.require('Blockly.Msg');
-
 Blockly.Msg["ADD_COMMENT"] = "Πρόσθεσε Το Σχόλιο";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Δεν μπορώ να διαγράψω την μεταβλητή '%1' διότι είναι μέρος του ορισμού της λειτουργίας '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Άλλαξε την τιμή:";
 Blockly.Msg["CLEAN_UP"] = "Ταξινομείστε τα Μπλοκ";
+Blockly.Msg["COLLAPSED_WARNINGS_WARNING"] = "Υπάρχουν προειδοποιήσεις για συμπτυγμένα μπλοκ.";
 Blockly.Msg["COLLAPSE_ALL"] = "Σύμπτυξε Όλα Τα Μπλοκ";
 Blockly.Msg["COLLAPSE_BLOCK"] = "Σύμπτυξε Το Μπλοκ";
 Blockly.Msg["COLOUR_BLEND_COLOUR1"] = "χρώμα 1";
@@ -63,7 +60,7 @@ Blockly.Msg["CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL"] = "Ενόσω μια τιμή �
 Blockly.Msg["CONTROLS_WHILEUNTIL_TOOLTIP_WHILE"] = "Ενόσω μια τιμή είναι αληθής, τότε εκτελεί κάποιες εντολές.";
 Blockly.Msg["DELETE_ALL_BLOCKS"] = "Να διαγραφούν και τα %1 μπλοκ;";
 Blockly.Msg["DELETE_BLOCK"] = "Διάγραψε Το Μπλοκ";
-Blockly.Msg["DELETE_VARIABLE"] = "Διαγράψετε την μεταβλητή '%1'";
+Blockly.Msg["DELETE_VARIABLE"] = "Διαγράψτε την μεταβλητή '%1'";
 Blockly.Msg["DELETE_VARIABLE_CONFIRMATION"] = "Θέλετε να διαγράψετε το %1 που χρησιμοποιείτε της μεταβλητής '%2'?";
 Blockly.Msg["DELETE_X_BLOCKS"] = "Διάγραψε %1 Μπλοκ";
 Blockly.Msg["DISABLE_BLOCK"] = "Απενεργοποίησε Το Μπλοκ";
@@ -206,9 +203,9 @@ Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Επιστρέφει το πη�
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Επιστρέφει τη διαφορά των δύο αριθμών.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Επιστρέφει το γινόμενο των δύο αριθμών.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Επιστρέφει τον πρώτο αριθμό υψωμένο στη δύναμη του δεύτερου αριθμού.";
-Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated
-Blockly.Msg["MATH_ATAN2_TITLE"] = "atan2 of X:%1 Y:%2";  // untranslated
-Blockly.Msg["MATH_ATAN2_TOOLTIP"] = "Return the arctangent of point (X, Y) in degrees from -180 to 180.";  // untranslated
+Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";
+Blockly.Msg["MATH_ATAN2_TITLE"] = "atan2 από X:%1 Y:%2";
+Blockly.Msg["MATH_ATAN2_TOOLTIP"] = "Επιστρέφει την διαφορά τόξου των σημείων (X, Y) σε μοίρες από -180 σε 180.";
 Blockly.Msg["MATH_CHANGE_HELPURL"] = "https://el.wikipedia.org/wiki/%CE%A0%CF%81%CF%8C%CF%83%CE%B8%CE%B5%CF%83%CE%B7";
 Blockly.Msg["MATH_CHANGE_TITLE"] = "άλλαξε %1 από %2";
 Blockly.Msg["MATH_CHANGE_TOOLTIP"] = "Προσθέτει έναν αριθμό στη μεταβλητή «%1».";
@@ -288,7 +285,7 @@ Blockly.Msg["MATH_TRIG_TOOLTIP_TAN"] = "Επιστρέφει την εφαπτο
 Blockly.Msg["NEW_COLOUR_VARIABLE"] = "Δημιουργία μεταβλητής χρώματος...";
 Blockly.Msg["NEW_NUMBER_VARIABLE"] = "Δημιουργία μεταβλητής αριθμού...";
 Blockly.Msg["NEW_STRING_VARIABLE"] = "Δημιουργία μεταβλητή συμβολοσειράς...";
-Blockly.Msg["NEW_VARIABLE"] = "Δημιουργείστε μεταβλητή";
+Blockly.Msg["NEW_VARIABLE"] = "Δημιουργήστε μεταβλητή";
 Blockly.Msg["NEW_VARIABLE_TITLE"] = "Νέο όνομα μεταβλητής:";
 Blockly.Msg["NEW_VARIABLE_TYPE_TITLE"] = "Νέος τύπος μεταβλητής:";
 Blockly.Msg["ORDINAL_NUMBER_SUFFIX"] = "";  // untranslated
@@ -392,6 +389,7 @@ Blockly.Msg["TEXT_TRIM_OPERATOR_RIGHT"] = "περίκοψε τα κενά από
 Blockly.Msg["TEXT_TRIM_TOOLTIP"] = "Επιστρέφει ένα αντίγραφο του κειμένου με αφαιρεμένα τα κενά από το ένα ή και τα δύο άκρα.";
 Blockly.Msg["TODAY"] = "Σήμερα";
 Blockly.Msg["UNDO"] = "Αναίρεση";
+Blockly.Msg["UNNAMED_KEY"] = "χωρίς όνομα";
 Blockly.Msg["VARIABLES_DEFAULT_NAME"] = "αντικείμενο";
 Blockly.Msg["VARIABLES_GET_CREATE_SET"] = "Δημιούργησε «όρισε %1»";
 Blockly.Msg["VARIABLES_GET_HELPURL"] = "https://github.com/google/blockly/wiki/Variables#get";  // untranslated
@@ -402,6 +400,7 @@ Blockly.Msg["VARIABLES_SET_HELPURL"] = "https://github.com/google/blockly/wiki/V
 Blockly.Msg["VARIABLES_SET_TOOLTIP"] = "Ορίζει αυτή τη μεταβλητή να είναι ίση με την είσοδο.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS"] = "Η μεταβλητή με το όνομα \"%1\" υπάρχει ήδη";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] = "Μια μεταβλητή με όνομα '%1' υπάρχει πάντα για έναν άλλο τύπο: '%2'.";
+Blockly.Msg["WORKSPACE_ARIA_LABEL"] = "Χώρος εργασίας Blockly";
 Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Πείτε κάτι...";
 Blockly.Msg["CONTROLS_FOREACH_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
 Blockly.Msg["CONTROLS_FOR_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];

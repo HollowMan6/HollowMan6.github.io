@@ -15,13 +15,6 @@
 <script src="../../generators/javascript/colour.js"></script>
 <script src="../../generators/javascript/variables.js"></script>
 <script src="../../generators/javascript/procedures.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-8085225986579534",
-      enable_page_level_ads: true
-    });
-  </script>
 
 <script src="../../generators/python.js"></script>
 <script src="unittest_python.js"></script>
@@ -98,7 +91,7 @@ function start() {
   changeIndex();
 }
 
-/*
+/**
  * Run this test to load all of the tests in the selected suites.  The contents
  * will be loaded into the workspace in order.  To test the generators:
  * - select your language from the buttons above the text area
@@ -264,7 +257,7 @@ function toDart() {
 function changeIndex() {
   var oneBasedIndex = document.getElementById('indexing').checked;
   demoWorkspace.options.oneBasedIndex = oneBasedIndex;
-  demoWorkspace.toolbox_.flyout_.workspace_.options.oneBasedIndex = oneBasedIndex;
+  demoWorkspace.getToolbox().flyout_.workspace_.options.oneBasedIndex = oneBasedIndex;
 }
 </script>
 
@@ -301,7 +294,7 @@ h1 {
 
   <div id="blocklyDiv"></div>
 
-  <xml id="toolbox" style="display: none">
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="Unit test" colour="65">
       <block type="unittest_main"></block>
       <block type="unittest_assertequals">

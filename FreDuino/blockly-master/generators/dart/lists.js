@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Language
- *
- * Copyright 2014 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2014 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -98,7 +84,7 @@ Blockly.Dart['lists_getIndex'] = function(block) {
   // Closure, which accesses and modifies 'list'.
   function cacheList() {
     var listVar = Blockly.Dart.variableDB_.getDistinctName(
-        'tmp_list', Blockly.Variables.NAME_TYPE);
+        'tmp_list', Blockly.VARIABLE_CATEGORY_NAME);
     var code = 'List ' + listVar + ' = ' + list + ';\n';
     list = listVar;
     return code;
@@ -115,7 +101,7 @@ Blockly.Dart['lists_getIndex'] = function(block) {
       // We can use multiple statements.
       var code = cacheList();
       var xVar = Blockly.Dart.variableDB_.getDistinctName(
-          'tmp_x', Blockly.Variables.NAME_TYPE);
+          'tmp_x', Blockly.VARIABLE_CATEGORY_NAME);
       code += 'int ' + xVar + ' = new Math.Random().nextInt(' + list +
           '.length);\n';
       code += list + '.removeAt(' + xVar + ');\n';
@@ -214,7 +200,7 @@ Blockly.Dart['lists_getIndex'] = function(block) {
         if (mode == 'REMOVE') {
           // We can use multiple statements.
           var xVar = Blockly.Dart.variableDB_.getDistinctName(
-              'tmp_x', Blockly.Variables.NAME_TYPE);
+              'tmp_x', Blockly.VARIABLE_CATEGORY_NAME);
           var code = 'int ' + xVar + ' = new Math.Random().nextInt(' + list +
               '.length);\n';
           code += list + '.removeAt(' + xVar + ');\n';
@@ -262,7 +248,7 @@ Blockly.Dart['lists_setIndex'] = function(block) {
       return '';
     }
     var listVar = Blockly.Dart.variableDB_.getDistinctName(
-        'tmp_list', Blockly.Variables.NAME_TYPE);
+        'tmp_list', Blockly.VARIABLE_CATEGORY_NAME);
     var code = 'List ' + listVar + ' = ' + list + ';\n';
     list = listVar;
     return code;
@@ -311,7 +297,7 @@ Blockly.Dart['lists_setIndex'] = function(block) {
           'import \'dart:math\' as Math;';
       var code = cacheList();
       var xVar = Blockly.Dart.variableDB_.getDistinctName(
-          'tmp_x', Blockly.Variables.NAME_TYPE);
+          'tmp_x', Blockly.VARIABLE_CATEGORY_NAME);
       code += 'int ' + xVar +
           ' = new Math.Random().nextInt(' + list + '.length);\n';
       if (mode == 'SET') {

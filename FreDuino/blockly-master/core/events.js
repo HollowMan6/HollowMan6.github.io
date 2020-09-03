@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2016 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -150,6 +136,26 @@ Blockly.Events.COMMENT_CHANGE = 'comment_change';
 Blockly.Events.COMMENT_MOVE = 'comment_move';
 
 /**
+ * Name of event that records a workspace load.
+ */
+Blockly.Events.FINISHED_LOADING = 'finished_loading';
+
+/**
+ * List of events that cause objects to be bumped back into the visible
+ * portion of the workspace (only used for non-movable workspaces).
+ *
+ * Not to be confused with bumping so that disconnected connections to do
+ * not appear connected.
+ * @const
+ */
+Blockly.Events.BUMP_EVENTS = [
+  Blockly.Events.BLOCK_CREATE,
+  Blockly.Events.BLOCK_MOVE,
+  Blockly.Events.COMMENT_CREATE,
+  Blockly.Events.COMMENT_MOVE
+];
+
+/**
  * List of events queued for firing.
  * @private
  */
@@ -177,7 +183,10 @@ Blockly.Events.fire = function(event) {
 Blockly.Events.fireNow_ = function() {
   var queue = Blockly.Events.filter(Blockly.Events.FIRE_QUEUE_, true);
   Blockly.Events.FIRE_QUEUE_.length = 0;
-  for (var i = 0, event; event = queue[i]; i++) {
+  for (var i = 0, event; (event = queue[i]); i++) {
+    if (!event.workspaceId) {
+      continue;
+    }
     var workspace = Blockly.Workspace.getById(event.workspaceId);
     if (workspace) {
       workspace.fireChangeListener(event);
@@ -200,7 +209,7 @@ Blockly.Events.filter = function(queueIn, forward) {
   var mergedQueue = [];
   var hash = Object.create(null);
   // Merge duplicates.
-  for (var i = 0, event; event = queue[i]; i++) {
+  for (var i = 0, event; (event = queue[i]); i++) {
     if (!event.isNull()) {
       var key = [event.type, event.blockId, event.workspaceId].join(' ');
 
@@ -229,12 +238,11 @@ Blockly.Events.filter = function(queueIn, forward) {
           (lastEvent.element == 'commentOpen' ||
            lastEvent.element == 'mutatorOpen' ||
            lastEvent.element == 'warningOpen')) {
-        // Merge click events.
-        lastEvent.newValue = event.newValue;
+        // Drop click events caused by opening/closing bubbles.
       } else {
         // Collision: newer events should merge into this event to maintain
         // order.
-        hash[key] = { event: event, index: 1};
+        hash[key] = {event: event, index: 1};
         mergedQueue.push(event);
       }
     }
@@ -247,7 +255,7 @@ Blockly.Events.filter = function(queueIn, forward) {
   }
   // Move mutation events to the top of the queue.
   // Intentionally skip first event.
-  for (var i = 1, event; event = queue[i]; i++) {
+  for (var i = 1, event; (event = queue[i]); i++) {
     if (event.type == Blockly.Events.CHANGE &&
         event.element == 'mutation') {
       queue.unshift(queue.splice(i, 1)[0]);
@@ -261,7 +269,7 @@ Blockly.Events.filter = function(queueIn, forward) {
  * in the undo stack.  Called by Blockly.Workspace.clearUndo.
  */
 Blockly.Events.clearPendingUndo = function() {
-  for (var i = 0, event; event = Blockly.Events.FIRE_QUEUE_[i]; i++) {
+  for (var i = 0, event; (event = Blockly.Events.FIRE_QUEUE_[i]); i++) {
     event.recordUndo = false;
   }
 };
@@ -314,12 +322,12 @@ Blockly.Events.setGroup = function(state) {
  * Compute a list of the IDs of the specified block and all its descendants.
  * @param {!Blockly.Block} block The root block.
  * @return {!Array.<string>} List of block IDs.
- * @private
+ * @package
  */
-Blockly.Events.getDescendantIds_ = function(block) {
+Blockly.Events.getDescendantIds = function(block) {
   var ids = [];
   var descendants = block.getDescendants(false);
-  for (var i = 0, descendant; descendant = descendants[i]; i++) {
+  for (var i = 0, descendant; (descendant = descendants[i]); i++) {
     ids[i] = descendant.id;
   }
   return ids;
@@ -357,19 +365,22 @@ Blockly.Events.fromJson = function(json, workspace) {
       event = new Blockly.Events.VarRename(null, '');
       break;
     case Blockly.Events.UI:
-      event = new Blockly.Events.Ui(null);
+      event = new Blockly.Events.Ui(null, '', '', '');
       break;
     case Blockly.Events.COMMENT_CREATE:
       event = new Blockly.Events.CommentCreate(null);
       break;
     case Blockly.Events.COMMENT_CHANGE:
-      event = new Blockly.Events.CommentChange(null);
+      event = new Blockly.Events.CommentChange(null, '', '');
       break;
     case Blockly.Events.COMMENT_MOVE:
       event = new Blockly.Events.CommentMove(null);
       break;
     case Blockly.Events.COMMENT_DELETE:
       event = new Blockly.Events.CommentDelete(null);
+      break;
+    case Blockly.Events.FINISHED_LOADING:
+      event = new Blockly.Events.FinishedLoading(workspace);
       break;
     default:
       throw Error('Unknown event type.');
@@ -383,24 +394,28 @@ Blockly.Events.fromJson = function(json, workspace) {
  * Enable/disable a block depending on whether it is properly connected.
  * Use this on applications where all blocks should be connected to a top block.
  * Recommend setting the 'disable' option to 'false' in the config so that
- * users don't try to reenable disabled orphan blocks.
+ * users don't try to re-enable disabled orphan blocks.
  * @param {!Blockly.Events.Abstract} event Custom data for event.
  */
 Blockly.Events.disableOrphans = function(event) {
   if (event.type == Blockly.Events.MOVE ||
       event.type == Blockly.Events.CREATE) {
+    if (!event.workspaceId) {
+      return;
+    }
     var workspace = Blockly.Workspace.getById(event.workspaceId);
     var block = workspace.getBlockById(event.blockId);
     if (block) {
-      if (block.getParent() && !block.getParent().disabled) {
+      var parent = block.getParent();
+      if (parent && parent.isEnabled()) {
         var children = block.getDescendants(false);
-        for (var i = 0, child; child = children[i]; i++) {
-          child.setDisabled(false);
+        for (var i = 0, child; (child = children[i]); i++) {
+          child.setEnabled(true);
         }
       } else if ((block.outputConnection || block.previousConnection) &&
                  !workspace.isDragging()) {
         do {
-          block.setDisabled(true);
+          block.setEnabled(false);
           block = block.getNextBlock();
         } while (block);
       }

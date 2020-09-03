@@ -2,14 +2,11 @@
 
 'use strict';
 
-goog.provide('Blockly.Msg.ja');
-
-goog.require('Blockly.Msg');
-
 Blockly.Msg["ADD_COMMENT"] = "コメントを追加";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "変数 '%1' は関数 '%2' の定義の一部であるため、削除できません";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "値を変える：";
 Blockly.Msg["CLEAN_UP"] = "ブロックを整理する";
+Blockly.Msg["COLLAPSED_WARNINGS_WARNING"] = "Collapsed blocks contain warnings.";  // untranslated
 Blockly.Msg["COLLAPSE_ALL"] = "ブロックを折りたたむ";
 Blockly.Msg["COLLAPSE_BLOCK"] = "ブロックを折りたたむ";
 Blockly.Msg["COLOUR_BLEND_COLOUR1"] = "色 1";
@@ -126,7 +123,7 @@ Blockly.Msg["LISTS_GET_SUBLIST_START_FIRST"] = "最初からサブリストを�
 Blockly.Msg["LISTS_GET_SUBLIST_START_FROM_END"] = "端から #のサブリストを取得します。";
 Blockly.Msg["LISTS_GET_SUBLIST_START_FROM_START"] = "# からサブディレクトリのリストを取得します。";
 Blockly.Msg["LISTS_GET_SUBLIST_TAIL"] = "";
-Blockly.Msg["LISTS_GET_SUBLIST_TOOLTIP"] = "リストの指定された部分のコピーを作成してくださ。";
+Blockly.Msg["LISTS_GET_SUBLIST_TOOLTIP"] = "リストの指定された部分のコピーを作成します。";
 Blockly.Msg["LISTS_INDEX_FROM_END_TOOLTIP"] = "%1 は、最後の項目です。";
 Blockly.Msg["LISTS_INDEX_FROM_START_TOOLTIP"] = "%1 は、最初の項目です。";
 Blockly.Msg["LISTS_INDEX_OF_FIRST"] = "で以下のアイテムの最初の出現箇所を検索：";
@@ -392,6 +389,7 @@ Blockly.Msg["TEXT_TRIM_OPERATOR_RIGHT"] = "右端のスペースを取り除く"
 Blockly.Msg["TEXT_TRIM_TOOLTIP"] = "スペースを 1 つまたは両方の端から削除したのち、テキストのコピーを返します。";
 Blockly.Msg["TODAY"] = "今日";
 Blockly.Msg["UNDO"] = "取り消す";
+Blockly.Msg["UNNAMED_KEY"] = "名前なし";
 Blockly.Msg["VARIABLES_DEFAULT_NAME"] = "項目";
 Blockly.Msg["VARIABLES_GET_CREATE_SET"] = "'セット%1を作成します。";
 Blockly.Msg["VARIABLES_GET_HELPURL"] = "https://github.com/google/blockly/wiki/Variables#get";  // untranslated
@@ -402,6 +400,7 @@ Blockly.Msg["VARIABLES_SET_HELPURL"] = "https://github.com/google/blockly/wiki/V
 Blockly.Msg["VARIABLES_SET_TOOLTIP"] = "この入力を変数と等しくなるように設定します。";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS"] = "変数名 '%1' は既に存在しています。";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] = "'%2' 型の '%1' という名前の変数が既に存在します。";
+Blockly.Msg["WORKSPACE_ARIA_LABEL"] = "Blocklyワークスペース";
 Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "ここへ入力";
 Blockly.Msg["CONTROLS_FOREACH_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
 Blockly.Msg["CONTROLS_FOR_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];

@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Language
- *
- * Copyright 2014 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2014 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -33,7 +19,7 @@ Blockly.Dart.addReservedWords('Math');
 
 Blockly.Dart['math_number'] = function(block) {
   // Numeric value.
-  var code = parseFloat(block.getFieldValue('NUM'));
+  var code = Number(block.getFieldValue('NUM'));
   var order;
   if (code == Infinity) {
     code = 'double.infinity';
@@ -190,7 +176,7 @@ Blockly.Dart['math_number_property'] = function(block) {
   var number_to_check = Blockly.Dart.valueToCode(block, 'NUMBER_TO_CHECK',
       Blockly.Dart.ORDER_MULTIPLICATIVE);
   if (!number_to_check) {
-    return ['false', Blockly.Python.ORDER_ATOMIC];
+    return ['false', Blockly.Dart.ORDER_ATOMIC];
   }
   var dropdown_property = block.getFieldValue('PROPERTY');
   var code;
@@ -242,7 +228,7 @@ Blockly.Dart['math_number_property'] = function(block) {
       var divisor = Blockly.Dart.valueToCode(block, 'DIVISOR',
           Blockly.Dart.ORDER_MULTIPLICATIVE);
       if (!divisor) {
-        return ['false', Blockly.Python.ORDER_ATOMIC];
+        return ['false', Blockly.Dart.ORDER_ATOMIC];
       }
       code = number_to_check + ' % ' + divisor + ' == 0';
       break;
@@ -255,7 +241,7 @@ Blockly.Dart['math_change'] = function(block) {
   var argument0 = Blockly.Dart.valueToCode(block, 'DELTA',
       Blockly.Dart.ORDER_ADDITIVE) || '0';
   var varName = Blockly.Dart.variableDB_.getName(block.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+      Blockly.VARIABLE_CATEGORY_NAME);
   return varName + ' = (' + varName + ' is num ? ' + varName + ' : 0) + ' +
       argument0 + ';\n';
 };

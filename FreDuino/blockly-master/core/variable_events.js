@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2018 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -31,6 +17,7 @@ goog.provide('Blockly.Events.VarRename');
 
 goog.require('Blockly.Events');
 goog.require('Blockly.Events.Abstract');
+goog.require('Blockly.utils.object');
 
 
 /**
@@ -50,7 +37,7 @@ Blockly.Events.VarBase = function(variable) {
   this.varId = variable.getId();
   this.workspaceId = variable.workspace.id;
 };
-goog.inherits(Blockly.Events.VarBase, Blockly.Events.Abstract);
+Blockly.utils.object.inherits(Blockly.Events.VarBase, Blockly.Events.Abstract);
 
 /**
  * Encode the event as JSON.
@@ -86,7 +73,7 @@ Blockly.Events.VarCreate = function(variable) {
   this.varType = variable.type;
   this.varName = variable.name;
 };
-goog.inherits(Blockly.Events.VarCreate, Blockly.Events.VarBase);
+Blockly.utils.object.inherits(Blockly.Events.VarCreate, Blockly.Events.VarBase);
 
 /**
  * Type of this event.
@@ -143,7 +130,7 @@ Blockly.Events.VarDelete = function(variable) {
   this.varType = variable.type;
   this.varName = variable.name;
 };
-goog.inherits(Blockly.Events.VarDelete, Blockly.Events.VarBase);
+Blockly.utils.object.inherits(Blockly.Events.VarDelete, Blockly.Events.VarBase);
 
 /**
  * Type of this event.
@@ -201,7 +188,7 @@ Blockly.Events.VarRename = function(variable, newName) {
   this.oldName = variable.name;
   this.newName = newName;
 };
-goog.inherits(Blockly.Events.VarRename, Blockly.Events.VarBase);
+Blockly.utils.object.inherits(Blockly.Events.VarRename, Blockly.Events.VarBase);
 
 /**
  * Type of this event.

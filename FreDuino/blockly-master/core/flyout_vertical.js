@@ -1,21 +1,7 @@
 /**
  * @license
- * Visual Blocks Editor
- *
- * Copyright 2017 Google Inc.
- * https://developers.google.com/blockly/
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -27,34 +13,28 @@
 goog.provide('Blockly.VerticalFlyout');
 
 goog.require('Blockly.Block');
-goog.require('Blockly.Events');
 goog.require('Blockly.Flyout');
-goog.require('Blockly.FlyoutButton');
-goog.require('Blockly.WorkspaceSvg');
+goog.require('Blockly.Scrollbar');
+goog.require('Blockly.utils');
+goog.require('Blockly.utils.object');
+goog.require('Blockly.utils.Rect');
+goog.require('Blockly.utils.userAgent');
+goog.require('Blockly.WidgetDiv');
 
-goog.require('goog.math.Rect');
-goog.require('goog.userAgent');
+goog.requireType('Blockly.utils.Metrics');
 
 
 /**
  * Class for a flyout.
- * @param {!Object} workspaceOptions Dictionary of options for the workspace.
+ * @param {!Blockly.Options} workspaceOptions Dictionary of options for the
+ *     workspace.
  * @extends {Blockly.Flyout}
  * @constructor
  */
 Blockly.VerticalFlyout = function(workspaceOptions) {
-  workspaceOptions.getMetrics = this.getMetrics_.bind(this);
-  workspaceOptions.setMetrics = this.setMetrics_.bind(this);
-
   Blockly.VerticalFlyout.superClass_.constructor.call(this, workspaceOptions);
-  /**
-   * Flyout should be laid out vertically.
-   * @type {boolean}
-   * @private
-   */
-  this.horizontalLayout_ = false;
 };
-goog.inherits(Blockly.VerticalFlyout, Blockly.Flyout);
+Blockly.utils.object.inherits(Blockly.VerticalFlyout, Blockly.Flyout);
 
 /**
  * Return an object with all the metrics required to size scrollbars for the
@@ -69,8 +49,9 @@ goog.inherits(Blockly.VerticalFlyout, Blockly.Flyout);
  * .viewLeft: Offset of the left edge of visible rectangle from parent,
  * .contentLeft: Offset of the left-most content from the x=0 coordinate,
  * .absoluteLeft: Left-edge of view.
- * @return {Object} Contains size and position metrics of the flyout.
- * @private
+ * @return {Blockly.utils.Metrics} Contains size and position metrics of the
+ *     flyout.
+ * @protected
  */
 Blockly.VerticalFlyout.prototype.getMetrics_ = function() {
   if (!this.isVisible()) {
@@ -96,14 +77,16 @@ Blockly.VerticalFlyout.prototype.getMetrics_ = function() {
   }
 
   var metrics = {
-    viewHeight: viewHeight,
-    viewWidth: viewWidth,
     contentHeight: optionBox.height * this.workspace_.scale + 2 * this.MARGIN,
     contentWidth: optionBox.width * this.workspace_.scale + 2 * this.MARGIN,
-    viewTop: -this.workspace_.scrollY + optionBox.y,
-    viewLeft: -this.workspace_.scrollX,
     contentTop: optionBox.y,
     contentLeft: optionBox.x,
+
+    viewHeight: viewHeight,
+    viewWidth: viewWidth,
+    viewTop: -this.workspace_.scrollY + optionBox.y,
+    viewLeft: -this.workspace_.scrollX,
+
     absoluteTop: absoluteTop,
     absoluteLeft: absoluteLeft
   };
@@ -112,10 +95,10 @@ Blockly.VerticalFlyout.prototype.getMetrics_ = function() {
 
 /**
  * Sets the translation of the flyout to match the scrollbars.
- * @param {!Object} xyRatio Contains a y property which is a float
+ * @param {!{x:number,y:number}} xyRatio Contains a y property which is a float
  *     between 0 and 1 specifying the degree of scrolling and a
  *     similar x property.
- * @private
+ * @protected
  */
 Blockly.VerticalFlyout.prototype.setMetrics_ = function(xyRatio) {
   var metrics = this.getMetrics_();
@@ -137,7 +120,7 @@ Blockly.VerticalFlyout.prototype.position = function() {
   if (!this.isVisible()) {
     return;
   }
-  var targetWorkspaceMetrics = this.targetWorkspace_.getMetrics();
+  var targetWorkspaceMetrics = this.targetWorkspace.getMetrics();
   if (!targetWorkspaceMetrics) {
     // Hidden components will return null.
     return;
@@ -149,13 +132,35 @@ Blockly.VerticalFlyout.prototype.position = function() {
   var edgeHeight = targetWorkspaceMetrics.viewHeight - 2 * this.CORNER_RADIUS;
   this.setBackgroundPath_(edgeWidth, edgeHeight);
 
-  var y = targetWorkspaceMetrics.absoluteTop;
-  var x = targetWorkspaceMetrics.absoluteLeft;
-  if (this.toolboxPosition_ == Blockly.TOOLBOX_AT_RIGHT) {
-    x += (targetWorkspaceMetrics.viewWidth - this.width_);
-    // Save the location of the left edge of the flyout, for use when Firefox
-    // gets the bounding client rect wrong.
-    this.leftEdge_ = x;
+  // Y is always 0 since this is a vertical flyout.
+  var y = 0;
+  // If this flyout is the toolbox flyout.
+  if (this.targetWorkspace.toolboxPosition == this.toolboxPosition_) {
+    // If there is a category toolbox.
+    if (targetWorkspaceMetrics.toolboxWidth) {
+      if (this.toolboxPosition_ == Blockly.TOOLBOX_AT_LEFT) {
+        var x = targetWorkspaceMetrics.toolboxWidth;
+      } else {
+        var x = targetWorkspaceMetrics.viewWidth - this.width_;
+      }
+    } else {
+      if (this.toolboxPosition_ == Blockly.TOOLBOX_AT_LEFT) {
+        var x = 0;
+      } else {
+        var x = targetWorkspaceMetrics.viewWidth;
+      }
+    }
+  } else {
+    if (this.toolboxPosition_ == Blockly.TOOLBOX_AT_LEFT) {
+      var x = 0;
+    } else {
+      // Because the anchor point of the flyout is on the left, but we want
+      // to align the right edge of the flyout with the right edge of the
+      // blocklyDiv, we calculate the full width of the div minus the width
+      // of the flyout.
+      var x = targetWorkspaceMetrics.viewWidth +
+          targetWorkspaceMetrics.absoluteLeft - this.width_;
+    }
   }
   this.positionAt_(this.width_, this.height_, x, y);
 };
@@ -198,31 +203,27 @@ Blockly.VerticalFlyout.prototype.setBackgroundPath_ = function(width, height) {
  * Scroll the flyout to the top.
  */
 Blockly.VerticalFlyout.prototype.scrollToStart = function() {
-  this.scrollbar_.set(0);
+  this.scrollbar.set(0);
 };
 
 /**
  * Scroll the flyout.
  * @param {!Event} e Mouse wheel scroll event.
- * @private
+ * @protected
  */
 Blockly.VerticalFlyout.prototype.wheel_ = function(e) {
-  var delta = e.deltaY;
+  var scrollDelta = Blockly.utils.getScrollDeltaPixels(e);
 
-  if (delta) {
-    // Firefox's mouse wheel deltas are a tenth that of Chrome/Safari.
-    // DeltaMode is 1 for a mouse wheel, but not for a trackpad scroll event
-    if (goog.userAgent.GECKO && (e.deltaMode === 1)) {
-      delta *= 10;
-    }
+  if (scrollDelta.y) {
     var metrics = this.getMetrics_();
-    var pos = (metrics.viewTop - metrics.contentTop) + delta;
+    var pos = (metrics.viewTop - metrics.contentTop) + scrollDelta.y;
     var limit = metrics.contentHeight - metrics.viewHeight;
     pos = Math.min(pos, limit);
     pos = Math.max(pos, 0);
-    this.scrollbar_.set(pos);
-    // When the flyout moves from a wheel event, hide WidgetDiv.
+    this.scrollbar.set(pos);
+    // When the flyout moves from a wheel event, hide WidgetDiv and DropDownDiv.
     Blockly.WidgetDiv.hide();
+    Blockly.DropDownDiv.hideWithoutAnimation();
   }
 
   // Don't scroll the page.
@@ -235,19 +236,19 @@ Blockly.VerticalFlyout.prototype.wheel_ = function(e) {
  * Lay out the blocks in the flyout.
  * @param {!Array.<!Object>} contents The blocks and buttons to lay out.
  * @param {!Array.<number>} gaps The visible gaps between blocks.
- * @private
+ * @protected
  */
 Blockly.VerticalFlyout.prototype.layout_ = function(contents, gaps) {
-  this.workspace_.scale = this.targetWorkspace_.scale;
+  this.workspace_.scale = this.targetWorkspace.scale;
   var margin = this.MARGIN;
-  var cursorX = this.RTL ? margin : margin + Blockly.BlockSvg.TAB_WIDTH;
+  var cursorX = this.RTL ? margin : margin + this.tabWidth_;
   var cursorY = margin;
 
-  for (var i = 0, item; item = contents[i]; i++) {
+  for (var i = 0, item; (item = contents[i]); i++) {
     if (item.type == 'block') {
       var block = item.block;
       var allBlocks = block.getDescendants(false);
-      for (var j = 0, child; child = allBlocks[j]; j++) {
+      for (var j = 0, child; (child = allBlocks[j]); j++) {
         // Mark blocks as being inside a flyout.  This is used to detect and
         // prevent the closure of the flyout if the user right-clicks on such a
         // block.
@@ -256,10 +257,11 @@ Blockly.VerticalFlyout.prototype.layout_ = function(contents, gaps) {
       block.render();
       var root = block.getSvgRoot();
       var blockHW = block.getHeightWidth();
-      block.moveBy(cursorX, cursorY);
+      var moveX = block.outputConnection ? cursorX - this.tabWidth_ : cursorX;
+      block.moveBy(moveX, cursorY);
 
       var rect = this.createRect_(block,
-          this.RTL ? cursorX - blockHW.width : cursorX, cursorY, blockHW, i);
+          this.RTL ? moveX - blockHW.width : moveX, cursorY, blockHW, i);
 
       this.addBlockListeners_(root, block, rect);
 
@@ -275,9 +277,9 @@ Blockly.VerticalFlyout.prototype.layout_ = function(contents, gaps) {
  * Determine if a drag delta is toward the workspace, based on the position
  * and orientation of the flyout. This is used in determineDragIntention_ to
  * determine if a new block should be created or if the flyout should scroll.
- * @param {!goog.math.Coordinate} currentDragDeltaXY How far the pointer has
+ * @param {!Blockly.utils.Coordinate} currentDragDeltaXY How far the pointer has
  *     moved from the position at mouse down, in pixel units.
- * @return {boolean} true if the drag is toward the workspace.
+ * @return {boolean} True if the drag is toward the workspace.
  * @package
  */
 Blockly.VerticalFlyout.prototype.isDragTowardWorkspace = function(
@@ -298,7 +300,7 @@ Blockly.VerticalFlyout.prototype.isDragTowardWorkspace = function(
 
 /**
  * Return the deletion rectangle for this flyout in viewport coordinates.
- * @return {goog.math.Rect} Rectangle in which to delete.
+ * @return {Blockly.utils.Rect} Rectangle in which to delete.
  */
 Blockly.VerticalFlyout.prototype.getClientRect = function() {
   if (!this.svgGroup_) {
@@ -310,71 +312,48 @@ Blockly.VerticalFlyout.prototype.getClientRect = function() {
   // area are still deleted.  Must be larger than the largest screen size,
   // but be smaller than half Number.MAX_SAFE_INTEGER (not available on IE).
   var BIG_NUM = 1000000000;
-  var x = flyoutRect.left;
-  var width = flyoutRect.width;
+  var left = flyoutRect.left;
 
   if (this.toolboxPosition_ == Blockly.TOOLBOX_AT_LEFT) {
-    return new goog.math.Rect(x - BIG_NUM, -BIG_NUM, BIG_NUM + width,
-        BIG_NUM * 2);
+    var width = flyoutRect.width;
+    return new Blockly.utils.Rect(-BIG_NUM, BIG_NUM, -BIG_NUM, left + width);
   } else {  // Right
-    // Firefox sometimes reports the wrong value for the client rect.
-    // See https://github.com/google/blockly/issues/1425 and
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1066435
-    if (goog.userAgent.GECKO &&
-        this.targetWorkspace_ && this.targetWorkspace_.isMutator) {
-      // The position of the left side of the mutator workspace in pixels
-      // relative to the window origin.
-      var targetWsLeftPixels =
-          this.targetWorkspace_.svgGroup_.getBoundingClientRect().x;
-      // The client rect is in pixels relative to the window origin.  When the
-      // browser gets the wrong value it reports that the flyout left is the
-      // same as the mutator workspace left.
-      // We know that in a mutator workspace with the flyout on the right, the
-      // visible area of the workspace should be more than ten pixels wide.  If
-      // the browser reports that the flyout is within ten pixels of the left
-      // side of the workspace, ignore it and manually calculate the value.
-      if (Math.abs(targetWsLeftPixels - x) < 10) {
-        // If we're in a mutator, its scale is always 1, purely because of some
-        // oddities in our rendering optimizations.  The actual scale is the
-        // same as the scale on the parent workspace.
-        var scale = this.targetWorkspace_.options.parentWorkspace.scale;
-        x = x + this.leftEdge_ * scale;
-      }
-    }
-    return new goog.math.Rect(x, -BIG_NUM, BIG_NUM + width, BIG_NUM * 2);
+    return new Blockly.utils.Rect(-BIG_NUM, BIG_NUM, left, BIG_NUM);
   }
 };
 
 /**
  * Compute width of flyout.  Position mat under each block.
  * For RTL: Lay out the blocks and buttons to be right-aligned.
- * @private
+ * @protected
  */
 Blockly.VerticalFlyout.prototype.reflowInternal_ = function() {
-  this.workspace_.scale = this.targetWorkspace_.scale;
+  this.workspace_.scale = this.targetWorkspace.scale;
   var flyoutWidth = 0;
   var blocks = this.workspace_.getTopBlocks(false);
-  for (var i = 0, block; block = blocks[i]; i++) {
+  for (var i = 0, block; (block = blocks[i]); i++) {
     var width = block.getHeightWidth().width;
     if (block.outputConnection) {
-      width -= Blockly.BlockSvg.TAB_WIDTH;
+      width -= this.tabWidth_;
     }
     flyoutWidth = Math.max(flyoutWidth, width);
   }
-  for (var i = 0, button; button = this.buttons_[i]; i++) {
+  for (var i = 0, button; (button = this.buttons_[i]); i++) {
     flyoutWidth = Math.max(flyoutWidth, button.width);
   }
-  flyoutWidth += this.MARGIN * 1.5 + Blockly.BlockSvg.TAB_WIDTH;
+  flyoutWidth += this.MARGIN * 1.5 + this.tabWidth_;
   flyoutWidth *= this.workspace_.scale;
   flyoutWidth += Blockly.Scrollbar.scrollbarThickness;
 
   if (this.width_ != flyoutWidth) {
-    for (var i = 0, block; block = blocks[i]; i++) {
+    for (var i = 0, block; (block = blocks[i]); i++) {
       if (this.RTL) {
         // With the flyoutWidth known, right-align the blocks.
         var oldX = block.getRelativeToSurfaceXY().x;
-        var newX = flyoutWidth / this.workspace_.scale - this.MARGIN -
-            Blockly.BlockSvg.TAB_WIDTH;
+        var newX = flyoutWidth / this.workspace_.scale - this.MARGIN;
+        if (!block.outputConnection) {
+          newX -= this.tabWidth_;
+        }
         block.moveBy(newX - oldX, 0);
       }
       if (block.flyoutRect_) {
@@ -383,17 +362,15 @@ Blockly.VerticalFlyout.prototype.reflowInternal_ = function() {
     }
     if (this.RTL) {
       // With the flyoutWidth known, right-align the buttons.
-      for (var i = 0, button; button = this.buttons_[i]; i++) {
+      for (var i = 0, button; (button = this.buttons_[i]); i++) {
         var y = button.getPosition().y;
         var x = flyoutWidth / this.workspace_.scale - button.width -
-            this.MARGIN - Blockly.BlockSvg.TAB_WIDTH;
+            this.MARGIN - this.tabWidth_;
         button.moveTo(x, y);
       }
     }
     // Record the width for .getMetrics_ and .position.
     this.width_ = flyoutWidth;
-    // Call this since it is possible the trash and zoom buttons need
-    // to move. e.g. on a bottom positioned flyout when zoom is clicked.
-    this.targetWorkspace_.resize();
+    this.position();
   }
 };

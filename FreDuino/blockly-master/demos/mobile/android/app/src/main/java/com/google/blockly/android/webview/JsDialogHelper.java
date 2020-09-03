@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2013 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -115,19 +115,6 @@ public class JsDialogHelper {
             builder.setNegativeButton(android.R.string.cancel, new CancelListener());
         }
         final AlertDialog dialog = builder.show();
-
-        if (edit != null) {  // Is it a prompt dialog?
-            edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        // TODO: Accept input, close keyboard, close dialog
-                        return true;
-                    }
-                    return false;
-                }
-            });
-        }
     }
 
     private class CancelListener implements DialogInterface.OnCancelListener,
