@@ -1,6 +1,6 @@
 # 我的主页
 
-![](img/mark.png)
+![](img/logo.gif)
 
 [![last-commit](https://img.shields.io/github/last-commit/HollowMan6/HollowMan6.github.io)](../../graphs/commit-activity)
 
