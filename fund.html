@@ -13,8 +13,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="Author" content="Hollow Man" />
   <title>Thank you! ❤</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
+  <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-
     $({ property: 0 }).animate({ property: 95 }, {
       duration: 3000,
       step: function () {
@@ -129,19 +131,17 @@
     }
 
     function ProgressBar() {
-      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var winScroll = document.getElementById("main-content").scrollTop;
+      var height = document.getElementById("main-content").scrollHeight;
       var scrolled = (winScroll / height) * 100;
-      document.getElementById("Bar").style.width = scrolled + "%";
+      document.getElementById("Bar").style.width = scrolled*1.65 + "%";
     }
 
-    // call the function every time user scrolls
-    window.onscroll = function () { ProgressBar() };
   </script>
   <style type="text/css">
     body {
       background-color: #EEEEEE;
-      margin-top: 30px;
+      margin-top: 0px;
       font-size: 83%;
       color: #404040;
       font-family: helvetica, tahoma;
@@ -203,6 +203,26 @@
       text-decoration: underline;
     }
 
+    a.menu-links {
+      border-left: 0px solid black;
+    }
+
+    a.menu-links,
+    a.menu-links:visited {
+      color: #404040;
+      font-weight: bold;
+      font-size: 140%;
+      margin-left: -2%;
+    }
+
+    a.menu-links:hover,
+    a.menu-links:focus,
+    a.menu-links:active {
+      color: rgb(100, 100, 100);
+      text-decoration: underline;
+      font-size: 141%;
+    }
+
     .pic {
       opacity: 0.7;
       filter: alpha(opacity=70);
@@ -221,103 +241,133 @@
 </head>
 
 <body>
-  <div id="progress" style="margin-top: -30px; position: absolute;">
-    <span></span>
-  </div>
-  <div class="ProgressBar">
-    <div class="progressbar" id="Bar"></div>
-  </div>
-  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
-  </script>
-  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
-  </script>
-  <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
-    <img src="img/logo.gif" class="pic" width="384px" height="120px" style="margin-left: 7%;">
-    <h3>&nbsp;</h3>
-    <p>
-      <a href="index.html" style="margin-left: 27% ;font-size: 120%">Back to the Home Page</a>
-    </p>
-    <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large" frameborder="0"
-      scrolling="0" width="300px" height="30px" style="margin-left: 20%;margin-top:5px;"></iframe>
-    <p>
-    <h1 id="Funding">Funding</h1>
-    </p>
-    <p>
-    <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me to
-      move forward.</h5>
-    <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h5>
-      </p>
-      <p>
-        <iframe src="https://github.com/sponsors/HollowMan6/card" title="Sponsor HollowMan6" height="180" width="700"
-          style="margin-left: -13%;border: 0;"></iframe>
-      </p>
-      <p>
-        <a href="https://www.paypal.me/hollowman6" id="Paypal" style="margin-left: 34% ;font-size: 150%">Paypal</a>
-      </p>
-      <p>
-      <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monero</h2>
-      <img class="pic" src="/img/Monero.png" style="margin-left: 23%;"
-        onclick="window.open('https://www.getmonero.org','_blank')">
-      <h5 style="margin-left: 15%;">
-        46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
-      </h5>
-      </p>
-      <p>
-      <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat Tip</h2>
-      <img class="pic" src="/img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
-        onclick="window.open('https://www.wechat.com','_blank')">
-      </p>
-      <p>
-      <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alipay</h2>
-      <img class="pic" src="/img/Alipay.jpg" width="247px" height="385px" style="margin-left: 23%;"
-        onclick="window.open('https://www.alipay.com','_blank')">
-      </p>
-      <p>
-        <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" id="About"
-          target="_blank" class="header">About ME</a>
-      </p>
-      <p>
-        <a href="CV/?language=en" style="margin-left: 17%; font-size: 150%" class="love">Curriculum Vitae</a>
-        <a href="CV/?language=cn" style="margin-left: 7% ;font-size: 150%" class="love">个人简历</a>
-      </p>
-      <div class="LI-profile-badge" data-iscreate="true" data-version="v1" data-size="large" data-locale="en_US"
-        data-type="horizontal" data-theme="light" data-vanity="蒋嵩林" data-rendered="true" data-uid="922621"
-        style="margin-left: 17%"><a class="LI-simple-link" href="Linkedin/">Songlin Jiang</a>
-        <div>
-          <script type="text/javascript" src="https://static.licdn.com/sc/h/3qk7aqkysw7gz575y2ma1e5ky"></script>
-          <script
-            src="https://static.licdn.com/sc/p/com.linkedin.badger-frontend%3Abadger-frontend-static-content%2B0.1.117/f/%2Fbadger-frontend%2Fsc-hashes%2Fsc-hashes_en_US.js"></script>
-          <script src="https://static.licdn.com/sc/h/19dd5wwuyhbk7uttxpuelttdg"></script>
-          <link rel="stylesheet" href="https://static.licdn.com/sc/h/bi3v1f73ewvqbszoipmrd935p">
-          <div dir="ltr" class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
-            style="display: none">
-            <div class="LI-profile-badge-header LI-name-container LI-row">
-              <div class="LI-col LI-header">
-                <div class="LI-name"><a href="Linkedin/">Songlin
-                    Jiang</a></div>
-                <div class="LI-title">Computer Science Undergraduate</div>
+  <div class="container">
+    <div class="menu-wrap">
+      <nav class="menu">
+        <div class="icon-list">
+          <a class="menu-links" href="#progress">Top</a>
+          <a class="menu-links" href="index.html">Back To Home Page</a>
+          <a class="menu-links" href="#GitHubSponsors">GitHub Sponsors</a>
+          <a class="menu-links" href="#Paypal">Paypal</a>
+          <a class="menu-links" href="#Monero">Monero</a>
+          <a class="menu-links" href="#WeChatTip">WeChat Tip</a>
+          <a class="menu-links" href="#Alipay">Alipay</a>
+          <a class="menu-links" href="#About">About ME</a>
+        </div>
+      </nav>
+      <button class="close-button" id="close-button">Close Menu</button>
+      <div class="morph-shape" id="morph-shape"
+        data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800"
+          preserveAspectRatio="none">
+          <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z" />
+        </svg>
+      </div>
+    </div>
+    <button class="menu-button" id="open-button">Open Menu</button>
+    <div class="content-wrap" id="main-content" onscroll="ProgressBar()">
+      <div class="content">
+        <div id="progress" style="margin-top: 0px; position: absolute;">
+          <span></span>
+        </div>
+        <div class="ProgressBar">
+          <div class="progressbar" id="Bar"></div>
+        </div>
+        <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+        <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+        </script>
+        <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+        </script>
+        <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+          <br />
+          <img src="img/logo.gif" class="pic" width="384px" height="120px" style="margin-left: 7%;">
+          <h3>&nbsp;</h3>
+          <p>
+            <a href="index.html" style="margin-left: 27% ;font-size: 120%">Back to the Home Page</a>
+          </p>
+          <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large"
+            frameborder="0" scrolling="0" width="300px" height="30px" style="margin-left: 20%;margin-top:5px;"></iframe>
+          <p>
+          <h1 id="Funding">Funding</h1>
+          </p>
+          <p>
+          <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me
+            to
+            move forward.</h5>
+          <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h4>
+          </p>
+          <p>
+            <iframe id="GitHubSponsors" src="https://github.com/sponsors/HollowMan6/card" title="Sponsor HollowMan6" height="180"
+              width="700" style="margin-left: -13%;border: 0;"></iframe>
+          </p>
+          <p>
+            <a href="https://www.paypal.me/hollowman6" id="Paypal" style="margin-left: 34% ;font-size: 150%">Paypal</a>
+          </p>
+          <p>
+          <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monero</h2>
+          <img class="pic" src="/img/Monero.png" style="margin-left: 23%;"
+            onclick="window.open('https://www.getmonero.org','_blank')">
+          <h5 style="margin-left: 15%;">
+            46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
+          </h5>
+          </p>
+          <p>
+          <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat Tip</h2>
+          <img class="pic" src="/img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
+            onclick="window.open('https://www.wechat.com','_blank')">
+          </p>
+          <p>
+          <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alipay</h2>
+          <img class="pic" src="/img/Alipay.jpg" width="247px" height="385px" style="margin-left: 23%;"
+            onclick="window.open('https://www.alipay.com','_blank')">
+          </p>
+          <p>
+            <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" id="About"
+              target="_blank" class="header">About ME</a>
+          </p>
+          <p>
+            <a href="CV/?language=en" style="margin-left: 17%; font-size: 150%" class="love">Curriculum Vitae</a>
+            <a href="CV/?language=cn" style="margin-left: 7% ;font-size: 150%" class="love">个人简历</a>
+          </p>
+          <div class="LI-profile-badge" data-iscreate="true" data-version="v1" data-size="large" data-locale="en_US"
+            data-type="horizontal" data-theme="light" data-vanity="蒋嵩林" data-rendered="true" data-uid="922621"
+            style="margin-left: 17%"><a class="LI-simple-link" href="Linkedin/">Songlin Jiang</a>
+            <div>
+              <script type="text/javascript" src="https://static.licdn.com/sc/h/3qk7aqkysw7gz575y2ma1e5ky"></script>
+              <script
+                src="https://static.licdn.com/sc/p/com.linkedin.badger-frontend%3Abadger-frontend-static-content%2B0.1.117/f/%2Fbadger-frontend%2Fsc-hashes%2Fsc-hashes_en_US.js"></script>
+              <script src="https://static.licdn.com/sc/h/19dd5wwuyhbk7uttxpuelttdg"></script>
+              <link rel="stylesheet" href="https://static.licdn.com/sc/h/bi3v1f73ewvqbszoipmrd935p">
+              <div dir="ltr" class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
+                style="display: none">
+                <div class="LI-profile-badge-header LI-name-container LI-row">
+                  <div class="LI-col LI-header">
+                    <div class="LI-name"><a href="Linkedin/">Songlin
+                        Jiang</a></div>
+                    <div class="LI-title">Computer Science Undergraduate</div>
+                  </div>
+                </div>
+                <ul class="LI-more-info">
+                  <li class="LI-field"><a
+                      href="https://www.linkedin.com/company/lanzhou-university?trk=profile-badge-company">Lanzhou
+                      University</a></li>
+                </ul>
+                <div class="LI-footer LI-row"><a href="Linkedin/" class="LI-view-profile">View profile</a><span
+                    class="LI-logo"><img
+                      src="https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png"
+                      alt="LinkedIn" class="LI-icon"></span></div>
               </div>
             </div>
-            <ul class="LI-more-info">
-              <li class="LI-field"><a
-                  href="https://www.linkedin.com/company/lanzhou-university?trk=profile-badge-company">Lanzhou
-                  University</a></li>
-            </ul>
-            <div class="LI-footer LI-row"><a href="Linkedin/" class="LI-view-profile">View profile</a><span
-                class="LI-logo"><img
-                  src="https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png"
-                  alt="LinkedIn" class="LI-icon"></span></div>
           </div>
+          <p>
+            <a href="mailto:hollowman186@qq.com" style="margin-left: 38%; font-size: 150%">Mail ME</a>
+          <h1>&nbsp;</h1>
         </div>
       </div>
-      <p>
-        <a href="mailto:hollowman186@qq.com" style="margin-left: 38%; font-size: 150%">Mail ME</a>
-      <h1>&nbsp;</h1>
-  </div>
-
-  </p>
-  </div>
+    </div><!-- /content-wrap -->
+  </div><!-- /container -->
+  <script src="js/classie.js"></script>
+  <script src="js/main4.js"></script>
 </body>
 
 </html>
