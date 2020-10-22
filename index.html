@@ -79,6 +79,22 @@
       -webkit-animation: pulse 2s ease-out 0s infinite;
     }
 
+    #HighlightedWork {
+      border-radius: 20px;
+      background-color: #DDDDDD;
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+      -webkit-transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
+      transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
+    }
+
+    #HighlightedWork:hover {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      transform: scale(1.03);
+      box-shadow: 0px 0px 6px 4px #C0C1C0;
+    }
+
     @-webkit-keyframes pulse {
       30% {
         opacity: .6
@@ -409,14 +425,30 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     </p>
     <p>
       <img class="pic"
-        src="https://github-readme-stats.vercel.app/api?username=hollowman6&bg_color=80,93C3C7,d19597&title_color=eee&text_color=eee&count_private=true&show_icons=true"
+        src="https://github-readme-stats.vercel.app/api?username=hollowman6&bg_color=DDDDDD&count_private=true&show_icons=true"
         style="margin-left: 5%;">
     </p>
     <p>
       <img class="pic"
-        src="https://github-readme-stats.vercel.app/api/top-langs/?username=HollowMan6&layout=compact&hide=jupyter%20notebook&bg_color=80,d19597,93C3C7&title_color=eee&text_color=eee"
+        src="https://github-readme-stats.vercel.app/api/top-langs/?username=HollowMan6&layout=compact&hide=jupyter%20notebook&bg_color=DDDDDD"
         style="margin-left: 18%;">
     </p>
+    
+      <div id="HighlightedWork">
+        <p>
+    <h1 align="center">Highlighted Work</h1>
+    </p>
+    <p>
+      <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+        data="https://gh-card.dev/repos/HollowMan6/My-Alibaba-Summer-of-Code.svg?link_target=_blank"></object>
+    </p>
+    <p>
+      <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+        data="https://gh-card.dev/repos/HollowMan6/My-OSPP-Summer.svg?link_target=_blank"></object>
+    </p>
+    <br/>
+  </div>
+  <p>
       <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" id="About" target="_blank"
       class="header">About ME</a>
     </p>
@@ -531,14 +563,6 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     </p>
     <a href="https://github.com/Hollow-Software/Competitions-Work" target="_blank" id="CompetitionsWork"
       class="header">Competitions Work</a>
-    <p>
-      <a href="https://github.com/HollowMan6/My-OSPP-Summer" style="margin-left: 10%; font-size: 170%" class="love"
-        target="_blank">My OSPP Summer</a>
-    </p>
-    <p>
-      <a href="https://github.com/HollowMan6/My-Alibaba-Summer-of-Code" style="margin-left: 10%; font-size: 170%"
-        class="love" target="_blank">My Alibaba Summer of Code</a>
-    </p>
     <p>
       <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
         data="https://gh-card.dev/repos/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code.svg?link_target=_blank"></object>
