@@ -30,6 +30,7 @@
         $(".container").slideDown(3000);
         document.getElementById("open-button").click()
         confetti.start(3000);
+        window.clearInterval(timer1);
       }
     }
   </script>
@@ -162,47 +163,6 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
         else if (color == "1") target.bgColor = "#404040";
         target.dataset.timestamp = timestamp;
       }
-    }
-
-    function getXMLHttpRequest() {
-      var xmlHttp = null;
-      try {
-        xmlHttp = new XMLHttpRequest();
-      }
-      catch (e) {
-        try {
-          xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-        }
-        catch (e) {
-          xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-      }
-      return xmlHttp;
-    }
-
-    function inverse(td) {
-      if (document.getElementById("td" + td).style.backgroundImage == "") {
-        var xmlhttp = getXMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-          if (xmlhttp.readyState == 1) fill(td, "2 0");
-          else if (xmlhttp.readyState == 4) {
-            if (xmlhttp.status == 200) {
-              fill(td, "3 0");
-              fill(td, xmlhttp.responseText)
-            }
-          }
-        }
-        xmlhttp.open("GET", "", true);
-        xmlhttp.setRequestHeader("If-Modified-Since", "0");
-        xmlhttp.send("");
-      }
-    }
-
-    function freshGrid(data) {
-      timestamp = data.split("#")[1];
-      for (var i = 1; i <= 400; i++)
-        fill(i, data.charAt(i - 1) + " " + timestamp);
-      window.clearInterval(timer1);
     }
 
     function loading() {
