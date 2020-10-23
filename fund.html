@@ -16,20 +16,22 @@
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-    $({ property: 0 }).animate({ property: 95 }, {
+    $({ property: 0 }).animate({ property: 97 }, {
       duration: 3000,
       step: function () {
         var percentage = Math.round(this.property);
-
         $('#progress').css('width', percentage + "%");
-
-        if (percentage == 95) {
-          $("#progress").addClass("done");//完成，隐藏进度条
-          document.getElementById("open-button").click()
-          confetti.start(3000);
-        }
       }
     });
+    document.onreadystatechange = function () {
+      if (document.readyState == "complete") {
+        $("#progress").addClass("done");//完成，隐藏进度条
+        $("#loading").fadeOut("slow");
+        $(".container").slideDown(3000);
+        document.getElementById("open-button").click()
+        confetti.start(3000);
+      }
+    }
   </script>
   <style type="text/css">
     body {
@@ -241,18 +243,50 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="progress" style="margin-top: 0px; position: absolute;">
+    <span></span>
+  </div>
+  <div class="ProgressBar">
+    <div class="progressbar" id="Bar"></div>
+  </div>
+  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  </script>
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  </script>
+  <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+    <br />
+    <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
+    <h3>&nbsp;</h3>
+    <p>
+      <img style="margin-left: 38%;" src="StyleTrans/images/spinner.gif" />
+    </p>
+    <br />
+    <h1 style="margin-left: 30%;">⚡ Loading...</h1>
+    <h1 style="margin-left: 29%;">Please Wait ❤</h1>
+  </div>
+  <div class="container" style="display:none;">
     <div class="menu-wrap">
       <nav class="menu">
         <div class="icon-list">
-          <a class="menu-links" href="#progress">Top</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">Top</a>
           <a class="menu-links" href="index.html">Back To Home Page</a>
-          <a class="menu-links" href="#GitHubSponsors">GitHub Sponsors</a>
-          <a class="menu-links" href="#Paypal">Paypal</a>
-          <a class="menu-links" href="#Monero">Monero</a>
-          <a class="menu-links" href="#WeChatTip">WeChat Tip</a>
-          <a class="menu-links" href="#Alipay">Alipay</a>
-          <a class="menu-links" href="#About">About ME</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#GitHubSponsors').offset().top+document.getElementById('main-content').scrollTop}, 500);">GitHub
+            Sponsors</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Paypal').offset().top+document.getElementById('main-content').scrollTop}, 500);">Paypal</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Monero').offset().top+document.getElementById('main-content').scrollTop}, 500);">Monero</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#WeChatTip').offset().top+document.getElementById('main-content').scrollTop}, 500);">WeChat
+            Tip</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Alipay').offset().top+document.getElementById('main-content').scrollTop}, 500);">Alipay</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">About
+            ME</a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
@@ -267,18 +301,7 @@
     <button class="menu-button" id="open-button">Open Menu</button>
     <div class="content-wrap" id="main-content" style="overflow-x:visible;" onscroll="ProgressBar()">
       <div class="content">
-        <div id="progress" style="margin-top: 0px; position: absolute;">
-          <span></span>
-        </div>
-        <div class="ProgressBar">
-          <div class="progressbar" id="Bar"></div>
-        </div>
-        <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-        <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
-        </script>
-        <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
-        </script>
-        <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+        <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
           <img src="img/logo.gif" class="pic" width="384px" height="120px" style="margin-left: 7%;">
           <h3>&nbsp;</h3>

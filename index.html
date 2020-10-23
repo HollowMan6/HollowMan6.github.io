@@ -16,20 +16,22 @@
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-    $({ property: 0 }).animate({ property: 95 }, {
+    $({ property: 0 }).animate({ property: 97 }, {
       duration: 3000,
       step: function () {
         var percentage = Math.round(this.property);
-
         $('#progress').css('width', percentage + "%");
-
-        if (percentage == 95) {
-          $("#progress").addClass("done");//完成，隐藏进度条
-          document.getElementById("open-button").click()
-          confetti.start(3000);
-        }
       }
     });
+    document.onreadystatechange = function () {
+      if (document.readyState == "complete") {
+        $("#progress").addClass("done");//完成，隐藏进度条
+        $("#loading").fadeOut("slow");
+        $(".container").slideDown(3000);
+        document.getElementById("open-button").click()
+        confetti.start(3000);
+      }
+    }
   </script>
   <style type="text/css">
     body {
@@ -381,20 +383,71 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
 </head>
 
 <body>
-  <div class="container">
+  <div id="progress" style="margin-top: 0px; position: absolute;">
+    <span></span>
+  </div>
+  <div class="ProgressBar">
+    <div class="progressbar" id="Bar"></div>
+  </div>
+  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  </script>
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  </script>
+  <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+    <br />
+    <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
+    <h3>&nbsp;</h3>
+    <p>
+    <table id="grid">
+      <script type="text/javascript">
+        var tdid = 0;
+        for (var i = 1; i <= 16; i++) {
+          document.write("<tr>")
+          for (var j = 1; j <= 25; j++) {
+            tdid = (i - 1) * 25 + j;
+            document.write("<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" onclick=\"inverse(" + tdid.toString() + ")\" />");
+          }
+          document.write("</tr>");
+        }
+        var loadingGrid = 0;
+        var timer1 = window.setInterval("loading()", 10);
+      </script>
+    </table>
+    </p>
+    <h1 style="margin-left: 30%;">⚡ Loading...</h1>
+    <h1 style="margin-left: 29%;">Please Wait ❤</h1>
+  </div>
+  <div class="container" style="display:none;">
     <div class="menu-wrap">
       <nav class="menu">
         <div class="icon-list">
-          <a class="menu-links" href="#progress">Top</a>
-          <a class="menu-links" href="#About">About ME</a>
-          <a class="menu-links" href="#SoftwareCopyright">Software Copyright</a>
-          <a class="menu-links" href="#Publications">Publications</a>
-          <a class="menu-links" href="#SpiderProgrammes">Spider Programmes</a>
-          <a class="menu-links" href="#CompetitionsWork">Competitions Work</a>
-          <a class="menu-links" href="#CourseworkAnswersandLessonHelper">Coursework Answers and Lesson Helper</a>
-          <a class="menu-links" href="#CodingPractices">Coding Practices</a>
-          <a class="menu-links" href="#Website">Website</a>
-          <a class="menu-links" href="#Certificates">Certificates</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">Top</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">About
+            ME</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#SoftwareCopyright').offset().top+document.getElementById('main-content').scrollTop}, 500);">Software
+            Copyright</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Publications').offset().top+document.getElementById('main-content').scrollTop}, 500);">Publications</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#SpiderProgrammes').offset().top+document.getElementById('main-content').scrollTop}, 500);">Spider
+            Programmes</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#CompetitionsWork').offset().top+document.getElementById('main-content').scrollTop}, 500);">Competitions
+            Work</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#CourseworkAnswersandLessonHelper').offset().top+document.getElementById('main-content').scrollTop}, 500);">Coursework
+            Answers and Lesson Helper</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#CodingPractices').offset().top+document.getElementById('main-content').scrollTop}, 500);">Coding
+            Practices</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Website').offset().top+document.getElementById('main-content').scrollTop}, 500);">Website</a>
+          <a class="menu-links" href="javascript:void(0);"
+            onclick="$('#main-content').animate({scrollTop:$('#Certificates').offset().top+document.getElementById('main-content').scrollTop}, 500);">Certificates</a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
@@ -409,36 +462,10 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     <button class="menu-button" id="open-button">Open Menu</button>
     <div class="content-wrap" id="main-content" style="overflow-x:visible;" onscroll="ProgressBar()">
       <div class="content">
-        <div id="progress" style="margin-top: 0px; position: absolute;">
-          <span></span>
-        </div>
-        <div class="ProgressBar">
-          <div class="progressbar" id="Bar"></div>
-        </div>
-        <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-        <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
-        </script>
-        <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
-        </script>
-        <div style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+        <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
           <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
           <h3>&nbsp;</h3>
-          <table id="grid">
-            <script type="text/javascript">
-              var tdid = 0;
-              for (var i = 1; i <= 16; i++) {
-                document.write("<tr>")
-                for (var j = 1; j <= 25; j++) {
-                  tdid = (i - 1) * 25 + j;
-                  document.write("<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" onclick=\"inverse(" + tdid.toString() + ")\" />");
-                }
-                document.write("</tr>");
-              }
-              var loadingGrid = 0;
-              var timer1 = window.setInterval("loading()", 10);
-            </script>
-          </table>
           <p>
             <a href="FreDuino/index.htm" target="_blank" style="margin-left: -10% ;font-size: 120%">🚗 FreDuino Cars</a>
             <a href="LZU/index.html" target="_blank" style="margin-left: 5% ;font-size: 120%">❤ Story of LZU</a>
