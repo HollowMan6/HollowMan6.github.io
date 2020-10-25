@@ -77,6 +77,9 @@
     #progress span {
       position: absolute;
       height: 2px;
+      box-shadow: #535353 1px 0 6px 1px;
+      border-radius: 100%;
+      animation: pulse 2s ease-out 0s infinite;
       -webkit-box-shadow: #535353 1px 0 6px 1px;
       -webkit-border-radius: 100%;
       opacity: 1;
@@ -101,6 +104,20 @@
       box-shadow: 0px 0px 6px 4px #C0C1C0;
     }
 
+    @keyframes pulse {
+      30% {
+        opacity: .6
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: .6
+      }
+    }
+    
     @-webkit-keyframes pulse {
       30% {
         opacity: .6
@@ -350,9 +367,9 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
     <div class="progressbar" id="Bar"></div>
   </div>
   <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
   </script>
-  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
@@ -462,7 +479,7 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
               onclick="window.open('https://github.com/HollowMan6?tab=followers','_blank')">
             <img
               src="https://img.shields.io/badge/-%E2%9D%A4%20Open%20Source-Green?style=flat-square&logo=Github&logoColor=white&link=https://hollowman.ml/fund.html"
-              style="margin-left: 1%;" onclick="window.open('/fund.html','_blank')">
+              style="margin-left: 1%;" onclick="window.open('fund.html','_blank')">
             <img src="https://img.shields.io/twitter/follow/HollowM186?style=social" style="margin-left: 1%;"
               onclick="window.open('https://twitter.com/intent/follow?screen_name=HollowM186','_blank')">
             <img
@@ -533,7 +550,7 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
           </p>
           <p>
             <a href="mailto:hollowman186@vip.qq.com" style="margin-left: 17%; font-size: 150%">Mail ME</a>
-            <a href="/fund.html" target="_blank" style="margin-left: 17% ;font-size: 150%" class="love">❤ Fund ME</a>
+            <a href="fund.html" target="_blank" style="margin-left: 17% ;font-size: 150%" class="love">❤ Fund ME</a>
           </p>
           </p>
           <a href="https://github.com/Hollow-Software/Software-Copyright" id="SoftwareCopyright" target="_blank"
@@ -719,8 +736,19 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
               src="https://github.com/HollowMan6/My-Alibaba-Summer-of-Code/raw/master/2020-Arthas/Certificate.jpg"
               height="400px" style="margin-left: 0%; margin-top: 1%;"
               onclick="window.open('https://github.com/HollowMan6/My-Alibaba-Summer-of-Code','_blank')">
-            <img class="pic" src="img/badges/Tianchi201010.png" height="400px" style="margin-left: 24%; margin-top: 3%;"
+            <img class="pic" src="img/badges/Google-InnoCamp-H.png" width="280px" style="margin-left: 0%; margin-top: 3%;"
+              onclick="window.open('Texter/','_blank')">
+            <img class="pic" src="img/badges/Google-InnoCamp-Z.jpg" width="280px" style="margin-left: 2%; margin-top: 3%;"
+              onclick="window.open('https://github.com/HollowMan6/Competitions-Work/tree/master/2019%20Google%20InnoCamp%20%E6%9A%91%E6%9C%9F%E5%AD%A6%E7%94%9F%E6%B4%BB%E5%8A%A8%EF%BC%88%E5%BC%A0%E6%8E%96%EF%BC%89','_blank')">
+            <img class="pic" src="img/badges/University-Project.jpg"
+              height="400px" style="margin-left: 0%; margin-top: 3%;"
+              onclick="window.open('StyleTrans/','_blank')">
+            <img class="pic" src="img/badges/CSC.png" width="187px" style="margin-left: 0%; margin-top: 3%;"
+              onclick="window.open('https://www.csc.edu.cn/chuguo/s/1673','_blank')">
+            <img class="pic" src="img/badges/Tianchi201010.png" width="187px" style="margin-left: 2%; margin-top: 3%;"
               onclick="window.open('https://tianchi.aliyun.com/competition/entrance/531812/rankingList/0','_blank')">
+            <img class="pic" src="img/badges/Huawei.png" width="187px" style="margin-left: 2%; margin-top: 3%;"
+              onclick="window.open('https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/detail/treasury/position:1631291798/?entityUrn=urn%3Ali%3Afsd_profileTreasuryMedia%3A(ACoAACqNlDgBWECv2WxkhnWPrIzDMDq2YpgGJKc%2C1592427379241)&section=position%3A1631291798&treasuryCount=1','_blank')">
             <img class="pic" src="img/badges/Microsoft-Advertising-Certifed-Professional.png" width="458px"
               height="123px" style="margin-left: 10%; margin-top: 3%;"
               onclick="window.open('https://learninglab.about.ads.microsoft.com/certification/membership-profile/id/325501/songlin-jiang/','_blank')">
@@ -919,7 +947,7 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
             src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/default_certification_badges/9/large/exam-badge-exam.png?1553775442"
             width="80px" height="80px" style="margin-left: 0.5%;margin-top: 1%;"
             onclick="window.open('https://skillshop.exceedlms.com/student/award/49029006','_blank')">
-          <img class="pic" src="/img/badges/Twitter-Flight-School-Video -Badge.png" width="80px" height="80px"
+          <img class="pic" src="img/badges/Twitter-Flight-School-Video -Badge.png" width="80px" height="80px"
             style="margin-left: 0.5%;margin-top: 1%;"
             onclick="window.open('https://www.twitterflightschool.com/student/award/130220137','_blank')">
           <img class="pic" src="img/badges/waze-Academy.png" width="80px" height="80px"

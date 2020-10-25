@@ -76,12 +76,29 @@
     #progress span {
       position: absolute;
       height: 2px;
+      box-shadow: #535353 1px 0 6px 1px;
+      border-radius: 100%;
       -webkit-box-shadow: #535353 1px 0 6px 1px;
       -webkit-border-radius: 100%;
       opacity: 1;
       width: 150px;
       right: -10px;
+      animation: pulse 2s ease-out 0s infinite;
       -webkit-animation: pulse 2s ease-out 0s infinite;
+    }
+
+    @keyframes pulse {
+      30% {
+        opacity: .6
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: .6
+      }
     }
 
     @-webkit-keyframes pulse {
@@ -250,9 +267,9 @@
     <div class="progressbar" id="Bar"></div>
   </div>
   <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
+  <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
   </script>
-  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "/live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
@@ -328,7 +345,7 @@
           </p>
           <p>
           <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729" width="3%"> Monero</h2>
-          <img class="pic" src="/img/Monero.png" style="margin-left: 23%;"
+          <img class="pic" src="img/Monero.png" style="margin-left: 23%;"
             onclick="window.open('https://www.getmonero.org','_blank')">
           <h5 style="margin-left: 15%;">
             46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
@@ -336,12 +353,14 @@
           </p>
           <p>
           <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://epayments.developer-ingenico.com/shared-images/content/logos/paymentproducts/pp_logo_863_v1.png" style="margin-left: -2%;" width="5%">WeChat Tip</h2>
-          <img class="pic" src="/img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
+          <img class="pic" src="img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
             onclick="window.open('https://www.wechat.com','_blank')">
           </p>
           <p>
           <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://play-lh.googleusercontent.com/xV6gK4t0SF7AW4LK3slUzj4WIY1SfzRtq-zFTygFSO9wg-JXTJImEi34rrxhsRutXQ=s180-rw" width="3%"> Alipay</h2>
-          <img class="pic" src="/img/Alipay.jpg" width="247px" height="385px" style="margin-left: 23%;"
+          <img class="pic" src="img/Alipay.jpg" width="247px" height="385px" style="margin-left: 2%;"
+            onclick="window.open('https://www.alipay.com','_blank')">
+          <img class="pic" src="img/Red-Pack.jpg" width="247px" height="385px" style="margin-left: 2%; border-radius: 10px;" 
             onclick="window.open('https://www.alipay.com','_blank')">
           </p>
           <p>
