@@ -19,7 +19,7 @@
 
 [点击此链接访问](https://hollowman6.github.io)
 
-此仓库还包含了[FreDuino Cars](https://hollowman6.github.io/FreDuino) 、[Story of LZU](https://hollowman6.github.io/LZU)、[FNST Demo](https://hollowman6.github.io/StyleTrans)这几个Html页面的源代码。
+此仓库还包含了[FreDuino Cars](https://hollowman6.github.io/FreDuino) 、[Story of LZU](https://hollowman6.github.io/LZU)、[FNST Demo](https://hollowman6.github.io/StyleTrans)、[Texter](https://hollowman6.github.io/Texter)、[My CV](https://hollowman6.github.io/CV)、[My Publications](https://hollowman6.github.io/Publications)、[Jump to Linkedin](https://hollowman6.github.io/Linkedin)这几个Html页面的源代码。
 
 * FreDuino Cars [(源代码)](FreDuino/) 是兰州大学“基于机器人的实践方法”制作机器车的Demo。
 
@@ -41,7 +41,7 @@
 
 [Click here to visit](https://hollowman6.github.io)
 
-The Repository also includes the Html Pages Source Code of [FreDuino Cars](https://hollowman6.github.io/FreDuino) 、[Story of LZU](https://hollowman6.github.io/LZU)、[FNST Demo](https://hollowman6.github.io/StyleTrans)
+The Repository also includes the Html Pages Source Code of [FreDuino Cars](https://hollowman6.github.io/FreDuino), [Story of LZU](https://hollowman6.github.io/LZU), [FNST Demo](https://hollowman6.github.io/StyleTrans), [Texter](https://hollowman6.github.io/Texter), [My CV](https://hollowman6.github.io/CV), [My Publications](https://hollowman6.github.io/Publications), [Jump to Linkedin](https://hollowman6.github.io/Linkedin)
 
 * FreDuino Cars [(Source Code)](FreDuino/) is the Demo for making a robot car in the course "making a robot car".
 

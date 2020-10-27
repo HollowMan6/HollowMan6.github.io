@@ -36,7 +36,17 @@
         confetti.start(3000);
       }
     }
-    setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时，请检查您是否科学上网！\\nTime out for loading some resources!');document.onreadystatechange = null;loadcomplete(true);}", 15000);
+
+    function loadingTimeOut(){
+      document.onreadystatechange = null;
+      loadcomplete(true);
+    }
+    
+    function directShowMainPage(){
+      loadingTimeOut();
+      clearTimeout(timerout);
+    }
+    timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 45000);
   </script>
   <style type="text/css">
     body {
@@ -284,9 +294,12 @@
       <img style="margin-left: 38%;" src="StyleTrans/images/spinner.gif" />
     </p>
     <br />
-    <h1 style="margin-left: 30%;">⚡ Loading...</h1>
+    <h1 style="margin-left: 30%;"><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Loading...</h1>
     <h1 style="margin-left: 29%;">Please Wait ❤</h1>
     <h2 style="margin-left: 11%;">(建议科学上网，否则有些图片可能无法显示！)</h2>
+    <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;"
+      onclick="directShowMainPage();">
+    Directly Show Main Page ⚡ 直接显示主界面</a>
   </div>
   <div class="container" style="display:none;">
     <div class="menu-wrap">
