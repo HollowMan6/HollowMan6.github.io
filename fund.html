@@ -24,7 +24,11 @@
       }
     });
     document.onreadystatechange = function () {
-      if (document.readyState == "complete") {
+      loadcomplete(false);
+    };
+
+    function loadcomplete(skip) {
+      if (document.readyState == "complete" || skip) {
         $("#progress").addClass("done");//完成，隐藏进度条
         $("#loading").fadeOut("slow");
         $(".container").slideDown(3000);
@@ -32,6 +36,7 @@
         confetti.start(3000);
       }
     }
+    setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时，请检查您是否科学上网！\\nTime out for loading some resources!');document.onreadystatechange = null;loadcomplete(true);}", 15000);
   </script>
   <style type="text/css">
     body {
@@ -281,6 +286,7 @@
     <br />
     <h1 style="margin-left: 30%;">⚡ Loading...</h1>
     <h1 style="margin-left: 29%;">Please Wait ❤</h1>
+    <h2 style="margin-left: 11%;">(建议科学上网，否则有些图片可能无法显示！)</h2>
   </div>
   <div class="container" style="display:none;">
     <div class="menu-wrap">
@@ -310,7 +316,7 @@
             Tip</a>
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#Alipay').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
-              src="https://play-lh.googleusercontent.com/xV6gK4t0SF7AW4LK3slUzj4WIY1SfzRtq-zFTygFSO9wg-JXTJImEi34rrxhsRutXQ=s180-rw"
+              src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
               width="11%"> Alipay</a>
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">📄
@@ -377,7 +383,7 @@
           </p>
           <p>
           <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-              src="https://play-lh.googleusercontent.com/xV6gK4t0SF7AW4LK3slUzj4WIY1SfzRtq-zFTygFSO9wg-JXTJImEi34rrxhsRutXQ=s180-rw"
+              src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
               width="3%"> Alipay</h2>
           <img class="pic" src="img/Alipay.jpg" width="247px" height="385px" style="margin-left: 2%;"
             onclick="window.open('https://www.alipay.com','_blank')">
