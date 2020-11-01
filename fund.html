@@ -46,7 +46,7 @@
       loadingTimeOut();
       clearTimeout(timerout);
     }
-    timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 45000);
+    timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
   </script>
   <style type="text/css">
     body {
@@ -168,7 +168,7 @@
       var winScroll = document.getElementById("main-content").scrollTop;
       var height = document.getElementById("main-content").scrollHeight;
       var scrolled = (winScroll / height) * 100;
-      document.getElementById("Bar").style.width = scrolled * 1.59 + "%";
+      document.getElementById("Bar").style.width = scrolled * 1.51 + "%";
     }
 
   </script>
