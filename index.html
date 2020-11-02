@@ -32,9 +32,12 @@
         $("#progress").addClass("done");//完成，隐藏进度条
         $("#loading").fadeOut("slow");
         $(".container").slideDown(3000);
-        document.getElementById("open-button").click()
+        document.getElementById("open-button").click();
         confetti.start(3000);
         window.clearInterval(timer1);
+        if (window.location.hash) {
+          setTimeout("$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();", 3000);
+        }
       }
     }
 
