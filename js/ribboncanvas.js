@@ -2,7 +2,8 @@
     //设置canvas的高宽
     function set_canvas_size() {
         w = c.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-            h = c.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        h = c.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        i();
     }
 
     document.addEventListener('touchmove', function (e) {
