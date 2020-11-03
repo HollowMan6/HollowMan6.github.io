@@ -7,9 +7,9 @@ class Circle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.r = Math.random() * 10 ;
-        this._mx = Math.random() ;
-        this._my = Math.random() ;
+        this.r = Math.random() * 10;
+        this._mx = Math.random();
+        this._my = Math.random();
 
     }
 
@@ -69,15 +69,15 @@ class currentCirle extends Circle {
     }
 }
 
-! function() {
+! function () {
     //封装方法，压缩之后减少文件大小
     function get_by_tagname(name) {
-      return document.getElementsByTagName(name);
+        return document.getElementsByTagName(name);
     }
     //设置canvas的高宽
     function set_canvas_size() {
-      w = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, 
-      h = the_canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        w = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+            h = the_canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     }
 
     //更新页面用requestAnimationFrame替代setTimeout
@@ -100,14 +100,14 @@ class currentCirle extends Circle {
         }
         requestAnimationFrame(draw)
     }
-    
+
     let init = function (num) {
         for (var i = 0; i < num; i++) {
             circles.push(new Circle(Math.random() * w, Math.random() * h));
         }
         draw();
     }
-  
+
     //创建画布，并添加到body中
     var the_canvas = document.createElement("canvas"); //画布
     let ctx = the_canvas.getContext('2d');
@@ -117,19 +117,22 @@ class currentCirle extends Circle {
     let current_circle = new currentCirle(0, 0);
     the_canvas.style.cssText = "position:fixed;top:0;left:0;z-index:-1";
     get_by_tagname("body")[0].appendChild(the_canvas);
-  
+
     //初始化画布大小
     set_canvas_size();
     window.onresize = set_canvas_size;
     //当时鼠标位置存储，离开的时候，释放当前位置信息
-    window.onmousemove = function(e) {
-      e = e || window.event;
-      current_circle.x = e.clientX;
-      current_circle.y = e.clientY;
-    }, window.onmouseout = function() {
-      current_circle.x = null;
-      current_circle.y = null;
+    window.onmousemove = function (e) {
+        e = e || window.event;
+        current_circle.x = e.clientX;
+        current_circle.y = e.clientY;
+    }, window.onmouseout = function () {
+        current_circle.x = null;
+        current_circle.y = null;
+    }, window.ontouchend = function () {
+        current_circle.x = null;
+        current_circle.y = null;
     };
     //0.1秒后绘制
     window.addEventListener('load', init(60));
-  }();
+}();
