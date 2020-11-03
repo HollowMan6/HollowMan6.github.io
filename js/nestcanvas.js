@@ -88,7 +88,7 @@ class currentCirle extends Circle {
         for (let i = 0; i < circles.length; i++) {
             circles[i].move(w, h);
             circles[i].drawCircle(ctx);
-            for (j = i + 1; j < circles.length; j++) {
+            for (var j = i + 1; j < circles.length; j++) {
                 circles[i].drawLine(ctx, circles[j])
             }
         }
@@ -99,13 +99,6 @@ class currentCirle extends Circle {
             }
         }
         requestAnimationFrame(draw)
-    }
-
-    let init = function (num) {
-        for (var i = 0; i < num; i++) {
-            circles.push(new Circle(Math.random() * w, Math.random() * h));
-        }
-        draw();
     }
 
     //创建画布，并添加到body中
@@ -134,5 +127,11 @@ class currentCirle extends Circle {
         current_circle.y = null;
     };
     //0.1秒后绘制
-    window.addEventListener('load', init(60));
+    window.addEventListener('load', function () {
+        var num = 60;
+        for (var i = 0; i < num; i++) {
+            circles.push(new Circle(Math.random() * w, Math.random() * h));
+        }
+        draw();
+    });
 }();

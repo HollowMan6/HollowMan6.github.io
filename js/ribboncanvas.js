@@ -8,7 +8,7 @@
 
     document.addEventListener('touchmove', function (e) {
         e.preventDefault();
-    })
+    });
 
     //创建画布，并添加到body中
     var c = document.createElement("canvas"); //画布
