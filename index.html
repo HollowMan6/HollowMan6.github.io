@@ -152,49 +152,14 @@
   </style>
 
   <script type="text/javascript">
-    var insText = "&nbsp;";
-    var picData = "R0lGODlhFAATAHQAACH/C05FVFNDQVBFMi4wAwEAAAAh/jNDcmVhdGVkIHdpdGggdGhlIFdvbGZy\
-YW0gTGFuZ3VhZ2UgOiB3d3cud29sZnJhbS5jb20AIfkEAAMAAAAsAAAAABQAEwCEQEBAQkJCRUVF\
-SEhIS0tLU1NTV1dXYmJiaWlpb29vfX19hYWFjY2Nm5uboqKisbGxuLi4wMDAz8/P1dXV3Nzc5ubm\
-6+vr8PDw9vb2+fn5/Pz8/v7+////AAAAAAAAAAAABUggIALExZ1omo4io74oK1LwKwNJrd5ApMc3\
-Q+bH4QEcRCPB8jMCFk3nROcEIKhVSK0KKGBgXEADzBVUbGEFOizZhQEH9/uRCgEAIfkEAAMAAAAs\
-AAAAABQAEwCEQEBAQkJCRERESUlJTU1NUVFRWlpaYGBgZmZmbGxscnJye3t7iYmJkJCQmJiYpqam\
-rq6utra2xMTEzMzM2NjY3t7e5OTk7e3t8fHx9fX1+vr6/Pz8/v7+////AAAAAAAABUJgJ45kaZ5o\
-qq6smFBtCQDMFYszMDxanM8GSeuXU1RWxF8Dk0r+CBCUk3iYmKbJhYWETQocGVw3WYh0xlMEes1u\
-J0MAIfkEAAMAAAAsAAAAABQAEwCAQEBA////AhqMj6nL7Q+jnLTa64DevPsPhuJIluaJpmpYAAAh\
-+QQAAwAAACwAAAAAFAATAIRAQEBCQkJERERJSUlNTU1RUVFaWlpgYGBmZmZycnJ7e3uJiYmQkJCZ\
-mZmnp6eurq62trbExMTMzMzT09PY2Nje3t7k5OTt7e3x8fH19fX6+vr8/Pz+/v7///8AAAAAAAAF\
-QWAnjmRpnmiqrmyLUu54LUCsOQNQt5Gh66xK4vdTYRhEYupBSCpNkoMzWbIops5RpiHAZjuQgnc6\
-QYzP6LR6/QsBACH5BAADAAAALAAAAAAUABMAhEBAQEJCQkVFRUhISEtLS1NTU1dXV2JiYmlpaW9v\
-b319fYWFhY2NjZubm6KiorGxsbi4uMDAwM/Pz9XV1dvb2+bm5uvr6/Dw8Pb29vn5+fz8/P7+/v//\
-/wAAAAAAAAAAAAVIICeOZHkRQFquJJOq7Eq9cEwmNGCTUa7vnIzBB+Q4fD+bBUXcLZBJ1gQaXSGo\
-Ngi1OsIUtrHGlsupCMYsxZgrWXMP7tLDDQgBACH5BAADAAAALAAAAAAUABMAgUBAQJ+fn////wAA\
-AAIrlI8By4wvVGswTVqNvCBrvngR2HnbJZ5TSrKgy8Go2dKvHeNzpmJ8/QMVAAAh+QQAAwAAACwA\
-AAAAFAATAIRAQEBCQkJFRUVISEhOTk5TU1NYWFhiYmJpaWlvb29+fn6GhoaNjY2cnJyjo6OxsbG5\
-ubnBwcHPz8/V1dXc3Nzn5+fr6+vz8/P29vb5+fn8/Pz+/v7///8AAAAAAAAAAAAFSCAnchcBnGia\
-juKjvigrHvArc1Kt3pyix7eK4AfgcRpEI6bwM3IgTSdC5+RMqNVFrcqxDGBcjgPMzRhs4Qg6nNiF\
-ORT3m5EKAQAh+QQAAwAAACwAAAAAFAATAIRAQEBCQkJERERJSUlNTU1RUVFaWlpgYGBmZmZycnJ6\
-enqIiIiQkJCXl5elpaWurq61tbXDw8PMzMzS0tLY2Nje3t7k5OTt7e3x8fH19fX6+vr8/Pz+/v7/\
-//8AAAAAAAAFQiAgjmRpnmiqrqw4IW3JcVARizOXNUKczxZF65eTHFbE34OQSv4wDJSTWEmYpsmI\
-gYRNahwDXDd5WQDGUwp6zW4nQwAh+QQAAwAAACwAAAAAFAATAIBAQED///8CGoSPqcvtD6OctNrr\
-gt68+w+G4kiW5ommalgAACH5BAADAAAALAAAAAAUABMAhEBAQEJCQkRERElJSU1NTVFRUVpaWmBg\
-YGZmZmtra3Jycnp6eoiIiJCQkJeXl6Wlpa6urrW1tcPDw8zMzNjY2N7e3uTk5O3t7fHx8fX19fr6\
-+vz8/P7+/v///wAAAAAAAAVBICCOZGmeaKqubIsi7lhEXCw4GVe3i6XrrMPk91MRIERiynFJKk2K\
-ijNZMkimztHgocFmAYym15mgjM/otHr9CwEAIfkEAAMAAAAsAAAAABQAEwCEQEBAQkJCRUVFSEhI\
-Tk5OU1NTWFhYYmJiaWlpb29vfn5+hoaGjY2NnJyco6OjsbGxubm5wcHBz8/P1dXV3Nzc5+fn6+vr\
-8/Pz9vb2+fn5/Pz8/v7+////AAAAAAAAAAAABUggII5kSVxcWq7kk6rserxwTEo0Z5NKru8AQcUH\
-BDR8P1sBgwRCkEkWAhpdTai2BbU6Gli2MceWCzBkxqzImJtYcynuEsPNCQEAIfkEAAMAAAAsAAAA\
-ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
 
     function fill(td, command) {
       var target = document.getElementById("td" + td);
       var color = command.split(" ")[0];
       var timestamp = parseFloat(command.split(" ")[1]);
       var currentTimestamp = parseFloat(target.dataset.timestamp);
-      if (color == 2) target.style.backgroundImage = "url(data:image/gif;base64," + picData + ")";
-      else if (color == "3") target.style.backgroundImage = "";
-      else if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
-        if (color == "0") { target.bgColor = "#EEEEEE"; }
+      if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
+        if (color == "0") { target.bgColor = "#EEEEEE"; target.style.opacity = 0;}
         else if (color == "1") target.bgColor = "#404040";
         target.dataset.timestamp = timestamp;
       }
@@ -384,7 +349,8 @@ ABQAEwCAQEBA////AiaEj6HL6MBieEkueuzFUE/ufVjIdVpJgh66qqdrse/Y0jOV2jEsFQA7";
   <div class="ProgressBar">
     <div class="progressbar" id="Bar"></div>
   </div>
-  <script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  <script src="js/nestcanvas.js"></script>
+  <script src="js/ribboncanvas.js"></script>
   <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
   </script>
   <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.5, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
