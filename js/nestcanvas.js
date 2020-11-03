@@ -127,11 +127,9 @@ class currentCirle extends Circle {
         current_circle.y = null;
     };
     //0.1秒后绘制
-    window.addEventListener('load', function () {
-        var num = 60;
-        for (var i = 0; i < num; i++) {
-            circles.push(new Circle(Math.random() * w, Math.random() * h));
-        }
-        draw();
-    });
+    var num = 60;
+    for (var i = 0; i < num; i++) {
+        circles.push(new Circle(Math.random() * w, Math.random() * h));
+    }
+    draw();
 }();
