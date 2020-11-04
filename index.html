@@ -160,7 +160,7 @@
       var currentTimestamp = parseFloat(target.dataset.timestamp);
       if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
         if (color == "0") { target.bgColor = "#EEEEEE"; target.style.opacity = 0;}
-        else if (color == "1") target.bgColor = "#404040";
+        else if (color == "1") { target.bgColor = "#404040"; target.style.opacity = 1;}
         target.dataset.timestamp = timestamp;
       }
     }
