@@ -286,6 +286,30 @@
   </div>
   <script src="js/canvas-ball.js"></script>
   <script src="js/canvas-ribbon.js"></script>
+  <script type="text/javascript">
+    new Ribbons({
+      // ribbon color HSL saturation amount
+      colorSaturation: "80%",
+      // ribbon color HSL brightness amount
+      colorBrightness: "50%",
+      // ribbon color opacity amount
+      colorAlpha: 0.6,
+      // how fast to cycle through colors in the HSL color space
+      colorCycleSpeed: 12,
+      // where to start from on the Y axis on each side (top|min, middle|center, bottom|max, random)
+      verticalPosition: "center",
+      // how fast to get to the other side of the screen
+      horizontalSpeed: 1,
+      // how many ribbons to keep on screen at any given time
+      ribbonCount: 3,
+      // add stroke along with ribbon fill colors
+      strokeSize: 0,
+      // move ribbons vertically by a factor on page scroll
+      parallaxAmount: -0.5,
+      // add animation effect to each ribbon section over time
+      animateSections: true
+    });
+  </script>
   <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
   </script>
   <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })

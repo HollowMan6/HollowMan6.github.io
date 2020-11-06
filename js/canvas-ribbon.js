@@ -357,7 +357,7 @@
                 if (numDone >= numSections) // ribbon done
                 {
                     this._ribbons[a] = null;
-                    index = this._temp.indexOf(ribbon)
+                    var index = this._temp.indexOf(ribbon);
                     if (index != -1) {
                         this._temp.splice(index, 1);
                     }
@@ -398,6 +398,3 @@
     // export
     return Factory;
 });
-
-
-new Ribbons(window);
