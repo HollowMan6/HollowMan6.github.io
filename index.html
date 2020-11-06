@@ -159,8 +159,8 @@
       var timestamp = parseFloat(command.split(" ")[1]);
       var currentTimestamp = parseFloat(target.dataset.timestamp);
       if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
-        if (color == "0") { target.bgColor = "#EEEEEE"; target.style.opacity = 0;}
-        else if (color == "1") { target.bgColor = "#404040"; target.style.opacity = 1;}
+        if (color == "0") { target.bgColor = "#EEEEEE"; target.style.opacity = 0; }
+        else if (color == "1") { target.bgColor = "#404040"; target.style.opacity = 1; }
         target.dataset.timestamp = timestamp;
       }
     }
@@ -339,6 +339,44 @@
       transform: scale(1.10);
       box-shadow: 0px 0px 6px 4px #C0C1C0;
     }
+
+    .mousemoving {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .mousemoving-ball {
+      border-radius: 10px;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+
+    .ball-0 {
+      background-color: #59b397;
+    }
+
+    .ball-1 {
+      background-color: #c383cd;
+    }
+
+    .ball-2 {
+      background-color: #c28767;
+    }
+
+    .ball-3 {
+      background-color: #7097b8;
+    }
+
+    .ball-4 {
+      background-color: #af4c5e;
+    }
+
+    .ball-5 {
+      background-color: #dbdf93;
+    }
   </style>
 
 </head>
@@ -350,6 +388,8 @@
   <div class="ProgressBar">
     <div class="progressbar" id="Bar"></div>
   </div>
+  <div id="mouseball"></div>
+  <script src="js/Staggered-Mouse-Ball.js"></script>
   <script src="js/canvas-ball.js"></script>
   <script src="js/canvas-ribbon.js"></script>
   <script type="text/javascript">
@@ -359,7 +399,7 @@
       // ribbon color HSL brightness amount
       colorBrightness: "50%",
       // ribbon color opacity amount
-      colorAlpha: 0.6,
+      colorAlpha: 0.2,
       // how fast to cycle through colors in the HSL color space
       colorCycleSpeed: 12,
       // where to start from on the Y axis on each side (top|min, middle|center, bottom|max, random)
