@@ -173,7 +173,73 @@
       var scrolled = (winScroll / height) * 100;
       document.getElementById("Bar").style.width = scrolled * 1.51 + "%";
     }
-
+    var hour = new Date().getHours();
+    var atNight = false;
+    if (hour >= 22 || hour < 6) {
+      atNight = true
+    }
+    function nightDaySwitch() {
+      if ($('body')[0].style.backgroundColor) {
+        $('body')[0].style.backgroundColor = "";
+        $('body')[0].style.color = "";
+        $('#toppic1')[0].src = "img/logo.gif";
+        $('#toppic2')[0].src = "img/logo.gif";
+        var jquerycollect = $('a.header')
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "";
+        }
+        $(".LI-name > a")[0].style.color = "";
+        $(".LI-title")[0].style.color = "";
+        $(".LI-field > a")[0].style.color = "";
+        $(".menu")[0].style.backgroundColor = "";
+        $(".menu-wrap")[0].style.backgroundColor = "";
+        $(".morph-shape").show();
+        jquerycollect = $('a.menu-links');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "";
+        }
+        jquerycollect = $('.pic');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.boxShadow = "";
+        }
+        $("#DayNight")[0].text = "🌙 Night";
+        $("#NightMessage").fadeOut();
+        $("#SwitchNightMode")[0].text = "🌙 Night Mode";
+        $("#SwitchNightMode")[0].style.display = "";
+      } else {
+        $('body')[0].style.backgroundColor = "#111111";
+        $('body')[0].style.color = "#BFBFBF";
+        $('#toppic1')[0].src = "img/logo-night.gif";
+        $('#toppic2')[0].src = "img/logo-night.gif";
+        var jquerycollect = $('a.header');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "#BFBFBF";
+        }
+        $(".LI-name > a")[0].style.color = "#BFBFBF";
+        $(".LI-title")[0].style.color = "#BFBFBF";
+        $(".LI-field > a")[0].style.color = "#BFBFBF";
+        $(".menu")[0].style.backgroundColor = "#222222";
+        $(".menu-wrap")[0].style.backgroundColor = "#222222";
+        $(".morph-shape").hide();
+        jquerycollect = $('a.menu-links');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "#BFBFBF";
+        }
+        jquerycollect = $('.pic');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.boxShadow = "none";
+        }
+        $("#DayNight")[0].text = "☀ Day";
+        $("#SwitchNightMode")[0].text = " ☀ Day Mode";
+        if (atNight) {
+          $("#SwitchNightMode")[0].style.display = "none";
+          $("#NightMessage").fadeIn();
+        }
+      }
+    }
+    if (atNight) {
+      window.addEventListener("DOMContentLoaded", nightDaySwitch);
+    }
   </script>
   <style type="text/css">
     body {
@@ -311,6 +377,11 @@
     .ball-5 {
       background-color: #dbdf93;
     }
+
+    #DayNight {
+      margin-left: 3%;
+      margin-top: -1.5%;
+    }
   </style>
 
 </head>
@@ -356,7 +427,7 @@
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
-    <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
+    <img id="toppic1" class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
     <p>
       <img style="margin-left: 38%;" width="80px" src="StyleTrans/images/spinner.gif" />
@@ -368,14 +439,20 @@
     <h2 style="margin-left: 11%;">(建议科学上网，否则有些图片可能无法显示！)</h2>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
+    <h3 style="margin-left: 10%;">
+      <span id="NightMessage" style="display:none;">
+        It's Night! 🌙 Night Mode has been On.
+        <a class="menu-links" href="javascript:void(0);" onclick="nightDaySwitch();"> ☀ Switch off</a>
+      </span>
+      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: 21%;"
+        onclick="nightDaySwitch();">
+        🌙 Night Mode</a>
+    </h3>
   </div>
   <div class="container" style="display:none;">
     <div class="menu-wrap">
       <nav class="menu">
         <div class="icon-list">
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
-            Top</a>
           <a class="menu-links" href="index.html">🏠️ Back Home</a>
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#GitHubSponsors').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
@@ -403,6 +480,11 @@
             onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">📄
             About
             ME</a>
+          <a class="menu-links" href="javascript:void(0);" style="float: left;"
+            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
+            Top</a>
+          <a class="menu-links" id="DayNight" style="float: left;" href="javascript:void(0);"
+            onclick="nightDaySwitch();">🌙 Night</a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
@@ -419,7 +501,7 @@
       <div class="content">
         <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
-          <img src="img/logo.gif" class="pic" width="384px" height="120px" style="margin-left: 7%;">
+          <img id="toppic2" src="img/logo.gif" class="pic" width="384px" height="120px" style="margin-left: 7%;">
           <h3>&nbsp;</h3>
           <p>
             <a href="index.html" style="margin-left: 27% ;font-size: 120%">🏠️ Back to the Home Page</a>

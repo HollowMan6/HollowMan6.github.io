@@ -153,14 +153,16 @@
 
   <script type="text/javascript">
 
+    var targetBgColor = "#404040"
+
     function fill(td, command) {
       var target = document.getElementById("td" + td);
       var color = command.split(" ")[0];
       var timestamp = parseFloat(command.split(" ")[1]);
       var currentTimestamp = parseFloat(target.dataset.timestamp);
       if (target.style.backgroundImage == "" && timestamp >= currentTimestamp) {
-        if (color == "0") { target.bgColor = "#EEEEEE"; target.style.opacity = 0; }
-        else if (color == "1") { target.bgColor = "#404040"; target.style.opacity = 1; }
+        if (color == "0") { target.style.opacity = 0; }
+        else if (color == "1") { target.bgColor = targetBgColor; target.style.opacity = 1; }
         target.dataset.timestamp = timestamp;
       }
     }
@@ -221,14 +223,89 @@
         $i.remove();
       })
     }
-
     function ProgressBar() {
       var winScroll = document.getElementById("main-content").scrollTop;
       var height = document.getElementById("main-content").scrollHeight;
       var scrolled = (winScroll / height) * 100;
       document.getElementById("Bar").style.width = scrolled * 1.08 + "%";
     }
-
+    var hour = new Date().getHours();
+    var atNight = false;
+    if (hour >= 22 || hour < 6) {
+      atNight = true
+    }
+    function nightDaySwitch() {
+      if ($('body')[0].style.backgroundColor) {
+        $('body')[0].style.backgroundColor = "";
+        $('body')[0].style.color = "";
+        $('#toppic1')[0].src = "img/logo.gif";
+        $('#toppic2')[0].src = "img/logo.gif";
+        $('#githubstatus')[0].src = "https://github-readme-stats.vercel.app/api?username=hollowman6&bg_color=DDDDDD&count_private=true&show_icons=true";
+        $('#toplangs')[0].src = "https://github-readme-stats.vercel.app/api/top-langs/?username=HollowMan6&layout=compact&hide=jupyter%20notebook&bg_color=DDDDDD";
+        var jquerycollect = $('a.header')
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "";
+        }
+        $('#HighlightedWork')[0].style.backgroundColor = "";
+        $('#HighlightedWork')[0].style.boxShadow = "";
+        $(".LI-name > a")[0].style.color = "";
+        $(".LI-title")[0].style.color = "";
+        $(".LI-field > a")[0].style.color = "";
+        $(".menu")[0].style.backgroundColor = "";
+        $(".menu-wrap")[0].style.backgroundColor = "";
+        $(".morph-shape").show();
+        jquerycollect = $('a.menu-links');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "";
+        }
+        jquerycollect = $('.pic');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.boxShadow = "";
+        }
+        targetBgColor = "#404040";
+        $("#DayNight")[0].text = "🌙 Night";
+        $("#NightMessage").fadeOut();
+        $("#SwitchNightMode")[0].text = "🌙 Night Mode";
+        $("#SwitchNightMode")[0].style.display = "";
+      } else {
+        $('body')[0].style.backgroundColor = "#111111";
+        $('body')[0].style.color = "#BFBFBF";
+        $('#toppic1')[0].src = "img/logo-night.gif";
+        $('#toppic2')[0].src = "img/logo-night.gif";
+        $('#githubstatus')[0].src = "https://github-readme-stats.vercel.app/api?username=hollowman6&bg_color=222222&text_color=DDD&count_private=true&show_icons=true";
+        $('#toplangs')[0].src = "https://github-readme-stats.vercel.app/api/top-langs/?username=HollowMan6&layout=compact&hide=jupyter%20notebook&bg_color=222222&text_color=DDD";
+        var jquerycollect = $('a.header');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "#BFBFBF";
+        }
+        $('#HighlightedWork')[0].style.backgroundColor = "#222222";
+        $('#HighlightedWork')[0].style.boxShadow = "none";
+        $(".LI-name > a")[0].style.color = "#BFBFBF";
+        $(".LI-title")[0].style.color = "#BFBFBF";
+        $(".LI-field > a")[0].style.color = "#BFBFBF";
+        $(".menu")[0].style.backgroundColor = "#222222";
+        $(".menu-wrap")[0].style.backgroundColor = "#222222";
+        $(".morph-shape").hide();
+        jquerycollect = $('a.menu-links');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.color = "#BFBFBF";
+        }
+        jquerycollect = $('.pic');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.boxShadow = "none";
+        }
+        targetBgColor = "#BFBFBF";
+        $("#DayNight")[0].text = "☀ Day";
+        $("#SwitchNightMode")[0].text = " ☀ Day Mode";
+        if (atNight) {
+          $("#SwitchNightMode")[0].style.display = "none";
+          $("#NightMessage").fadeIn();
+        }
+      }
+    }
+    if (atNight) {
+      window.addEventListener("DOMContentLoaded", nightDaySwitch);
+    }
   </script>
   <style type="text/css">
     body {
@@ -377,6 +454,11 @@
     .ball-5 {
       background-color: #dbdf93;
     }
+
+    #DayNight {
+      margin-left: 3%;
+      margin-top: -1.5%;
+    }
   </style>
 
 </head>
@@ -422,7 +504,7 @@
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
-    <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
+    <img id="toppic1" class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
     <p>
     <table id="grid">
@@ -447,14 +529,20 @@
     <h2 style="margin-left: 11%;">(建议科学上网，否则有些图片可能无法显示！)</h2>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
+    <h3 style="margin-left: 10%;">
+      <span id="NightMessage" style="display:none;">
+        It's Night! 🌙 Night Mode has been On.
+        <a class="menu-links" href="javascript:void(0);" onclick="nightDaySwitch();"> ☀ Switch off</a>
+      </span>
+      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: 21%;"
+        onclick="nightDaySwitch();">
+        🌙 Night Mode</a>
+    </h3>
   </div>
   <div class="container" style="display:none;">
     <div class="menu-wrap">
       <nav class="menu">
         <div class="icon-list">
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
-            Top</a>
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">📄
             About
@@ -482,6 +570,11 @@
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#Certificates').offset().top+document.getElementById('main-content').scrollTop}, 500);">🖼
             Certificates</a>
+          <a class="menu-links" href="javascript:void(0);" style="float: left;"
+            onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
+            Top</a>
+          <a class="menu-links" id="DayNight" style="float: left;" href="javascript:void(0);"
+            onclick="nightDaySwitch();">🌙 Night</a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
@@ -498,7 +591,7 @@
       <div class="content">
         <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
-          <img class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
+          <img id="toppic2" class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
           <h3>&nbsp;</h3>
           <p>
             <a href="FreDuino/index.htm" target="_blank" style="margin-left: -10% ;font-size: 120%">🚗 FreDuino Cars</a>
@@ -544,12 +637,12 @@
               style="margin-left: 1%;" onclick="window.open('https://gitlab.com/HollowMan6','_blank')">
           </p>
           <p>
-            <img class="pic"
+            <img id="githubstatus" class="pic"
               src="https://github-readme-stats.vercel.app/api?username=hollowman6&bg_color=DDDDDD&count_private=true&show_icons=true"
               style="margin-left: 5%;">
           </p>
           <p>
-            <img class="pic"
+            <img id="toplangs" class="pic"
               src="https://github-readme-stats.vercel.app/api/top-langs/?username=HollowMan6&layout=compact&hide=jupyter%20notebook&bg_color=DDDDDD"
               style="margin-left: 18%;">
           </p>
@@ -744,8 +837,8 @@
               target="_blank">🖼 SRMD Pytorch</a>
           </p>
           <p>
-            <a href="https://github.com/HollowMan6/Staggered-Mouse-Balls" style="margin-left: 10%; font-size: 170%" class="love"
-              target="_blank">🔵⚪🔴 Staggered Mouse Balls</a>
+            <a href="https://github.com/HollowMan6/Staggered-Mouse-Balls" style="margin-left: 10%; font-size: 170%"
+              class="love" target="_blank">🔵⚪🔴 Staggered Mouse Balls</a>
           </p>
           <p>
             <a href="https://github.com/hollowman6/canvas-ribbon.js" target="_blank"
