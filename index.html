@@ -3,7 +3,8 @@
 <script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
 
 <head>
-  <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+  <script src="js/confetti.min.js"></script>
+  <script src="js/sun.js"></script>
   <meta charset="UTF-8" name="viewport"
     content="width=device-width,initial-scale=0.6,maximum-scale=1.5,minimum-scale=0.6,user-scalable=yes">
   <meta name="keywords" content="Hollow Man, 蒋嵩林, Songlin jiang, Home Page, 主页" />
@@ -27,6 +28,7 @@
       loadcomplete(false);
     };
 
+    var scrollLocationIndex = window.localStorage.getItem("scrollLocationIndex");
     function loadcomplete(skip) {
       if (document.readyState == "complete" || skip) {
         $("#progress").addClass("done");//完成，隐藏进度条
@@ -37,6 +39,9 @@
         window.clearInterval(timer1);
         if (window.location.hash) {
           setTimeout("$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();", 3000);
+        }
+        else if (scrollLocationIndex) {
+          setTimeout("$('#main-content').animate({ scrollTop: scrollLocationIndex + document.getElementById('main-content').scrollTop }, 500);", 3000);
         }
       }
     }
@@ -223,19 +228,18 @@
         $i.remove();
       })
     }
+
     function ProgressBar() {
       var winScroll = document.getElementById("main-content").scrollTop;
-      var height = document.getElementById("main-content").scrollHeight;
+      var height = document.getElementById("main-content").scrollHeight - document.body.clientHeight;
       var scrolled = (winScroll / height) * 100;
-      document.getElementById("Bar").style.width = scrolled * 1.08 + "%";
+      document.getElementById("Bar").style.width = scrolled + "%";
+      window.localStorage.setItem("scrollLocationIndex", winScroll);
     }
-    var hour = new Date().getHours();
     var atNight = false;
-    if (hour >= 22 || hour < 6) {
-      atNight = true
-    }
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
+        window.sessionStorage.setItem("Night", 0);
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
@@ -268,6 +272,7 @@
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
       } else {
+        window.sessionStorage.setItem("Night", 1);
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
         $('#toppic1')[0].src = "img/logo-night.gif";
@@ -303,9 +308,93 @@
         }
       }
     }
-    if (atNight) {
-      window.addEventListener("DOMContentLoaded", nightDaySwitch);
+    function CheckatNight() {
+      var url = "https://geoip-db.com/json/";
+      var request = new XMLHttpRequest();
+      var latitude = null;
+      var longitude = null;
+      try {
+        request.open("get", url);
+        request.send(null);
+        request.onload = function () {
+          if (request.status == 200) {
+            var json = JSON.parse(request.responseText);
+            try {
+              latitude = json["latitude"];
+              longitude = json["longitude"];
+            } catch (e) {
+              url = "https://get.geojs.io/v1/ip/geo.json";
+              request = new XMLHttpRequest();
+              request.open("get", url);
+              request.send(null);
+              request.onload = function () {
+                if (request.status == 200) {
+                  var json = JSON.parse(request.responseText);
+                  try {
+                    latitude = json["latitude"];
+                    longitude = json["longitude"];
+                  } catch (e) { }
+                }
+              }
+            }
+          }
+          if (latitude && longitude) {
+            var sunset = new Date().sunset(latitude, longitude);
+            var sunrise = new Date().sunrise(latitude, longitude);
+            var currentTime = new Date();
+            if (sunrise.getTime() > currentTime.getTime() && sunset.getTime() < currentTime.getTime()) {
+              atNight = true;
+            } else {
+              atNight = false;
+            }
+          } else {
+            var hour = new Date().getHours();
+            if (hour >= 22 || hour < 6) {
+              atNight = true;
+            }
+          }
+          var preNightMode = window.sessionStorage.getItem("Night");
+          if (preNightMode) {
+            if (preNightMode == 1) {
+              if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                nightDaySwitch();
+              } else {
+                window.addEventListener("DOMContentLoaded", nightDaySwitch);
+              }
+            }
+          } else if (atNight) {
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
+              nightDaySwitch();
+            } else {
+              window.addEventListener("DOMContentLoaded", nightDaySwitch);
+            }
+          }
+        }
+      } catch (e) {
+        var hour = new Date().getHours();
+        if (hour >= 22 || hour < 6) {
+          atNight = true;
+          var preNightMode = window.sessionStorage.getItem("Night");
+          if (preNightMode) {
+            if (preNightMode == 1) {
+              if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                nightDaySwitch();
+              } else {
+                window.addEventListener("DOMContentLoaded", nightDaySwitch);
+              }
+            }
+          }
+          else if (atNight) {
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
+              nightDaySwitch();
+            } else {
+              window.addEventListener("DOMContentLoaded", nightDaySwitch);
+            }
+          }
+        }
+      }
     }
+    CheckatNight();
   </script>
   <style type="text/css">
     body {
