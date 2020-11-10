@@ -37,6 +37,12 @@
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
 
+## 彩蛋
+
+* 网页将自动记住你每次浏览的位置
+
+* 当你电脑设置的时间位于你IP地址所处地址的日落到日出时间之间时，网站会自动开启夜晚模式。
+
 # Hollow Man Home Page
 
 [Click here to visit](https://hollowman6.github.io)
@@ -58,3 +64,9 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 * [Publications](https://hollowman6.github.io/Publications/)
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
+
+## Surprise
+
+* The web page will automatically remember where you visit each time.
+
+* When the time set by your computer is between sunset and sunrise at your location reflected in your IP address, the website will automatically turn on the night mode.
