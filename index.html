@@ -573,24 +573,22 @@
     <br />
     <img id="toppic1" class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
-    <p>
-      <script type="text/javascript">
-        var tdid = 0;
-        var string = "<table id=\"grid\">"
-        for (var i = 1; i <= 16; i++) {
-          string += "<tr>";
-          for (var j = 1; j <= 25; j++) {
-            tdid = (i - 1) * 25 + j;
-            string += "<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" ></td>";
-          }
-          string += "</tr>";
+    <script type="text/javascript">
+      var tdid = 0;
+      var string = "<table id=\"grid\">"
+      for (var i = 1; i <= 16; i++) {
+        string += "<tr>";
+        for (var j = 1; j <= 25; j++) {
+          tdid = (i - 1) * 25 + j;
+          string += "<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" ></td>";
         }
-        string +=  "</table>";
-        document.write(string);
-        var loadingGrid = 0;
-        var timer1 = window.setInterval("loading()", 10);
-      </script>
-    </p>
+        string += "</tr>";
+      }
+      string +=  "</table>";
+      document.write(string);
+      var loadingGrid = 0;
+      var timer1 = window.setInterval("loading()", 10);
+    </script>
     <h1 style="margin-left: 30%;"><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
       Loading...</h1>
     <h1 style="margin-left: 29%;">Please Wait ❤</h1>
