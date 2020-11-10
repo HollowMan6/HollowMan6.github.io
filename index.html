@@ -308,35 +308,24 @@
         }
       }
     }
+
+    var preNightMode = window.sessionStorage.getItem("Night");
+
     function CheckatNight() {
       var url = "https://geoip-db.com/json/";
-      var request = new XMLHttpRequest();
       var latitude = null;
       var longitude = null;
-      try {
-        request.open("get", url);
-        request.send(null);
-        request.onload = function () {
+      var request = new XMLHttpRequest();
+      request.open("get", url);
+      request.send(null);
+      request.onreadystatechange = function () {
+        if (request.readyState == 4) {
           if (request.status == 200) {
             var json = JSON.parse(request.responseText);
             try {
               latitude = json["latitude"];
               longitude = json["longitude"];
-            } catch (e) {
-              url = "https://get.geojs.io/v1/ip/geo.json";
-              request = new XMLHttpRequest();
-              request.open("get", url);
-              request.send(null);
-              request.onload = function () {
-                if (request.status == 200) {
-                  var json = JSON.parse(request.responseText);
-                  try {
-                    latitude = json["latitude"];
-                    longitude = json["longitude"];
-                  } catch (e) { }
-                }
-              }
-            }
+            } catch (e) { }
           }
           if (latitude && longitude) {
             var sunset = new Date().sunset(latitude, longitude);
@@ -353,7 +342,7 @@
               atNight = true;
             }
           }
-          var preNightMode = window.sessionStorage.getItem("Night");
+          preNightMode = window.sessionStorage.getItem("Night");
           if (preNightMode) {
             if (preNightMode == 1) {
               if (document.readyState === 'interactive' || document.readyState === 'complete') {
@@ -370,31 +359,20 @@
             }
           }
         }
-      } catch (e) {
-        var hour = new Date().getHours();
-        if (hour >= 22 || hour < 6) {
-          atNight = true;
-          var preNightMode = window.sessionStorage.getItem("Night");
-          if (preNightMode) {
-            if (preNightMode == 1) {
-              if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                nightDaySwitch();
-              } else {
-                window.addEventListener("DOMContentLoaded", nightDaySwitch);
-              }
-            }
-          }
-          else if (atNight) {
-            if (document.readyState === 'interactive' || document.readyState === 'complete') {
-              nightDaySwitch();
-            } else {
-              window.addEventListener("DOMContentLoaded", nightDaySwitch);
-            }
-          }
+      }
+    }
+    if (preNightMode) {
+      if (preNightMode == 1) {
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+          nightDaySwitch();
+        } else {
+          window.addEventListener("DOMContentLoaded", nightDaySwitch);
         }
       }
     }
-    CheckatNight();
+    else {
+      CheckatNight();
+    }
   </script>
   <style type="text/css">
     body {
