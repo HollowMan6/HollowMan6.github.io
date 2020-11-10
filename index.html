@@ -574,22 +574,20 @@
     <img id="toppic1" class="pic" src="img/logo.gif" width="384px" height="120px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
     <p>
-    <table id="grid">
       <script type="text/javascript">
         var tdid = 0;
         for (var i = 1; i <= 16; i++) {
-          var string = "<tr>";
+          var string = "<table id=\"grid\"> <tr>";
           for (var j = 1; j <= 25; j++) {
             tdid = (i - 1) * 25 + j;
             string += "<td id=\"td" + tdid.toString() + "\" data-timestamp=\"0\" ></td>";
           }
-          string += "</tr>";
+          string += "</tr> </table>";
           document.write(string);
         }
         var loadingGrid = 0;
         var timer1 = window.setInterval("loading()", 10);
       </script>
-    </table>
     </p>
     <h1 style="margin-left: 30%;"><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
       Loading...</h1>
