@@ -224,7 +224,7 @@
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
           }
         } catch (e) {
-          $("#gspons").load("DOMContentLoaded", gSponsDaySwitch);
+          $("#gspons").on("load", gSponsDaySwitch);
         }
         $("#DayNight")[0].text = "🌙 Night";
         $("#NightMessage").fadeOut();
@@ -261,7 +261,7 @@
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
           }
         } catch (e) {
-          $("#gspons").load("DOMContentLoaded", gSponsNightSwitch);
+          $("#gspons").on("load", gSponsNightSwitch);
         }
         $("#DayNight")[0].text = "☀ Day";
         $("#SwitchNightMode")[0].text = " ☀ Day Mode";

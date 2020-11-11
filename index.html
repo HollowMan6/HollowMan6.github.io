@@ -286,7 +286,7 @@
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
           }
         } catch (e) {
-          $("#gspons").load("DOMContentLoaded", gSponsDaySwitch);
+          $("#gspons").on("load", gSponsDaySwitch);
         }
         targetBgColor = "#404040";
         $("#DayNight")[0].text = "🌙 Night";
@@ -328,7 +328,7 @@
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
           }
         } catch (e) {
-          $("#gspons").load("DOMContentLoaded", gSponsNightSwitch);
+          $("#gspons").on("load", gSponsNightSwitch);
         }
         targetBgColor = "#BFBFBF";
         $("#DayNight")[0].text = "☀ Day";
