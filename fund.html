@@ -217,10 +217,14 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "";
         }
-        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
-          gSponsDaySwitch();
-        } else {
-          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
+        try {
+          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+            gSponsDaySwitch();
+          } else {
+            document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
+          }
+        } catch (e) {
+          $("#gspons").load("DOMContentLoaded", gSponsDaySwitch);
         }
         $("#DayNight")[0].text = "🌙 Night";
         $("#NightMessage").fadeOut();
@@ -250,10 +254,14 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "none";
         }
-        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
-          gSponsNightSwitch();
-        } else {
-          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
+        try {
+          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+            gSponsNightSwitch();
+          } else {
+            document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
+          }
+        } catch (e) {
+          $("#gspons").load("DOMContentLoaded", gSponsNightSwitch);
         }
         $("#DayNight")[0].text = "☀ Day";
         $("#SwitchNightMode")[0].text = " ☀ Day Mode";
@@ -263,6 +271,12 @@
         }
       }
     }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!atNight) {
+        $("#SwitchNightMode").fadeIn();
+      }
+    });
 
     var preNightMode = window.sessionStorage.getItem("Night");
 
@@ -301,14 +315,18 @@
           if (preNightMode) {
             if (preNightMode == 1) {
               if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                nightDaySwitch();
+                if (!$('body')[0].style.backgroundColor) {
+                  nightDaySwitch();
+                }
               } else {
                 window.addEventListener("DOMContentLoaded", nightDaySwitch);
               }
             }
           } else if (atNight) {
             if (document.readyState === 'interactive' || document.readyState === 'complete') {
-              nightDaySwitch();
+              if (!$('body')[0].style.backgroundColor) {
+                nightDaySwitch();
+              }
             } else {
               window.addEventListener("DOMContentLoaded", nightDaySwitch);
             }
@@ -319,7 +337,9 @@
     if (preNightMode) {
       if (preNightMode == 1) {
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
-          nightDaySwitch();
+          if (!$('body')[0].style.backgroundColor) {
+            nightDaySwitch();
+          }
         } else {
           window.addEventListener("DOMContentLoaded", nightDaySwitch);
         }
@@ -545,7 +565,7 @@
         It's Night! 🌙 Night Mode has been On.
         <a class="menu-links" href="javascript:void(0);" onclick="nightDaySwitch();"> ☀ Switch off</a>
       </span>
-      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: 21%;"
+      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: 21%; display:none;"
         onclick="nightDaySwitch();">
         🌙 Night Mode</a>
     </h3>
