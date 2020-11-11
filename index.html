@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
-<script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
 
 <head>
+  <script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
   <script src="js/confetti.min.js"></script>
   <script src="js/sun.js"></script>
   <meta charset="UTF-8" name="viewport"
@@ -236,6 +236,19 @@
       document.getElementById("Bar").style.width = scrolled + "%";
       window.localStorage.setItem("scrollLocationIndex", winScroll);
     }
+
+    function gSponsNightSwitch() {
+      $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
+      $("#gspons").contents().find('body')[0].style.color = "white";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
+    }
+
+    function gSponsDaySwitch() {
+      $("#gspons").contents().find('article')[0].style.backgroundColor = "";
+      $("#gspons").contents().find('body')[0].style.color = "";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.png";
+    }
+
     var atNight = false;
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
@@ -265,6 +278,11 @@
         jquerycollect = $('.pic');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "";
+        }
+        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          gSponsDaySwitch();
+        } else {
+          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
         }
         targetBgColor = "#404040";
         $("#DayNight")[0].text = "🌙 Night";
@@ -298,6 +316,11 @@
         jquerycollect = $('.pic');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "none";
+        }
+        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          gSponsNightSwitch();
+        } else {
+          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
         }
         targetBgColor = "#BFBFBF";
         $("#DayNight")[0].text = "☀ Day";
@@ -597,7 +620,7 @@
         }
         string += "</tr>";
       }
-      string +=  "</table>";
+      string += "</table>";
       document.write(string);
       var loadingGrid = 0;
       var timer1 = window.setInterval("loading()", 10);
@@ -661,7 +684,7 @@
         data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800"
           preserveAspectRatio="none">
-          <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z" />
+          <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"></path>
         </svg>
       </div>
     </div>
@@ -678,20 +701,23 @@
             <a href="Texter/" target="_blank" style="margin-left: 5% ;font-size: 120%">📕 Texter</a>
             <a href="StyleTrans/" target="_blank" style="margin-left: 5% ;font-size: 120%" class="love">📱 FNST Demo</a>
           </p>
-          <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large"
-            frameborder="0" scrolling="0" width="300px" height="30px" style="margin-left: 22%;margin-top:5px;"></iframe>
-          <p>
-            <iframe src="github-sponsor.html" height="180px" width="700px"
-              title="Sponsor HollowMan6" style="margin-left: -13%;border: 0;"></iframe>
-          </p>
-          <p>
+          <div>
+            <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large"
+              frameborder="0" scrolling="0" width="300px" height="30px"
+              style="margin-left: 22%;margin-top:5px;"></iframe>
+          </div>
+          <div>
+            <p>
+              <iframe id="gspons" src="github-sponsor.html" class="pic" height="178px" width="700px"
+                title="Sponsor HollowMan6" style="margin-left: -13%;border: 0;"></iframe>
+            </p>
+          </div>
           <h3 align="center" id="About" style="margin-left: -8%;">
             <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" target="_blank"
               class="header" style="font-size: 150%;padding: 0 0% 0 2%;">About ME</a> 📄
             <a href="https://github.com/HollowMan6/HollowMan6/blob/master/个人陈述.md" target="_blank" class="header"
               style="font-size: 150%;">关于我</a>
           </h3>
-          </p>
           <p>
             <img
               src="https://camo.githubusercontent.com/b740cea63a70f388b025679d1af48af70f631d12/68747470733a2f2f6b6f6d617265762e636f6d2f67687076632f3f757365726e616d653d486f6c6c6f774d616e36267374796c653d666c61742d737175617265"
@@ -728,9 +754,7 @@
 
           <div id="HighlightedWork">
             <br />
-            <p>
             <h1 align="center">⚡ Highlighted Work</h1>
-            </p>
             <p>
               <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
                 data="https://gh-card.dev/repos/HollowMan6/My-Alibaba-Summer-of-Code.svg?link_target=_blank"></object>
@@ -746,7 +770,6 @@
               Vitae</a>
             <a href="CV/?language=cn" target="_blank" style="margin-left: 7% ;font-size: 150%" class="love">个人简历</a>
           </p>
-          <p>
           <div class="LI-profile-badge" data-iscreate="true" data-version="v1" data-size="large" data-locale="en_US"
             data-type="horizontal" data-theme="light" data-vanity="蒋嵩林" data-rendered="true" data-uid="922621"
             style="margin-left: 17%"><a class="LI-simple-link" target="_blank" href="Linkedin/">Songlin Jiang</a>
@@ -777,11 +800,9 @@
               </div>
             </div>
           </div>
-          </p>
           <p>
             <a href="mailto:hollowman@hollowman.ml" style="margin-left: 17%; font-size: 150%">Mail ME</a>
             <a href="fund.html" target="_blank" style="margin-left: 17% ;font-size: 150%" class="love">❤ Fund ME</a>
-          </p>
           </p>
           <a href="https://github.com/Hollow-Software/Software-Copyright" id="SoftwareCopyright" target="_blank"
             class="header">Software
@@ -826,8 +847,9 @@
               System
               Based on Wechat Pay</a>
           </p>
-          <a href="https://github.com/Hollow-Software/Spider-Programmes" target="_blank" id="SpiderProgrammes"
-            class="header">Spider Programmes</a>
+          <p>
+            <a href="https://github.com/Hollow-Software/Spider-Programmes" target="_blank" id="SpiderProgrammes"
+              class="header">Spider Programmes</a>
           </p>
           <p>
             <a href="https://github.com/hollowman6/Srun-LZU-Network-Auth" target="_blank"
@@ -975,9 +997,7 @@
               data="https://gh-card.dev/repos/HollowMan6/HollowMan6.github.io.svg?link_target=_blank"></object>
           </p>
           <h3 align="center">More waiting to be added ......</h3>
-          <p>
           <h1 id="Certificates">🖼 Certificates</h1>
-          </p>
           <p>
             <img class="pic"
               src="https://github.com/HollowMan6/My-Alibaba-Summer-of-Code/raw/master/2020-Arthas/Certificate.jpg"
@@ -1328,7 +1348,6 @@
             src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/certifications/badges/216/large/AdX_API_Hero_Cover_Achieve_AdX-04.png?1524024756"
             width="80px" height="80px" style="margin-left: 0.5%;margin-top: 1%;"
             onclick="window.open('https://skillshop.exceedlms.com/student/award/48863255','_blank')">
-          </p>
           <h1>&nbsp;</h1>
         </div>
       </div>

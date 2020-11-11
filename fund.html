@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
-<script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
 
 <head>
+  <script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
   <script src="js/confetti.min.js"></script>
   <script src="js/sun.js"></script>
   <meta charset="UTF-8" name="viewport"
@@ -172,6 +172,18 @@
       })
     }
 
+    function gSponsNightSwitch() {
+      $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
+      $("#gspons").contents().find('body')[0].style.color = "white";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
+    }
+
+    function gSponsDaySwitch() {
+      $("#gspons").contents().find('article')[0].style.backgroundColor = "";
+      $("#gspons").contents().find('body')[0].style.color = "";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.png";
+    }
+
     function ProgressBar() {
       var winScroll = document.getElementById("main-content").scrollTop;
       var height = document.getElementById("main-content").scrollHeight - document.body.clientHeight;
@@ -205,6 +217,11 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "";
         }
+        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          gSponsDaySwitch();
+        } else {
+          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
+        }
         $("#DayNight")[0].text = "🌙 Night";
         $("#NightMessage").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
@@ -232,6 +249,11 @@
         jquerycollect = $('.pic');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.boxShadow = "none";
+        }
+        if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          gSponsNightSwitch();
+        } else {
+          document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
         }
         $("#DayNight")[0].text = "☀ Day";
         $("#SwitchNightMode")[0].text = " ☀ Day Mode";
@@ -571,7 +593,7 @@
         data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800"
           preserveAspectRatio="none">
-          <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z" />
+          <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"></path>
         </svg>
       </div>
     </div>
@@ -585,28 +607,28 @@
           <p>
             <a href="index.html" style="margin-left: 27% ;font-size: 120%">🏠️ Back to the Home Page</a>
           </p>
-          <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large"
-            frameborder="0" scrolling="0" width="300px" height="30px" style="margin-left: 20%;margin-top:5px;"></iframe>
-          <p>
+          <div>
+            <iframe src="https://ghbtns.com/github-btn.html?user=HollowMan6&type=follow&count=true&size=large"
+              frameborder="0" scrolling="0" width="300px" height="30px"
+              style="margin-left: 20%;margin-top:5px;"></iframe>
+          </div>
           <h1 id="Funding">❤ Funding</h1>
-          </p>
-          <p>
           <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me
             to
             move forward.</h5>
           <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h4>
-          </p>
-          <p>
-            <iframe id="GitHubSponsors" src="github-sponsor.html" title="Sponsor HollowMan6"
-              height="180" width="700" style="margin-left: -13%;border: 0;"></iframe>
-          </p>
+          <div>
+            <p>
+              <iframe id="gspons" src="github-sponsor.html" class="pic" height="178px" width="700px"
+                title="Sponsor HollowMan6" style="margin-left: -13%;border: 0;"></iframe>
+            </p>
+          </div>
           <p id="Paypal">
             <a href="https://www.paypal.me/hollowman6" target="_blank"
               style="margin-left: 34%;border-left: 0px solid black;"><img
                 src="https://s3.cointelegraph.com/storage/uploads/view/3278bdc14c74dd4e85732b776d0e5b1d.png"
                 width="100px"></a>
           </p>
-          <p>
           <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;<img
               src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729" width="3%"> Monero
           </h2>
@@ -615,15 +637,11 @@
           <h5 style="margin-left: 15%;">
             46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
           </h5>
-          </p>
-          <p>
           <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
               src="https://epayments.developer-ingenico.com/shared-images/content/logos/paymentproducts/pp_logo_863_v1.png"
               style="margin-left: -2%;" width="5%">WeChat Tip</h2>
           <img class="pic" src="img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
             onclick="window.open('https://www.wechat.com','_blank')">
-          </p>
-          <p>
           <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
               src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
               width="3%"> Alipay</h2>
@@ -631,7 +649,6 @@
             onclick="window.open('https://www.alipay.com','_blank')">
           <img class="pic" src="img/Red-Pack.jpg" width="247px" height="385px"
             style="margin-left: 2%; border-radius: 10px;" onclick="window.open('https://www.alipay.com','_blank')">
-          </p>
           <p>
             <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" id="About"
               target="_blank" class="header">📄 About ME</a>
