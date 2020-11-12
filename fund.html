@@ -266,7 +266,7 @@
         $("#DayNight")[0].text = "☀ Day";
         $("#SwitchNightMode")[0].text = " ☀ Day Mode";
         if (atNight) {
-          $("#SwitchNightMode")[0].style.display = "none";
+          $("#SwitchNightMode")[0].style.display = "";
           $("#NightMessage").fadeIn();
         }
       }
@@ -284,6 +284,9 @@
       var url = "https://geoip-db.com/json/";
       var latitude = null;
       var longitude = null;
+      var countryName = "";
+      var city = "";
+      var state = "";
       var request = new XMLHttpRequest();
       request.open("get", url);
       request.send(null);
@@ -294,6 +297,15 @@
             try {
               latitude = json["latitude"];
               longitude = json["longitude"];
+              if (json["country_name"]) {
+                countryName = json["country_name"];
+              }
+              if (json["city"]) {
+                city = json["city"];
+              }
+              if (json["state"]) {
+                state = json["state"];
+              }
             } catch (e) { }
           }
           if (latitude && longitude) {
@@ -304,6 +316,12 @@
               atNight = true;
             } else {
               atNight = false;
+            }
+            if (city || state || countryName) {
+              document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " + countryName;
+              $("#location").fadeIn();
+              document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " + state + ", " + countryName;
+              $("#locationInMenu").fadeIn();
             }
           } else {
             var hour = new Date().getHours();
@@ -556,18 +574,20 @@
     <br />
     <h1 style="margin-left: 30%;"><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
       Loading...</h1>
-    <h1 style="margin-left: 29%;">Please Wait ❤</h1>
     <h2 style="margin-left: 11%;">(建议科学上网，否则有些图片可能无法显示！)</h2>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
-    <h3 style="margin-left: 10%;">
-      <span id="NightMessage" style="display:none;">
-        It's Night! 🌙 Night Mode has been On.
-        <a class="menu-links" href="javascript:void(0);" onclick="nightDaySwitch();"> ☀ Switch off</a>
-      </span>
-      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: 21%; display:none;"
+    <h3 align="center">
+      <a id="SwitchNightMode" class="menu-links" href="javascript:void(0);" style="margin-left: -10%; display:none;"
         onclick="nightDaySwitch();">
         🌙 Night Mode</a>
+      <br />
+      <a id="location" class="menu-links" style="margin-left: -8%;font-size: 15px; display: none;"
+        href="https://geoip-db.com/json/" target="_blank"></a>
+      <br />
+      <span id="NightMessage" style="margin-left: -8%;display:none;">
+        It's Night! 🌙 Night Mode has been On.
+      </span>
     </h3>
   </div>
   <div class="container" style="display:none;">
@@ -604,8 +624,9 @@
           <a class="menu-links" href="javascript:void(0);" style="float: left;"
             onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
             Top</a>
-          <a class="menu-links" id="DayNight" style="float: left;" href="javascript:void(0);"
-            onclick="nightDaySwitch();">🌙 Night</a>
+          <a class="menu-links" id="DayNight" href="javascript:void(0);" onclick="nightDaySwitch();">🌙 Night</a>
+          <a class="menu-links" id="locationInMenu" style="font-size: 15px; display: none;"
+            href="https://geoip-db.com/json/" target="_blank"></a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
