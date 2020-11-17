@@ -283,14 +283,14 @@
     });
 
     var preNightMode = window.sessionStorage.getItem("Night");
+    var countryName = "";
+    var city = "";
+    var state = "";
 
     function CheckatNight() {
       var url = "https://geoip-db.com/json/";
       var latitude = null;
       var longitude = null;
-      var countryName = "";
-      var city = "";
-      var state = "";
       var request = new XMLHttpRequest();
       request.open("get", url);
       request.send(null);
@@ -329,7 +329,7 @@
                 $("#locationInMenu").fadeIn();
               }
               else {
-                window.addEventListener("DOMContentLoaded", function (city, state, countryName) {
+                window.addEventListener("DOMContentLoaded", function () {
                   document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " + countryName;
                   $("#location").fadeIn();
                   document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " + state + ", " + countryName;
