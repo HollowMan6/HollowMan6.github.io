@@ -17,13 +17,24 @@
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-    console.info("%cThank you for your sponsor ❤!\n感谢您的捐助 ❤！", 'color:red;font-weight:bold');
-    console.info("📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io");
-    if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
-      console.info("🌏 网站地址 Website URL: https://hollowman.ml/fund.html");
-      console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡");
+    if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent.indexOf('Firefox') > -1) {
+      console.info("%cThank you for your sponsor ❤!\n感谢您的捐助 ❤！", 'color:red;font-weight:bold');
+      console.info("%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io", 'font-weight:bold');
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
+        console.info("%c🌏 网站地址 Website URL: https://hollowman.ml/fund.html", 'font-weight:bold');
+        console.info("%c🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡", 'font-weight:bold');
+      } else {
+        console.info("%c🌏 网站地址 Website URL: https://hollowman6.gitee.io/fund.html", 'font-weight:bold');
+      }
     } else {
-      console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/fund.html");
+      console.info("Thank you for your sponsor ❤!\n感谢您的捐助 ❤！");
+      console.info("📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io");
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
+        console.info("🌏 网站地址 Website URL: https://hollowman.ml/fund.html");
+        console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡");
+      } else {
+        console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/fund.html");
+      }
     }
     $({ property: 0 }).animate({ property: 97 }, {
       duration: 3000,
@@ -62,7 +73,15 @@
       loadingTimeOut();
       clearTimeout(timerout);
     }
-    timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
+    timerout = null;
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
+    }
+    else {
+      window.addEventListener("DOMContentLoaded", function () {
+        timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
+      });
+    }
   </script>
   <style type="text/css">
     body {
