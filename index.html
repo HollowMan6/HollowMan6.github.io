@@ -17,10 +17,14 @@
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-    console.log("%cWelcome to my Home Page!\n欢迎访问我的主页！", 'color:red');
+    console.info("%cWelcome to my Home Page!\n欢迎访问我的主页！", 'color:red;font-weight:bold');
     console.log("📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io");
-    console.log("🌏 网站地址 Website URL: https://www.hollowman.ml/");
-    console.log("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡")
+    if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
+      console.log("🌏 网站地址 Website URL: https://hollowman.ml/");
+      console.log("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡");
+    } else {
+      console.log("🌏 网站地址 Website URL: https://hollowman6.gitee.io/");
+    }
     $({ property: 0 }).animate({ property: 97 }, {
       duration: 3000,
       step: function () {
