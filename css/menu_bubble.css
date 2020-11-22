@@ -69,7 +69,7 @@ body,
 	right: 0.5em;
 	bottom: 0.5em;
 	left: 0.5em;
-	background: linear-gradient(#373a47 20%, transparent 20%, transparent 40%, #373a47 40%, #373a47 60%, transparent 60%, transparent 80%, #373a47 80%);
+	background: linear-gradient(#5d5e63 20%, transparent 20%, transparent 40%, #5d5e63 40%, #5d5e63 60%, transparent 60%, transparent 80%, #5d5e63 80%);
 	content: '';
 }
 
