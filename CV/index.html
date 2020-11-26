@@ -11,12 +11,13 @@
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta name="Author" content="Hollow Man" />
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
 
-    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js" integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js"
+        integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
     <script src="https://g.alicdn.com/code/lib/axios/0.18.0/axios.min.js"></script>
 
     <title>Hollow Man's CV</title>
@@ -34,10 +35,14 @@
 </head>
 
 <body>
-    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js" integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg==" crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg=="
         crossorigin="anonymous"></script>
+    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    </script>
 
     <div id="app">
 
@@ -64,11 +69,17 @@
                         <a class="nav-link" v-bind:href="currentLinkedinUrl()" target="_blank">Linkedin</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="https://scholar.google.com/citations?user=F7Z3Fd0AAAAJ"
+                            target="_blank">Google Scholar</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="mailto:hollowman186@vip.qq.com" target="_blank">Mail ME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" target="_blank">
-                        Personal Statement</a>
+                        <a class="nav-link"
+                            href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md"
+                            target="_blank">
+                            Personal Statement</a>
                     </li>
                 </ul>
             </div>
@@ -80,7 +91,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="language-addon">Language</span>
                         </div>
-                        <select class="form-control" v-model="language" class="custom-select" v-on:change="languageChange($event)">
+                        <select class="form-control" v-model="language" class="custom-select"
+                            v-on:change="languageChange($event)">
                             <option v-for="l in languages" v-bind:value="l.value">
                                 {{ l.text }}
                             </option>
@@ -89,9 +101,9 @@
             </form>
 
         </nav>
-        <div id="showPdf"  class="container-fluid px-0">
-            <iframe id="pdfContainer" v-bind:src="currentPdf()"
-            v-bind:style="{height: (calculatePdfSize()-5) + 'px' }" width="100%" frameborder="0"></iframe>
+        <div id="showPdf" class="container-fluid px-0">
+            <iframe id="pdfContainer" v-bind:src="currentPdf()" v-bind:style="{height: (calculatePdfSize()-5) + 'px' }"
+                width="100%" frameborder="0"></iframe>
         </div>
     </div>
 </body>
@@ -112,11 +124,18 @@
     var app = new Vue({
         el: '#app',
         data: {
-            pdfName:"CV-Songlin-Jiang-English.pdf",
+            pdfName: "CV-Songlin-Jiang-English.pdf",
             language: 'en',
-            languages: [
-                { pdf: 'CV-Songlin-Jiang-English.pdf', text: 'English', value: 'en' },
-                { pdf: 'CV-Songlin-Jiang-Chinese.pdf', text: '中文', value: 'cn' }
+            languages: [{
+                    pdf: 'CV-Songlin-Jiang-English.pdf',
+                    text: 'English',
+                    value: 'en'
+                },
+                {
+                    pdf: 'CV-Songlin-Jiang-Chinese.pdf',
+                    text: '中文',
+                    value: 'cn'
+                }
             ],
         },
         methods: {
@@ -127,7 +146,7 @@
                 return window.location.href.split(/[?#]/)[0];
             },
             currentLinkedinUrl: function () {
-                return "../Linkedin/?language="+ this.language;
+                return "../Linkedin/?language=" + this.language;
             },
             currentPdf: function () {
                 for (index in this.languages) {
@@ -135,7 +154,7 @@
                         this.pdfName = this.languages[index].pdf;
                     }
                 }
-                return "pdfjs/web/viewer.html?file=../../"+ this.pdfName +"#page=1";
+                return "pdfjs/web/viewer.html?file=../../" + this.pdfName + "#page=1";
             },
             calculatePdfSize: function () {
                 var e = window;
@@ -156,7 +175,6 @@
             }
         }
     })
-
 </script>
 
 

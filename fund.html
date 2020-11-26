@@ -17,9 +17,12 @@
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
-    if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent.indexOf('Firefox') > -1) {
+    if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent
+      .indexOf('Firefox') > -1) {
       console.info("%cThank you for your sponsor ❤!\n感谢您的捐助 ❤！", 'color:red;font-weight:bold');
-      console.info("%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io", 'font-weight:bold');
+      console.info(
+        "%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io",
+        'font-weight:bold');
       if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
         console.info("%c🌏 网站地址 Website URL: https://hollowman.ml/fund.html", 'font-weight:bold');
         console.info("%c🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡", 'font-weight:bold');
@@ -28,7 +31,9 @@
       }
     } else {
       console.info("Thank you for your sponsor ❤!\n感谢您的捐助 ❤！");
-      console.info("📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io");
+      console.info(
+        "📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io"
+        );
       if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
         console.info("🌏 网站地址 Website URL: https://hollowman.ml/fund.html");
         console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡");
@@ -36,7 +41,11 @@
         console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/fund.html");
       }
     }
-    $({ property: 0 }).animate({ property: 97 }, {
+    $({
+      property: 0
+    }).animate({
+      property: 97
+    }, {
       duration: 3000,
       step: function () {
         var percentage = Math.round(this.property);
@@ -48,17 +57,19 @@
     };
 
     var scrollLocationFund = window.localStorage.getItem("scrollLocationFund");
+
     function loadcomplete(skip) {
       if (document.readyState == "complete" || skip) {
-        $("#progress").addClass("done");//完成，隐藏进度条
+        $("#progress").addClass("done"); //完成，隐藏进度条
         $("#loading").fadeOut("slow");
         $(".container").slideDown(3000);
         document.getElementById("open-button").click()
         confetti.start(3000);
         if (window.location.hash) {
-          setTimeout("$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();", 3000);
-        }
-        else if (scrollLocationFund) {
+          setTimeout(
+            "$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
+            3000);
+        } else if (scrollLocationFund) {
           setTimeout("$('#main-content').animate({ scrollTop: scrollLocationFund }, 500);", 3000);
         }
       }
@@ -75,11 +86,14 @@
     }
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
-      timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
-    }
-    else {
+      timerout = setTimeout(
+        "if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}",
+        60000);
+    } else {
       window.addEventListener("DOMContentLoaded", function () {
-        timerout = setTimeout("if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}", 60000);
+        timerout = setTimeout(
+          "if(document.readyState != 'complete'){alert('一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}",
+          60000);
       });
     }
   </script>
@@ -174,6 +188,7 @@
         confetti.stop();
       }
     })
+
     function textUp(e, time, arr, heightUp) {
       var lists = Math.floor(Math.random() * arr.length);
       var colors = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
@@ -219,6 +234,7 @@
       window.localStorage.setItem("scrollLocationFund", winScroll);
     }
     var atNight = false;
+
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
         window.sessionStorage.setItem("Night", 0);
@@ -233,7 +249,8 @@
         $(".LI-name > a")[0].style.color = "";
         $(".LI-title")[0].style.color = "";
         $(".LI-field > a")[0].style.color = "";
-        $(".LI-icon")[0].src = "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
+        $(".LI-icon")[0].src =
+        "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
         $(".menu")[0].style.backgroundColor = "";
         $(".menu-wrap")[0].style.backgroundColor = "";
         $(".morph-shape").show();
@@ -246,7 +263,8 @@
           jquerycollect[i].style.boxShadow = "";
         }
         try {
-          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document
+            .getElementById("gspons").contentWindow.document.readyState === 'complete') {
             gSponsDaySwitch();
           } else {
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsDaySwitch);
@@ -284,7 +302,8 @@
           jquerycollect[i].style.boxShadow = "none";
         }
         try {
-          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document.getElementById("gspons").contentWindow.document.readyState === 'complete') {
+          if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document
+            .getElementById("gspons").contentWindow.document.readyState === 'complete') {
             gSponsNightSwitch();
           } else {
             document.getElementById("gspons").contentWindow.addEventListener("DOMContentLoaded", gSponsNightSwitch);
@@ -335,7 +354,7 @@
               if (json["state"]) {
                 state = json["state"];
               }
-            } catch (e) { }
+            } catch (e) {}
           }
           if (latitude && longitude) {
             var sunset = new Date().sunset(latitude, longitude);
@@ -348,16 +367,19 @@
             }
             if (city || state || countryName) {
               if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " + countryName;
+                document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " +
+                  countryName;
                 $("#location").fadeIn();
-                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " + state + ", " + countryName;
+                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " +
+                  state + ", " + countryName;
                 $("#locationInMenu").fadeIn();
-              }
-              else {
+              } else {
                 window.addEventListener("DOMContentLoaded", function () {
-                  document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " + countryName;
+                  document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state +
+                    ", " + countryName;
                   $("#location").fadeIn();
-                  document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " + state + ", " + countryName;
+                  document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city +
+                    ", " + state + ", " + countryName;
                   $("#locationInMenu").fadeIn();
                 });
               }
@@ -401,8 +423,7 @@
           window.addEventListener("DOMContentLoaded", nightDaySwitch);
         }
       }
-    }
-    else {
+    } else {
       CheckatNight();
     }
   </script>
@@ -601,7 +622,35 @@
   </script>
   <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887">
   </script>
-  <script>L2Dwidget.init({ pluginRootPath: "live2dw/", model: { scale: .8, hHeadPos: .5, vHeadPos: .618, jsonPath: "live2dw/assets/tororo.model.json" }, display: { superSample: 2, width: 150, height: 300, position: "right", hOffset: -70, vOffset: -100 }, mobile: { show: 1, scale: 0.25, motion: 1 }, react: { opacityDefault: 1, opacityOnHover: .2 }, log: !1, tagMode: !1 })
+  <script>
+    L2Dwidget.init({
+      pluginRootPath: "live2dw/",
+      model: {
+        scale: .8,
+        hHeadPos: .5,
+        vHeadPos: .618,
+        jsonPath: "live2dw/assets/tororo.model.json"
+      },
+      display: {
+        superSample: 2,
+        width: 150,
+        height: 300,
+        position: "right",
+        hOffset: -70,
+        vOffset: -100
+      },
+      mobile: {
+        show: 1,
+        scale: 0.25,
+        motion: 1
+      },
+      react: {
+        opacityDefault: 1,
+        opacityOnHover: .2
+      },
+      log: !1,
+      tagMode: !1
+    })
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
@@ -734,9 +783,11 @@
               target="_blank" class="header">📄 About ME</a>
           </p>
           <p>
-            <a href="CV/?language=en" style="margin-left: 17%; font-size: 150%" target="_blank" class="love">Curriculum
+            <a href="CV/?language=en" target="_blank" style="margin-left: 3%; font-size: 150%" class="love">👦Curriculum
               Vitae</a>
-            <a href="CV/?language=cn" style="margin-left: 7% ;font-size: 150%" target="_blank" class="love">个人简历</a>
+            <a href="CV/?language=cn" target="_blank" style="margin-left: 3% ;font-size: 150%" class="love">👦个人简历</a>
+            <a href="https://scholar.google.com/citations?user=F7Z3Fd0AAAAJ" target="_blank"
+              style="margin-left: 3% ;font-size: 150%" class="love">📝Google Scholar</a>
           </p>
           <div class="LI-profile-badge" data-iscreate="true" data-version="v1" data-size="large" data-locale="en_US"
             data-type="horizontal" data-theme="light" data-vanity="蒋嵩林" data-rendered="true" data-uid="922621"
@@ -765,8 +816,8 @@
             </div>
           </div>
           <p>
-            <a href="mailto:hollowman@hollowman.ml" style="margin-left: 38%; font-size: 150%">Mail ME</a>
-          <h1>&nbsp;</h1>
+            <a href="mailto:hollowman@hollowman.ml" style="margin-left: 38%; font-size: 150%">📫Mail ME</a>
+            <h1>&nbsp;</h1>
         </div>
       </div>
     </div><!-- /content-wrap -->
