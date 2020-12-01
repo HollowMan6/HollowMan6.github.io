@@ -299,6 +299,17 @@
     }
 
     var atNight = false;
+    const changeFavicon = link => {
+      let $favicon = document.querySelector('link[rel="icon"]');
+      if ($favicon !== null) {
+        $favicon.href = link;
+      } else {
+        $favicon = document.createElement("link");
+        $favicon.rel = "icon";
+        $favicon.href = link;
+        document.head.appendChild($favicon);
+      }
+    };
 
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
@@ -354,6 +365,8 @@
         $("#NightMessage").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
+        let icon = 'favicon.png';
+        changeFavicon(icon);
       } else {
         window.sessionStorage.setItem("Night", 1);
         $('body')[0].style.backgroundColor = "#111111";
@@ -408,6 +421,8 @@
           $("#SwitchNightMode")[0].style.display = "";
           $("#NightMessage").fadeIn();
         }
+        let icon = 'favicon.ico';
+        changeFavicon(icon);
       }
     }
 
@@ -818,7 +833,7 @@
         🌙 Night Mode</a>
       <br />
       <a id="location" class="menu-links" style="margin-left: -8%;font-size: 15px; display: none;"
-        href="https://geoip-db.com/json/" target="_blank"></a>
+        href="https://whatismyipaddress.com/" target="_blank"></a>
       <br />
       <span id="NightMessage" style="margin-left: -8%;display:none;">
         It's Night! 🌙 Night Mode has been On.
@@ -867,7 +882,7 @@
             Top</a>
           <a class="menu-links" id="DayNight" href="javascript:void(0);" onclick="nightDaySwitch();">🌙 Night</a>
           <a class="menu-links" id="locationInMenu" style="font-size: 15px; display: none;"
-            href="https://geoip-db.com/json/" target="_blank"></a>
+            href="https://whatismyipaddress.com/" target="_blank"></a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
@@ -1392,7 +1407,7 @@
             <img class="pic" src="img/badges/advanced-data-science-specialist.1.png" width="140px" height="140px"
               style="margin-left: 1%;margin-top: 1%;"
               onclick="window.open('https://www.youracclaim.com/badges/45ce9ffa-1ebc-4714-9352-8c8aa74ff1f9/public_url','_blank')">
-              <img class="pic" src="img/badges/introduction-to-cybersecurity.png" width="140px" height="140px"
+            <img class="pic" src="img/badges/introduction-to-cybersecurity.png" width="140px" height="140px"
               style="margin-left: 1%;margin-top: 1%;"
               onclick="window.open('https://www.youracclaim.com/badges/5fd553f3-1a60-4e50-87c8-26178f785d4c/public_url','_blank')">
             <img class="pic" src="img/badges/data-science-orientation.png" width="140px" height="140px"
