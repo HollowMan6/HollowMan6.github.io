@@ -365,7 +365,7 @@
         $("#NightMessage").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
-        let icon = 'favicon.png';
+        let icon = 'favicon.ico';
         changeFavicon(icon);
       } else {
         window.sessionStorage.setItem("Night", 1);
@@ -421,7 +421,7 @@
           $("#SwitchNightMode")[0].style.display = "";
           $("#NightMessage").fadeIn();
         }
-        let icon = 'favicon.ico';
+        let icon = 'favicon.png';
         changeFavicon(icon);
       }
     }
