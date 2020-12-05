@@ -206,6 +206,7 @@
         top: yy,
         left: xx,
         color: colors,
+        font: 'italic bold 12px/20px arial,sans-serif',
         transform: 'translate(-50%, -50%)',
         display: 'block',
         position: 'absolute',
@@ -239,7 +240,7 @@
       window.localStorage.setItem("scrollLocationFund", winScroll);
     }
     var atNight = false;
-    const changeFavicon = link => {
+    const changeFavicon = function(link) {
       let $favicon = document.querySelector('link[rel="icon"]');
       if ($favicon !== null) {
         $favicon.href = link;
