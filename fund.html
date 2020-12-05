@@ -100,6 +100,11 @@
   <style type="text/css">
     body {
       margin: 0;
+      cursor: url('img/cursor/normal.cur'), default;
+    }
+
+    a {
+      cursor: url('img/cursor/link.cur'), pointer;
     }
 
     .ProgressBar {
@@ -204,7 +209,7 @@
         transform: 'translate(-50%, -50%)',
         display: 'block',
         position: 'absolute',
-        zIndex: 999999999999
+        zIndex: -1
       })
       $i.animate({
         top: yy - (heightUp ? heightUp : 200),
@@ -665,7 +670,8 @@
       },
       log: !1,
       tagMode: !1
-    })
+    });
+    document.onselectstart=function(){return false;};
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
