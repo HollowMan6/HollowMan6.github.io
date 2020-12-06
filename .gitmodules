@@ -1,3 +1,3 @@
 [submodule "blockly-master"]
-	path = FreDuino/blockly-master
+	path = "FreDuino/blockly-master"
 	url = https://github.com/google/blockly.git
