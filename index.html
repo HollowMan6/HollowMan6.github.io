@@ -305,7 +305,7 @@
     }
 
     var atNight = false;
-    const changeFavicon = function(link) {
+    const changeFavicon = function (link) {
       let $favicon = document.querySelector('link[rel="icon"]');
       if ($favicon !== null) {
         $favicon.href = link;
@@ -461,10 +461,10 @@
                 countryName = json["country_name"];
               }
               if (json["city"]) {
-                city = json["city"];
+                city = json["city"] + ", ";
               }
               if (json["state"]) {
-                state = json["state"];
+                state = json["state"] + ", ";
               }
             } catch (e) {}
           }
@@ -479,19 +479,31 @@
             }
             if (city || state || countryName) {
               if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " +
+                document.getElementById("location").innerText = "Your Location By IP: " + city + state + countryName;
+                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + state +
                   countryName;
+                if (!countryName) {
+                  document.getElementById("location").innerText = document.getElementById("location").innerText
+                    .substr(0, document.getElementById("location").innerText.length - 2);
+                  document.getElementById("locationInMenu").innerText = document.getElementById("locationInMenu")
+                    .innerText.substr(0, document.getElementById("locationInMenu").innerText.length - 2);
+                }
                 $("#location").fadeIn();
-                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " +
-                  state + ", " + countryName;
                 $("#locationInMenu").fadeIn();
               } else {
                 window.addEventListener("DOMContentLoaded", function () {
-                  document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state +
-                    ", " + countryName;
-                  $("#location").fadeIn();
+                  document.getElementById("location").innerText = "Your Location By IP: " + city + state +
+                    countryName;
                   document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city +
-                    ", " + state + ", " + countryName;
+                    state + countryName;
+                  if (!countryName) {
+                    document.getElementById("location").innerText = document.getElementById("location").innerText
+                      .substr(0, document.getElementById("location").innerText.length - 2);
+                    document.getElementById("locationInMenu").innerText = document.getElementById(
+                      "locationInMenu").innerText.substr(0, document.getElementById("locationInMenu").innerText
+                      .length - 2);
+                  }
+                  $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
                 });
               }
@@ -807,7 +819,9 @@
       log: !1,
       tagMode: !1
     });
-    document.onselectstart=function(){return false;};
+    document.onselectstart = function () {
+      return false;
+    };
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />

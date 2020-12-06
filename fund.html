@@ -33,7 +33,7 @@
       console.info("Thank you for your sponsor ❤!\n感谢您的捐助 ❤！");
       console.info(
         "📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io"
-        );
+      );
       if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
         console.info("🌏 网站地址 Website URL: https://hollowman.ml/fund.html");
         console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io/fund.html 来获得更快的加载速度！⚡⚡⚡");
@@ -240,7 +240,7 @@
       window.localStorage.setItem("scrollLocationFund", winScroll);
     }
     var atNight = false;
-    const changeFavicon = function(link) {
+    const changeFavicon = function (link) {
       let $favicon = document.querySelector('link[rel="icon"]');
       if ($favicon !== null) {
         $favicon.href = link;
@@ -267,7 +267,7 @@
         $(".LI-title")[0].style.color = "";
         $(".LI-field > a")[0].style.color = "";
         $(".LI-icon")[0].src =
-        "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
+          "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
         $(".menu")[0].style.backgroundColor = "";
         $(".menu-wrap")[0].style.backgroundColor = "";
         $(".morph-shape").show();
@@ -370,10 +370,10 @@
                 countryName = json["country_name"];
               }
               if (json["city"]) {
-                city = json["city"];
+                city = json["city"] + ", ";
               }
               if (json["state"]) {
-                state = json["state"];
+                state = json["state"] + ", ";
               }
             } catch (e) {}
           }
@@ -388,19 +388,31 @@
             }
             if (city || state || countryName) {
               if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state + ", " +
+                document.getElementById("location").innerText = "Your Location By IP: " + city + state + countryName;
+                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + state +
                   countryName;
+                if (!countryName) {
+                  document.getElementById("location").innerText = document.getElementById("location").innerText
+                    .substr(0, document.getElementById("location").innerText.length - 2);
+                  document.getElementById("locationInMenu").innerText = document.getElementById("locationInMenu")
+                    .innerText.substr(0, document.getElementById("locationInMenu").innerText.length - 2);
+                }
                 $("#location").fadeIn();
-                document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city + ", " +
-                  state + ", " + countryName;
                 $("#locationInMenu").fadeIn();
               } else {
                 window.addEventListener("DOMContentLoaded", function () {
-                  document.getElementById("location").innerText = "Your Location By IP: " + city + ", " + state +
-                    ", " + countryName;
-                  $("#location").fadeIn();
+                  document.getElementById("location").innerText = "Your Location By IP: " + city + state +
+                    countryName;
                   document.getElementById("locationInMenu").innerHTML = "Your Location By IP: <br/>" + city +
-                    ", " + state + ", " + countryName;
+                    state + countryName;
+                  if (!countryName) {
+                    document.getElementById("location").innerText = document.getElementById("location").innerText
+                      .substr(0, document.getElementById("location").innerText.length - 2);
+                    document.getElementById("locationInMenu").innerText = document.getElementById(
+                      "locationInMenu").innerText.substr(0, document.getElementById("locationInMenu").innerText
+                      .length - 2);
+                  }
+                  $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
                 });
               }
@@ -672,7 +684,9 @@
       log: !1,
       tagMode: !1
     });
-    document.onselectstart=function(){return false;};
+    document.onselectstart = function () {
+      return false;
+    };
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
