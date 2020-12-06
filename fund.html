@@ -194,7 +194,7 @@
       if (confetti.isRunning()) {
         confetti.stop();
       }
-    })
+    });
 
     function textUp(e, time, arr, heightUp) {
       var lists = Math.floor(Math.random() * arr.length);
@@ -261,7 +261,7 @@
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
         $('#toppic2')[0].src = "img/logo.gif";
-        var jquerycollect = $('a.header')
+        var jquerycollect = $('a.header');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
         }
