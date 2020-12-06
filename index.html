@@ -15,6 +15,8 @@
   <meta name="Author" content="Hollow Man" />
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
+  <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
+  <script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
     if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent
@@ -88,12 +90,12 @@
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       timerout = setTimeout(
-        "if(document.readyState != 'complete'){alert('有一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}",
+        "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
         60000);
     } else {
       window.addEventListener("DOMContentLoaded", function () {
         timerout = setTimeout(
-          "if(document.readyState != 'complete'){alert('有一些资源加载超时\\nTime out for loading some resources');loadingTimeOut();}",
+          "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
           60000);
       });
     }
