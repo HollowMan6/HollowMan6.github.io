@@ -1,4 +1,15 @@
+
+
 /**
+ * 
+ *  Modified by Hollow Man so that the specified time is always between sunrise and sunset time.
+ * 
+ *  Copyright © 2020 hollowman6 from Lanzhou University (兰州大学).
+ * 
+ */
+
+/**
+ * 
  *	Sunrise/sunset script. By Matt Kane. 
  * 
  *  Based loosely and indirectly on Kevin Boone's SunTimes Java implementation 
@@ -86,6 +97,15 @@ Date.prototype.sunriseSet = function(latitude, longitude, sunrise, zenith) {
 	time = localMeanTime - (longitude / Date.DEGREES_PER_HOUR);
 	time = Math.mod(time, 24);
 
+	localHourAngleReverse = 360 - localHourAngle;
+
+	localHourReverse = localHourAngleReverse / Date.DEGREES_PER_HOUR;
+
+	localMeanTimeReverse = localHourReverse + rightAscension - (0.06571 * approxTimeOfEventInDays) - 6.622;
+
+	timeReverse = localMeanTimeReverse - (longitude / Date.DEGREES_PER_HOUR);
+	timeReverse = Math.mod(timeReverse, 24);
+
 	var midnight = new Date(0);
 		midnight.setUTCFullYear(this.getUTCFullYear());
 		midnight.setUTCMonth(this.getUTCMonth());
@@ -95,8 +115,31 @@ Date.prototype.sunriseSet = function(latitude, longitude, sunrise, zenith) {
 
 	var milli = midnight.getTime() + (time * 60 *60 * 1000);
 
+	var caculatedTime = new Date(milli);
+	var caculatedTimeReverse = new Date(midnight.getTime() + (timeReverse * 60 *60 * 1000));
 
-	return new Date(milli);
+	var caculatedTimeTest = caculatedTime;
+	var caculatedTimeReverseTest = caculatedTimeReverse;
+
+	for(var i=0;i<3;i++){
+		if (caculatedTimeTest > this && this > caculatedTimeReverseTest || caculatedTimeTest < this && this < caculatedTimeReverseTest) {
+			caculatedTime = caculatedTimeTest;
+			break;
+		} else if (i==0) {
+			caculatedTimeTest = new Date(caculatedTime.getTime() - (24 * 60 *60 * 1000));
+			if (Math.abs(caculatedTimeReverseTest.getTime() - caculatedTimeTest.getTime()) > (24 * 60 *60 * 1000)){
+				caculatedTimeTest = caculatedTime;
+			}
+		} else if (i==1) {
+			caculatedTimeTest = new Date(caculatedTime.getTime() + (24 * 60 *60 * 1000));
+			if (Math.abs(caculatedTimeReverseTest.getTime() - caculatedTimeTest.getTime()) > (24 * 60 *60 * 1000)){
+				caculatedTimeTest = caculatedTime;
+			}
+		}
+	}
+
+
+	return caculatedTime;
 }
 
 Date.DEGREES_PER_HOUR = 360 / 24;
