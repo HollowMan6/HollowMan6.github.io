@@ -69,4 +69,6 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 
 * The web page will automatically remember where you visit each time.
 
-* When the time set by your computer is between sunset and sunrise at your location reflected in your IP address, the website will automatically turn on the night mode.
+* When your system is set in dark mode, the website will follow, else, if the time set by your computer is between sunset and sunrise at your location reflected in your IP address, the website will automatically turn on the night mode.
+
+* You can disable following your system's dark mode forever, but it won't remember your choice of the night mode forever but in a session.

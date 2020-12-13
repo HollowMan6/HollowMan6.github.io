@@ -256,7 +256,10 @@
 
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
-        window.sessionStorage.setItem("Night", 0);
+        if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
+            "followSystemTheme")) {
+          window.sessionStorage.setItem("Night", 0);
+        }
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
@@ -293,12 +296,17 @@
         }
         $("#DayNight")[0].text = "🌙 Night";
         $("#NightMessage").fadeOut();
+        $("#FollowSystemMessage").fadeOut();
+        $("#FollowSystemMessageInMenu").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
         let icon = 'favicon.ico';
         changeFavicon(icon);
       } else {
-        window.sessionStorage.setItem("Night", 1);
+        if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
+            "followSystemTheme")) {
+          window.sessionStorage.setItem("Night", 1);
+        }
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
         $('#toppic1')[0].src = "img/logo-night.gif";
@@ -448,6 +456,22 @@
         }
       }
     }
+
+    function systemTheme() {
+      nightDaySwitch();
+      $("#FollowSystemMessage").fadeIn();
+      $("#FollowSystemMessageInMenu").fadeIn();
+    }
+
+    function disableFollowing() {
+      nightDaySwitch();
+      window.localStorage.setItem("followSystemTheme", 0);
+      $("#FollowSystemMessage").fadeOut();
+      $("#FollowSystemMessageInMenu").fadeOut();
+      window.localStorage.removeItem("Night");
+      CheckatNight();
+    }
+
     if (preNightMode) {
       if (preNightMode == 1) {
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
@@ -457,6 +481,15 @@
         } else {
           window.addEventListener("DOMContentLoaded", nightDaySwitch);
         }
+      }
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !window.localStorage.getItem(
+        "followSystemTheme")) {
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        if (!$('body')[0].style.backgroundColor) {
+          systemTheme();
+        }
+      } else {
+        window.addEventListener("DOMContentLoaded", systemTheme);
       }
     } else {
       CheckatNight();
@@ -714,6 +747,11 @@
       <span id="NightMessage" style="margin-left: -8%;display:none;">
         It's Night! 🌙 Night Mode has been On.
       </span>
+      <a class="menu-links" id="FollowSystemMessage" href="javascript:void(0);"
+        style="font-size: 18px; color: rgb(191, 191, 191); margin-left: -8%; display: none;"
+        onmouseover="this.innerHTML='Disable Following';this.style.fontSize='22px';"
+        onmouseout="this.innerHTML='Following System\'s Dark Mode.';this.style.fontSize='18px';"
+        onclick="disableFollowing();">Following System's Dark Mode.</a>
     </h3>
   </div>
   <div class="container" style="display:none;">
@@ -753,6 +791,11 @@
           <a class="menu-links" id="DayNight" href="javascript:void(0);" onclick="nightDaySwitch();">🌙 Night</a>
           <a class="menu-links" id="locationInMenu" style="font-size: 15px; display: none;"
             href="https://whatismyipaddress.com/" target="_blank"></a>
+          <a class="menu-links" id="FollowSystemMessageInMenu" href="javascript:void(0);"
+            style="font-size: 14px; display: none;"
+            onmouseover="this.innerHTML='Disable Following';this.style.fontSize='18px';this.style.marginLeft='15px'"
+            onmouseout="this.innerHTML='Following System\'s Dark Mode.';this.style.fontSize='14px';this.style.marginLeft=''"
+            onclick="disableFollowing();">Following System's Dark Mode.</a>
         </div>
       </nav>
       <button class="close-button" id="close-button">Close Menu</button>
