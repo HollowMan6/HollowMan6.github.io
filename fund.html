@@ -226,12 +226,14 @@
       $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
       $("#gspons").contents().find('body')[0].style.color = "white";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
+      $("#gspons").contents().find('.btn')[0].style.filter = "invert(0.8)";
     }
 
     function gSponsDaySwitch() {
       $("#gspons").contents().find('article')[0].style.backgroundColor = "";
       $("#gspons").contents().find('body')[0].style.color = "";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon.png";
+      $("#gspons").contents().find('.btn')[0].style.filter = "";
     }
 
     function ProgressBar() {
@@ -268,6 +270,7 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
         }
+        $('#github-btn')[0].style.filter = "";
         $(".LI-name > a")[0].style.color = "";
         $(".LI-title")[0].style.color = "";
         $(".LI-field > a")[0].style.color = "";
@@ -315,6 +318,7 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
         }
+        $('#github-btn')[0].style.filter = "invert(1)";
         $(".LI-name > a")[0].style.color = "#BFBFBF";
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
@@ -709,15 +713,15 @@
       },
       mobile: {
         show: 1,
-        scale: 0.25,
+        scale: 0.8,
         motion: 1
       },
       react: {
-        opacityDefault: 1,
-        opacityOnHover: .2
+        opacityDefault: .8,
+        opacityOnHover: .6
       },
-      log: !1,
-      tagMode: !1
+      log: !0,
+      tagMode: !0
     });
     document.onselectstart = function () {
       return false;
@@ -819,7 +823,7 @@
           </p>
           <div>
             <iframe src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large"
-              frameborder="0" scrolling="0" width="300px" height="30px"
+              frameborder="0" scrolling="0" width="300px" height="30px" id="github-btn"
               style="margin-left: 20%;margin-top:5px;"></iframe>
           </div>
           <h1 id="Funding">❤ Funding</h1>

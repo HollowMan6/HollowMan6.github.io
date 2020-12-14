@@ -298,12 +298,14 @@
       $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
       $("#gspons").contents().find('body')[0].style.color = "white";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
+      $("#gspons").contents().find('.btn')[0].style.filter = "invert(0.8)";
     }
 
     function gSponsDaySwitch() {
       $("#gspons").contents().find('article')[0].style.backgroundColor = "";
       $("#gspons").contents().find('body')[0].style.color = "";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon.png";
+      $("#gspons").contents().find('.btn')[0].style.filter = "";
     }
 
     var atNight = false;
@@ -345,6 +347,32 @@
           jquerycollect[i].style.color = "";
           jquerycollect[i].style.borderColor = "";
         }
+        jquerycollect = $('object');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        jquerycollect = $('#my-icon > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        jquerycollect = $('#certificate-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        jquerycollect = $('#certificate1-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        jquerycollect = $('#certificate1-images > div > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        jquerycollect = $('#Softc-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
+        $('#profile-viewer')[0].style.filter = "";
+        $('#github-btn')[0].style.filter = "";
         $('#HighlightedWork')[0].style.backgroundColor = "";
         $('#HighlightedWork')[0].style.boxShadow = "";
         $(".LI-name > a")[0].style.color = "";
@@ -407,8 +435,41 @@
           jquerycollect[i].style.color = "#f6f8fa";
           jquerycollect[i].style.borderColor = "#1E1C18";
         }
+        jquerycollect = $('object');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "invert(0.9)";
+        }
+        jquerycollect = $('#my-icon > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
+        jquerycollect[1].style.filter = "invert(1)";
+        jquerycollect = $('#certificate-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
+        jquerycollect = $('#certificate1-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
+        for (var i = 18; i < 24; i++) {
+          jquerycollect[i].style.filter = "invert(0.3)";
+        }
+        for (var i = 25; i < 29; i++) {
+          jquerycollect[i].style.filter = "invert(0.3)";
+        }
+        jquerycollect = $('#certificate1-images > div > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
+        jquerycollect = $('#Softc-images > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
+        $('#profile-viewer')[0].style.filter = "brightness(0.6)";
         $('#HighlightedWork')[0].style.backgroundColor = "#222222";
         $('#HighlightedWork')[0].style.boxShadow = "none";
+        $('#github-btn')[0].style.filter = "invert(1)";
         $(".LI-name > a")[0].style.color = "#BFBFBF";
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
@@ -848,15 +909,15 @@
       },
       mobile: {
         show: 1,
-        scale: 0.5,
+        scale: 0.8,
         motion: 1
       },
       react: {
-        opacityDefault: 1,
-        opacityOnHover: .2
+        opacityDefault: .8,
+        opacityOnHover: .6
       },
-      log: !1,
-      tagMode: !1
+      log: !0,
+      tagMode: !0
     });
     document.onselectstart = function () {
       return false;
@@ -979,7 +1040,7 @@
           </p>
           <div>
             <iframe src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large"
-              frameborder="0" scrolling="0" width="300px" height="30px"
+              frameborder="0" scrolling="0" width="300px" height="30px" id="github-btn"
               style="margin-left: 22%;margin-top:5px;"></iframe>
           </div>
           <div>
@@ -995,13 +1056,13 @@
               style="font-size: 150%;">关于我</a>
           </h3>
           <p>
-            <img
+            <img id="profile-viewer"
               src="https://camo.githubusercontent.com/b740cea63a70f388b025679d1af48af70f631d12/68747470733a2f2f6b6f6d617265762e636f6d2f67687076632f3f757365726e616d653d486f6c6c6f774d616e36267374796c653d666c61742d737175617265"
               alt="Hollow Man" style="margin-left: 32%;"
               onclick="window.open('https://github.com/HollowMan6','_blank')">
             <img style="margin-left: 1%;" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
           </p>
-          <p>
+          <p id="my-icon">
             <img
               src="https://img.shields.io/badge/-Hollow%20Man-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/?locale=en_US"
               style="margin-left: -6%;"
@@ -1244,22 +1305,27 @@
             <a href="https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code" target="_blank"
               style="margin-left: 10%; font-size: 150%">Face Recognition Lock System</a>
           </p>
-          <p>
+          <p id="Softc-images">
             <img
               src="https://github.com/Hollow-Software/Software-Copyright/raw/master/Hollow%20Software%20for%20Picture%20Video%20Information%20Hiding%20Encryption%20and%20Decryption/Certificate%202020SR0079950.jpg"
-              class="pic" width="112px" height="154px" style="margin-left: 0%;">
+              class="pic" width="112px" height="154px" style="margin-left: 0%;"
+              onclick="window.open('https://github.com/hollowman6/Hollow-Software-for-Picture-Video-Information-Hiding-Encryption-and-Decryption','_blank')"></a>
             <img
               src="https://github.com/Hollow-Software/Software-Copyright/raw/master/Hollow%20Software%20for%20Jack%20Compiler/Certificate%202020SR0839702.jpg"
-              class="pic" width="112px" height="154px" style="margin-left: 1%;">
+              class="pic" width="112px" height="154px" style="margin-left: 1%;"
+              onclick="window.open('https://github.com/Hollow-Software/Software-Copyright/blob/master/Hollow%20Software%20for%20Jack%20Compiler','_blank')">
             <img
               src="https://github.com/Hollow-Software/Software-Copyright/raw/master/Hollow%20Software%20System%20for%20Sport%20Centre%20Management/Certificate%202020SR0839709.jpg"
-              class="pic" width="112px" height="154px" style="margin-left: 1%;">
+              class="pic" width="112px" height="154px" style="margin-left: 1%;"
+              onclick="window.open('https://github.com/Hollow-Software/Software-Copyright/blob/master/Hollow%20Software%20System%20for%20Sport%20Centre%20Management','_blank')"></a>
             <img
               src="https://github.com/Hollow-Software/Software-Copyright/raw/master/Hollow%20Software%20for%20Smartly%20Memorizing%20Words/Certificate%202020SR0839716.jpg"
-              class="pic" width="112px" height="154px" style="margin-left: 1%;">
+              class="pic" width="112px" height="154px" style="margin-left: 1%;"
+              onclick="window.open('https://github.com/Hollow-Software/Software-Copyright/blob/master/Hollow%20Software%20for%20Smartly%20Memorizing%20Words','_blank')"></a>
             <img
               src="https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code/raw/master/2019SR1388115.jpg"
-              class="pic" width="112px" height="154px" style="margin-left: 1%;">
+              class="pic" width="112px" height="154px" style="margin-left: 1%;"
+              onclick="window.open('https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code','_blank')"></a>
           </p>
           <p>
             <a href="https://github.com/Hollow-Software/Publications" target="_blank" id="Publications"
@@ -1438,7 +1504,7 @@
           </p>
           <h3 align="center">More waiting to be added ......</h3>
           <h1 id="Certificates">🖼 Certificates</h1>
-          <p>
+          <p id="certificate-images">
             <img class="pic"
               src="https://github.com/HollowMan6/My-Alibaba-Summer-of-Code/raw/master/2020-Arthas/Certificate.jpg"
               height="400px" style="margin-left: 0%; margin-top: 1%;"
@@ -1527,6 +1593,8 @@
             <img class="pic" src="img/badges/machine-learning-with-apache-spark.png" width="140px" height="140px"
               style="margin-left: 1%;margin-top: 1%;"
               onclick="window.open('https://www.youracclaim.com/badges/4fdb2ee8-ed2c-4271-beae-52c3a04f8d7c/public_url','_blank')">
+          </p>
+          <div id="certificate1-images">
             <div style="width: 140px;float: left;margin-top: 0%;">
               <img class="pic" src="img/badges/chatbot-building-essentials.png" width="140px" height="140px"
                 style="margin-left: 0%;margin-top: 0%;"
@@ -1795,6 +1863,7 @@
               width="80px" height="80px" style="margin-left: 0.5%;margin-top: 1%;"
               onclick="window.open('https://skillshop.exceedlms.com/student/award/48863255','_blank')">
             <h1>&nbsp;</h1>
+          </div>
         </div>
       </div>
     </div><!-- /content-wrap -->
