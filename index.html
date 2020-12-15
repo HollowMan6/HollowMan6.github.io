@@ -413,7 +413,7 @@
         $("#FollowSystemMessageInMenu").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
-        let icon = 'favicon-night.ico';
+        let icon = 'favicon.ico';
         changeFavicon(icon);
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
@@ -509,7 +509,7 @@
           $("#SwitchNightMode")[0].style.display = "";
           $("#NightMessage").fadeIn();
         }
-        let icon = 'favicon.ico';
+        let icon = 'favicon-night.ico';
         changeFavicon(icon);
       }
     }
