@@ -13,7 +13,7 @@
   <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="Author" content="Hollow Man" />
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="light">
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
@@ -71,10 +71,12 @@
         window.clearInterval(timer1);
         if (window.location.hash) {
           setTimeout(
-            "$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
+            "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
             3000);
         } else if (scrollLocationIndex) {
-          setTimeout("$('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);", 3000);
+          setTimeout(
+            "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);",
+            3000);
         }
       }
     }
@@ -328,6 +330,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
+        document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
@@ -381,6 +384,7 @@
         $(".LI-field > a")[0].style.color = "";
         $(".LI-icon")[0].src =
           "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
+        $(".LI-icon")[0].style.filter = "";
         $(".menu")[0].style.backgroundColor = "";
         $(".menu-wrap")[0].style.backgroundColor = "";
         $(".morph-shape").show();
@@ -416,6 +420,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
+        document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
         $('#toppic1')[0].src = "img/logo-night.gif";
@@ -475,6 +480,7 @@
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
         $(".LI-icon")[0].src = "https://static.licdn.cn/sc/h/95o6rrc5ws6mlw6wqzy0xgj7y";
+        $(".LI-icon")[0].style.filter = "brightness(0.6)";
         $(".menu")[0].style.backgroundColor = "#222222";
         $(".menu-wrap")[0].style.backgroundColor = "#222222";
         $(".morph-shape").hide();

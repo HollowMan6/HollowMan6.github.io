@@ -13,7 +13,7 @@
   <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="Author" content="Hollow Man" />
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="light">
   <title>Thank you! ❤</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
@@ -70,10 +70,12 @@
         confetti.start(3000);
         if (window.location.hash) {
           setTimeout(
-            "$('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
+            "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
             3000);
         } else if (scrollLocationFund) {
-          setTimeout("$('#main-content').animate({ scrollTop: scrollLocationFund }, 500);", 3000);
+          setTimeout(
+            "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationFund }, 500);",
+            3000);
         }
       }
     }
@@ -263,6 +265,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
+        document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
@@ -277,6 +280,11 @@
         $(".LI-field > a")[0].style.color = "";
         $(".LI-icon")[0].src =
           "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
+        $(".LI-icon")[0].style.filter = "";
+        jquerycollect = $('#sponsor-pic > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "";
+        }
         $(".menu")[0].style.backgroundColor = "";
         $(".menu-wrap")[0].style.backgroundColor = "";
         $(".morph-shape").show();
@@ -311,6 +319,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
+        document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
         $('#toppic1')[0].src = "img/logo-night.gif";
@@ -324,6 +333,11 @@
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
         $(".LI-icon")[0].src = "https://static.licdn.cn/sc/h/95o6rrc5ws6mlw6wqzy0xgj7y";
+        $(".LI-icon")[0].style.filter = "brightness(0.6)";
+        jquerycollect = $('#sponsor-pic > img');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].style.filter = "brightness(0.6)";
+        }
         $(".menu")[0].style.backgroundColor = "#222222";
         $(".menu-wrap")[0].style.backgroundColor = "#222222";
         $(".morph-shape").hide();
@@ -765,7 +779,7 @@
         <div class="icon-list">
           <a class="menu-links" href="index.html">🏠️ Back Home</a>
           <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#GitHubSponsors').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
+            onclick="$('#main-content').animate({scrollTop:$('#gspons').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
               src="https://img.pngio.com/github-logo-icon-of-glyph-style-available-in-svg-png-eps-ai-github-icon-png-256_256.png"
               width="12%"> GitHub
             Sponsors</a>
@@ -785,7 +799,7 @@
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#Alipay').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
               src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
-              width="11%"> Alipay</a>
+              style="border-radius: 5px;" width="11%"> Alipay</a>
           <a class="menu-links" href="javascript:void(0);"
             onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">📄
             About
@@ -844,26 +858,28 @@
                 src="https://s3.cointelegraph.com/storage/uploads/view/3278bdc14c74dd4e85732b776d0e5b1d.png"
                 width="100px"></a>
           </p>
-          <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;<img
-              src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729" width="3%"> Monero
-          </h2>
-          <img class="pic" src="img/Monero.png" style="margin-left: 23%;"
-            onclick="window.open('https://www.getmonero.org','_blank')">
-          <h5 style="margin-left: 15%;">
-            46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
-          </h5>
-          <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-              src="https://epayments.developer-ingenico.com/shared-images/content/logos/paymentproducts/pp_logo_863_v1.png"
-              style="margin-left: -2%;" width="5%">WeChat Tip</h2>
-          <img class="pic" src="img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
-            onclick="window.open('https://www.wechat.com','_blank')">
-          <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-              src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
-              width="3%"> Alipay</h2>
-          <img class="pic" src="img/Alipay.jpg" width="247px" height="385px" style="margin-left: 2%;"
-            onclick="window.open('https://www.alipay.com','_blank')">
-          <img class="pic" src="img/Red-Pack.jpg" width="247px" height="385px"
-            style="margin-left: 2%; border-radius: 10px;" onclick="window.open('https://www.alipay.com','_blank')">
+          <div id="sponsor-pic">
+            <h2 id="Monero">&nbsp;&nbsp;&nbsp;&nbsp;<img
+                src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729" width="3%"> Monero
+            </h2>
+            <img class="pic" src="img/Monero.png" style="margin-left: 23%;"
+              onclick="window.open('https://www.getmonero.org','_blank')">
+            <h5 style="margin-left: 15%;">
+              46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br>JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
+            </h5>
+            <h2 id="WeChatTip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+                src="https://epayments.developer-ingenico.com/shared-images/content/logos/paymentproducts/pp_logo_863_v1.png"
+                style="margin-left: -2%;" width="5%">WeChat Tip</h2>
+            <img class="pic" src="img/WeChat-Tip.png" width="279px" height="279px" style="margin-left: 20%;"
+              onclick="window.open('https://www.wechat.com','_blank')">
+            <h2 id="Alipay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
+                src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
+                style="border-radius: 5px;" width="3%"> Alipay</h2>
+            <img class="pic" src="img/Alipay.jpg" width="247px" height="385px" style="margin-left: 2%;"
+              onclick="window.open('https://www.alipay.com','_blank')">
+            <img class="pic" src="img/Red-Pack.jpg" width="247px" height="385px"
+              style="margin-left: 2%; border-radius: 10px;" onclick="window.open('https://www.alipay.com','_blank')">
+          </div>
           <p>
             <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" id="About"
               target="_blank" class="header">📄 About ME</a>
