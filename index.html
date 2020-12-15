@@ -300,14 +300,14 @@
     function gSponsNightSwitch() {
       $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
       $("#gspons").contents().find('body')[0].style.color = "white";
-      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon-night.ico";
       $("#gspons").contents().find('.btn')[0].style.filter = "invert(0.8)";
     }
 
     function gSponsDaySwitch() {
       $("#gspons").contents().find('article')[0].style.backgroundColor = "";
       $("#gspons").contents().find('body')[0].style.color = "";
-      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.png";
+      $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
       $("#gspons").contents().find('.btn')[0].style.filter = "";
     }
 
@@ -413,7 +413,7 @@
         $("#FollowSystemMessageInMenu").fadeOut();
         $("#SwitchNightMode")[0].text = "🌙 Night Mode";
         $("#SwitchNightMode")[0].style.display = "";
-        let icon = 'favicon.ico';
+        let icon = 'favicon-night.ico';
         changeFavicon(icon);
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
@@ -509,7 +509,7 @@
           $("#SwitchNightMode")[0].style.display = "";
           $("#NightMessage").fadeIn();
         }
-        let icon = 'favicon.png';
+        let icon = 'favicon.ico';
         changeFavicon(icon);
       }
     }
@@ -1532,11 +1532,9 @@
             <img class="pic" src="img/badges/Google-InnoCamp-Z.jpg" width="280px"
               style="margin-left: 2%; margin-top: 3%;"
               onclick="window.open('https://github.com/HollowMan6/Competitions-Work/tree/master/2019%20Google%20InnoCamp%20%E6%9A%91%E6%9C%9F%E5%AD%A6%E7%94%9F%E6%B4%BB%E5%8A%A8%EF%BC%88%E5%BC%A0%E6%8E%96%EF%BC%89','_blank')">
-            <img class="pic" src="img/badges/University-Project.jpg" height="200px"
+            <img class="pic" src="img/badges/University-Project.jpg" height="400px"
               style="margin-left: 0%; margin-top: 3%;"
               onclick="window.open('http://tuanwei.lzu.edu.cn/lzupage/2020/01/15/N20200115173513.html','_blank')">
-            <img class="pic" src="img/badges/2020-ICPC.jpg" height="200px" style="margin-left: 2%; margin-top: 3%;"
-              onclick="window.open('https://github.com/HollowMan6/HollowMan6.github.io/files/5538396/The.2020.ICPC.China.Northwest.Provincial.Programming.Contest.Gold.Medal.pdf','_blank')">
             <img class="pic" src="img/badges/Microsoft-Advertising-Certifed-Professional.png" width="458px"
               height="123px" style="margin-left: 10%; margin-top: 3%;"
               onclick="window.open('https://learninglab.about.ads.microsoft.com/certification/membership-profile/id/325501/songlin-jiang/','_blank')">
