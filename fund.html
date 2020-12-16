@@ -44,17 +44,40 @@
         console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/fund.html");
       }
     }
+
+    function progressAfterDOMLoaded() {
+      $({
+        property: 30
+      }).animate({
+        property: 97
+      }, {
+        duration: 5000,
+        step: function () {
+          var percentage = Math.round(this.property);
+          $('#progress').css('width', percentage + "%");
+        }
+      });
+    }
+
     $({
       property: 0
     }).animate({
-      property: 97
+      property: 30
     }, {
-      duration: 3000,
+      duration: 2000,
       step: function () {
         var percentage = Math.round(this.property);
         $('#progress').css('width', percentage + "%");
+      },
+      complete: function () {
+        if (document.readyState != "loading") {
+          progressAfterDOMLoaded();
+        } else {
+          window.addEventListener("DOMContentLoaded", progressAfterDOMLoaded);
+        }
       }
     });
+
     document.onreadystatechange = function () {
       loadcomplete(false);
     };
@@ -152,12 +175,12 @@
       height: 2px;
       box-shadow: #535353 1px 0 6px 1px;
       border-radius: 100%;
+      animation: pulse 2s ease-out 0s infinite;
       -webkit-box-shadow: #535353 1px 0 6px 1px;
       -webkit-border-radius: 100%;
       opacity: 1;
-      width: 150px;
+      width: 15px;
       right: -10px;
-      animation: pulse 2s ease-out 0s infinite;
       -webkit-animation: pulse 2s ease-out 0s infinite;
     }
 
@@ -674,7 +697,7 @@
 
 <body>
   <div id="progress" style="margin-top: 0px; position: absolute;">
-    <span></span>
+    <span>⚡</span>
   </div>
   <div class="ProgressBar">
     <div class="progressbar" id="Bar"></div>
