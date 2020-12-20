@@ -324,8 +324,7 @@
       $("#gspons").contents().find('article')[0].style.backgroundColor = "rgb(34, 34, 34)";
       $("#gspons").contents().find('body')[0].style.color = "white";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon-night.ico";
-      $("#gspons").contents().find('.btn')[0].style.filter = "invert(0.8)";
-      $("#gspons").contents().find('.btn>svg')[0].style.filter = "invert(0.8)";
+      $("#gspons").contents().find('.btn')[0].style.filter = "invert(0.8) hue-rotate(180deg)";
     }
 
     function gSponsDaySwitch() {
@@ -333,7 +332,6 @@
       $("#gspons").contents().find('body')[0].style.color = "";
       $("#gspons").contents().find('.avatar-user')[0].src = "favicon.ico";
       $("#gspons").contents().find('.btn')[0].style.filter = "";
-      $("#gspons").contents().find('.btn>svg')[0].style.filter = "";
     }
 
     var atNight = false;
@@ -468,11 +466,11 @@
         }
         jquerycollect = $('object');
         for (var i = 0; i < jquerycollect.length; i++) {
-          jquerycollect[i].style.filter = "invert(0.9)";
+          jquerycollect[i].style.filter = "invert(0.9) hue-rotate(180deg)";
         }
         jquerycollect = $('#my-icon > img');
         for (var i = 0; i < jquerycollect.length; i++) {
-          jquerycollect[i].style.filter = "brightness(0.6)";
+          jquerycollect[i].style.filter = "invert(1) hue-rotate(180deg)";
         }
         jquerycollect[1].style.filter = "invert(1)";
         jquerycollect = $('#certificate-images > img');
@@ -500,7 +498,7 @@
         $('#profile-viewer')[0].style.filter = "brightness(0.6)";
         $('#HighlightedWork')[0].style.backgroundColor = "#222222";
         $('#HighlightedWork')[0].style.boxShadow = "none";
-        $('#github-btn')[0].style.filter = "invert(1)";
+        $('#github-btn')[0].style.filter = "invert(1) hue-rotate(180deg)";
         $(".LI-name > a")[0].style.color = "#BFBFBF";
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
