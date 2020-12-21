@@ -709,6 +709,7 @@
       margin-left: 20%;
       -webkit-transition: color 1s, text-decoration 1s;
       transition: color 1s, text-decoration 1s;
+      position: relative;
     }
 
     a,
@@ -716,10 +717,29 @@
       color: rgb(147, 195, 199);
     }
 
+    a::after,
+    a:visited::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background: #009BDF;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transition: all .8s;
+    }
+
     a:hover,
     a:focus,
     a:active {
       color: #009bdf;
+    }
+
+    a:hover::after,
+    a:focus::after,
+    a:active::after {
+      left: 0%;
+      width: 100%;
     }
 
     a.love {
@@ -729,6 +749,11 @@
     a.love,
     a.love:visited {
       color: #d19597;
+    }
+
+    a.love::after,
+    a.love:visited::after {
+      background: #f86267;
     }
 
     a.love:hover,
@@ -752,6 +777,11 @@
     a.header:hover,
     a.header:focus {
       color: rgb(100, 100, 100);
+    }
+
+    a.header:hover::after,
+    a.header:focus::after {
+      height: 4px;
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
       background-size: 20px auto;
       animation: colorPulse 5s infinite linear, waveMove 1s infinite linear;
@@ -772,10 +802,15 @@
     a.menu-links:hover,
     a.menu-links:focus {
       color: rgb(100, 100, 100);
+      font-size: 131%;
+    }
+
+    a.menu-links:hover::after,
+    a.menu-links:focus::after {
+      height: 4px;
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
       background-size: 20px auto;
       animation: colorPulse 5s infinite linear, waveMove 1s infinite linear;
-      font-size: 131%;
     }
 
     div.orgs {
@@ -1190,10 +1225,10 @@
             <a href="mailto:hollowman@hollowman.ml" style="margin-left: 17%; font-size: 150%">📫Mail ME</a>
             <a href="fund.html" style="margin-left: 17% ;font-size: 150%" class="love">❤ Fund ME</a>
           </p>
-          <p><a style="margin-left: 0%;" href="https://wakatime.com/@HollowMan6">
+          <p>
               <img id="wakatime" class="pic"
                 src="https://github-readme-stats.vercel.app/api/wakatime?username=HollowMan6&bg_color=DDDDDD&hide_border=true"
-                style="margin-left: 5%;"></a>
+                style="margin-left: 5%;" onclick="window.open('https://wakatime.com/@HollowMan6','_blank')"></a>
           </p>
           <a href="https://github.com/HollowMan6#user-activity-overview" id="PRsOrg" target="_blank" class="header"
             style="margin-left: 15%;">Contributed ❤ Organizations</a>
