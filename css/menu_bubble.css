@@ -130,6 +130,7 @@ body,
 	position: relative;
 	z-index: 1000;
 	padding: 3em 1em 0;
+	backdrop-filter: blur(3px);
 }
 
 .menu,
@@ -169,7 +170,7 @@ body,
 	top: 0;
 	right: 0;
 	fill: #DDDDDD;
-	opacity:0.9;
+	opacity:0.3;
 }
 
 /* Shown menu */
