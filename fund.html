@@ -262,13 +262,43 @@
       $("#gspons").contents().find('.btn')[0].style.filter = "";
     }
 
+    var activeNavWithScroll = function (elements) {
+      var index = 1;
+      for (var lisindex = 0; lisindex < elements.length; lisindex++) {
+        if (Math.floor($(elements[lisindex]).offset().top) > 0) {
+          index = lisindex;
+          break;
+        }
+      }
+      if (index == 0) {
+        document.querySelectorAll("nav.menu > div > .menu-links")[1].classList.remove('activate');
+        return;
+      } else if (Math.floor(document.getElementById("main-content").scrollTop) == document.getElementById("main-content").scrollHeight - document.body.clientHeight) {
+        index = elements.length;
+      }
+      var eleNav = document.querySelectorAll("nav.menu > div > .menu-links")[index];
+      eleNav.parentElement.querySelectorAll('.activate').forEach(function (eleactivate) {
+        eleactivate.classList.remove('activate');
+      });
+      eleNav.classList.add('activate');
+    };
+
     function ProgressBar() {
       var winScroll = document.getElementById("main-content").scrollTop;
       var height = document.getElementById("main-content").scrollHeight - document.body.clientHeight;
       var scrolled = (winScroll / height) * 100;
       document.getElementById("Bar").style.width = scrolled + "%";
       window.localStorage.setItem("scrollLocationFund", winScroll);
+      var elements = [];
+      elements.push(document.getElementById("gspons"));
+      elements.push(document.getElementById("Paypal"));
+      elements.push(document.getElementById("Monero"));
+      elements.push(document.getElementById("WeChatTip"));
+      elements.push(document.getElementById("Alipay"));
+      elements.push(document.getElementById("About"));
+      activeNavWithScroll(elements);
     }
+
     var atNight = false;
     const changeFavicon = function (link) {
       let $favicon = document.querySelector('link[rel="icon"]');
@@ -620,6 +650,13 @@
       margin-left: -2%;
     }
 
+    a.header::after,
+    a.header:visited::after {
+      height: 4px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+      background-size: 20px auto;
+    }
+
     a.header:hover,
     a.header:focus {
       color: rgb(100, 100, 100);
@@ -627,9 +664,6 @@
 
     a.header:hover::after,
     a.header:focus::after {
-      height: 4px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
-      background-size: 20px auto;
       animation: colorPulse 5s infinite linear, waveMove 1s infinite linear;
     }
 
@@ -645,6 +679,13 @@
       margin-left: -2%;
     }
 
+    a.menu-links::after,
+    a.menu-links:visited::after {
+      height: 4px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+      background-size: 20px auto;
+    }
+
     a.menu-links:hover,
     a.menu-links:focus {
       color: rgb(100, 100, 100);
@@ -653,9 +694,12 @@
 
     a.menu-links:hover::after,
     a.menu-links:focus::after {
-      height: 4px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23059DDB' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
-      background-size: 20px auto;
+      animation: colorPulse 5s infinite linear, waveMove 1s infinite linear;
+    }
+
+    a.activate::after {
+      left: 0%;
+      width: 100%;
       animation: colorPulse 5s infinite linear, waveMove 1s infinite linear;
     }
 
@@ -927,7 +971,7 @@
             <a href="index.html" style="margin-left: 27% ;font-size: 120%">🏠️ Back to the Home Page</a>
           </p>
           <div>
-            <iframe loading="lazy"
+            <iframe
               src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large" frameborder="0"
               scrolling="0" width="274px" height="30px" id="github-btn"
               style="margin-left: 22%;margin-top:5px;border-radius: 5px;"></iframe>
@@ -939,7 +983,7 @@
           <h4 style="margin-left: 18%;">谢谢你的捐助。每一点的捐助都将是我前进的动力！</h4>
           <div>
             <p>
-              <iframe loading="lazy" id="gspons" src="github-sponsor.html" class="pic" height="175px" width="700px"
+              <iframe id="gspons" src="github-sponsor.html" class="pic" height="175px" width="700px"
                 title="Sponsor HollowMan6" style="margin-left: -13%;border: 0;border-radius: 12px;"></iframe>
             </p>
           </div>
