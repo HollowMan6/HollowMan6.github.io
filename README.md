@@ -44,6 +44,8 @@
 * 当您的系统设置为暗模式时，网站将跟随，否则，如果您的计算机设置的时间是您IP地址中反映的您所在位置的日落和日出之间，则网站将自动开启夜间模式。
 
 * 您可以永远禁用跟随系统的暗模式。网站不会永远记住您选择的颜色模式，而仅仅只会在一个会话中记住。
+  
+* 懒加载图片。
 
 # Hollow Man Home Page
 
@@ -74,3 +76,5 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 * When your system is set in dark mode, the website will follow, else, if the time set by your computer is between sunset and sunrise at your location reflected in your IP address, the website will automatically turn on the night mode.
 
 * You can disable following your system's dark mode forever, but it won't remember your choice of the night mode forever but in a session.
+
+* Lazy loading images.
