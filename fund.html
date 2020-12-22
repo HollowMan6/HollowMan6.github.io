@@ -273,13 +273,15 @@
       if (index == 0) {
         document.querySelectorAll("nav.menu > div > .menu-links")[1].classList.remove('activate');
         return;
-      } else if (Math.floor(document.getElementById("main-content").scrollTop) == document.getElementById("main-content").scrollHeight - document.body.clientHeight) {
+      } else if (Math.floor(document.getElementById("main-content").scrollTop) == document.getElementById(
+          "main-content").scrollHeight - document.body.clientHeight) {
         index = elements.length;
       }
       var eleNav = document.querySelectorAll("nav.menu > div > .menu-links")[index];
-      eleNav.parentElement.querySelectorAll('.activate').forEach(function (eleactivate) {
-        eleactivate.classList.remove('activate');
-      });
+      var activated = eleNav.parentElement.querySelectorAll('.activate')
+      for (var i = 0; i < activated.length; i++) {
+        activated[i].classList.remove('activate');
+      };
       eleNav.classList.add('activate');
     };
 
@@ -971,9 +973,8 @@
             <a href="index.html" style="margin-left: 27% ;font-size: 120%">🏠️ Back to the Home Page</a>
           </p>
           <div>
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large" frameborder="0"
-              scrolling="0" width="274px" height="30px" id="github-btn"
+            <iframe src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large"
+              frameborder="0" scrolling="0" width="274px" height="30px" id="github-btn"
               style="margin-left: 22%;margin-top:5px;border-radius: 5px;"></iframe>
           </div>
           <h1 id="Funding">❤ Funding</h1>
