@@ -51,12 +51,12 @@
       $('.fade-content *').each(function (i) {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
         var bottom_of_window = $('#main-content').height();
-        var afterScroll = document.getElementById("main-content").scrollTop
+        var afterScroll = $('#main-content').scrollTop();
         if (beforeScroll <= afterScroll) {
           if (bottom_of_window > bottom_of_object) {
             $(this).css({
               'opacity': '',
-              'transform': 'translateY(' + 0 + 'em)'
+              'transform': ''
             });
           } else {
             $(this).css({

@@ -51,12 +51,12 @@
       $('.fade-content *').each(function (i) {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
         var bottom_of_window = $('#main-content').height();
-        var afterScroll = document.getElementById("main-content").scrollTop
+        var afterScroll = $('#main-content').scrollTop();
         if (beforeScroll <= afterScroll) {
           if (bottom_of_window > bottom_of_object) {
             $(this).css({
               'opacity': '',
-              'transform': 'translateY(' + 0 + 'em)'
+              'transform': ''
             });
           } else {
             $(this).css({
@@ -1324,7 +1324,7 @@
           <p>
             <img loading="lazy" id="wakatime" class="pic"
               src="https://github-readme-stats.vercel.app/api/wakatime?username=HollowMan6&bg_color=DDDDDD&hide_border=true"
-              style="margin-left: 5%;" onclick="window.open('https://wakatime.com/@HollowMan6','_blank')" />
+              style="margin-left: 5%; margin-top: 2%;" onclick="window.open('https://wakatime.com/@HollowMan6','_blank')" />
           </p>
           <a href="https://github.com/HollowMan6#user-activity-overview" id="PRsOrg" target="_blank" class="header"
             style="margin-left: 15%;">Contributed ❤ Organizations</a>
