@@ -173,6 +173,17 @@
           60000);
       });
     }
+
+    var ballColorList = ["#c383cd", "#c28767", "#7097b8", "#af4c5e", "#dbdf93", "#59b397"]
+    var ballColorListIndex = 0;
+    window.setInterval(function () {
+      for (var i = 0; i < 6; i++) {
+        $('.ball-' + i).css({
+          'background-color': ballColorList[(ballColorListIndex + i) % 6]
+        });
+      }
+      ballColorListIndex = (ballColorListIndex + 1) % 6
+    }, 300);
   </script>
   <style type="text/css">
     body {
@@ -991,27 +1002,27 @@
     }
 
     .ball-0 {
-      background-color: #59b397;
-    }
-
-    .ball-1 {
       background-color: #c383cd;
     }
 
-    .ball-2 {
+    .ball-1 {
       background-color: #c28767;
     }
 
-    .ball-3 {
+    .ball-2 {
       background-color: #7097b8;
     }
 
-    .ball-4 {
+    .ball-3 {
       background-color: #af4c5e;
     }
 
-    .ball-5 {
+    .ball-4 {
       background-color: #dbdf93;
+    }
+
+    .ball-5 {
+      background-color: #59b397;
     }
 
     #DayNight {
