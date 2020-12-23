@@ -637,8 +637,8 @@
       padding: 0 2% 0 2%;
       text-decoration: none;
       margin-left: 20%;
-      -webkit-transition: color 1s, text-decoration 1s;
-      transition: color 1s, text-decoration 1s;
+      -webkit-transition: color 1s, text-decoration 1s, text-shadow .8s, all .8s;
+      transition: color 1s, text-decoration 1s, text-shadow .8s, all .8s;
       position: relative;
     }
 
@@ -662,6 +662,7 @@
     a:hover,
     a:focus,
     a:active {
+      text-shadow: 0em 0.2em 0.2em rgba(0, 0, 0, 0.25);
       color: #009bdf;
     }
 
@@ -768,7 +769,7 @@
       opacity: 1;
       filter: alpha(opacity=100);
       transform: scale(1.10);
-      box-shadow: 0px 0px 6px 4px #C0C1C0;
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
 
     .headpic {
