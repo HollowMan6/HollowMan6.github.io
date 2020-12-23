@@ -485,9 +485,7 @@
         $(".LI-icon")[0].src =
           "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
         $(".LI-icon")[0].style.filter = "";
-        $(".menu")[0].style.backgroundColor = "";
-        $(".menu-wrap")[0].style.backgroundColor = "";
-        $(".morph-shape").show();
+        $(".morph-shape > svg")[0].style.filter = "";
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
@@ -580,9 +578,7 @@
         $(".LI-field > a")[0].style.color = "#BFBFBF";
         $(".LI-icon")[0].src = "https://static.licdn.cn/sc/h/95o6rrc5ws6mlw6wqzy0xgj7y";
         $(".LI-icon")[0].style.filter = "brightness(0.6)";
-        $(".menu")[0].style.backgroundColor = "#222222";
-        $(".menu-wrap")[0].style.backgroundColor = "#222222";
-        $(".morph-shape").hide();
+        $(".morph-shape > svg")[0].style.filter = "invert(0.9)";
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
@@ -1101,8 +1097,7 @@
   </script>
   <div id="loading" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
     <br />
-    <img loading="lazy" id="toppic1" class="headpic" src="img/logo.gif" width="384px" height="120px"
-      style="margin-left: 7%;">
+    <img loading="lazy" id="toppic1" class="headpic" src="img/logo.gif" width="384px" style="margin-left: 7%;">
     <h3>&nbsp;</h3>
     <script type="text/javascript">
       var tdid = 0;
@@ -1207,10 +1202,9 @@
     <button class="menu-button" id="open-button">Open Menu</button>
     <div class="content-wrap fade-content" id="main-content" style="overflow-x:visible;" onscroll="ProgressBar()">
       <div class="content">
-        <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
+        <div id="main" style="position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
-          <img loading="lazy" id="toppic2" class="headpic" src="img/logo.gif" width="384px" height="120px"
-            style="margin-left: 7%;">
+          <img loading="lazy" id="toppic2" class="headpic" src="img/logo.gif" width="384px" style="margin-left: 7%;">
           <h3>&nbsp;</h3>
           <p>
             <a href="FreDuino/index.htm" target="_blank" style="margin-left: -5% ;font-size: 120%">🚗 FreDuino Cars</a>
@@ -1324,7 +1318,8 @@
           <p>
             <img loading="lazy" id="wakatime" class="pic"
               src="https://github-readme-stats.vercel.app/api/wakatime?username=HollowMan6&bg_color=DDDDDD&hide_border=true"
-              style="margin-left: 5%; margin-top: 2%;" onclick="window.open('https://wakatime.com/@HollowMan6','_blank')" />
+              style="margin-left: 5%; margin-top: 2%;"
+              onclick="window.open('https://wakatime.com/@HollowMan6','_blank')" />
           </p>
           <a href="https://github.com/HollowMan6#user-activity-overview" id="PRsOrg" target="_blank" class="header"
             style="margin-left: 15%;">Contributed ❤ Organizations</a>

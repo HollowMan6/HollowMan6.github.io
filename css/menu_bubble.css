@@ -123,14 +123,13 @@ body,
 	-webkit-transform: translate3d(-280px,0,0);
 	transform: translate3d(-280px,0,0);
 	-webkit-transition: -webkit-transform 0.4s;
-	transition: transform 0.4s;
+	transition: transform 0.4s, box-shadow 1s;
 }
 
 .menu {
 	position: relative;
 	z-index: 1000;
 	padding: 3em 1em 0;
-	backdrop-filter: blur(3px);
 }
 
 .menu,
