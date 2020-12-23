@@ -45,6 +45,41 @@
       }
     }
 
+    var beforeScroll = 0;
+
+    var checkScrollAnimateitems = function () {
+      $('.fade-content *').each(function (i) {
+        var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
+        var bottom_of_window = $('#main-content').height();
+        var afterScroll = document.getElementById("main-content").scrollTop
+        if (beforeScroll <= afterScroll) {
+          if (bottom_of_window > bottom_of_object) {
+            $(this).css({
+              'opacity': '',
+              'transform': 'translateY(' + 0 + 'em)'
+            });
+          } else {
+            $(this).css({
+              'opacity': '0',
+              'transform': 'translateY(' + 2 + 'em)'
+            });
+          }
+        }
+        beforeScroll = afterScroll;
+      });
+    };
+
+    var scrollAnimate = function () {
+      $('.fade-content *').css({
+        'opacity': '0',
+        'transform': 'translateY(' + 2 + 'em)'
+      });
+
+      $('#main-content').on('scroll', checkScrollAnimateitems);
+    }
+
+    window.addEventListener("DOMContentLoaded", scrollAnimate);
+
     function progressAfterDOMLoaded() {
       $({
         property: 30
@@ -100,6 +135,7 @@
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationFund }, 500);",
             3000);
         }
+        checkScrollAnimateitems();
       }
     }
 
@@ -182,6 +218,14 @@
       width: 15px;
       right: -10px;
       -webkit-animation: pulse 2s ease-out 0s infinite;
+    }
+
+    .fade-content * {
+      transition: ease all .25s;
+    }
+
+    .sweet-overlay {
+      backdrop-filter: blur(4px);
     }
 
     @keyframes pulse {
@@ -962,7 +1006,7 @@
       </div>
     </div>
     <button class="menu-button" id="open-button">Open Menu</button>
-    <div class="content-wrap" id="main-content" style="overflow-x:visible;" onscroll="ProgressBar()">
+    <div class="content-wrap fade-content" id="main-content" style="overflow-x:visible;" onscroll="ProgressBar()">
       <div class="content">
         <div id="main" style="height: 500px;position: absolute; left: 45%; width: 600px; margin-left: -160px;">
           <br />
