@@ -45,6 +45,7 @@
       }
     }
 
+    var hasNotified = false;
     var beforeScroll = 0;
 
     var checkScrollAnimateitems = function () {
@@ -116,6 +117,17 @@
     document.onreadystatechange = function () {
       loadcomplete(false);
     };
+
+    var notifyResFailed = function () {
+      $('img,object,iframe').on("error", function () {
+        if (!hasNotified) {
+          swal('有一些资源加载失败', 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网', 'warning');
+          hasNotified = true;
+        }
+      })
+    }
+
+    window.addEventListener("DOMContentLoaded", notifyResFailed);
 
     var scrollLocationFund = window.localStorage.getItem("scrollLocationFund");
 
