@@ -6,13 +6,13 @@
   This document is free software; you can redistribute it and/or modify it under the terms of the GNU General
   Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option)
   any later version.
- */ -->
+-->
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <script type="text/javascript" src="FreDuino/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/confetti.min.js"></script>
   <script src="js/sun.js"></script>
   <meta charset="UTF-8" name="viewport"
@@ -26,8 +26,7 @@
   <meta name="color-scheme" content="light">
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
-  <link rel="stylesheet" type="text/css" href="https://www.huangwx.cn/css/sweetalert.css">
-  <script type="text/javascript" src="https://www.huangwx.cn/js/sweetalert-dev.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
     if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent
@@ -139,6 +138,8 @@
         });
         imageList[i].addEventListener("error", function () {
           this.classList.add('loaded');
+          this.title = "Image Load Failed \n请确保已科学上网";
+          this.alt = "❌";
         });
       }
       $('img,object,iframe').on("error", function () {
@@ -299,8 +300,12 @@
       transition: ease all .25s;
     }
 
-    .sweet-overlay {
+    .swal-overlay {
       backdrop-filter: blur(4px);
+    }
+
+    .swal-text {
+      text-align:center;
     }
 
     @keyframes pulse {
@@ -2141,6 +2146,9 @@
               src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/certifications/badges/216/large/AdX_API_Hero_Cover_Achieve_AdX-04.png?1524024756"
               width="80px" height="80px" style="margin-left: 0.5%;margin-top: 1%;"
               onclick="window.open('https://skillshop.exceedlms.com/student/award/48863255','_blank')">
+            <footer>
+              <h3 align="center">Copyright &copy; 2018-2021 Hollow Man (@HollowMan6). All rights reserved.</h3>
+            </footer>
             <h1>&nbsp;</h1>
           </div>
         </div>
