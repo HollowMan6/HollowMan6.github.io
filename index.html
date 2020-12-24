@@ -120,14 +120,14 @@
 
     var notifyResFailed = function () {
       imageList = document.getElementsByTagName('img');
-      for(var i=0;i<imageList.length;i++){
-        if(imageList[i].complete){
+      for (var i = 0; i < imageList.length; i++) {
+        if (imageList[i].complete) {
           imageList[i].classList.add('loaded');
-        } 
-        imageList[i].addEventListener("load",function(){
+        }
+        imageList[i].addEventListener("load", function () {
           this.classList.add('loaded');
         });
-        imageList[i].addEventListener("error",function(){
+        imageList[i].addEventListener("error", function () {
           this.classList.add('loaded');
         });
       }
@@ -210,7 +210,7 @@
     img,
     object,
     iframe {
-      background-image: url('img/squares.svg');
+      background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='uil-squares'%3E%3Cpath fill='none' class='bk' d='M0 0h100v100H0z'/%3E%3Cpath fill='%23ccc' class='sq' d='M15 15h20v20H15z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.0s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M40 15h20v20H40z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.125s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M65 15h20v20H65z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.25s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M15 40h20v20H15z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.875s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M65 40h20v20H65z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='.375' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M15 65h20v20H15z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.75s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M40 65h20v20H40z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.625s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3Cpath fill='%23ccc' class='sq' d='M65 65h20v20H65z'%3E%3Canimate attributeName='fill' from='%23cccccc' to='%23999999' repeatCount='indefinite' dur='1s' begin='0.5s' values='%23999999;%23999999;%23cccccc;%23cccccc' keyTimes='0;0.1;0.2;1'/%3E%3C/path%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: 100% 100%;
       background-position: center;
@@ -587,7 +587,7 @@
         $('#toplangs')[0].classList.remove('loaded');
         $('#wakatime')[0].src =
           "https://github-readme-stats.vercel.app/api/wakatime?username=HollowMan6&bg_color=222222&text_color=DDD&hide_border=true";
-        $('#wakatime')[0].classList.remove('loaded');  
+        $('#wakatime')[0].classList.remove('loaded');
         var jquerycollect = $('a.header');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
