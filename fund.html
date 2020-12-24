@@ -120,14 +120,14 @@
 
     var notifyResFailed = function () {
       imageList = document.getElementsByTagName('img');
-      for(var i=0;i<imageList.length;i++){
-        if(imageList[i].complete){
+      for (var i = 0; i < imageList.length; i++) {
+        if (imageList[i].complete) {
           imageList[i].classList.add('loaded');
-        } 
-        imageList[i].addEventListener("load",function(){
+        }
+        imageList[i].addEventListener("load", function () {
           this.classList.add('loaded');
         });
-        imageList[i].addEventListener("error",function(){
+        imageList[i].addEventListener("error", function () {
           this.classList.add('loaded');
         });
       }
