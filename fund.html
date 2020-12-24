@@ -119,12 +119,24 @@
     };
 
     var notifyResFailed = function () {
+      imageList = document.getElementsByTagName('img');
+      for(var i=0;i<imageList.length;i++){
+        if(imageList[i].complete){
+          imageList[i].classList.add('loaded');
+        } 
+        imageList[i].addEventListener("load",function(){
+          this.classList.add('loaded');
+        });
+        imageList[i].addEventListener("error",function(){
+          this.classList.add('loaded');
+        });
+      }
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
           swal('有一些资源加载失败', 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网', 'warning');
           hasNotified = true;
         }
-      })
+      });
     }
 
     window.addEventListener("DOMContentLoaded", notifyResFailed);
@@ -192,6 +204,19 @@
 
     a {
       cursor: url('img/cursor/link.cur'), pointer;
+    }
+
+    img,
+    object,
+    iframe {
+      background-image: url('img/squares.svg');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+    }
+
+    .loaded {
+      background-size: 0;
     }
 
     .ProgressBar {
@@ -391,7 +416,9 @@
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
         $('#toppic1')[0].src = "img/logo.gif";
+        $('#toppic1')[0].classList.remove('loaded');
         $('#toppic2')[0].src = "img/logo.gif";
+        $('#toppic2')[0].classList.remove('loaded');
         var jquerycollect = $('a.header');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
@@ -402,6 +429,7 @@
         $(".LI-field > a")[0].style.color = "";
         $(".LI-icon")[0].src =
           "https://static.licdn.com/scds/common/u/images/logos/linkedin/logo_linkedin_93x21_v2.png";
+        $(".LI-icon")[0].classList.remove('loaded');
         $(".LI-icon")[0].style.filter = "";
         jquerycollect = $('#sponsor-pic > img');
         for (var i = 0; i < jquerycollect.length; i++) {
@@ -443,7 +471,9 @@
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
         $('#toppic1')[0].src = "img/logo-night.gif";
+        $('#toppic1')[0].classList.remove('loaded');
         $('#toppic2')[0].src = "img/logo-night.gif";
+        $('#toppic2')[0].classList.remove('loaded');
         var jquerycollect = $('a.header');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
@@ -453,6 +483,7 @@
         $(".LI-title")[0].style.color = "#BFBFBF";
         $(".LI-field > a")[0].style.color = "#BFBFBF";
         $(".LI-icon")[0].src = "https://static.licdn.cn/sc/h/95o6rrc5ws6mlw6wqzy0xgj7y";
+        $(".LI-icon")[0].classList.remove('loaded');
         $(".LI-icon")[0].style.filter = "brightness(0.6)";
         jquerycollect = $('#sponsor-pic > img');
         for (var i = 0; i < jquerycollect.length; i++) {
