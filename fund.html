@@ -123,6 +123,18 @@
       }
     });
 
+    var changeLoadingMessage = function () {
+      if (document.getElementById('loading-message').innerText == "Loading.") {
+        document.getElementById('loading-message').innerText = "Loading..";
+      } else if (document.getElementById('loading-message').innerText == "Loading..") {
+        document.getElementById('loading-message').innerText = "Loading...";
+      } else if (document.getElementById('loading-message').innerText == "Loading...") {
+        document.getElementById('loading-message').innerText = "Loading.";
+      }
+    }
+
+    var changeLoadingMessageTimer = window.setInterval(changeLoadingMessage, 300);
+
     document.onreadystatechange = function () {
       loadcomplete(false);
     };
@@ -159,8 +171,9 @@
         $("#progress").addClass("done"); //完成，隐藏进度条
         $("#loading").fadeOut("slow");
         $(".container").slideDown(3000);
-        document.getElementById("open-button").click()
+        document.getElementById("open-button").click();
         confetti.start(3000);
+        window.clearInterval(changeLoadingMessageTimer);
         if (window.location.hash) {
           setTimeout(
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
@@ -997,7 +1010,7 @@
     <br />
     <h1 style="margin-left: 30%;"><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif"
         width="30">
-      Loading...</h1>
+      <span id="loading-message">Loading.</span></h1>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
     <h3 align="center">
@@ -1018,8 +1031,9 @@
         onclick="disableFollowing();">Following System 💻 Dark Mode</a>
     </h3>
     <footer>
-      <hr style="margin-left:-12%"/>
-      <h3 align="center" style="margin-left:-9%">Copyright &copy; 2018-2021 Hollow Man (@HollowMan6). All rights reserved.</h3>
+      <hr style="margin-left:-10%" />
+      <h3 align="center" style="margin-left:-9%">Copyright &copy; 2018-2021 Hollow Man (@HollowMan6). All rights
+        reserved.</h3>
     </footer>
   </div>
   <div class="container" style="display:none;">
