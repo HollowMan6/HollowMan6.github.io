@@ -124,12 +124,15 @@
     });
 
     var changeLoadingMessage = function () {
-      if (document.getElementById('loading-message').innerText == "Loading.") {
-        document.getElementById('loading-message').innerText = "Loading..";
-      } else if (document.getElementById('loading-message').innerText == "Loading..") {
-        document.getElementById('loading-message').innerText = "Loading...";
-      } else if (document.getElementById('loading-message').innerText == "Loading...") {
-        document.getElementById('loading-message').innerText = "Loading.";
+      var lmessage = document.getElementById('loading-message');
+      if (lmessage) {
+        if (lmessage.innerText == "Loading.") {
+          lmessage.innerText = "Loading..";
+        } else if (lmessage.innerText == "Loading..") {
+          lmessage.innerText = "Loading...";
+        } else if (lmessage.innerText == "Loading...") {
+          lmessage.innerText = "Loading.";
+        }
       }
     }
 
