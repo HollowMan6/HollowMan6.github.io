@@ -99,6 +99,10 @@
         duration: 5000,
         step: function () {
           var percentage = Math.round(this.property);
+          progressPercent = document.getElementById("progress-percent");
+          if (progressPercent) {
+            progressPercent.innerText = percentage + "%";
+          }
           $('#progress').css('width', percentage + "%");
         }
       });
@@ -112,6 +116,10 @@
       duration: 2000,
       step: function () {
         var percentage = Math.round(this.property);
+        progressPercent = document.getElementById("progress-percent");
+        if (progressPercent) {
+          progressPercent.innerText = percentage + "%";
+        }
         $('#progress').css('width', percentage + "%");
       },
       complete: function () {
@@ -126,12 +134,12 @@
     var changeLoadingMessage = function () {
       var lmessage = document.getElementById('loading-message');
       if (lmessage) {
-        if (lmessage.innerText == "Loading.") {
-          lmessage.innerText = "Loading..";
-        } else if (lmessage.innerText == "Loading..") {
-          lmessage.innerText = "Loading...";
-        } else if (lmessage.innerText == "Loading...") {
-          lmessage.innerText = "Loading.";
+        if (lmessage.innerHTML == "Loading.&nbsp;&nbsp;") {
+          lmessage.innerHTML = "Loading..&nbsp";
+        } else if (lmessage.innerHTML == "Loading..&nbsp;") {
+          lmessage.innerHTML = "Loading...";
+        } else if (lmessage.innerHTML == "Loading...") {
+          lmessage.innerHTML = "Loading.&nbsp;&nbsp;";
         }
       }
     }
@@ -1223,7 +1231,9 @@
     </script>
     <h1 style="margin-left: 30%;"><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif"
         width="30">
-      <span id="loading-message">Loading.</span></h1>
+      <span id="loading-message">Loading.&nbsp;&nbsp;</span>
+      <span id="progress-percent" style="font-size: 15px;">0%</span>
+    </h1>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
     <h3 align="center">
