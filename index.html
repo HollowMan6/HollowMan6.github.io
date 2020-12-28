@@ -590,10 +590,6 @@
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
         }
-        jquerycollect = $('.pic');
-        for (var i = 0; i < jquerycollect.length; i++) {
-          jquerycollect[i].style.boxShadow = "";
-        }
         try {
           if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document
             .getElementById("gspons").contentWindow.document.readyState === 'complete') {
@@ -688,10 +684,6 @@
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
-        }
-        jquerycollect = $('.pic');
-        for (var i = 0; i < jquerycollect.length; i++) {
-          jquerycollect[i].style.boxShadow = "none";
         }
         try {
           if (document.getElementById("gspons").contentWindow.document.readyState === 'interactive' || document
@@ -1050,15 +1042,14 @@
     .pic {
       opacity: 0.7;
       filter: alpha(opacity=70);
-      -webkit-transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
-      transition: opacity 1s, filter 1s, transform 1s, box-shadow 1s;
+      -webkit-transition: opacity 1s, filter 1s, transform 1s;
+      transition: opacity 1s, filter 1s, transform 1s;
     }
 
     .pic:hover {
       opacity: 1;
-      filter: alpha(opacity=100);
+      filter: drop-shadow(0px 12px 16px rgba(0, 0, 0, .34));
       transform: scale(1.10);
-      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
 
     .headpic {
