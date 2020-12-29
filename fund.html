@@ -108,10 +108,15 @@
       });
     }
 
+    var progressRange = 30;
+    if ('loading' in HTMLImageElement.prototype) {
+      progressRange = 97;
+    }
+
     $({
       property: 0
     }).animate({
-      property: 30
+      property: progressRange
     }, {
       duration: 2000,
       step: function () {
@@ -123,10 +128,12 @@
         $('#progress').css('width', percentage + "%");
       },
       complete: function () {
-        if (document.readyState != "loading") {
-          progressAfterDOMLoaded();
-        } else {
-          window.addEventListener("DOMContentLoaded", progressAfterDOMLoaded);
+        if (!'loading' in HTMLImageElement.prototype) {
+          if (document.readyState != "loading") {
+            progressAfterDOMLoaded();
+          } else {
+            window.addEventListener("DOMContentLoaded", progressAfterDOMLoaded);
+          }
         }
       }
     });

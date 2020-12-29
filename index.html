@@ -108,10 +108,15 @@
       });
     }
 
+    var progressRange = 30;
+    if ('loading' in HTMLImageElement.prototype) {
+      progressRange = 97;
+    }
+
     $({
       property: 0
     }).animate({
-      property: 30
+      property: progressRange
     }, {
       duration: 2000,
       step: function () {
@@ -123,10 +128,12 @@
         $('#progress').css('width', percentage + "%");
       },
       complete: function () {
-        if (document.readyState != "loading") {
-          progressAfterDOMLoaded();
-        } else {
-          window.addEventListener("DOMContentLoaded", progressAfterDOMLoaded);
+        if (!'loading' in HTMLImageElement.prototype) {
+          if (document.readyState != "loading") {
+            progressAfterDOMLoaded();
+          } else {
+            window.addEventListener("DOMContentLoaded", progressAfterDOMLoaded);
+          }
         }
       }
     });
@@ -1380,11 +1387,11 @@
             <br />
             <h1 align="center">⚡ Highlighted Work</h1>
             <p>
-              <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+              <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
                 data="https://gh-card.dev/repos/HollowMan6/My-Alibaba-Summer-of-Code.svg?link_target=_blank"></object>
             </p>
             <p>
-              <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+              <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
                 data="https://gh-card.dev/repos/HollowMan6/My-OSPP-Summer.svg?link_target=_blank"></object>
             </p>
             <br />
@@ -1591,7 +1598,7 @@
             class="header">&copy; Software
             Copyright</a>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/hollowman6/Hollow-Software-for-Picture-Video-Information-Hiding-Encryption-and-Decryption.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1655,7 +1662,7 @@
               style="margin-left: 10%; font-size: 170%" class="love">🙋 LZU Auto Course Evaluation Feedback</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/hollowman6/Tool-Set-for-College-Language-Test.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1667,7 +1674,7 @@
               style="margin-left: 10%; font-size: 170%" class="love">📄 Tool for Autofill Questionaire</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/hollowman6/AutoVoting-for-Yunmai.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1682,7 +1689,7 @@
               Competition</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1700,7 +1707,7 @@
           <a href="https://github.com/Hollow-Software/Coursework-Answers-and-Lesson-Helper" target="_blank"
             id="CourseworkAnswersandLessonHelper" class="header">🏫 Coursework Answers and Lesson Helper</a>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/hollowman6/ChaoXing-ErYa-Wisdom-Tree-Lessons-Helper.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1716,7 +1723,7 @@
               style="margin-left: 10%; font-size: 150%">Guessing Game</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/HollowMan6/Programming-with-Google-Go-Coursera-Specialization.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1736,7 +1743,7 @@
               style="margin-left: 10%; font-size: 170%" class="love">🐋 Docker images for PyQT5 Spiders</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/HollowMan6/TinyML-ESP32.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1788,7 +1795,7 @@
               style="margin-left: 10%; font-size: 150%">Play with Arduino</a>
           </p>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/HollowMan6/English-Word-Frequency-Statistics-Program.svg?link_target=_blank"></object>
           </p>
           <p>
@@ -1811,7 +1818,7 @@
           <a href="https://github.com/Hollow-Software/Website" target="_blank" id="Website" class="header">🌏
             Website</a>
           <p>
-            <object class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
+            <object loading="lazy" class="pic" type="image/svg+xml" style="margin-left: 10%;margin-top:5px;"
               data="https://gh-card.dev/repos/HollowMan6/HollowMan6.github.io.svg?link_target=_blank"></object>
           </p>
           <h3 align="center">More waiting to be added ......</h3>
