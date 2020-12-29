@@ -112,13 +112,17 @@
     if ('loading' in HTMLImageElement.prototype) {
       progressRange = 97;
     }
+    var progressTimeRange = 2000;
+    if ('loading' in HTMLImageElement.prototype) {
+      progressTimeRange = 5000;
+    }
 
     $({
       property: 0
     }).animate({
       property: progressRange
     }, {
-      duration: 2000,
+      duration: progressTimeRange,
       step: function () {
         var percentage = Math.round(this.property);
         progressPercent = document.getElementById("progress-percent");
@@ -128,7 +132,7 @@
         $('#progress').css('width', percentage + "%");
       },
       complete: function () {
-        if (!'loading' in HTMLImageElement.prototype) {
+        if (!('loading' in HTMLImageElement.prototype)) {
           if (document.readyState != "loading") {
             progressAfterDOMLoaded();
           } else {
