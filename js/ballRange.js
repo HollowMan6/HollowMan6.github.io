@@ -43,7 +43,7 @@
     };
     var drawText = function () {
         ctx.save();
-        var size = 0.7 * cR;
+        var size = 0.8 * cR;
         ctx.font = size + 'px Microsoft Yahei';
         ctx.textAlign = 'center';
         ctx.fillStyle = ballRangeTextColor;
