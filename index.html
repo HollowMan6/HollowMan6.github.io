@@ -223,17 +223,17 @@
         $("#loading").fadeOut("slow");
         $(".container").show();
         document.getElementById("open-button").click();
-        confetti.start(3000);
+        confetti.start(1000);
         window.clearInterval(timer1);
         window.clearInterval(changeLoadingMessageTimer);
         if (window.location.hash) {
           setTimeout(
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
-            3000);
+            1000);
         } else if (scrollLocationIndex) {
           setTimeout(
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);",
-            3000);
+            1000);
         }
         if (!(typeof IntersectionObserver === "function")) {
           checkScrollAnimateitems();
