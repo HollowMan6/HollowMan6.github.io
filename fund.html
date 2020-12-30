@@ -119,6 +119,9 @@
 
     window.addEventListener("DOMContentLoaded", scrollAnimate);
 
+    var ballRangeValue = 0;
+    var ballRangeTextColor = "rgba(0, 0, 0, 1)";
+
     function progressAfterDOMLoaded() {
       $({
         property: 30
@@ -128,10 +131,7 @@
         duration: 5000,
         step: function () {
           var percentage = Math.round(this.property);
-          progressPercent = document.getElementById("progress-percent");
-          if (progressPercent) {
-            progressPercent.innerText = percentage + "%";
-          }
+          ballRangeValue = percentage;
           $('#progress').css('width', percentage + "%");
         }
       });
@@ -154,10 +154,7 @@
       duration: progressTimeRange,
       step: function () {
         var percentage = Math.round(this.property);
-        progressPercent = document.getElementById("progress-percent");
-        if (progressPercent) {
-          progressPercent.innerText = percentage + "%";
-        }
+        ballRangeValue = percentage;
         $('#progress').css('width', percentage + "%");
       },
       complete: function () {
@@ -174,12 +171,12 @@
     var changeLoadingMessage = function () {
       var lmessage = document.getElementById('loading-message');
       if (lmessage) {
-        if (lmessage.innerHTML == "Loading.&nbsp;&nbsp;") {
-          lmessage.innerHTML = "Loading..&nbsp";
-        } else if (lmessage.innerHTML == "Loading..&nbsp;") {
+        if (lmessage.innerHTML == "Loading.") {
+          lmessage.innerHTML = "Loading..";
+        } else if (lmessage.innerHTML == "Loading..") {
           lmessage.innerHTML = "Loading...";
         } else if (lmessage.innerHTML == "Loading...") {
-          lmessage.innerHTML = "Loading.&nbsp;&nbsp;";
+          lmessage.innerHTML = "Loading.";
         }
       }
     }
@@ -500,6 +497,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
+        ballRangeTextColor = "rgba(0, 0, 0, 1)";
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
@@ -551,6 +549,7 @@
             "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
+        ballRangeTextColor = "rgba(255, 255, 255, 1)";
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
@@ -1053,10 +1052,11 @@
     </p>
     <br />
     <h1 style="margin-left: 30%;"><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif"
-        width="30">
-      <span id="loading-message">Loading.&nbsp;&nbsp;</span>
-      <span id="progress-percent" style="font-size: 15px;">0%</span>
+        width="30" style="margin-left: -140px">
+      <span id="loading-message" style="display:block; float: left; margin-left:20px; width: 100px;">Loading.</span>
+      <canvas id="ballRange" style="position: fixed; margin-left: 75px; margin-top: -38px; transform:scale(0.5);"></canvas>
     </h1>
+    <script src="js/ballRange.js"></script>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
     <h3 align="center">
