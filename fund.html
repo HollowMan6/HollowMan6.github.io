@@ -55,27 +55,24 @@
     }
 
     var hasNotified = false;
-    var beforeScroll = 0;
 
     var checkScrollAnimateitems = function () {
       $('.fade-content *').each(function (i) {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
+        var top_of_object = $(this).height() + $(this).offset().top;
         var bottom_of_window = $('#main-content').height();
         var afterScroll = $('#main-content').scrollTop();
-        if (beforeScroll <= afterScroll) {
-          if (bottom_of_window > bottom_of_object) {
-            $(this).css({
-              'opacity': '',
-              'transform': ''
-            });
-          } else {
-            $(this).css({
-              'opacity': '0',
-              'transform': 'translateY(' + 2 + 'em) scale(0.9)'
-            });
-          }
+        if (bottom_of_window > bottom_of_object && top_of_object > 0) {
+          $(this).css({
+            'opacity': '',
+            'transform': ''
+          });
+        } else {
+          $(this).css({
+            'opacity': '0',
+            'transform': 'translateY(' + 2 + 'em) scale(0.9)'
+          });
         }
-        beforeScroll = afterScroll;
       });
     };
 
