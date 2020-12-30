@@ -11,7 +11,7 @@
     var axisLength = mW;
     var waveWidth = 0.1;
     var waveHeight = 3;
-    var speed = 0.09;
+    var speed = 0.2;
     var xOffset = 0;
     ctx.lineWidth = lineWidth;
     var IsdrawCircled = false;

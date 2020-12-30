@@ -348,6 +348,13 @@
       -webkit-animation: pulse 2s ease-out 0s infinite;
     }
 
+    #scrollProgress {
+      position: absolute;
+      margin-top: -18px;
+      opacity: 0.8;
+      right: 0px;
+    }
+
     .fade-content * {
       transition: ease all .2s;
     }
@@ -466,6 +473,7 @@
       var height = document.getElementById("main-content").scrollHeight - document.body.clientHeight;
       var scrolled = (winScroll / height) * 100;
       document.getElementById("Bar").style.width = scrolled + "%";
+      document.getElementById("scrollProgress").innerText = Math.round(scrolled) + "%";
       window.localStorage.setItem("scrollLocationFund", winScroll);
       var elements = [];
       elements.push(document.getElementById("gspons"));
@@ -977,7 +985,9 @@
     <span>⚡</span>
   </div>
   <div class="ProgressBar">
-    <div class="progressbar" id="Bar"></div>
+    <div class="progressbar" id="Bar" style="position: absolute;">
+      <span id="scrollProgress"></span>
+    </div>
   </div>
   <div id="mouseball"></div>
   <script src="js/Staggered-Mouse-Balls.min.js"></script>
@@ -1053,7 +1063,9 @@
     <h1 style="margin-left: 30%;"><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif"
         width="30" style="margin-left: -140px">
       <span id="loading-message" style="display:block; float: left; margin-left:20px; width: 100px;">Loading.</span>
-      <canvas id="ballRange" style="position: fixed; margin-left: 75px; margin-top: -38px; transform:scale(0.5);"></canvas>
+      <canvas id="ballRange"
+        style="position: fixed; margin-left: 135px; margin-top: -15px; transform:scale(0.5); animation: colorPulse 2s infinite linear;"
+        width="60px" height="60px"></canvas>
     </h1>
     <script src="js/ballRange.js"></script>
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
