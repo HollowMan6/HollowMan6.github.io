@@ -82,9 +82,9 @@ Date.prototype.sunriseSet = function(latitude, longitude, sunrise, zenith) {
 
     sinDec = 0.39782 * Math.sinDeg(sunTrueLongitude);
 	cosDec = Math.cosDeg(Math.asinDeg(sinDec));
-	cosLocalHourAngle = ((Math.cosDeg(zenith)) - (sinDec * (Math.sinDeg(latitude)))) / (cosDec * (Math.cosDeg(latitude)));
+	var cosLocalHourAngle = ((Math.cosDeg(zenith)) - (sinDec * (Math.sinDeg(latitude)))) / (cosDec * (Math.cosDeg(latitude)));
 
-	localHourAngle = Math.acosDeg(cosLocalHourAngle)
+	localHourAngle = Math.acosDeg(cosLocalHourAngle);
 
 	if (sunrise) {
 		localHourAngle = 360 - localHourAngle;
@@ -97,13 +97,13 @@ Date.prototype.sunriseSet = function(latitude, longitude, sunrise, zenith) {
 	time = localMeanTime - (longitude / Date.DEGREES_PER_HOUR);
 	time = Math.mod(time, 24);
 
-	localHourAngleReverse = 360 - localHourAngle;
+	var localHourAngleReverse = 360 - localHourAngle;
 
-	localHourReverse = localHourAngleReverse / Date.DEGREES_PER_HOUR;
+	var localHourReverse = localHourAngleReverse / Date.DEGREES_PER_HOUR;
 
-	localMeanTimeReverse = localHourReverse + rightAscension - (0.06571 * approxTimeOfEventInDays) - 6.622;
+	var localMeanTimeReverse = localHourReverse + rightAscension - (0.06571 * approxTimeOfEventInDays) - 6.622;
 
-	timeReverse = localMeanTimeReverse - (longitude / Date.DEGREES_PER_HOUR);
+	var timeReverse = localMeanTimeReverse - (longitude / Date.DEGREES_PER_HOUR);
 	timeReverse = Math.mod(timeReverse, 24);
 
 	var midnight = new Date(0);

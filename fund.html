@@ -61,7 +61,6 @@
         var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
         var top_of_object = $(this).height() + $(this).offset().top;
         var bottom_of_window = $('#main-content').height();
-        var afterScroll = $('#main-content').scrollTop();
         if (bottom_of_window > bottom_of_object && top_of_object > 0) {
           $(this).css({
             'opacity': '',
@@ -188,7 +187,7 @@
     };
 
     var notifyResFailed = function () {
-      imageList = document.getElementsByTagName('img');
+      var imageList = document.getElementsByTagName('img');
       for (var i = 0; i < imageList.length; i++) {
         if (imageList[i].complete) {
           imageList[i].classList.add('loaded');
@@ -416,13 +415,13 @@
         display: 'block',
         position: 'absolute',
         zIndex: -1
-      })
+      });
       $i.animate({
         top: yy - (heightUp ? heightUp : 200),
         opacity: 0
       }, time, function () {
         $i.remove();
-      })
+      });
     }
 
     function gSponsNightSwitch() {
@@ -455,7 +454,7 @@
         index = elements.length;
       }
       var eleNav = document.querySelectorAll("nav.menu > div > .menu-links")[index];
-      var activated = eleNav.parentElement.querySelectorAll('.activate')
+      var activated = eleNav.parentElement.querySelectorAll('.activate');
       for (var i = 0; i < activated.length; i++) {
         activated[i].classList.remove('activate');
       };

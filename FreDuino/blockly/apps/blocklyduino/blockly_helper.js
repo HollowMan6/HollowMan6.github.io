@@ -35,7 +35,7 @@ function restore_blocks() {
 * Save Arduino generated code to local file.
 */
 function saveCode() {
-    xmlText = "";
+    var xmlText = "";
     try {
       xmlDom = Blockly.Xml.textToDom(xmlText);
     } catch (e) {
@@ -109,7 +109,7 @@ function load(event) {
  * Discard all blocks from the workspace.
  */
 function discard() {
-   xmlText = "<xml xmlns=\"http://www.w3.org/1999/xhtml\">" + 
+   var xmlText = "<xml xmlns=\"http://www.w3.org/1999/xhtml\">" + 
   "<block type=\"serial_print\" id=\"27\" x=\"113\" y=\"163\">"+
     "<value name=\"CONTENT\">" + 
       "<block type=\"grove_temporature_sensor\" id=\"13\">" + 

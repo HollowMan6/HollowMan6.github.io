@@ -159,7 +159,7 @@
                 return "../Linkedin/?language=" + this.language;
             },
             currentPdf: function () {
-                for (index in this.languages) {
+                for (var index in this.languages) {
                     if (this.languages[index].value == this.language) {
                         this.pdfName = this.languages[index].pdf;
                     }

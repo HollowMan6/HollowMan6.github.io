@@ -226,7 +226,7 @@ Blockly.ScratchBlocks.VerticalExtensions.registerAll = function() {
       'sensing', 'pen', 'operators', 'more'];
   // Register functions for all category colours.
   for (var i = 0; i < categoryNames.length; i++) {
-    name = categoryNames[i];
+    var name = categoryNames[i];
     Blockly.Extensions.register('colours_' + name,
         Blockly.ScratchBlocks.VerticalExtensions.colourHelper(name));
   }

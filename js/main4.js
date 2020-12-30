@@ -19,7 +19,7 @@
 		morphEl = document.getElementById('morph-shape'),
 		s = Snap(morphEl.querySelector('svg'));
 	path = s.select('path');
-	initialPath = this.path.attr('d'),
+	var initialPath = this.path.attr('d'),
 		steps = morphEl.getAttribute('data-morph-open').split(';');
 	stepsTotal = steps.length;
 	isAnimating = false;

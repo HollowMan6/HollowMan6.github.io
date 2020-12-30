@@ -89,8 +89,6 @@ jQuery(document).ready(function($) {
 
     $('ul.resp-tabs-list li[class^=tabs-]').click(function() {
 
-        var tab_name = $(this).attr('data-tab-name');
-
         $('.resp-tabs-container').addClass('animated ' + animation_style);
         $('.resp-tabs-container').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
             $('.resp-tabs-container').removeClass('animated ' + animation_style);

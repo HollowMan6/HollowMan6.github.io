@@ -15,7 +15,7 @@
 /*! @source http://purl.eligrey.com/github/Blob.js/blob/master/Blob.js */
 
 if (typeof Blob !== "function")
-var Blob = (function (view) {
+Blob = (function (view) {
 	"use strict";
 
 	var BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || view.MSBlobBuilder || (function(view) {

@@ -154,14 +154,14 @@
                 return window.location.href.split(/[?#]/)[0];
             },
             currentPublicationName: function () {
-                for (index in this.publications) {
+                for (var index in this.publications) {
                     if (this.publications[index].id == this.publicationId) {
                         return this.publications[index].name;
                     }
                 }
             },
             currentPdf: function () {
-                for (index in this.publications) {
+                for (var index in this.publications) {
                     if (this.publications[index].id == this.publicationId) {
                         this.pdfName = this.publications[index].loc;
                     }

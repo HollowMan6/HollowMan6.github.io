@@ -69,7 +69,6 @@
 			initializeItems: function() {
 				
 				var listParent = object.parent();
-				var innerHeight = listParent.height(); 
 				var childSet = object.children();
 				
     			var innerWidth = listParent.width(); // Set widths

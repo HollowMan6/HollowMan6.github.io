@@ -106,7 +106,7 @@ function fetchDebugInfo(callback)
         }
         
         spinner.stop();
-        newInfo = request.responseText;
+        var newInfo = request.responseText;
         callback(status, newInfo);
     };
 

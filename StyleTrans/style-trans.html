@@ -134,7 +134,7 @@
                     let canvas = document.getElementById("combined");
                     let cT = preprocess(cImg)
                     const model = await createModel(path)
-                    z = model.predict(cT)
+                    var z = model.predict(cT)
                     toPixels(deprocess(z), canvas)
                     lbl.innerHTML = "<br/><div style='font-size:48px'>√</div><br/>完成！<br/>Complete!"
                 }
