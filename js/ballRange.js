@@ -23,7 +23,7 @@
         ctx.beginPath();
         ctx.arc(r, r, cR, 0, 2 * Math.PI);
         ctx.clip();
-    }
+    };
     var drawSin = function (xOffset) {
         ctx.save();
         var points = [];
@@ -69,6 +69,6 @@
         drawText();
         xOffset += speed;
         requestAnimationFrame(render);
-    }
+    };
     render();
 })();
