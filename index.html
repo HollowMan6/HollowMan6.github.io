@@ -35,7 +35,7 @@
       console.info(
         "%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io",
         'font-weight:bold');
-      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) { // lgtm [js/incomplete-url-substring-sanitization]
         console.info("%c🌏 网站地址 Website URL: https://hollowman.ml/", 'font-weight:bold');
         console.info("%c🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡", 'font-weight:bold');
       } else {
@@ -46,7 +46,7 @@
       console.info(
         "📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io"
       );
-      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) {
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) { // lgtm [js/incomplete-url-substring-sanitization]
         console.info("🌏 网站地址 Website URL: https://hollowman.ml/");
         console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡");
       } else {
@@ -223,11 +223,11 @@
         window.clearInterval(timer1);
         window.clearInterval(changeLoadingMessageTimer);
         if (window.location.hash) {
-          setTimeout(
+          setTimeout( // lgtm [js/eval-like-call]
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: $(window.location.hash).offset().top + document.getElementById('main-content').scrollTop }, 500); document.getElementById('open-button').click();",
             1000);
         } else if (scrollLocationIndex) {
-          setTimeout(
+          setTimeout( // lgtm [js/eval-like-call]
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);",
             1000);
         }
@@ -248,12 +248,12 @@
     }
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
-      timerout = setTimeout(
+      timerout = setTimeout( // lgtm [js/eval-like-call]
         "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
         60000);
     } else {
       window.addEventListener("DOMContentLoaded", function () {
-        timerout = setTimeout(
+        timerout = setTimeout( // lgtm [js/eval-like-call]
           "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
           60000);
       });
@@ -1266,9 +1266,9 @@
         string += "</tr>";
       }
       string += "</table>";
-      document.write(string);
+      document.write(string); // lgtm [js/eval-like-call]
       var loadingGrid = 0;
-      var timer1 = window.setInterval("loading()", 10);
+      var timer1 = window.setInterval("loading()", 10); // lgtm [js/eval-like-call]
     </script>
     <h1 style="margin-left: 30%;"><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif"
         width="30" style="margin-left: -140px">

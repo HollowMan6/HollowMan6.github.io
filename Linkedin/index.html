@@ -2,7 +2,7 @@
 	var languages = { 'en':'en_US', 'cn':'zh_CN'}
 	function getUrlParam(name, url) {
         if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
+        name = name.replace(/[\[\]]/g, '\\$&'); // lgtm [js/incomplete-sanitization]
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
             results = regex.exec(url);
         if (!results) return null;
