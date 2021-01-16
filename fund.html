@@ -12,6 +12,14 @@
 <html>
 
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-8085225986579534",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="https://fuckadblock.sitexw.fr/beta/fuckadblock.js"></script>
   <script type="text/javascript" src="https://g.alicdn.com/code/lib/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/confetti.min.js"></script>
   <script src="js/sun.js"></script>
@@ -268,6 +276,28 @@
       }
       ballColorListIndex = (ballColorListIndex + 1) % 6
     }, 300);
+
+    function adBlockNotDetected() {
+      document.getElementById("adblocker-detected-msg").style.display = "none";
+    }
+
+    function adBlockDetected() {
+      document.getElementById("adblocker-detected-msg").style.display = "";
+    }
+
+    function setFuckadBlock(){
+      if (typeof fuckAdBlock === 'undefined') {
+        adBlockDetected();
+      } else {
+        fuckAdBlock.onDetected(adBlockDetected);
+        fuckAdBlock.onNotDetected(adBlockNotDetected);
+      }
+    }
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      setFuckadBlock();
+    } else {
+      window.addEventListener("DOMContentLoaded", setFuckadBlock);
+    }
   </script>
   <style type="text/css">
     body {
@@ -1169,6 +1199,20 @@
               frameborder="0" scrolling="0" width="274px" height="30px" id="github-btn"
               style="margin-left: 22%;margin-top:5px;border-radius: 5px;"></iframe>
           </div>
+          <h1>Advertisement</h1>      
+          <div id="adblocker-detected-msg" style="display: none;">
+            <h2 style="margin-left: 18%;color:#ff7b00;">Please disable your adblocker</h2>
+            <h2 style="margin-left: 18%;color:#ff7b00;">and then refresh ❤. Thank you!</h2>
+            <h2 style="margin-left: 8%;color: #ff7b00;">请关闭您的广告屏蔽插件，然后刷新 ❤，谢谢！</h2>
+          </div>
+          <!-- FundADS -->
+          <p>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8085225986579534"
+              data-ad-slot="3363518025" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          </p>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
           <h1 id="Funding">❤ Funding</h1>
           <h5 style="margin-left: 2%;">Thanks for your donation. Every bit of donation will be the driving force for me
             to
