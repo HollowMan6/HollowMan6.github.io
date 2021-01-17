@@ -278,27 +278,27 @@
       ballColorListIndex = (ballColorListIndex + 1) % 6
     }, 300);
 
-    function adBlockNotDetected() {
-      document.getElementById("adblocker-detected-msg").style.display = "none";
-    }
+    // function adBlockNotDetected() {
+    //   document.getElementById("adblocker-detected-msg").style.display = "none";
+    // }
 
-    function adBlockDetected() {
-      document.getElementById("adblocker-detected-msg").style.display = "";
-    }
+    // function adBlockDetected() {
+    //   document.getElementById("adblocker-detected-msg").style.display = "";
+    // }
 
-    function setFuckadBlock(){
-      if (typeof fuckAdBlock === 'undefined') {
-        adBlockDetected();
-      } else {
-        fuckAdBlock.onDetected(adBlockDetected);
-        fuckAdBlock.onNotDetected(adBlockNotDetected);
-      }
-    }
-    if (document.readyState === 'interactive' || document.readyState === 'complete') {
-      setFuckadBlock();
-    } else {
-      window.addEventListener("DOMContentLoaded", setFuckadBlock);
-    }
+    // function setFuckadBlock(){
+    //   if (typeof fuckAdBlock === 'undefined') {
+    //     adBlockDetected();
+    //   } else {
+    //     fuckAdBlock.onDetected(adBlockDetected);
+    //     fuckAdBlock.onNotDetected(adBlockNotDetected);
+    //   }
+    // }
+    // if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    //   setFuckadBlock();
+    // } else {
+    //   window.addEventListener("DOMContentLoaded", setFuckadBlock);
+    // }
   </script>
   <style type="text/css">
     body {
