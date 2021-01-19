@@ -31,11 +31,12 @@
 
     var getRandomColor = function getRandomColor() {
         var colors = [
-            'rgba(231, 76, 60, 1)', // red
-            'rgba(241, 196, 15, 1)', // yellow
-            'rgba(46, 204, 113, 1)', // green
-            'rgba(52, 152, 219, 1)', // blue
-            'rgba(155, 89, 182, 1)' // purple
+            'rgba(195, 131, 205, 1)',
+            'rgba(194, 135, 103, 1)',
+            'rgba(112, 151, 184, 1)',
+            'rgba(175, 76, 94, 1)',
+            'rgba(219, 223, 147, 1)',
+            'rgba(89, 179, 151, 1)'
         ];
 
         return colors[getRandomInt(0, colors.length)];
