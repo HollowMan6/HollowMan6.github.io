@@ -7,7 +7,7 @@
         //this._mx,this._my是移动的距离，参数越大移动
         this.x = x;
         this.y = y;
-        this.r = Math.random() * 10;
+        this.r = Math.random() * 5 + 5;
         this._mx = (Math.random() > 0.5) ? Math.random() : -Math.random();
         this._my = (Math.random() > 0.5) ? Math.random() : -Math.random();
         this._color = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) + ", 0.3)";
@@ -44,10 +44,19 @@
     function set_canvas_size() {
         w = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
             h = the_canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-        circles = [];
+        circles.forEach(function (circle, index) {
+            if (!((circle.x < w && circle.x > 0) && (circle.y < h && circle.y > 0))) {
+                circles.splice(index, 1);
+            }
+        });
         num = w * h / 20000;
-        for (var i = 0; i < num; i++) {
+        for (var i = 0; i < num - circles.length; i++) {
             circles.push(new Circle(Math.random() * w, Math.random() * h));
+        }
+        if (circles.length > num) {
+            for (var i = 0; i < circles.length - num; i++) {
+                circles.pop();
+            }
         }
     }
 
