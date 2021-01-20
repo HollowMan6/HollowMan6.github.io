@@ -581,6 +581,10 @@
         $("#SwitchNightMode")[0].style.display = "";
         let icon = 'favicon.ico';
         changeFavicon(icon);
+        jquerycollect = $('.footerLogo');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].src = icon;
+        }
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
             "followSystemTheme")) {
@@ -632,6 +636,10 @@
         }
         let icon = 'favicon-night.ico';
         changeFavicon(icon);
+        jquerycollect = $('.footerLogo');
+        for (var i = 0; i < jquerycollect.length; i++) {
+          jquerycollect[i].src = icon;
+        }
       }
     }
 
@@ -1120,7 +1128,7 @@
     </h3>
     <footer>
       <hr style="margin-left:-10%" />
-      <h3 align="center" style="margin-left:-9%">Copyright &copy; 2018-2021 Hollow Man (@HollowMan6). All rights
+      <h3 align="center" style="margin-left:-9%">Copyright &copy; 2018-2021 <img class="footerLogo" loading="lazy" width="20px" src="favicon.ico"> Hollow Man (@HollowMan6). All rights
         reserved.</h3>
       <p align="center" style="margin-left:-9%">
         <a class="menu-links" style="font-size: 15px;" href="https://icp.gov.moe" target="_blank">萌ICP备</a>
@@ -1300,7 +1308,7 @@
           </p>
           <footer>
             <hr />
-            <h3 align="center">Copyright &copy; 2018-2021 Hollow Man (@HollowMan6). All rights reserved.</h3>
+            <h3 align="center">Copyright &copy; 2018-2021 <img class="footerLogo" loading="lazy" width="20px" src="favicon.ico"> Hollow Man (@HollowMan6). All rights reserved.</h3>
             <p align="center">
               <img loading="lazy" src="https://img.shields.io/badge/license-GPL-green"
                 onclick="window.open('https://opensource.org/licenses/GPL-3.0/','_blank')">
