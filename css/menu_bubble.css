@@ -116,6 +116,9 @@ body,
 /* Menu */
 .menu-wrap {
 	position: absolute;
+	overflow: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	z-index: 1001;
 	width: 280px;
 	height: 100%;
