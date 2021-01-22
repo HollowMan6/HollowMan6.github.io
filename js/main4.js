@@ -75,14 +75,22 @@
 		}
 		if (!isOpen) {
 			setTimeout(function () {
+				$('.morph-shape').css({
+					'opacity': '0'
+				});
 				$('.menu-wrap').css({
+					'background': menuWrapbgColor,
 					'backdrop-filter': 'blur(3px)',
 					'box-shadow': '0 12px 16px 0 rgba(0, 0, 0, 0.15), 0 17px 50px 0 rgba(0, 0, 0, 0.19)'
 				});
 			}, 600);
 		}
 		isOpen = !isOpen;
+		$('.morph-shape').css({
+			'opacity': ''
+		});
 		$('.menu-wrap').css({
+			'background': '',
 			'backdrop-filter': '',
 			'box-shadow': ''
 		});
