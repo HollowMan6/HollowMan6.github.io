@@ -642,7 +642,7 @@
         $(".morph-shape > svg")[0].style.filter = "";
         menuWrapbgColor = "rgba(221,221,221,0.3)";
         if($('.menu-wrap')[0].style.background) {
-          $('.menu-wrap')[0].style.background = "rgba(221,221,221,0.3)";
+          $('.menu-wrap')[0].style.background = menuWrapbgColor;
         }
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
@@ -746,7 +746,7 @@
         $(".morph-shape > svg")[0].style.filter = "invert(0.9)";
         menuWrapbgColor = "rgba(52,52,52,0.3)";
         if($('.menu-wrap')[0].style.background) {
-          $('.menu-wrap')[0].style.background = "rgba(52,52,52,0.3)";
+          $('.menu-wrap')[0].style.background = menuWrapbgColor;
         }
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
@@ -923,12 +923,15 @@
     }
   </script>
   <style type="text/css">
+    * {
+      font-family: 'PT Sans', sans-serif;
+    }
+
     body {
       background-color: #EEEEEE;
       margin-top: 0px;
       font-size: 83%;
       color: #404040;
-      font-family: 'PT Sans', sans-serif;
     }
 
     table {
@@ -943,7 +946,6 @@
     }
 
     a {
-      font-family: 'PT Sans', sans-serif;
       font-size: 20%;
       border-left: 4px solid #009bdf;
       padding: 0 2% 0 2%;
