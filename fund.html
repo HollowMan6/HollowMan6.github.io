@@ -501,6 +501,8 @@
       }
     };
 
+    var menuWrapbgColor = "rgba(221,221,221,0.3)";
+
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
@@ -532,6 +534,7 @@
           jquerycollect[i].style.filter = "";
         }
         $(".morph-shape > svg")[0].style.filter = "";
+        menuWrapbgColor = "rgba(221,221,221,0.3)";
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "";
@@ -587,6 +590,7 @@
           jquerycollect[i].style.filter = "invert(1) hue-rotate(180deg)";
         }
         $(".morph-shape > svg")[0].style.filter = "invert(0.9)";
+        menuWrapbgColor = "rgba(52,52,52,0.3)";
         jquerycollect = $('a.menu-links');
         for (var i = 0; i < jquerycollect.length; i++) {
           jquerycollect[i].style.color = "#BFBFBF";
