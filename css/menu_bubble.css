@@ -128,16 +128,21 @@ body,
 /* Menu */
 .menu-wrap {
 	position: absolute;
-	overflow: auto;
+	overflow: hidden;
 	-webkit-overflow-scrolling: touch;
 	z-index: 1001;
-	width: 300px;
+	width: 280px;
 	height: 100%;
 	font-size: 1.15em;
 	-webkit-transform: translate3d(-300px,0,0);
 	transform: translate3d(-300px,0,0);
 	-webkit-transition: -webkit-transform 0.4s;
 	transition: transform 0.4s, box-shadow 1s;
+}
+
+.menu-wrap:hover {
+	width: 290px;
+	overflow-y: scroll;
 }
 
 .menu {

@@ -18,7 +18,7 @@
 }
 
 .toggle--btn:hover {
-  cursor: pointer;
+  cursor: url('../img/cursor/link.cur'), pointer;
 }
 
 .toggle--btn,

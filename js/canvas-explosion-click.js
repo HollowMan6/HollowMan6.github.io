@@ -208,8 +208,8 @@
             this.y = y;
             this.objects = [];
 
-            var particles = getRandomInt(30, 80); // 10, 30 amount of particles
-            var crowns = particles * getRandom(0.3, 0.5);
+            var particles = getRandomInt(10, 20); // 10, 30 amount of particles
+            var crowns = particles * getRandom(0.5, 0.8);
 
             while (crowns-- > 0) {
                 this.addCrown();
