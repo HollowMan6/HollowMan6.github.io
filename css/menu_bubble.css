@@ -169,9 +169,9 @@ body,
 
 .icon-list ul {
 	list-style: none;
-	padding: 1.2em;
+	padding: 1.2em 0 1.2em 0.6em;
 	margin: 0px;
-	width: 82%;
+	width: 90%;
 	height: 25px;
 	line-height: 25px;
 }
