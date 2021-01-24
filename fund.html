@@ -60,7 +60,7 @@
     var hasNotified = false;
 
     var checkScrollAnimateitems = function () {
-      $('.fade-content *').each(function (i) {
+      $('.fade-content *:not(div)').each(function (i) {
         var bottom_of_object = $(this).offset().top + $(this).outerHeight() / 16;
         var top_of_object = $(this).height() + $(this).offset().top;
         var bottom_of_window = $('#main-content').height();
@@ -79,7 +79,7 @@
     };
 
     function scrollAnimateUsingObserver() {
-      var elements = document.querySelectorAll(".fade-content *");
+      var elements = document.querySelectorAll(".fade-content *:not(div)");
       var floatObserver = new IntersectionObserver(function (entries) {
         entries.reverse().forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -108,7 +108,7 @@
     }
 
     var scrollAnimate = function () {
-      $('.fade-content *').css({
+      $('.fade-content *:not(div)').css({
         'opacity': '0',
         'transform': 'translateY(' + 2 + 'em) scale(0.9)'
       });
