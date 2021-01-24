@@ -191,6 +191,7 @@ body,
 }
 
 .icon-list ul li:nth-child(2) a {
+	display: table-cell;
 	padding: 0;
 	padding-bottom: 0.4em;
 }
