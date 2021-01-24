@@ -36,7 +36,8 @@
       console.info(
         "%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io",
         'font-weight:bold');
-      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) { // lgtm [js/incomplete-url-substring-sanitization]
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -
+        1) { // lgtm [js/incomplete-url-substring-sanitization]
         console.info("%c🌏 网站地址 Website URL: https://hollowman.ml/", 'font-weight:bold');
         console.info("%c🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡", 'font-weight:bold');
       } else {
@@ -47,7 +48,8 @@
       console.info(
         "📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io"
       );
-      if (document.location.href.indexOf("hollowman6.gitee.io") == -1) { // lgtm [js/incomplete-url-substring-sanitization]
+      if (document.location.href.indexOf("hollowman6.gitee.io") == -
+        1) { // lgtm [js/incomplete-url-substring-sanitization]
         console.info("🌏 网站地址 Website URL: https://hollowman.ml/");
         console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡");
       } else {
@@ -279,7 +281,8 @@
       cursor: url('img/cursor/normal.cur'), default;
     }
 
-    a, .swal-button {
+    a,
+    .swal-button {
       cursor: url('img/cursor/link.cur'), pointer;
     }
 
@@ -513,13 +516,13 @@
         }
       }
       if (index == -1) {
-        document.querySelectorAll("nav.menu > div > .menu-links")[0].classList.remove('activate');
+        document.querySelectorAll("nav.menu > div > ul > li > .menu-links")[1].classList.remove('activate');
         return;
       } else if (Math.floor($(elements[elements.length - 1]).offset().top) <= 0) {
         index = elements.length - 1;
       }
-      var eleNav = document.querySelectorAll("nav.menu > div > .menu-links")[index];
-      var activated = eleNav.parentElement.querySelectorAll('.activate');
+      var eleNav = document.querySelectorAll("nav.menu > div > ul > li > .menu-links")[index];
+      var activated = eleNav.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.activate');
       for (var i = 0; i < activated.length; i++) {
         activated[i].classList.remove('activate');
       };
@@ -645,7 +648,7 @@
         $(".LI-icon")[0].style.filter = "";
         $(".morph-shape > svg")[0].style.filter = "";
         menuWrapbgColor = "rgba(221,221,221,0.3)";
-        if($('.menu-wrap')[0].style.background) {
+        if ($('.menu-wrap')[0].style.background) {
           $('.menu-wrap')[0].style.background = menuWrapbgColor;
         }
         jquerycollect = $('a.menu-links');
@@ -749,7 +752,7 @@
         $(".LI-icon")[0].style.filter = "brightness(0.6)";
         $(".morph-shape > svg")[0].style.filter = "invert(0.9)";
         menuWrapbgColor = "rgba(52,52,52,0.3)";
-        if($('.menu-wrap')[0].style.background) {
+        if ($('.menu-wrap')[0].style.background) {
           $('.menu-wrap')[0].style.background = menuWrapbgColor;
         }
         jquerycollect = $('a.menu-links');
@@ -1307,7 +1310,8 @@
     <a class="menu-links" href="javascript:void(0);" style="margin-left: 11%;" onclick="directShowMainPage();">
       Directly Show Main Page ⚡ 直接显示主界面</a>
     <h3 align="center">
-      <div class="toggle toggle--daynight" id="SwitchNightMode" style="margin-top:-30px; margin-left:-75px; height:60px;">
+      <div class="toggle toggle--daynight" id="SwitchNightMode"
+        style="margin-top:-30px; margin-left:-75px; height:60px;">
         <input type="checkbox" id="toggle--daynight1" class="toggle--checkbox" onclick="nightDaySwitch();">
         <label class="toggle--btn" for="toggle--daynight1"><span class="toggle--feature"></span></label>
       </div>
@@ -1324,8 +1328,8 @@
     </h3>
     <footer>
       <hr style="margin-left:-10%" />
-      <h3 align="center" style="margin-left:-10%; margin-top: -5px;">Copyright &copy; 2018-2021 <img class="footerLogo" loading="lazy"
-          width="20px" src="favicon.ico"> Hollow Man (@HollowMan6). All rights
+      <h3 align="center" style="margin-left:-10%; margin-top: -5px;">Copyright &copy; 2018-2021 <img class="footerLogo"
+          loading="lazy" width="20px" src="favicon.ico"> Hollow Man (@HollowMan6). All rights
         reserved.</h3>
       <p align="center" style="margin-left:-10%; margin-top: -10px;">
         <a class="menu-links" style="font-size: 15px;" href="https://icp.gov.moe" target="_blank">萌ICP备</a>
@@ -1339,39 +1343,66 @@
     <div class="menu-wrap">
       <nav class="menu">
         <div class="icon-list">
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">👦
-            About
-            ME</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#SoftwareCopyright').offset().top+document.getElementById('main-content').scrollTop}, 500);">&copy;
-            Software
-            Copyright</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#Publications').offset().top+document.getElementById('main-content').scrollTop}, 500);">📝
-            Publications</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#SpiderProgrammes').offset().top+document.getElementById('main-content').scrollTop}, 500);">🕷
-            Spider
-            Programmes</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#CompetitionsWork').offset().top+document.getElementById('main-content').scrollTop}, 500);">🏃‍
-            Competitions
-            Work</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#CourseworkAnswersandLessonHelper').offset().top+document.getElementById('main-content').scrollTop}, 500);">🏫
-            Coursework & <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Lesson Helper</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#CodingPractices').offset().top+document.getElementById('main-content').scrollTop}, 500);"><img
-              loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> Coding
-            Practices</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#Website').offset().top+document.getElementById('main-content').scrollTop}, 500);">🌏
-            Website</a>
-          <a class="menu-links" href="javascript:void(0);"
-            onclick="$('#main-content').animate({scrollTop:$('#Certificates').offset().top+document.getElementById('main-content').scrollTop}, 500);">🖼
-            Certificates</a>
+          <ul>
+            <li>👦</li>
+            <li>
+              <a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#About').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                About ME
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>&copy;</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#SoftwareCopyright').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Software
+                Copyright</a></li>
+          </ul>
+          <ul>
+            <li>📝</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#Publications').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Publications</a></li>
+          </ul>
+          <ul>
+            <li>🕷</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#SpiderProgrammes').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Spider
+                Programmes</a></li>
+          </ul>
+          <ul>
+            <li>🏃</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#CompetitionsWork').offset().top+document.getElementById('main-content').scrollTop}, 500);">‍Competitions
+                Work</a></li>
+          </ul>
+          <ul>
+            <li style="margin-top: 3px;">🏫</li>
+            <li><a class="menu-links" href="javascript:void(0);" style="margin-top: -10px;"
+                onclick="$('#main-content').animate({scrollTop:$('#CourseworkAnswersandLessonHelper').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Coursework & <br />
+                Lesson Helper</a></li>
+          </ul>
+          <ul>
+            <li><img loading="lazy" src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="80%"></li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#CodingPractices').offset().top+document.getElementById('main-content').scrollTop}, 500);">Coding
+                Practices</a></li>
+          </ul>
+          <ul>
+            <li>🌏</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#Website').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Website</a></li>
+          </ul>
+          <ul>
+            <li>🖼</li>
+            <li><a class="menu-links" href="javascript:void(0);"
+                onclick="$('#main-content').animate({scrollTop:$('#Certificates').offset().top+document.getElementById('main-content').scrollTop}, 500);">
+                Certificates</a></li>
+          </ul>
           <a class="menu-links" href="javascript:void(0);" style="float: left;"
             onclick="$('#main-content').animate({scrollTop:$('#main').offset().top+document.getElementById('main-content').scrollTop}, 500);">↑
             Top</a>
@@ -2297,7 +2328,8 @@
             </p>
             <p align="center">
               <a class="menu-links" style="font-size: 15px;" href="https://icp.gov.moe" target="_blank">萌ICP备</a>
-              <img loading="lazy" width="20px" style="margin-left: -10px; margin-top: -10px;" src="https://icp.gov.moe/images/ico64.png">
+              <img loading="lazy" width="20px" style="margin-left: -10px; margin-top: -10px;"
+                src="https://icp.gov.moe/images/ico64.png">
               <a class="menu-links" style="font-size: 15px;" href="https://icp.gov.moe/?keyword=20218666"
                 target="_blank">20218666号</a>
             </p>
