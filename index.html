@@ -206,7 +206,10 @@
       }
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
-          Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});
+          Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning').then(
+            function () {
+              setTimeout(firstStartCheckScrollAnimateitems, 1000);
+            });
           hasNotified = true;
         }
       });
@@ -295,7 +298,7 @@
 
     a,
     .swal2-styled {
-      cursor: url('img/cursor/link.cur'), pointer!important;
+      cursor: url('img/cursor/link.cur'), pointer !important;
     }
 
     img {
