@@ -27,7 +27,7 @@
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <link rel="stylesheet" type="text/css" href="css/dayNightSwitchButton.css" />
-  <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
     if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent
@@ -206,7 +206,7 @@
       }
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
-          swal('有一些资源加载失败', 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网', 'warning');
+          Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});
           hasNotified = true;
         }
       });
@@ -234,9 +234,16 @@
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);",
             1000);
         }
-        if (!(typeof IntersectionObserver === "function")) {
-          checkScrollAnimateitems();
-        }
+        firstStartCheckScrollAnimateitems();
+        setTimeout( // lgtm [js/eval-like-call]
+          "$('#ballRange').remove();$('#loading > footer > hr').remove();$('#toppic1').remove();$('#loading > h1 > img').remove();",
+          1000);
+      }
+    }
+
+    var firstStartCheckScrollAnimateitems = function () {
+      if (!(typeof IntersectionObserver === "function")) {
+        checkScrollAnimateitems();
       }
     }
 
@@ -252,12 +259,12 @@
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       timerout = setTimeout( // lgtm [js/eval-like-call]
-        "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
+        "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});loadingTimeOut();}",
         60000);
     } else {
       window.addEventListener("DOMContentLoaded", function () {
         timerout = setTimeout( // lgtm [js/eval-like-call]
-          "if(document.readyState != 'complete'){swal('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
+          "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});loadingTimeOut();}",
           60000);
       });
     }
@@ -277,7 +284,6 @@
     @import url(https://fonts.googleapis.com/css?family=PT+Sans);
 
     body,
-    iframe,
     td {
       transition: all .3s;
     }
@@ -288,8 +294,8 @@
     }
 
     a,
-    .swal-button {
-      cursor: url('img/cursor/link.cur'), pointer;
+    .swal2-styled {
+      cursor: url('img/cursor/link.cur'), pointer!important;
     }
 
     img {
@@ -392,12 +398,8 @@
       transition: ease all .2s;
     }
 
-    .swal-overlay {
+    .swal2-backdrop-show {
       backdrop-filter: blur(4px);
-    }
-
-    .swal-text {
-      text-align: center;
     }
 
     @keyframes pulse {
@@ -594,8 +596,10 @@
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
-        $('#toppic1')[0].src = "img/logo.gif";
-        $('#toppic1')[0].classList.remove('loaded');
+        if ($('#loading')[0].style.display != "none") {
+          $('#toppic1')[0].src = "img/logo.gif";
+          $('#toppic1')[0].classList.remove('loaded');
+        }
         $('#toppic2')[0].src = "img/logo.gif";
         $('#toppic2')[0].classList.remove('loaded');
         $('#githubstatus')[0].src =
@@ -675,7 +679,9 @@
         $("#NightMessage").fadeOut();
         $("#FollowSystemMessage").fadeOut();
         $("#FollowSystemMessageInMenu").fadeOut();
-        $('#toggle--daynight1')[0].checked = false;
+        if ($('#loading')[0].style.display != "none") {
+          $('#toggle--daynight1')[0].checked = false;
+        }
         $('#toggle--daynight2')[0].checked = false;
         $("#SwitchNightMode")[0].style.display = "";
         let icon = 'favicon.ico';
@@ -693,8 +699,10 @@
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";
-        $('#toppic1')[0].src = "img/logo-night.gif";
-        $('#toppic1')[0].classList.remove('loaded');
+        if ($('#loading')[0].style.display != "none") {
+          $('#toppic1')[0].src = "img/logo-night.gif";
+          $('#toppic1')[0].classList.remove('loaded');
+        }
         $('#toppic2')[0].src = "img/logo-night.gif";
         $('#toppic2')[0].classList.remove('loaded');
         $('#githubstatus')[0].src =
@@ -776,7 +784,9 @@
           $("#gspons").on("load", gSponsNightSwitch);
         }
         targetBgColor = "#BFBFBF";
-        $('#toggle--daynight1')[0].checked = true;
+        if ($('#loading')[0].style.display != "none") {
+          $('#toggle--daynight1')[0].checked = true;
+        }
         $('#toggle--daynight2')[0].checked = true;
         if (atNight) {
           $("#SwitchNightMode")[0].style.display = "";
@@ -1212,7 +1222,7 @@
 
 </head>
 
-<body>
+<body style="height: -webkit-fill-available!important;">
   <div id="progress" style="margin-top: 0px; position: absolute;">
     <span>⚡</span>
   </div>
