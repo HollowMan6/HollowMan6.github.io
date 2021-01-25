@@ -206,10 +206,7 @@
       }
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
-          Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning').then(
-            function () {
-              setTimeout(firstStartCheckScrollAnimateitems, 1000);
-            });
+          Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning');
           hasNotified = true;
         }
       });
@@ -237,16 +234,12 @@
             "if(document.getElementById('main-content').scrollTop==0) $('#main-content').animate({ scrollTop: scrollLocationIndex}, 500);",
             1000);
         }
-        firstStartCheckScrollAnimateitems();
+        if (!(typeof IntersectionObserver === "function")) {
+          checkScrollAnimateitems();
+        }
         setTimeout( // lgtm [js/eval-like-call]
           "$('#ballRange').remove();$('#loading > footer > hr').remove();$('#toppic1').remove();$('#loading > h1 > img').remove();",
           1000);
-      }
-    }
-
-    var firstStartCheckScrollAnimateitems = function () {
-      if (!(typeof IntersectionObserver === "function")) {
-        checkScrollAnimateitems();
       }
     }
 
@@ -262,12 +255,12 @@
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       timerout = setTimeout( // lgtm [js/eval-like-call]
-        "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});loadingTimeOut();}",
+        "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
         60000);
     } else {
       window.addEventListener("DOMContentLoaded", function () {
         timerout = setTimeout( // lgtm [js/eval-like-call]
-          "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning').then(function(){setTimeout(firstStartCheckScrollAnimateitems,1000);});loadingTimeOut();}",
+          "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
           60000);
       });
     }
