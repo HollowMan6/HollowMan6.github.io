@@ -398,6 +398,20 @@
       backdrop-filter: blur(4px);
     }
 
+    .footerLogo {
+      animation: rotate 3s infinite linear;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     @keyframes pulse {
       30% {
         opacity: .6
