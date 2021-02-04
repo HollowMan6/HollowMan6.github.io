@@ -10,7 +10,7 @@ body {
 }
 
 a {
-    color: rgb(110,68,159);
+    color: rgb(110, 68, 159);
     text-decoration: none;
     -webkit-transition: color 1s, text-decoration 1s, text-shadow .8s, all .8s;
     transition: color 1s, text-decoration 1s, text-shadow .8s, all .8s;
@@ -82,6 +82,7 @@ a:active::after {
 }
 
 .sun {
+    z-index: -1;
     position: absolute;
     top: 4em;
     left: 4em;
@@ -137,17 +138,6 @@ a:active::after {
 
 .clouds div:nth-child(3) {
     animation-duration: 40s;
-}
-
-.birds {
-    position: absolute;
-    right: -10%;
-    top: 30px;
-    width: 10px;
-    height: 10px;
-    background-color: #070000;
-    clip-path: polygon(70% 59%, 100% 54%, 64% 68%, 48% 83%, 81% 86%, 55% 90%, 0 92%, 19% 76%, 0 60%, 33% 71%);
-    animation: birds 30s linear infinite, fly 1s linear infinite;
 }
 
 .sea {
@@ -386,6 +376,176 @@ a:active::after {
     width: 50px;
 }
 
+.container {
+    z-index: -1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 35rem;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center center;
+    padding: 2rem;
+}
+
+.bird {
+    background-image: url(/img/bird-cells.svg);
+    background-size: auto 100%;
+    width: 88px;
+    height: 125px;
+    will-change: background-position;
+    animation-name: fly-cycle;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+}
+
+.bird--one {
+    animation-duration: 1s;
+    animation-delay: -0.5s;
+}
+
+.bird--two {
+    animation-duration: 0.9s;
+    animation-delay: -0.75s;
+}
+
+.bird--three {
+    animation-duration: 1.25s;
+    animation-delay: -0.25s;
+}
+
+.bird--four {
+    animation-duration: 1.1s;
+    animation-delay: -0.5s;
+}
+
+.bird-container {
+    position: absolute;
+    top: 20%;
+    left: -7.5vw;
+    transform: scale(0);
+    will-change: transform;
+    animation-name: fly-right-one;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.bird-container--one {
+    animation-duration: 15s;
+    animation-delay: 0;
+}
+
+.bird-container--two {
+    animation-duration: 16s;
+    animation-delay: 1s;
+}
+
+.bird-container--three {
+    animation-duration: 14.6s;
+    animation-delay: 9.5s;
+}
+
+.bird-container--four {
+    animation-duration: 16s;
+    animation-delay: 10.25s;
+}
+
+@keyframes fly-cycle {
+    100% {
+        background-position: -900px 0;
+    }
+}
+
+@keyframes fly-right-one {
+    0% {
+        left: -10%;
+        transform: scale(0.3);
+    }
+
+    10% {
+        left: 10%;
+        transform: translateY(2vh) scale(0.4);
+    }
+
+    20% {
+        left: 30%;
+        transform: translateY(0vh) scale(0.5);
+    }
+
+    30% {
+        left: 50%;
+        transform: translateY(4vh) scale(0.6);
+    }
+
+    40% {
+        left: 70%;
+        transform: translateY(2vh) scale(0.6);
+    }
+
+    50% {
+        left: 90%;
+        transform: translateY(0vh) scale(0.6);
+    }
+
+    60% {
+        left: 110%;
+        transform: translateY(0vh) scale(0.6);
+    }
+
+    100% {
+        left: 110%;
+        opacity: 1;
+        transform: translateY(0vh) scale(0.6);
+    }
+}
+
+@keyframes fly-right-two {
+    0% {
+        left: -10%;
+        opacity: 1;
+        transform: translateY(-2vh) scale(0.5);
+    }
+
+    10% {
+        left: 10%;
+        transform: translateY(0vh) scale(0.4);
+    }
+
+    20% {
+        left: 30%;
+        transform: translateY(-4vh) scale(0.6);
+    }
+
+    30% {
+        left: 50%;
+        transform: translateY(1vh) scale(0.45);
+    }
+
+    40% {
+        left: 70%;
+        transform: translateY(-2.5vh) scale(0.5);
+    }
+
+    50% {
+        left: 90%;
+        transform: translateY(0vh) scale(0.45);
+    }
+
+    51% {
+        left: 110%;
+        transform: translateY(0vh) scale(0.45);
+    }
+
+    100% {
+        left: 110%;
+        transform: translateY(0vh) scale(0.45);
+    }
+}
+
 @keyframes sun {
     50% {
         box-shadow: 0px 0px 60px 20px #f5de19, inset 0px 0px 100px #f5de19;
@@ -413,19 +573,6 @@ a:active::after {
 
     60% {
         border-radius: 61% 39% 51% 49% / 50% 66% 34% 50%;
-    }
-}
-
-@keyframes birds {
-    100% {
-        right: 110%;
-        transform: scale(1.8) translateY(100px);
-    }
-}
-
-@keyframes fly {
-    50% {
-        clip-path: polygon(70% 69%, 97% 80%, 70% 76%, 48% 83%, 81% 86%, 55% 90%, 0 92%, 19% 76%, 0 71%, 33% 71%);
     }
 }
 
