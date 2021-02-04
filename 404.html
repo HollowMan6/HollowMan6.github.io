@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <title>Wops, 404! Hollow Man Home Page</title>
+  <title>Wops, 404 ❌ Hollow Man Home Page</title>
   <meta charset="UTF-8" name="viewport"
     content="width=device-width,initial-scale=0.6,maximum-scale=1.5,minimum-scale=0.6,user-scalable=yes">
-  <meta http-equiv="keywords" content="Hollow Man Website 404">
-  <meta http-equiv="description" content="Hollow Man Website 404">
+  <meta http-equiv="keywords" content="Hollow Man Website 404 ❌">
+  <meta http-equiv="description" content="Hollow Man Website 404 ❌">
   <meta name="robots" content="all" />
   <meta name="renderer" content="webkit" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
@@ -91,6 +91,35 @@
     <div class="grass_tw"></div>
     <div class="grass_tw"></div>
   </div>
+  <script src="js/canvas-explosion-click.js" async></script>
+  <script type='text/javascript' async>
+    if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent
+      .indexOf('Firefox') > -1) {
+      console.info("%cHollow Man Website Page 404 ❌！", 'color:red;font-weight:bold');
+      console.info(
+        "%c📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io",
+        'font-weight:bold');
+      if (document.location.href.indexOf("hollowman6.gitee.io") == - // lgtm [js/incomplete-url-substring-sanitization]
+        1) {
+        console.info("%c🌏 网站地址 Website URL: https://hollowman.ml/404.html", 'font-weight:bold');
+        console.info("%c🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡", 'font-weight:bold');
+      } else {
+        console.info("%c🌏 网站地址 Website URL: https://hollowman6.gitee.io/404.html", 'font-weight:bold');
+      }
+    } else {
+      console.info("Hollow Man Website Page 404 ❌！");
+      console.info(
+        "📄 本网站Github开源地址：\nOpen Source Repository for this website on Github: \nhttps://github.com/HollowMan6/HollowMan6.github.io"
+      );
+      if (document.location.href.indexOf("hollowman6.gitee.io") == - // lgtm [js/incomplete-url-substring-sanitization]
+        1) {
+        console.info("🌏 网站地址 Website URL: https://hollowman.ml/404.html");
+        console.info("🇨🇳 中国大陆地区用户可以访问 https://hollowman6.gitee.io 来获得更快的加载速度！⚡⚡⚡");
+      } else {
+        console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/404.html");
+      }
+    }
+  </script>
 </body>
 
 </html>
