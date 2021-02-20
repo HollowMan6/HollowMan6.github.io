@@ -57,6 +57,40 @@
       }
     }
 
+    function createNotify(title, options) {
+      var PERMISSON_GRANTED = "granted";
+      var PERMISSON_DENIED = "denied";
+      var PERMISSON_DEFAULT = "default";
+
+      options.requireInteraction = true;
+      options.vibrate = [200, 100, 200];
+      options.icon = "/favicon.ico";
+
+      if (Notification.permission === PERMISSON_GRANTED) {
+        notify(title, options);
+      } else {
+        Notification.requestPermission(function (res) {
+          if (res === PERMISSON_GRANTED) {
+            notify(title, options);
+          }
+        });
+      }
+
+      function notify($title, $options) {
+        var notification = new Notification($title, $options);
+        notification.onclick = function (event) {
+          if (event.target.data) {
+            window.open(event.target.data);
+          }
+          window.focus();
+        };
+      }
+    }
+
+    createNotify("Thank you for your sponsor ❤!\n感谢您的捐助 ❤！", {
+      body: "📄 本网站Github开源GPL-3.0\nOpen Source Repository for this website on Github\n🇨🇳 大陆用户可以访问备用Gitee站点。"
+    });
+
     var hasNotified = false;
 
     var checkScrollAnimateitems = function () {
@@ -207,6 +241,7 @@
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
           Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning');
+          createNotify('有一些资源加载失败',{body: 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网'});
           hasNotified = true;
         }
       });
@@ -254,12 +289,12 @@
     timerout = null;
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
       timerout = setTimeout( // lgtm [js/eval-like-call]
-        "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
+        "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');createNotify('有一些资源加载超时',{body: 'Time out for loading some resources'});loadingTimeOut();}",
         60000);
     } else {
       window.addEventListener("DOMContentLoaded", function () {
         timerout = setTimeout( // lgtm [js/eval-like-call]
-          "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');loadingTimeOut();}",
+          "if(document.readyState != 'complete'){Swal.fire('有一些资源加载超时','Time out for loading some resources','warning');createNotify('有一些资源加载超时',{body: 'Time out for loading some resources'});loadingTimeOut();}",
           60000);
       });
     }
