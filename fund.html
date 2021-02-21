@@ -85,11 +85,16 @@
           };
         } catch (e) {
           if (e.name == 'TypeError') {
-            navigator.serviceWorker.register('js/sw.js').then(function (registration) {
-              registration.pushManager.subscribe({
-                  userVisibleOnly: true
-                }).catch(function (err) {
-                  console.log('Failed to subscribe notification to the user: ', err);
+            navigator.serviceWorker.register('js/sw.js').then(async function (registration) {
+              await swRegistration.pushManager.getSubscription()
+                .then(function (subscription) {
+                  if (!subscription) {
+                    registration.pushManager.subscribe({
+                      userVisibleOnly: true
+                    }).catch(function (err) {
+                      console.log('Failed to subscribe notification to the user: ', err);
+                    });
+                  }
                 });
               registration.showNotification($title, $options);
             });
