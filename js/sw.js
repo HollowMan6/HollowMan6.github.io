@@ -13,8 +13,8 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();
-  if (event.target.data) {
-    window.open(event.target.data, '',
+  if (event.notification.data) {
+    window.open(event.notification.data, '',
       'width=900,height=680,top=80,scrollbars=yes');
   } else {
     event.waitUntil(clients.matchAll({
