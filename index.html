@@ -58,32 +58,46 @@
     }
 
     function createNotify(title, options) {
-      var PERMISSON_GRANTED = "granted";
-      var PERMISSON_DENIED = "denied";
-      var PERMISSON_DEFAULT = "default";
-
       options.requireInteraction = true;
       options.vibrate = [200, 100, 200];
       options.icon = "/favicon.ico";
 
-      if (Notification.permission === PERMISSON_GRANTED) {
+      if (!window.Notification || !Notification.requestPermission) {
+        return false;
+      } else if (Notification.permission === "granted") {
         notify(title, options);
       } else {
         Notification.requestPermission(function (res) {
-          if (res === PERMISSON_GRANTED) {
+          if (res === "granted") {
             notify(title, options);
           }
         });
       }
 
       function notify($title, $options) {
-        var notification = new Notification($title, $options);
-        notification.onclick = function (event) {
-          if (event.target.data) {
-            window.open(event.target.data);
+        try {
+          var notification = new Notification($title, $options);
+          notification.onclick = function (event) {
+            if (event.target.data) {
+              window.open(event.target.data);
+            }
+            window.focus();
+          };
+        } catch (e) {
+          if (e.name == 'TypeError') {
+            navigator.serviceWorker.ready.then(function (registration) {
+              registration.showNotification($title, $options);
+              registration.onnotificationclick = function (event) {
+                if (event.target.data) {
+                  window.open(event.target.data);
+                } else {
+                  window.focus();
+                }
+                event.notification.close();
+              };
+            });
           }
-          window.focus();
-        };
+        }
       }
     }
 
@@ -241,7 +255,9 @@
       $('img,object,iframe').on("error", function () {
         if (!hasNotified) {
           Swal.fire('有一些资源加载失败', 'Failed to load some resources<br>中国大陆地区用户请确保已经科学上网', 'warning');
-          createNotify('有一些资源加载失败',{body: 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网'});
+          createNotify('有一些资源加载失败', {
+            body: 'Failed to load some resources\n中国大陆地区用户请确保已经科学上网'
+          });
           hasNotified = true;
         }
       });
