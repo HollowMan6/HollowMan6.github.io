@@ -85,16 +85,13 @@
           };
         } catch (e) {
           if (e.name == 'TypeError') {
-            navigator.serviceWorker.ready.then(function (registration) {
+            navigator.serviceWorker.register('js/sw.js').then(function (registration) {
+              registration.pushManager.subscribe({
+                  userVisibleOnly: true
+                }).catch(function (err) {
+                  console.log('Failed to subscribe notification to the user: ', err);
+                });
               registration.showNotification($title, $options);
-              registration.onnotificationclick = function (event) {
-                if (event.target.data) {
-                  window.open(event.target.data);
-                } else {
-                  window.focus();
-                }
-                event.notification.close();
-              };
             });
           }
         }
