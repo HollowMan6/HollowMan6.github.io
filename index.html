@@ -86,7 +86,7 @@
         } catch (e) {
           if (e.name == 'TypeError') {
             navigator.serviceWorker.register('js/sw.js').then(async function (registration) {
-              await swRegistration.pushManager.getSubscription()
+              await registration.pushManager.getSubscription()
                 .then(function (subscription) {
                   if (!subscription) {
                     registration.pushManager.subscribe({
