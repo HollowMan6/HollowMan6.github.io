@@ -91,9 +91,7 @@
                   if (!subscription) {
                     registration.pushManager.subscribe({
                       userVisibleOnly: true
-                    }).catch(function (err) {
-                      console.log('Failed to subscribe notification to the user: ', err);
-                    });
+                    }).catch(function (err) {});
                   }
                 });
               registration.showNotification($title, $options);
