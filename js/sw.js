@@ -22,11 +22,12 @@ self.addEventListener('notificationclick', function (event) {
     }));
   } else {
     event.waitUntil(clients.matchAll({
+      includeUncontrolled: true,
       type: "window"
     }).then(function (clientList) {
       for (var i = 0; i < clientList.length; i++) {
         var client = clientList[i];
-        if (client.url == '/' && 'focus' in client)
+        if ('focus' in client)
           return client.focus();
       }
       if (clients.openWindow)
