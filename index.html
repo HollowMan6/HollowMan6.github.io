@@ -91,7 +91,7 @@
                   if (!subscription) {
                     registration.pushManager.subscribe({
                       userVisibleOnly: true
-                    }).catch(function (err) {});
+                    }).catch(function (err) { });
                   }
                 });
               registration.showNotification($title, $options);
@@ -650,7 +650,7 @@
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-            "followSystemTheme")) {
+          "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
         ballRangeTextColor = "rgba(0, 0, 0, 1)";
@@ -753,7 +753,7 @@
         }
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-            "followSystemTheme")) {
+          "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
         ballRangeTextColor = "rgba(255, 255, 255, 1)";
@@ -896,7 +896,7 @@
               if (json["state"]) {
                 state = json["state"] + ", ";
               }
-            } catch (e) {}
+            } catch (e) { }
           }
           if (latitude && longitude) {
             var sunset = new Date().sunset(latitude, longitude);
@@ -931,7 +931,7 @@
                       .substr(0, document.getElementById("location").innerText.length - 2);
                     document.getElementById("locationInMenu").innerText = document.getElementById(
                       "locationInMenu").innerText.substr(0, document.getElementById("locationInMenu").innerText
-                      .length - 2);
+                        .length - 2);
                   }
                   $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
@@ -994,7 +994,7 @@
         }
       }
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !window.localStorage.getItem(
-        "followSystemTheme")) {
+      "followSystemTheme")) {
       if (document.readyState === 'interactive' || document.readyState === 'complete') {
         if (!$('body')[0].style.backgroundColor) {
           systemTheme();
@@ -1661,8 +1661,11 @@
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/12959900?s=60&amp;v=4">
               @typora </a> <a class="org" href="https://github.com/ant-design" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/12101536?s=60&amp;v=4">
-              @ant-design </a> <a class="org" href="https://github.com/mozilla-mobile" target="_blank"> <img
+              @ant-design </a> <a class="org" href="https://github.com/disposable-email-domains" target="_blank"> <img
                 loading="lazy" class="select-menu-item-icon mr-2"
+                src="https://avatars.githubusercontent.com/u/78930081?s=60&v=4">
+              @disposable-email-domains </a> <a class="org" href="https://github.com/mozilla-mobile" target="_blank">
+              <img loading="lazy" class="select-menu-item-icon mr-2"
                 src="https://avatars1.githubusercontent.com/u/22351667?s=60&amp;v=4"> @mozilla-mobile </a> <a
               class="org" href="https://github.com/golang" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/4314092?s=60&amp;v=4">
@@ -1686,13 +1689,15 @@
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/357098?s=60&v=4">
               @linkedin </a> <a class="org" href="https://github.com/numpy" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/288276?s=60&v=4">
-              @numpy </a><a class="org" href="https://github.com/libpinyin" target="_blank"> <img loading="lazy"
+              @numpy </a> <a class="org" href="https://github.com/libpinyin" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars2.githubusercontent.com/u/409646?s=60&amp;v=4">
               @libpinyin </a> <a class="org" href="https://github.com/vmware" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars2.githubusercontent.com/u/473334?s=60&amp;v=4">
               @vmware </a> <a class="org" href="https://github.com/amd" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars2.githubusercontent.com/u/430818?s=60&v=4"> @amd
-            </a><a class="org" href="https://github.com/adobe" target="_blank"> <img loading="lazy"
+            </a> <a class="org" href="https://github.com/intel" target="_blank"> <img loading="lazy"
+                class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/17888862?s=60&v=4">
+              @intel </a> <a class="org" href="https://github.com/adobe" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/476009?s=60&amp;v=4">
               @adobe </a> <a class="org" href="https://github.com/paypal" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/476675?s=60&v=4">
@@ -1744,7 +1749,9 @@
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/13455738?s=60&amp;v=4">
               @cncf </a> <a class="org" href="https://github.com/request" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars3.githubusercontent.com/u/730467?s=60&amp;v=4">
-              @request </a> <a class="org" href="https://github.com/openjdk" target="_blank"> <img loading="lazy"
+              @request </a> <a class="org" href="https://github.com/didi" target="_blank"> <img loading="lazy"
+                class="select-menu-item-icon mr-2" src="https://avatars3.githubusercontent.com/u/27521938?s=60&amp;v=4">
+              @didi </a> <a class="org" href="https://github.com/openjdk" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/41768318?s=60&amp;v=4">
               @openjdk </a> <a class="org" href="https://github.com/ludwig-ai" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/65477820?s=60&v=4">
@@ -1757,7 +1764,11 @@
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/6210390?s=60&v=4">
               @Samsung </a><a class="org" href="https://github.com/apple" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/10639145?s=60&amp;v=4">
-              @apple </a> <a class="org" href="https://github.com/youzan" target="_blank"> <img loading="lazy"
+              @apple </a> <a class="org" href="https://github.com/pytorch" target="_blank"> <img loading="lazy"
+                class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/21003710?s=60&amp;v=4">
+              @pytorch </a> <a class="org" href="https://github.com/llvm" target="_blank"> <img loading="lazy"
+                class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/17149993?s=60&v=4">
+              @llvm </a> <a class="org" href="https://github.com/youzan" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/11404085?s=60&v=4">
               @youzan </a><a class="org" href="https://github.com/bilibili" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/12002442?s=60&v=4">
@@ -1784,15 +1795,7 @@
                 class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/14101776?s=60&amp;v=4">
               @flutter </a> <a class="org" href="https://github.com/tensorflow" target="_blank"> <img loading="lazy"
                 class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/15658638?s=60&amp;v=4">
-              @tensorflow </a> <a class="org" href="https://github.com/pytorch" target="_blank"> <img loading="lazy"
-                class="select-menu-item-icon mr-2" src="https://avatars1.githubusercontent.com/u/21003710?s=60&amp;v=4">
-              @pytorch </a> <a class="org" href="https://github.com/llvm" target="_blank"> <img loading="lazy"
-                class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/17149993?s=60&v=4">
-              @llvm </a><a class="org" href="https://github.com/intel" target="_blank"> <img loading="lazy"
-                class="select-menu-item-icon mr-2" src="https://avatars0.githubusercontent.com/u/17888862?s=60&v=4">
-              @intel </a><a class="org" href="https://github.com/didi" target="_blank"> <img loading="lazy"
-                class="select-menu-item-icon mr-2" src="https://avatars3.githubusercontent.com/u/27521938?s=60&amp;v=4">
-              @didi </a>
+              @tensorflow </a>
           </div>
           <br />
           <a href="https://github.com/Hollow-Software/Software-Copyright" id="SoftwareCopyright" target="_blank"

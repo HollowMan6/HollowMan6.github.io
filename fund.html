@@ -538,7 +538,7 @@
         document.querySelectorAll("nav.menu > div > ul > li > .menu-links")[1].classList.remove('activate');
         return;
       } else if (Math.floor(document.getElementById("main-content").scrollTop) == document.getElementById(
-          "main-content").scrollHeight - document.body.clientHeight) {
+        "main-content").scrollHeight - document.body.clientHeight) {
         index = elements.length;
       }
       var eleNav = document.querySelectorAll("nav.menu > div > ul > li > .menu-links")[index];
@@ -584,7 +584,7 @@
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-            "followSystemTheme")) {
+          "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
         ballRangeTextColor = "rgba(0, 0, 0, 1)";
@@ -648,7 +648,7 @@
         }
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-            "followSystemTheme")) {
+          "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
         ballRangeTextColor = "rgba(255, 255, 255, 1)";
@@ -746,7 +746,7 @@
               if (json["state"]) {
                 state = json["state"] + ", ";
               }
-            } catch (e) {}
+            } catch (e) { }
           }
           if (latitude && longitude) {
             var sunset = new Date().sunset(latitude, longitude);
@@ -781,7 +781,7 @@
                       .substr(0, document.getElementById("location").innerText.length - 2);
                     document.getElementById("locationInMenu").innerText = document.getElementById(
                       "locationInMenu").innerText.substr(0, document.getElementById("locationInMenu").innerText
-                      .length - 2);
+                        .length - 2);
                   }
                   $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
@@ -844,7 +844,7 @@
         }
       }
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !window.localStorage.getItem(
-        "followSystemTheme")) {
+      "followSystemTheme")) {
       if (document.readyState === 'interactive' || document.readyState === 'complete') {
         if (!$('body')[0].style.backgroundColor) {
           systemTheme();
