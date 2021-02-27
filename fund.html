@@ -24,7 +24,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="Author" content="Hollow Man" />
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#EEEEEE"/>
+  <meta name="theme-color" content="#EEEEEE" />
   <link rel="manifest" href="/manifest.json">
   <title>Thank you! ❤</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
@@ -1341,6 +1341,37 @@
               frameborder="0" scrolling="0" width="274px" height="30px" id="github-btn"
               style="margin-left: 22%;margin-top:5px;border-radius: 5px;"></iframe>
           </div>
+          <p>
+            <a id="web-install" style="margin-left: 10% ;font-size: 140%; display: none;">📦 Install Website</a>
+            <a id="web-notification" href="Site-Notifications/" style="margin-left: 30% ;font-size: 140%"
+              class="love">📢 Site
+              Notifications</a>
+          </p>
+          <script>
+            var installPromptEvent = null;
+            window.addEventListener('beforeinstallprompt', (event) => {
+              event.preventDefault();
+              installPromptEvent = event;
+              document.getElementById('web-install').style.display = "";
+              document.getElementById('web-install').style.marginLeft = "10%";
+            });
+            window.addEventListener('appinstalled', (evt) => {
+              document.getElementById('web-install').style.display = "none";
+              document.getElementById('web-install').style.marginLeft = "30%";
+            });
+            document.querySelector('#btn-install').addEventListener('click', () => {
+              if (!installPromptEvent) {
+                return;
+              }
+              installPromptEvent.prompt();
+              installPromptEvent.userChoice.then(choiceResult => {
+                if (choiceResult.outcome === 'accepted') {
+                  document.getElementById('web-install').style.display = "none";
+                  document.getElementById('web-install').style.marginLeft = "30%";
+                }
+              })
+            });
+          </script>
           <h1 id="Funding">❤ Funding</h1>
           <h5 style="margin-left: 5%;">Thanks for your donation. Every bit of donation will be the driving force for me
             to
