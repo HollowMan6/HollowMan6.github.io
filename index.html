@@ -9,7 +9,7 @@
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <script type="text/javascript" src="https://g.alicdn.com/code/lib/jquery/3.5.1/jquery.min.js"></script>
@@ -24,6 +24,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="Author" content="Hollow Man" />
   <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#EEEEEE"/>
+  <link rel="manifest" href="/manifest.json">
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <link rel="stylesheet" type="text/css" href="css/dayNightSwitchButton.css" />
@@ -656,6 +658,7 @@
         }
         document.getElementById("theme-swal").href = "";
         ballRangeTextColor = "rgba(0, 0, 0, 1)";
+        document.querySelector("meta[name=theme-color]").setAttribute('content', '#EEEEEE');
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
         $('body')[0].style.color = "";
@@ -761,6 +764,7 @@
         document.getElementById("theme-swal").href =
           "https://cdn.jsdelivr.net/npm/@sweetalert2/themes/dark/dark.min.css";
         ballRangeTextColor = "rgba(255, 255, 255, 1)";
+        document.querySelector("meta[name=theme-color]").setAttribute('content', '#BFBFBF');
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
         $('body')[0].style.color = "#BFBFBF";

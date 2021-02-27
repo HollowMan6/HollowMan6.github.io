@@ -1,0 +1,14 @@
+{
+    "short_name": "Hollow Man",
+    "name": "Hollow Man Home Page",
+    "icons": [
+      {
+        "src": "/favicon.ico",
+        "type": "image/ico",
+        "sizes": "128x128"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#EEEEEE",
+    "theme_color": "#eee"
+  }
