@@ -27,6 +27,7 @@
   <title>Hollow Man Home Page</title>
   <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
   <link rel="stylesheet" type="text/css" href="css/dayNightSwitchButton.css" />
+  <link rel="stylesheet" type="text/css" id="theme-swal" href="">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
   <script src="js/snap.svg-min.js"></script>
   <script type='text/javascript'>
@@ -91,7 +92,7 @@
                   if (!subscription) {
                     registration.pushManager.subscribe({
                       userVisibleOnly: true
-                    }).catch(function (err) { });
+                    }).catch(function (err) {});
                   }
                 });
               registration.showNotification($title, $options);
@@ -650,9 +651,10 @@
     function nightDaySwitch() {
       if ($('body')[0].style.backgroundColor) {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-          "followSystemTheme")) {
+            "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 0);
         }
+        document.getElementById("theme-swal").href = "";
         ballRangeTextColor = "rgba(0, 0, 0, 1)";
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'light');
         $('body')[0].style.backgroundColor = "";
@@ -753,9 +755,11 @@
         }
       } else {
         if (!window.matchMedia('(prefers-color-scheme: dark)').matches || window.localStorage.getItem(
-          "followSystemTheme")) {
+            "followSystemTheme")) {
           window.sessionStorage.setItem("Night", 1);
         }
+        document.getElementById("theme-swal").href =
+          "https://cdn.jsdelivr.net/npm/@sweetalert2/themes/dark/dark.min.css";
         ballRangeTextColor = "rgba(255, 255, 255, 1)";
         document.querySelector("meta[name=color-scheme]").setAttribute('content', 'dark');
         $('body')[0].style.backgroundColor = "#111111";
@@ -896,7 +900,7 @@
               if (json["state"]) {
                 state = json["state"] + ", ";
               }
-            } catch (e) { }
+            } catch (e) {}
           }
           if (latitude && longitude) {
             var sunset = new Date().sunset(latitude, longitude);
@@ -931,7 +935,7 @@
                       .substr(0, document.getElementById("location").innerText.length - 2);
                     document.getElementById("locationInMenu").innerText = document.getElementById(
                       "locationInMenu").innerText.substr(0, document.getElementById("locationInMenu").innerText
-                        .length - 2);
+                      .length - 2);
                   }
                   $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
@@ -994,7 +998,7 @@
         }
       }
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !window.localStorage.getItem(
-      "followSystemTheme")) {
+        "followSystemTheme")) {
       if (document.readyState === 'interactive' || document.readyState === 'complete') {
         if (!$('body')[0].style.backgroundColor) {
           systemTheme();
@@ -1532,7 +1536,8 @@
             </p>
           </div>
           <p>
-            <a href="Site-Notifications/" style="margin-left: 30% ;font-size: 140%" class="love">📢 Site Notifications</a>
+            <a href="Site-Notifications/" style="margin-left: 30% ;font-size: 140%" class="love">📢 Site
+              Notifications</a>
           </p>
           <h3 align="center" id="About" style="margin-left: -8%;">
             <a href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md" target="_blank"
