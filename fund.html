@@ -1410,31 +1410,6 @@
               class="love">📢 Site
               Notifications</a>
           </p>
-          <script>
-            var installPromptEvent = null;
-            window.addEventListener('beforeinstallprompt', (event) => {
-              event.preventDefault();
-              installPromptEvent = event;
-              document.getElementById('web-install').style.display = "";
-              document.getElementById('web-install').style.marginLeft = "10%";
-            });
-            window.addEventListener('appinstalled', (evt) => {
-              document.getElementById('web-install').style.display = "none";
-              document.getElementById('web-install').style.marginLeft = "30%";
-            });
-            document.getElementById('web-install').addEventListener('click', () => {
-              if (!installPromptEvent) {
-                return;
-              }
-              installPromptEvent.prompt();
-              installPromptEvent.userChoice.then(choiceResult => {
-                if (choiceResult.outcome === 'accepted') {
-                  document.getElementById('web-install').style.display = "none";
-                  document.getElementById('web-install').style.marginLeft = "30%";
-                }
-              })
-            });
-          </script>
           <h1 id="Funding">❤ Funding</h1>
           <h5 style="margin-left: 5%;">Thanks for your donation. Every bit of donation will be the driving force for me
             to
