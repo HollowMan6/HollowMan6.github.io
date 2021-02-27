@@ -1,6 +1,6 @@
 {
-    "short_name": "Hollow Man's Website",
-    "name": "Hollow Man Home Page",
+    "short_name": "Hollow Man FNST Demo",
+    "name": "Fast Neural Style Transfer Demo",
     "icons": [
       {
         "src": "/img/logo.png",
@@ -9,7 +9,7 @@
         "purpose": "any maskable"
       }
     ],
-    "start_url": "/",
+    "start_url": "/StyleTrans/",
     "display": "standalone",
     "background_color": "#eee",
     "theme_color": "#eee"

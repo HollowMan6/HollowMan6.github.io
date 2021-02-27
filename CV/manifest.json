@@ -1,6 +1,6 @@
 {
-    "short_name": "Hollow Man's Website",
-    "name": "Hollow Man Home Page",
+    "short_name": "Hollow Man's CV",
+    "name": "Hollow Man Curriculum Vitae",
     "icons": [
       {
         "src": "/img/logo.png",
@@ -9,7 +9,7 @@
         "purpose": "any maskable"
       }
     ],
-    "start_url": "/",
+    "start_url": "/CV/",
     "display": "standalone",
     "background_color": "#eee",
     "theme_color": "#eee"

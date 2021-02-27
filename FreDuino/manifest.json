@@ -1,6 +1,6 @@
 {
-    "short_name": "Hollow Man's Website",
-    "name": "Hollow Man Home Page",
+    "short_name": "FreDuino Cars",
+    "name": "Hollow Man FreDuino Cars",
     "icons": [
       {
         "src": "/img/logo.png",
@@ -9,7 +9,7 @@
         "purpose": "any maskable"
       }
     ],
-    "start_url": "/",
+    "start_url": "/FreDuino/",
     "display": "standalone",
     "background_color": "#eee",
     "theme_color": "#eee"

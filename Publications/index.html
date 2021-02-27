@@ -19,6 +19,9 @@
     <meta name="description" content="这里是Hollow Man(蒋嵩林)的论文。 This is Hollow Man (Songlin Jiang) Publications." />
     <meta name="robots" content="all" />
     <meta name="renderer" content="webkit" />
+    <meta name="theme-color" content="#EEEEEE" />
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta name="Author" content="Hollow Man" />
 
@@ -34,7 +37,7 @@
 
     <style>
         @import url(https://fonts.googleapis.com/css?family=PT+Sans);
-        
+
         * {
             font-family: 'PT Sans', sans-serif;
         }
@@ -133,6 +136,50 @@
 
 
 <script>
+    function register(config) {
+        if ("serviceWorker" in navigator) {
+            var swUrl = config.path + "/" + config.name + "?v=" + config.ver;
+            navigator.serviceWorker
+                .register(swUrl)
+                .then(function (registration) {
+                    if (config && config.onRegster) {
+                        config.onRegster(registration);
+                    }
+                    registration.onupdatefound = function (e) {
+                        var installingWorker =
+                            e.target.installing ||
+                            e.target.waiting ||
+                            e.target.active;
+                        if (installingWorker == null) {
+                            return;
+                        }
+                        installingWorker.addEventListener("statechange", e => {
+                            if (installingWorker.state === "installed") {
+                                if (navigator.serviceWorker.controller) {
+                                    if (config && config.onUpdate) {
+                                        config.onUpdate(registration);
+                                    }
+                                } else {
+                                    if (config && config.onSuccess) {
+                                        config.onSuccess(registration);
+                                    }
+                                }
+                            }
+                        });
+                    };
+                })
+                .catch(function (error) {
+                    console.error("serviceWorker Error When Register:", error);
+                });
+        }
+    }
+
+    register({
+        ver: 1,
+        path: "",
+        name: "sw.js"
+    });
+
     /** get params in url **/
     function getUrlParam(name, url) {
         if (!url) url = window.location.href;
