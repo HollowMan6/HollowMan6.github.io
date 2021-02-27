@@ -1,30 +1,39 @@
-// const CACHE_NAME = "Hollow-Man-APP";
+const cacheName = "Hollow-Man-APP-v1";
+var contentToCache = [];
 
 self.addEventListener("install", function (event) {
   self.skipWaiting();
-  // event.waitUntil(
-  //   caches.open(CACHE_NAME).then(function (cache) {
-  //     return cache.add("/favicon.ico");
-  //   })
-  // );
+  event.waitUntil(
+    caches.open(cacheName).then((cache) => {
+      return cache.addAll(contentToCache);
+    })
+  );
 });
 
 self.addEventListener("activate", event => {
-  event.waitUntil(clients.claim());
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      clients.claim();
+      return Promise.all(keyList.map((key) => {
+        if (key !== cacheName) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
 });
 
 self.addEventListener("fetch", function (event) {
-  // if (/\.ico$/.test(event.request.url)) {
-  //   event.respondWith(
-  //     caches.match("/favicon.ico").then(function (response) {
-  //       if (response) {
-  //         return response;
-  //       }
-  //       return fetch(event.request);
-  //     })
-  //   );
-  // }
-  return null;
+  event.respondWith(
+    caches.match(event.request).then((r) => {
+      return r || fetch(event.request).then((response) => {
+        return caches.open(cacheName).then((cache) => {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
 });
 
 self.addEventListener('push', function (event) {
