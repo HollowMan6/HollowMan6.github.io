@@ -185,25 +185,6 @@
           });
       }
     }
-
-    window.addEventListener('beforeinstallprompt', (event) => {
-      window.ePrompt = event;
-      document.getElementById('web-install').style.display = "";
-      document.getElementById('web-notification').style.marginLeft = "10%";
-      document.getElementById('web-install').addEventListener('click', () => {
-        window.ePrompt.prompt();
-        window.ePrompt.userChoice.then(choiceResult => {
-          if (choiceResult.outcome === 'accepted') {
-            document.getElementById('web-install').style.display = "none";
-            document.getElementById('web-notification').style.marginLeft = "30%";
-          }
-        })
-      });
-    });
-    window.addEventListener('appinstalled', (evt) => {
-      document.getElementById('web-install').style.display = "none";
-      document.getElementById('web-notification').style.marginLeft = "30%";
-    });
     
     register({
       ver: 1,
