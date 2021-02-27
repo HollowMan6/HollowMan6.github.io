@@ -144,6 +144,55 @@
         console.info("🌏 网站地址 Website URL: https://hollowman6.gitee.io/404.html");
       }
     }
+
+    function createNotify(title, options) {
+      options.requireInteraction = true;
+      options.vibrate = [200, 100, 200];
+      options.icon = "/favicon.ico";
+
+      if (!window.Notification || !Notification.requestPermission) {
+        return false;
+      } else if (Notification.permission === "granted") {
+        notify(title, options);
+      } else {
+        Notification.requestPermission(function (res) {
+          if (res === "granted") {
+            notify(title, options);
+          }
+        });
+      }
+
+      function notify($title, $options) {
+        try {
+          var notification = new Notification($title, $options);
+          notification.onclick = function (event) {
+            if (event.target.data) {
+              window.open(event.target.data);
+            }
+            window.focus();
+          };
+        } catch (e) {
+          if (e.name == 'TypeError') {
+            navigator.serviceWorker.register('js/sw.js').then(async function (registration) {
+              await registration.pushManager.getSubscription()
+                .then(function (subscription) {
+                  if (!subscription) {
+                    registration.pushManager.subscribe({
+                      userVisibleOnly: true
+                    }).catch(function (err) {});
+                  }
+                });
+              registration.showNotification($title, $options);
+            });
+          }
+        }
+      }
+    }
+
+    createNotify("Wops, 404 ❌\n页面找不到了！", {
+      body: "Click to return Home.\n点击本通知返回主页!",
+      data: "/"
+    });
   </script>
 </body>
 
