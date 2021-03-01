@@ -152,8 +152,8 @@
           };
         } catch (e) {
           if (e.name == 'TypeError' && "serviceWorker" in navigator) {
-            navigator.serviceWorker.ready.then(async function (registration) {
-              await registration.pushManager.getSubscription()
+            navigator.serviceWorker.ready.then(function (registration) {
+              registration.pushManager.getSubscription()
                 .then(function (subscription) {
                   if (!subscription) {
                     registration.pushManager.subscribe({
