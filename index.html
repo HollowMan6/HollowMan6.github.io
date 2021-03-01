@@ -99,13 +99,13 @@
       }
     }
 
-    window.addEventListener('beforeinstallprompt', (event) => {
+    window.addEventListener('beforeinstallprompt', function (event) {
       window.ePrompt = event;
       document.getElementById('web-install').style.display = "";
       document.getElementById('web-notification').style.marginLeft = "10%";
-      document.getElementById('web-install').addEventListener('click', () => {
+      document.getElementById('web-install').addEventListener('click', function () {
         window.ePrompt.prompt();
-        window.ePrompt.userChoice.then(choiceResult => {
+        window.ePrompt.userChoice.then(function (choiceResult) {
           if (choiceResult.outcome === 'accepted') {
             document.getElementById('web-install').style.display = "none";
             document.getElementById('web-notification').style.marginLeft = "30%";
@@ -113,11 +113,11 @@
         })
       });
     });
-    window.addEventListener('appinstalled', (evt) => {
+    window.addEventListener('appinstalled', function (evt) {
       document.getElementById('web-install').style.display = "none";
       document.getElementById('web-notification').style.marginLeft = "30%";
     });
-    
+
     register({
       ver: 1,
       path: "",
