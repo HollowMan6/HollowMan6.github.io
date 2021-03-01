@@ -153,7 +153,7 @@
                         if (installingWorker == null) {
                             return;
                         }
-                        installingWorker.addEventListener("statechange", e => {
+                        installingWorker.addEventListener("statechange", function (e) {
                             if (installingWorker.state === "installed") {
                                 if (navigator.serviceWorker.controller) {
                                     if (config && config.onUpdate) {
