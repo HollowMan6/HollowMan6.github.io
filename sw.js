@@ -14,6 +14,7 @@ self.addEventListener("activate", function (event) {
   event.waitUntil(
     caches.keys().then(function (keyList) {
       clients.claim();
+      notified = false;
       return Promise.all(keyList.map(function (key) {
         if (key !== cacheName) {
           return caches.delete(key);
@@ -25,21 +26,25 @@ self.addEventListener("activate", function (event) {
 
 self.addEventListener("fetch", function (event) {
   event.respondWith(
-    fetch(event.request)
-    .then(function (response) {
-      if (!response || response.status !== 200) {
-        return caches.match(event.request).then((r) => { return r});
-      }
-      return caches.open(cacheName).then(function (cache) {
-        return cache.delete(event.request)
-          .then(function () {
-            cache.put(event.request, response.clone());
-            return response;
-          });
+    caches.match(event.request).then((r) => {
+      return fetch(event.request).then((response) => {
+        var resBody = response.clone();
+        return caches.open(cacheName).then((cache) => {
+          if (r) {
+            cache.delete(event.request).then(function () {
+              cache.put(event.request, resBody);
+            });
+          } else {
+            cache.put(event.request, resBody);
+          }
+          return response;
+        });
+      }).catch(function () {
+        if (r && event.request.url.indexOf('.html') != -1) {
+          event.waitUntil(self.registration.showNotification("You are in offline mode! \n正在脱机模式下使用!"))
+        }
+        return r;
       });
-    })
-    .catch(function () {
-      return caches.match(event.request).then((r) => { return r});
     })
   );
 });
