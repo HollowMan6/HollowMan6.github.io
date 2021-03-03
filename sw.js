@@ -30,10 +30,11 @@ self.addEventListener("fetch", function (event) {
       if (!response || response.status !== 200) {
         return caches.match(event.request)
       }
+      var responseBody = response.clone();
       caches.open(cacheName).then(function (cache) {
         return cache.delete(event.request)
           .then(function () {
-            cache.put(event.request, response.clone());
+            cache.put(event.request, responseBody);
           });
       });
       return response;
