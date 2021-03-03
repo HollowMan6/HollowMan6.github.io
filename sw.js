@@ -28,7 +28,7 @@ self.addEventListener("fetch", function (event) {
     fetch(event.request)
     .then(function (response) {
       if (!response || response.status !== 200) {
-        return caches.match(event.request);
+        return caches.match(event.request).then((r) => { return r});
       }
       return caches.open(cacheName).then(function (cache) {
         return cache.delete(event.request)
@@ -39,7 +39,7 @@ self.addEventListener("fetch", function (event) {
       });
     })
     .catch(function () {
-      return caches.match(event.request);
+      return caches.match(event.request).then((r) => { return r});
     })
   );
 });
