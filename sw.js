@@ -40,18 +40,9 @@ self.addEventListener("fetch", function (event) {
           return response;
         });
       }).catch(function () {
-        var tempList=[];
-        event.waitUntil(clients.matchAll({
-          type: "window"
-        }).then(function (clientList) {
-          for (var i = 0; i < clientList.length; i++) {
-            tempList.push(clientList[i].url);
-          }
-        }).then(function(){
-          if (r && tempList.indexOf(event.request.url) != -1) {
-            event.waitUntil(self.registration.showNotification("You are in offline mode! \n正在脱机模式下使用!"));
-          }
-        }));
+        if (r && /\.html$/.test(event.request.url)) {
+          event.waitUntil(self.registration.showNotification("You are in offline mode! \n正在脱机模式下使用!"));
+        }
         return r;
       });
     })
