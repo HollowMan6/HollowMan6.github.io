@@ -25,19 +25,18 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", function (event) {
   event.respondWith(
-    fetch(event.request.url)
-    .then(function (httpRes) {
-      if (!httpRes || httpRes.status !== 200) {
+    fetch(event.request)
+    .then(function (response) {
+      if (!response || response.status !== 200) {
         return caches.match(event.request)
       }
-      var responseClone = httpRes.clone();
       caches.open(cacheName).then(function (cache) {
         return cache.delete(event.request)
           .then(function () {
-            cache.put(event.request, responseClone);
+            cache.put(event.request, response.clone());
           });
       });
-      return httpRes;
+      return response;
     })
     .catch(function () {
       return caches.match(event.request);
