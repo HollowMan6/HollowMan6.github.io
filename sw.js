@@ -4,17 +4,17 @@ var contentToCache = [];
 self.addEventListener("install", function (event) {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(cacheName).then((cache) => {
+    caches.open(cacheName).then(function (cache) {
       return cache.addAll(contentToCache);
     })
   );
 });
 
-self.addEventListener("activate", event => {
+self.addEventListener("activate", function (event) {
   event.waitUntil(
-    caches.keys().then((keyList) => {
+    caches.keys().then(function (keyList) {
       clients.claim();
-      return Promise.all(keyList.map((key) => {
+      return Promise.all(keyList.map(function (key) {
         if (key !== cacheName) {
           return caches.delete(key);
         }
@@ -28,16 +28,15 @@ self.addEventListener("fetch", function (event) {
     fetch(event.request)
     .then(function (response) {
       if (!response || response.status !== 200) {
-        return caches.match(event.request)
+        return caches.match(event.request);
       }
-      var responseBody = response.clone();
-      caches.open(cacheName).then(function (cache) {
+      return caches.open(cacheName).then(function (cache) {
         return cache.delete(event.request)
           .then(function () {
-            cache.put(event.request, responseBody);
+            cache.put(event.request, response.clone());
+            return response;
           });
       });
-      return response;
     })
     .catch(function () {
       return caches.match(event.request);
