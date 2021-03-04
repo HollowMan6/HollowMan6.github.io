@@ -35,15 +35,14 @@
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
 
-## 彩蛋🎉
+## 功能彩蛋🎉
 
 * 网页将自动记住你每次浏览的位置
-
 * 当您的系统设置为暗模式时，网站将跟随，否则，如果您的计算机设置的时间是您IP地址中反映的您所在位置的日落和日出之间，则网站将自动开启夜间模式。
-
 * 您可以永远禁用跟随系统的暗模式。网站不会永远记住您选择的颜色模式，而仅仅只会在一个会话中记住。
-  
 * 懒加载图片。
+* 网站可作为PWA安装到你的电脑或手机中。借助Service Worker实现了通知的订阅以及推送，和脱机浏览页面。
+* 网页在每次打开时自动从网络获取最新资源，并且缓存到设备中。如果网络不畅、获取资源失败则从缓存中读取数据并显示。
 
 # Hollow Man Home Page
 
@@ -65,12 +64,11 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
 
-## Surprise🎉
+## Function Surprise🎉
 
 * The web page will automatically remember where you visit each time.
-
 * When your system is set in dark mode, the website will follow, else, if the time set by your computer is between sunset and sunrise at your location reflected in your IP address, the website will automatically turn on the night mode.
-
 * You can disable following your system's dark mode forever, but it won't remember your choice of the night mode forever but in a session.
-
 * Lazy loading images.
+* The website can be installed in your computer or mobile phone as PWA. With the help of service worker, it realizes the subscription and push of notification, and offline browsing page.
+* Every time a web page is opened, it automatically gets the latest resources from the network and caches them to the device. If the browser fails to fetch the resources, the data will be read from the cache and displayed.
