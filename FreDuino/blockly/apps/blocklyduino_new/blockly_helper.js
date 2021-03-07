@@ -3,11 +3,11 @@
  * Just a quick and dirty eval.  No checks for infinite loops, etc.
  */
 function runJS() {
-  var code = Blockly.Generator.workspaceToCode('JavaScript');
+  var code = Blockly.Generator.workspaceToCode("JavaScript");
   try {
     eval(code);
   } catch (e) {
-    alert('Program error:\n' + e);
+    alert("Program error:\n" + e);
   }
 }
 
@@ -15,9 +15,9 @@ function runJS() {
  * Backup code blocks to localStorage.
  */
 function backup_blocks() {
-  if ('localStorage' in window) {
+  if ("localStorage" in window) {
     var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-    window.localStorage.setItem('arduino', Blockly.Xml.domToText(xml));
+    window.localStorage.setItem("arduino", Blockly.Xml.domToText(xml));
   }
 }
 
@@ -25,21 +25,26 @@ function backup_blocks() {
  * Restore code blocks from localStorage.
  */
 function restore_blocks() {
-  if ('localStorage' in window && window.localStorage.arduino) {
+  if ("localStorage" in window && window.localStorage.arduino) {
     var xml = Blockly.Xml.textToDom(window.localStorage.arduino);
     Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
   }
 }
 
 /**
-* Save Arduino generated code to local file.
-*/
+ * Save Arduino generated code to local file.
+ */
 function saveCode() {
-  var fileName = window.prompt('What would you like to name your file?', 'BlocklyDuino')
+  var fileName = window.prompt(
+    "What would you like to name your file?",
+    "BlocklyDuino"
+  );
   //doesn't save if the user quits the save prompt
-  if(fileName){
-    var blob = new Blob([Blockly.Arduino.workspaceToCode()], {type: 'text/plain;charset=utf-8'});
-    saveAs(blob, fileName + '.ino');
+  if (fileName) {
+    var blob = new Blob([Blockly.Arduino.workspaceToCode()], {
+      type: "text/plain;charset=utf-8",
+    });
+    saveAs(blob, fileName + ".ino");
   }
 }
 
@@ -50,15 +55,18 @@ function saveCode() {
 function save() {
   var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
   var data = Blockly.Xml.domToText(xml);
-  var fileName = window.prompt('What would you like to name your file?', 'BlocklyDuino');
+  var fileName = window.prompt(
+    "What would you like to name your file?",
+    "BlocklyDuino"
+  );
   // Store data in blob.
   // var builder = new BlobBuilder();
   // builder.append(data);
   // saveAs(builder.getBlob('text/plain;charset=utf-8'), 'blockduino.xml');
-  if(fileName){
-    var blob = new Blob([data], {type: 'text/xml'});
+  if (fileName) {
+    var blob = new Blob([data], { type: "text/xml" });
     saveAs(blob, fileName + ".xml");
-  } 
+  }
 }
 
 /**
@@ -73,14 +81,14 @@ function load(event) {
 
   // FileReader
   var reader = new FileReader();
-  reader.onloadend = function(event) {
+  reader.onloadend = function (event) {
     var target = event.target;
     // 2 == FileReader.DONE
     if (target.readyState == 2) {
       try {
         var xml = Blockly.Xml.textToDom(target.result);
       } catch (e) {
-        alert('Error parsing XML:\n' + e);
+        alert("Error parsing XML:\n" + e);
         return;
       }
       var count = Blockly.mainWorkspace.getAllBlocks().length;
@@ -91,7 +99,7 @@ function load(event) {
     }
     // Reset value of input after loading because Chrome will not fire
     // a 'change' event if the same file is loaded again.
-    document.getElementById('load').value = '';
+    document.getElementById("load").value = "";
   };
   reader.readAsText(files[0]);
 }
@@ -101,7 +109,7 @@ function load(event) {
  */
 function discard() {
   var count = Blockly.mainWorkspace.getAllBlocks().length;
-  if (count < 2 || window.confirm('Delete all ' + count + ' blocks?')) {
+  if (count < 2 || window.confirm("Delete all " + count + " blocks?")) {
     Blockly.mainWorkspace.clear();
     renderContent();
   }
@@ -115,13 +123,13 @@ function auto_save_and_restore_blocks() {
   // initialization is not affected from a failed load.
   window.setTimeout(restore_blocks, 0);
   // Hook a save function onto unload.
-  bindEvent(window, 'unload', backup_blocks);
+  bindEvent(window, "unload", backup_blocks);
   tabClick(selected);
 
   // Init load event.
-  var loadInput = document.getElementById('load');
-  loadInput.addEventListener('change', load, false);
-  document.getElementById('fakeload').onclick = function() {
+  var loadInput = document.getElementById("load");
+  loadInput.addEventListener("change", load, false);
+  document.getElementById("fakeload").onclick = function () {
     loadInput.click();
   };
 }
@@ -135,17 +143,20 @@ function auto_save_and_restore_blocks() {
  *     MSIE will not.
  */
 function bindEvent(element, name, func) {
-  if (element.addEventListener) {  // W3C
+  if (element.addEventListener) {
+    // W3C
     element.addEventListener(name, func, false);
-  } else if (element.attachEvent) {  // IE
-    element.attachEvent('on' + name, func);
+  } else if (element.attachEvent) {
+    // IE
+    element.attachEvent("on" + name, func);
   }
 }
 
 //loading examples via ajax
 var ajax;
 function createAJAX() {
-  if (window.ActiveXObject) { //IE
+  if (window.ActiveXObject) {
+    //IE
     try {
       return new ActiveXObject("Msxml2.XMLHTTP");
     } catch (e) {
@@ -166,9 +177,9 @@ function onSuccess() {
   if (ajax.readyState == 4) {
     if (ajax.status == 200) {
       try {
-      var xml = Blockly.Xml.textToDom(ajax.responseText);
+        var xml = Blockly.Xml.textToDom(ajax.responseText);
       } catch (e) {
-        alert('Error parsing XML:\n' + e);
+        alert("Error parsing XML:\n" + e);
         return;
       }
       var count = Blockly.mainWorkspace.getAllBlocks().length;
@@ -185,159 +196,148 @@ function onSuccess() {
 function load_by_url(uri) {
   ajax = createAJAX();
   if (!ajax) {
-　　   alert ('Not compatible with XMLHttpRequest');
-　　   return 0;
-　  }
+    alert("Not compatible with XMLHttpRequest");
+    return 0;
+  }
   if (ajax.overrideMimeType) {
-    ajax.overrideMimeType('text/xml');
+    ajax.overrideMimeType("text/xml");
   }
 
-　　ajax.onreadystatechange = onSuccess;
-　　ajax.open ("GET", uri, true);
-　　ajax.send ("");
+  ajax.onreadystatechange = onSuccess;
+  ajax.open("GET", uri, true);
+  ajax.send("");
 }
 
+function fetchDebugInfo(callback) {
+  var target = document.getElementById("content_arduino");
+  var spinner = new Spinner().spin(target);
 
+  var url = "../../../";
+  var method = "POST";
+  //alert(url);
 
-function fetchDebugInfo(callback)
-{
-    var target = document.getElementById('content_arduino');
-    var spinner = new Spinner().spin(target);
-    
-    var url = "../../../";
-    var method = "POST";
-	//alert(url);
+  // You REALLY want async = true.
+  // Otherwise, it'll block ALL execution waiting for server response.
+  var async = true;
 
-    // You REALLY want async = true.
-    // Otherwise, it'll block ALL execution waiting for server response.
-    var async = true;
+  var request = new XMLHttpRequest();
 
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function() {
-        if (request.readyState != 4) { 
-            return; 
-        }
-        
-        spinner.stop();
-        var errorInfo = request.responseText
-        callback(status, errorInfo);
-    };
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) {
+      return;
+    }
 
-    request.open(method, url, async);
-    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-    request.send('###');	     	
+    spinner.stop();
+    var errorInfo = request.responseText;
+    callback(status, errorInfo);
+  };
+
+  request.open(method, url, async);
+  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  request.send("###");
 }
 
-function SendControlCarCode(code)
-{
-    var target = document.getElementById('content_arduino');
-    var spinner = new Spinner().spin(target);
-    
-    var url = "../../../";
-    var method = "POST";
-	//alert(url);
+function SendControlCarCode(code) {
+  var target = document.getElementById("content_arduino");
+  var spinner = new Spinner().spin(target);
 
-    // You REALLY want async = true.
-    // Otherwise, it'll block ALL execution waiting for server response.
-    var async = true;
+  var url = "../../../";
+  var method = "POST";
+  //alert(url);
 
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function() {
-        if (request.readyState != 4) { 
-            return; 
-        }
-        
-        spinner.stop();
-        var errorInfo = request.responseText
-        callback(status, errorInfo);
-    };
+  // You REALLY want async = true.
+  // Otherwise, it'll block ALL execution waiting for server response.
+  var async = true;
 
-    request.open(method, url, async);
-    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-    request.send('!!!' + code);	     	
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) {
+      return;
+    }
+
+    spinner.stop();
+    var errorInfo = request.responseText;
+    callback(status, errorInfo);
+  };
+
+  request.open(method, url, async);
+  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  request.send("!!!" + code);
 }
 
-function forwardClick(code)
-{
-	SendControlCarCode('$')
+function forwardClick(code) {
+  SendControlCarCode("$");
 }
 
-function backwardClick(code)
-{
-	SendControlCarCode('#')
+function backwardClick(code) {
+  SendControlCarCode("#");
 }
 
-function leftClick(code)
-{
-	SendControlCarCode('%')
+function leftClick(code) {
+  SendControlCarCode("%");
 }
 
-function rightClick(code)
-{
-	SendControlCarCode('&')
+function rightClick(code) {
+  SendControlCarCode("&");
 }
 
 function uploadCode(code, callback) {
-    var target = document.getElementById('content_arduino');
-    var spinner = new Spinner().spin(target);
-    
-    var url = "../../../";
-    var method = "POST";
-	//alert(url);
+  var target = document.getElementById("content_arduino");
+  var spinner = new Spinner().spin(target);
 
-    // You REALLY want async = true.
-    // Otherwise, it'll block ALL execution waiting for server response.
-    var async = true;
+  var url = "../../../";
+  var method = "POST";
+  //alert(url);
 
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function() {
-        if (request.readyState != 4) { 
-            return; 
-        }
-        spinner.stop();
-        
-        var status = parseInt(request.status); // HTTP response status, e.g., 200 for "200 OK"
-        var errorInfo = request.responseText;
-        callback(status, errorInfo);
-    };
+  // You REALLY want async = true.
+  // Otherwise, it'll block ALL execution waiting for server response.
+  var async = true;
 
-    request.open(method, url, async);
-    request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-    request.send(code);	     
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (request.readyState != 4) {
+      return;
+    }
+    spinner.stop();
+
+    var status = parseInt(request.status); // HTTP response status, e.g., 200 for "200 OK"
+    var errorInfo = request.responseText;
+    callback(status, errorInfo);
+  };
+
+  request.open(method, url, async);
+  request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  request.send(code);
 }
 
-function debugClick(){
-	
-    fetchDebugInfo(function(status, errorInfo) {
-            alert("DebugInfo: " + errorInfo);
-        
-    });	
+function debugClick() {
+  fetchDebugInfo(function (status, errorInfo) {
+    alert("DebugInfo: " + errorInfo);
+  });
 }
 
 function uploadClick() {
-    var code = Blockly.Arduino.workspaceToCode();
+  var code = Blockly.Arduino.workspaceToCode();
 
-    alert("Ready to upload to Arduino.");
-    
-    uploadCode(code, function(status, errorInfo) {
+  alert("Ready to upload to Arduino.");
+
+  uploadCode(code, function (status, errorInfo) {
     //fetchDebugInfo(function(status, errorInfo) {
     if (status == 200) {
-            alert("Program uploaded ok");
-        } else {
-			
-            alert("Error uploading program: " + errorInfo);
-        }
-    });
+      alert("Program uploaded ok");
+    } else {
+      alert("Error uploading program: " + errorInfo);
+    }
+  });
 }
 
 function resetClick() {
-    var code = "void setup() {} void loop() {}";
-    uploadCode(code, function(status, errorInfo) {
-        if (status != 200) {
-            alert("Error resetting program: " + errorInfo);
-        }
-    });
+  var code = "void setup() {} void loop() {}";
+  uploadCode(code, function (status, errorInfo) {
+    if (status != 200) {
+      alert("Error resetting program: " + errorInfo);
+    }
+  });
 }

@@ -22,133 +22,133 @@
  * @fileoverview Math blocks for Blockly.
  * @author q.neutron@gmail.com (Quynh Neutron)
  */
-'use strict';
+"use strict";
 
-goog.provide('Blockly.Blocks.math');
+goog.provide("Blockly.Blocks.math");
 
-goog.require('Blockly.Blocks');
+goog.require("Blockly.Blocks");
 
-goog.require('Blockly.Colours');
+goog.require("Blockly.Colours");
 
-goog.require('Blockly.constants');
+goog.require("Blockly.constants");
 
-Blockly.Blocks['math_number'] = {
+Blockly.Blocks["math_number"] = {
   /**
    * Block for generic numeric value.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_number",
-          "name": "NUM",
-          "value": "0"
-        }
+          type: "field_number",
+          name: "NUM",
+          value: "0",
+        },
       ],
-      "output": "Number",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "Number",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };
 
-Blockly.Blocks['math_integer'] = {
+Blockly.Blocks["math_integer"] = {
   /**
    * Block for integer value (no decimal, + or -).
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_number",
-          "name": "NUM",
-          "precision": 1
-        }
+          type: "field_number",
+          name: "NUM",
+          precision: 1,
+        },
       ],
-      "output": "Number",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "Number",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };
 
-Blockly.Blocks['math_whole_number'] = {
+Blockly.Blocks["math_whole_number"] = {
   /**
    * Block for whole number value, no negatives or decimals.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_number",
-          "name": "NUM",
-          "min": 0,
-          "precision": 1
-        }
+          type: "field_number",
+          name: "NUM",
+          min: 0,
+          precision: 1,
+        },
       ],
-      "output": "Number",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "Number",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };
 
-Blockly.Blocks['math_positive_number'] = {
+Blockly.Blocks["math_positive_number"] = {
   /**
    * Block for positive number value, with decimal.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_number",
-          "name": "NUM",
-          "min": 0
-        }
+          type: "field_number",
+          name: "NUM",
+          min: 0,
+        },
       ],
-      "output": "Number",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "Number",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };
 
-Blockly.Blocks['math_angle'] = {
+Blockly.Blocks["math_angle"] = {
   /**
    * Block for angle picker.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_angle",
-          "name": "NUM",
-          "value": 90
-        }
+          type: "field_angle",
+          name: "NUM",
+          value: 90,
+        },
       ],
-      "output": "Number",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "Number",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };

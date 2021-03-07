@@ -22,35 +22,35 @@
  * @fileoverview Text blocks for Blockly.
  * @author fraser@google.com (Neil Fraser)
  */
-'use strict';
+"use strict";
 
-goog.provide('Blockly.Blocks.texts');
+goog.provide("Blockly.Blocks.texts");
 
-goog.require('Blockly.Blocks');
+goog.require("Blockly.Blocks");
 
-goog.require('Blockly.Colours');
+goog.require("Blockly.Colours");
 
-goog.require('Blockly.constants');
+goog.require("Blockly.constants");
 
-Blockly.Blocks['text'] = {
+Blockly.Blocks["text"] = {
   /**
    * Block for text value.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
-      "message0": "%1",
-      "args0": [
+      message0: "%1",
+      args0: [
         {
-          "type": "field_input",
-          "name": "TEXT"
-        }
+          type: "field_input",
+          name: "TEXT",
+        },
       ],
-      "output": "String",
-      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
-      "colour": Blockly.Colours.textField,
-      "colourSecondary": Blockly.Colours.textField,
-      "colourTertiary": Blockly.Colours.textField
+      output: "String",
+      outputShape: Blockly.OUTPUT_SHAPE_ROUND,
+      colour: Blockly.Colours.textField,
+      colourSecondary: Blockly.Colours.textField,
+      colourTertiary: Blockly.Colours.textField,
     });
-  }
+  },
 };
