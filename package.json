@@ -12,7 +12,9 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "husky install",
+    "pre-commit": "lint-staged && eslint . --fix"
   },
   "eslintConfig": {
     "plugins": [
@@ -32,11 +34,6 @@
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && eslint . --fix"
     }
   },
   "lint-staged": {
