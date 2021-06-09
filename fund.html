@@ -509,6 +509,7 @@
       }
 
       img {
+        -webkit-user-drag: none;
         cursor: url("img/cursor/link.cur"), pointer;
       }
 
@@ -521,11 +522,41 @@
         background-position: center;
       }
 
-      hr {
+      .hr-bottom {
         border: 0;
-        height: 2px;
-        background-color: #009bdf;
+        color: #009bdf;
+        background: linear-gradient(currentColor, currentColor) no-repeat center;
         animation: colorPulse 5s infinite linear;
+        background-size: 100% 2px;
+      }
+
+      .hr-bottom::before {
+        content: "";
+        display: block;
+        width: 0.75em;
+        height: 0.75em;
+        transform: rotate(45deg);
+        background-color: currentColor;
+        margin: 3px auto;
+      }
+
+      .hr-bottom[multiple]::before {
+        box-shadow: 1.25em -1.25em, -1.25em 1.25em;
+      }
+
+      .hr-twill-colorful {
+        border: 0;
+        padding: 3px;
+        background: linear-gradient(135deg, red, orange, green, blue, purple);
+        --mask-image: repeating-linear-gradient(
+          135deg,
+          #000 0px,
+          #000 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        -webkit-mask-image: var(--mask-image);
+        mask-image: var(--mask-image);
       }
 
       .loaded {
@@ -1522,7 +1553,7 @@
         >
       </h3>
       <footer>
-        <hr style="margin-left: -10%" />
+        <hr class="hr-bottom" style="margin-left: -10%" multiple />
         <h3 align="center" style="margin-left: -10%; margin-top: -5px">
           Copyright &copy; 2018-2021
           <img
@@ -1798,10 +1829,10 @@
             <h4 style="margin-left: 18%">
               谢谢你的捐助。每一点的捐助都将是我前进的动力！
             </h4>
+            <hr id="gspons" class="hr-twill-colorful" />
             <div>
               <p>
                 <iframe
-                  id="gspons"
                   src="github-sponsor.html"
                   class="pic"
                   height="175px"
@@ -1811,7 +1842,8 @@
                 ></iframe>
               </p>
             </div>
-            <p id="Paypal">
+            <hr id="Paypal" class="hr-twill-colorful" />
+            <p>
               <a
                 href="https://www.paypal.me/hollowman6"
                 target="_blank"
@@ -1823,8 +1855,9 @@
                   width="100px"
               /></a>
             </p>
+            <hr id="Monero" class="hr-twill-colorful" />
             <div id="sponsor-pic">
-              <h2 id="Monero">
+              <h2>
                 &nbsp;&nbsp;&nbsp;&nbsp;<img
                   loading="lazy"
                   src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729"
@@ -1842,7 +1875,8 @@
               <h5 style="margin-left: 19%">
                 46gRnPZWAQddCypNA5A27qNmrM7JqapbWdsD1Dw1prDVea4<br />JnXVxFv846oRQW7XxMYUZnZ8PUE59bVNzP5khr8KNGDsUKDz
               </h5>
-              <h2 id="WeChatTip">
+              <hr id="WeChatTip" class="hr-twill-colorful" />
+              <h2>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
                   loading="lazy"
                   src="https://epayments.developer-ingenico.com/shared-images/content/logos/paymentproducts/pp_logo_863_v1.png"
@@ -1861,7 +1895,8 @@
               暗模式下可能无法被微信识别!"
                 onclick="window.open('https://www.wechat.com','_blank')"
               />
-              <h2 id="Alipay">
+              <hr id="Alipay" class="hr-twill-colorful" />
+              <h2>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
                   loading="lazy"
                   src="https://zhengxin-pub.cdn.bcebos.com/logopic/a9936a369e82e0c6c42112674a5220e8_fullsize.jpg"
@@ -1889,10 +1924,10 @@
                 onclick="window.open('https://www.alipay.com','_blank')"
               />
             </div>
+            <hr id="About" class="hr-twill-colorful" />
             <p>
               <a
                 href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md"
-                id="About"
                 target="_blank"
                 class="header"
                 >📄 About ME</a
@@ -2008,7 +2043,7 @@
               onclick="Swal.fire({title: '如果你需要我协助你的 中<->英 📄文件翻译，欢迎通过邮箱联系我👦。持CATTI三级笔译证书🖼上岗，保证质量。', text: '✨ If you need help with 📄 translation between Chinese and English, please contact me 👦 via Email. The quality of my translation can be ensured with CATTI Level 3 Translator Certified 🖼.', icon: 'info', footer: '<a class=\'menu-links\' href=\'mailto:hollowman@hollowman.ml\'>Send Email 📫 联系我</a>'});"
             />
             <footer>
-              <hr />
+              <hr class="hr-bottom" multiple />
               <h3 align="center">
                 Copyright &copy; 2018-2021
                 <img

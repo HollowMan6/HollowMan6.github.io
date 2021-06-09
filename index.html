@@ -503,6 +503,7 @@
       }
 
       img {
+        -webkit-user-drag: none;
         cursor: url("img/cursor/link.cur"), pointer;
       }
 
@@ -515,11 +516,41 @@
         background-position: center;
       }
 
-      hr {
+      .hr-bottom {
         border: 0;
-        height: 2px;
-        background-color: #009bdf;
+        color: #009bdf;
+        background: linear-gradient(currentColor, currentColor) no-repeat center;
         animation: colorPulse 5s infinite linear;
+        background-size: 100% 2px;
+      }
+
+      .hr-bottom::before {
+        content: "";
+        display: block;
+        width: 0.75em;
+        height: 0.75em;
+        transform: rotate(45deg);
+        background-color: currentColor;
+        margin: 3px auto;
+      }
+
+      .hr-bottom[multiple]::before {
+        box-shadow: 1.25em -1.25em, -1.25em 1.25em;
+      }
+
+      .hr-twill-colorful {
+        border: 0;
+        padding: 3px;
+        background: linear-gradient(135deg, red, orange, green, blue, purple);
+        --mask-image: repeating-linear-gradient(
+          135deg,
+          #000 0px,
+          #000 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        -webkit-mask-image: var(--mask-image);
+        mask-image: var(--mask-image);
       }
 
       .loaded {
@@ -1773,7 +1804,7 @@
         >
       </h3>
       <footer>
-        <hr style="margin-left: -10%" />
+        <hr class="hr-bottom" style="margin-left: -10%" multiple />
         <h3 align="center" style="margin-left: -10%; margin-top: -5px">
           Copyright &copy; 2018-2021
           <img
@@ -2078,7 +2109,8 @@
                 >📢 Site Notifications</a
               >
             </p>
-            <h3 align="center" id="About" style="margin-left: -8%">
+            <hr id="About" class="hr-twill-colorful" />
+            <h3 align="center" style="margin-left: -8%">
               <a
                 href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md"
                 target="_blank"
@@ -3042,10 +3074,9 @@
                 @tensorflow
               </a>
             </div>
-            <br />
+            <hr id="SoftwareCopyright" class="hr-twill-colorful" />
             <a
               href="https://github.com/Hollow-Software/Software-Copyright"
-              id="SoftwareCopyright"
               target="_blank"
               class="header"
               >&copy; Software Copyright</a
@@ -3138,11 +3169,11 @@
                 onclick="window.open('https://github.com/HollowMan6/Lanck-Face-Recognition-Lock-Competition-Backend-Code','_blank')"
               />
             </p>
+            <hr id="Publications" class="hr-twill-colorful" />
             <p>
               <a
                 href="https://github.com/Hollow-Software/Publications"
                 target="_blank"
-                id="Publications"
                 class="header"
                 >📝 Publications</a
               >
@@ -3156,11 +3187,11 @@
                 >Voting System Based on Wechat Pay</a
               >
             </p>
+            <hr id="SpiderProgrammes" class="hr-twill-colorful" />
             <p>
               <a
                 href="https://github.com/Hollow-Software/Spider-Programmes"
                 target="_blank"
-                id="SpiderProgrammes"
                 class="header"
                 >🕷 Spider Programmes</a
               >
@@ -3235,10 +3266,10 @@
                 >🤖 Smart Chatting Robot</a
               >
             </p>
+            <hr id="CompetitionsWork" class="hr-twill-colorful" />
             <a
               href="https://github.com/Hollow-Software/Competitions-Work"
               target="_blank"
-              id="CompetitionsWork"
               class="header"
               >🏃‍ Competitions Work</a
             >
@@ -3314,10 +3345,13 @@
                 >Other Competitions Work</a
               >
             </p>
+            <hr
+              id="CourseworkAnswersandLessonHelper"
+              class="hr-twill-colorful"
+            />
             <a
               href="https://github.com/Hollow-Software/Coursework-Answers-and-Lesson-Helper"
               target="_blank"
-              id="CourseworkAnswersandLessonHelper"
               class="header"
               >🏫 Coursework Answers and Lesson Helper</a
             >
@@ -3379,9 +3413,9 @@
                 >Google Android Mobile Certification Quiz Answers</a
               >
             </p>
+            <hr id="CodingPractices" class="hr-twill-colorful" />
             <a
               href="https://github.com/Hollow-Software/Coding-Practices"
-              id="CodingPractices"
               target="_blank"
               class="header"
               ><img
@@ -3545,10 +3579,10 @@
                 >Childhood's VB Programs</a
               >
             </p>
+            <hr id="Website" class="hr-twill-colorful" />
             <a
               href="https://github.com/Hollow-Software/Website"
               target="_blank"
-              id="Website"
               class="header"
               >🌏 Website</a
             >
@@ -3615,8 +3649,8 @@
                 >☀ sun.js</a
               >
             </p>
-            <h3 align="center">More waiting to be added ......</h3>
-            <h1 id="Certificates">🖼 Certificates</h1>
+            <hr id="Certificates" class="hr-twill-colorful" />
+            <h1>🖼 Certificates</h1>
             <p id="certificate-images">
               <img
                 loading="lazy"
@@ -4585,8 +4619,9 @@
                 onclick="window.open('https://skillshop.exceedlms.com/student/award/48863255','_blank')"
               />
             </div>
+            <h3 align="center">More waiting to be added ......</h3>
             <footer>
-              <hr />
+              <hr class="hr-bottom" multiple />
               <h3 align="center">
                 Copyright &copy; 2018-2021
                 <img
