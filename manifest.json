@@ -18,12 +18,12 @@
   "categories": ["website", "personal", "cv"],
   "screenshots": [
     {
-      "src": "https://images.gitee.com/uploads/images/2021/0613/195528_51eae709_7637131.png",
+      "src": "/img/screenshot/20210613195338.png",
       "type": "image/png",
       "sizes": "980x930"
     },
     {
-      "src": "https://images.gitee.com/uploads/images/2021/0613/195618_c565819e_7637131.png",
+      "src": "/img/screenshot/20210613195437.png",
       "type": "image/jpeg",
       "sizes": "1920x940"
     }
