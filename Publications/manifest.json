@@ -1,16 +1,26 @@
 {
-    "short_name": "Hollow Man's Publications",
-    "name": "Hollow Man Publications",
-    "icons": [
-      {
-        "src": "/img/logo.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "start_url": "/Publications/",
-    "display": "standalone",
-    "background_color": "#eee",
-    "theme_color": "#eee"
-  }
+  "short_name": "Hollow Man's Publications",
+  "name": "Hollow Man Publications",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/Publications/",
+  "display": "standalone",
+  "background_color": "#eee",
+  "theme_color": "#eee",
+  "description": "This is the publications for Hollow Man.",
+  "lang": "en",
+  "categories": ["publication", "personal"],
+  "screenshots": [
+    {
+      "src": "/img/screenshot/publication.png",
+      "type": "image/png",
+      "sizes": "960x900"
+    }
+  ]
+}

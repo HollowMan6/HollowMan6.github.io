@@ -1,16 +1,26 @@
 {
-    "short_name": "Hollow Man Texter",
-    "name": "Hollow Man Texter",
-    "icons": [
-      {
-        "src": "/img/logo.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "start_url": "/Texter/",
-    "display": "standalone",
-    "background_color": "#eee",
-    "theme_color": "#eee"
-  }
+  "short_name": "Hollow Man Texter",
+  "name": "Hollow Man Texter",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/Texter/",
+  "display": "standalone",
+  "background_color": "#eee",
+  "theme_color": "#eee",
+  "description": "This is an APP for recognizing drawn symbol into Latex. A project that I've done when I participated 2019 Google InnoCamp HangzhouBoostMakers --Tensorflow Boost",
+  "lang": "en",
+  "categories": ["latex", "recognize", "ai"],
+  "screenshots": [
+    {
+      "src": "/img/screenshot/texter.png",
+      "type": "image/png",
+      "sizes": "960x900"
+    }
+  ]
+}

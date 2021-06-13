@@ -15,17 +15,17 @@
   "theme_color": "#eee",
   "description": "This is the home page for Hollow Man.",
   "lang": "en",
-  "categories": ["website", "personal", "cv"],
+  "categories": ["website", "personal"],
   "screenshots": [
     {
-      "src": "/img/screenshot/20210613195338.png",
+      "src": "/img/screenshot/homepage-begin.png",
       "type": "image/png",
-      "sizes": "980x930"
+      "sizes": "960x900"
     },
     {
-      "src": "/img/screenshot/20210613195437.png",
-      "type": "image/jpeg",
-      "sizes": "1920x940"
+      "src": "/img/screenshot/homepage-main.png",
+      "type": "image/png",
+      "sizes": "960x900"
     }
   ]
 }

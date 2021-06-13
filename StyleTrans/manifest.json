@@ -1,16 +1,31 @@
 {
-    "short_name": "Hollow Man FNST Demo",
-    "name": "Fast Neural Style Transfer Demo",
-    "icons": [
-      {
-        "src": "/img/logo.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "start_url": "/StyleTrans/",
-    "display": "standalone",
-    "background_color": "#eee",
-    "theme_color": "#eee"
-  }
+  "short_name": "Hollow Man FNST Demo",
+  "name": "Fast Neural Style Transfer Demo",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/StyleTrans/",
+  "display": "standalone",
+  "background_color": "#eee",
+  "theme_color": "#eee",
+  "description": "This is an APP for clothing style transfer. A project that I've done when I participated University Project “Renaissance”--AI+ Dunhuang and got Best University Project of the Year",
+  "lang": "en",
+  "categories": ["style", "transfer", "FNST"],
+  "screenshots": [
+    {
+      "src": "/img/screenshot/fnst-begin.png",
+      "type": "image/png",
+      "sizes": "960x900"
+    },
+    {
+      "src": "/img/screenshot/fnst-main.png",
+      "type": "image/png",
+      "sizes": "960x900"
+    }
+  ]
+}
