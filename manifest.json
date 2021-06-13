@@ -1,16 +1,31 @@
 {
-    "short_name": "Hollow Man's Website",
-    "name": "Hollow Man Home Page",
-    "icons": [
-      {
-        "src": "/img/logo.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-      }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#eee",
-    "theme_color": "#eee"
-  }
+  "short_name": "Hollow Man's Website",
+  "name": "Hollow Man Home Page",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eee",
+  "theme_color": "#eee",
+  "description": "This is the home page for Hollow Man.",
+  "lang": "en",
+  "categories": ["website", "personal", "cv"],
+  "screenshots": [
+    {
+      "src": "https://images.gitee.com/uploads/images/2021/0613/195528_51eae709_7637131.png",
+      "type": "image/png",
+      "sizes": "980x930"
+    },
+    {
+      "src": "https://images.gitee.com/uploads/images/2021/0613/195618_c565819e_7637131.png",
+      "type": "image/jpeg",
+      "sizes": "1920x940"
+    }
+  ]
+}
