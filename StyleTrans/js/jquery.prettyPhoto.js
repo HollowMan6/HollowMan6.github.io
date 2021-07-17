@@ -591,12 +591,8 @@
             prevImage = new Image();
             if (isSet && pp_images[set_position - 1])
               prevImage.src = pp_images[set_position - 1];
-            $pp_pic_holder.find(
-              "#pp_full_res"
-            )[0].innerHTML = settings.image_markup.replace(
-              /{path}/g,
-              pp_images[set_position]
-            );
+            $pp_pic_holder.find("#pp_full_res")[0].innerHTML =
+              settings.image_markup.replace(/{path}/g, pp_images[set_position]);
             imgPreloader.onload = function () {
               a = w(imgPreloader.width, imgPreloader.height);
               g();

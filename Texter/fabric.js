@@ -23,7 +23,8 @@ else {
       { features: { FetchExternalResources: ["img"] }, resources: "usable" }
     ).window;
   (fabric.document = virtualWindow.document),
-    (fabric.jsdomImplForWrapper = require("jsdom/lib/jsdom/living/generated/utils").implForWrapper),
+    (fabric.jsdomImplForWrapper =
+      require("jsdom/lib/jsdom/living/generated/utils").implForWrapper),
     (fabric.nodeCanvas = require("jsdom/lib/jsdom/utils").Canvas),
     (fabric.window = virtualWindow),
     (DOMParser = fabric.window.DOMParser);
@@ -86,7 +87,8 @@ function copyGLTo2DPutImageData(t, e) {
   ]),
   (fabric.DPI = 96),
   (fabric.reNum = "(?:[-+]?(?:\\d+|\\d*\\.\\d+)(?:[eE][-+]?\\d+)?)"),
-  (fabric.rePathCommand = /([-+]?((\d+\.\d+)|((\d+)|(\.\d+)))(?:[eE][-+]?\d+)?)/gi),
+  (fabric.rePathCommand =
+    /([-+]?((\d+\.\d+)|((\d+)|(\.\d+)))(?:[eE][-+]?\d+)?)/gi),
   (fabric.reNonWord = /[ \n\.,;!\?\-]/),
   (fabric.fontPaths = {}),
   (fabric.iMatrix = [1, 0, 0, 1, 0, 0]),
@@ -3081,9 +3083,12 @@ function copyGLTo2DPutImageData(t, e) {
             return (i[3] = r), this.setSource(i), this;
           },
         }),
-        (c.Color.reRGBa = /^rgba?\(\s*(\d{1,3}(?:\.\d+)?\%?)\s*,\s*(\d{1,3}(?:\.\d+)?\%?)\s*,\s*(\d{1,3}(?:\.\d+)?\%?)\s*(?:\s*,\s*((?:\d*\.?\d+)?)\s*)?\)$/i),
-        (c.Color.reHSLa = /^hsla?\(\s*(\d{1,3})\s*,\s*(\d{1,3}\%)\s*,\s*(\d{1,3}\%)\s*(?:\s*,\s*(\d+(?:\.\d+)?)\s*)?\)$/i),
-        (c.Color.reHex = /^#?([0-9a-f]{8}|[0-9a-f]{6}|[0-9a-f]{4}|[0-9a-f]{3})$/i),
+        (c.Color.reRGBa =
+          /^rgba?\(\s*(\d{1,3}(?:\.\d+)?\%?)\s*,\s*(\d{1,3}(?:\.\d+)?\%?)\s*,\s*(\d{1,3}(?:\.\d+)?\%?)\s*(?:\s*,\s*((?:\d*\.?\d+)?)\s*)?\)$/i),
+        (c.Color.reHSLa =
+          /^hsla?\(\s*(\d{1,3})\s*,\s*(\d{1,3}\%)\s*,\s*(\d{1,3}\%)\s*(?:\s*,\s*(\d+(?:\.\d+)?)\s*)?\)$/i),
+        (c.Color.reHex =
+          /^#?([0-9a-f]{8}|[0-9a-f]{6}|[0-9a-f]{4}|[0-9a-f]{3})$/i),
         (c.Color.colorNameMap = {
           aliceblue: "#F0F8FF",
           antiquewhite: "#FAEBD7",
@@ -4239,7 +4244,8 @@ function copyGLTo2DPutImageData(t, e) {
             );
           },
         })),
-        (o.Shadow.reOffsetsAndBlur = /(?:\s|^)(-?\d+(?:px)?(?:\s?|$))?(-?\d+(?:px)?(?:\s?|$))?(\d+(?:px)?)?(?:\s?|$)(?:$|\s)/));
+        (o.Shadow.reOffsetsAndBlur =
+          /(?:\s|^)(-?\d+(?:px)?(?:\s?|$))?(-?\d+(?:px)?(?:\s?|$))?(\d+(?:px)?)?(?:\s?|$)(?:$|\s)/));
   })("undefined" != typeof exports ? exports : this),
   (function () {
     "use strict";
@@ -7113,12 +7119,14 @@ function copyGLTo2DPutImageData(t, e) {
         dirty: !0,
         __corner: 0,
         paintFirst: "fill",
-        stateProperties: "top left width height scaleX scaleY flipX flipY originX originY transformMatrix stroke strokeWidth strokeDashArray strokeLineCap strokeDashOffset strokeLineJoin strokeMiterLimit angle opacity fill globalCompositeOperation shadow visible backgroundColor skewX skewY fillRule paintFirst clipPath strokeUniform".split(
-          " "
-        ),
-        cacheProperties: "fill stroke strokeWidth strokeDashArray width height paintFirst strokeUniform strokeLineCap strokeDashOffset strokeLineJoin strokeMiterLimit backgroundColor clipPath".split(
-          " "
-        ),
+        stateProperties:
+          "top left width height scaleX scaleY flipX flipY originX originY transformMatrix stroke strokeWidth strokeDashArray strokeLineCap strokeDashOffset strokeLineJoin strokeMiterLimit angle opacity fill globalCompositeOperation shadow visible backgroundColor skewX skewY fillRule paintFirst clipPath strokeUniform".split(
+            " "
+          ),
+        cacheProperties:
+          "fill stroke strokeWidth strokeDashArray width height paintFirst strokeUniform strokeLineCap strokeDashOffset strokeLineJoin strokeMiterLimit backgroundColor clipPath".split(
+            " "
+          ),
         colorProperties: "fill stroke backgroundColor".split(" "),
         clipPath: void 0,
         inverted: !1,
@@ -7283,7 +7291,8 @@ function copyGLTo2DPutImageData(t, e) {
             this.clipPath &&
               ((i.clipPath = this.clipPath.toObject(t)),
               (i.clipPath.inverted = this.clipPath.inverted),
-              (i.clipPath.absolutePositioned = this.clipPath.absolutePositioned)),
+              (i.clipPath.absolutePositioned =
+                this.clipPath.absolutePositioned)),
             x.util.populateWithProperties(this, i, t),
             this.includeDefaultValues || (i = this._removeDefaultValues(i)),
             i
@@ -10617,10 +10626,8 @@ function copyGLTo2DPutImageData(t, e) {
                       ((t =
                         (l -
                           i *
-                            (n = s = fabric.util.findScaleToFit(
-                              this._element,
-                              f
-                            ))) /
+                            (n = s =
+                              fabric.util.findScaleToFit(this._element, f))) /
                         2),
                       "Min" === e.alignX && (o = -t),
                       "Max" === e.alignX && (o = t),
@@ -10631,10 +10638,8 @@ function copyGLTo2DPutImageData(t, e) {
                       ((t =
                         i -
                         l /
-                          (n = s = fabric.util.findScaleToCover(
-                            this._element,
-                            f
-                          ))),
+                          (n = s =
+                            fabric.util.findScaleToCover(this._element, f))),
                       "Mid" === e.alignX && (h = t / 2),
                       "Max" === e.alignX && (h = t),
                       (t = r - u / s),
@@ -11643,158 +11648,32 @@ function copyGLTo2DPutImageData(t, e) {
       r = e.util.createClass,
       n = {
         Brownie: [
-          0.5997,
-          0.34553,
-          -0.27082,
-          0,
-          0.186,
-          -0.0377,
-          0.86095,
-          0.15059,
-          0,
-          -0.1449,
-          0.24113,
-          -0.07441,
-          0.44972,
-          0,
-          -0.02965,
-          0,
-          0,
-          0,
-          1,
-          0,
+          0.5997, 0.34553, -0.27082, 0, 0.186, -0.0377, 0.86095, 0.15059, 0,
+          -0.1449, 0.24113, -0.07441, 0.44972, 0, -0.02965, 0, 0, 0, 1, 0,
         ],
         Vintage: [
-          0.62793,
-          0.32021,
-          -0.03965,
-          0,
-          0.03784,
-          0.02578,
-          0.64411,
-          0.03259,
-          0,
-          0.02926,
-          0.0466,
-          -0.08512,
-          0.52416,
-          0,
-          0.02023,
-          0,
-          0,
-          0,
-          1,
-          0,
+          0.62793, 0.32021, -0.03965, 0, 0.03784, 0.02578, 0.64411, 0.03259, 0,
+          0.02926, 0.0466, -0.08512, 0.52416, 0, 0.02023, 0, 0, 0, 1, 0,
         ],
         Kodachrome: [
-          1.12855,
-          -0.39673,
-          -0.03992,
-          0,
-          0.24991,
-          -0.16404,
-          1.08352,
-          -0.05498,
-          0,
-          0.09698,
-          -0.16786,
-          -0.56034,
-          1.60148,
-          0,
-          0.13972,
-          0,
-          0,
-          0,
-          1,
-          0,
+          1.12855, -0.39673, -0.03992, 0, 0.24991, -0.16404, 1.08352, -0.05498,
+          0, 0.09698, -0.16786, -0.56034, 1.60148, 0, 0.13972, 0, 0, 0, 1, 0,
         ],
         Technicolor: [
-          1.91252,
-          -0.85453,
-          -0.09155,
-          0,
-          0.04624,
-          -0.30878,
-          1.76589,
-          -0.10601,
-          0,
-          -0.27589,
-          -0.2311,
-          -0.75018,
-          1.84759,
-          0,
-          0.12137,
-          0,
-          0,
-          0,
-          1,
-          0,
+          1.91252, -0.85453, -0.09155, 0, 0.04624, -0.30878, 1.76589, -0.10601,
+          0, -0.27589, -0.2311, -0.75018, 1.84759, 0, 0.12137, 0, 0, 0, 1, 0,
         ],
         Polaroid: [
-          1.438,
-          -0.062,
-          -0.062,
-          0,
-          0,
-          -0.122,
-          1.378,
-          -0.122,
-          0,
-          0,
-          -0.016,
-          -0.016,
-          1.483,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
+          1.438, -0.062, -0.062, 0, 0, -0.122, 1.378, -0.122, 0, 0, -0.016,
+          -0.016, 1.483, 0, 0, 0, 0, 0, 1, 0,
         ],
         Sepia: [
-          0.393,
-          0.769,
-          0.189,
-          0,
-          0,
-          0.349,
-          0.686,
-          0.168,
-          0,
-          0,
-          0.272,
-          0.534,
-          0.131,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
+          0.393, 0.769, 0.189, 0, 0, 0.349, 0.686, 0.168, 0, 0, 0.272, 0.534,
+          0.131, 0, 0, 0, 0, 0, 1, 0,
         ],
         BlackWhite: [
-          1.5,
-          1.5,
-          1.5,
-          0,
-          -1,
-          1.5,
-          1.5,
-          1.5,
-          0,
-          -1,
-          1.5,
-          1.5,
-          1.5,
-          0,
-          -1,
-          0,
-          0,
-          0,
-          1,
-          0,
+          1.5, 1.5, 1.5, 0, -1, 1.5, 1.5, 1.5, 0, -1, 1.5, 1.5, 1.5, 0, -1, 0,
+          0, 0, 1, 0,
         ],
       };
     for (var s in n)
@@ -11829,8 +11708,7 @@ function copyGLTo2DPutImageData(t, e) {
           "gl_FragColor.rgb += uColor.rgb - 2.0 * (uColor.rgb * gl_FragColor.rgb);\n",
         overlay:
           "if (uColor.r < 0.5) {\ngl_FragColor.r *= 2.0 * uColor.r;\n} else {\ngl_FragColor.r = 1.0 - 2.0 * (1.0 - gl_FragColor.r) * (1.0 - uColor.r);\n}\nif (uColor.g < 0.5) {\ngl_FragColor.g *= 2.0 * uColor.g;\n} else {\ngl_FragColor.g = 1.0 - 2.0 * (1.0 - gl_FragColor.g) * (1.0 - uColor.g);\n}\nif (uColor.b < 0.5) {\ngl_FragColor.b *= 2.0 * uColor.b;\n} else {\ngl_FragColor.b = 1.0 - 2.0 * (1.0 - gl_FragColor.b) * (1.0 - uColor.b);\n}\n",
-        tint:
-          "gl_FragColor.rgb *= (1.0 - uColor.a);\ngl_FragColor.rgb += uColor.rgb;\n",
+        tint: "gl_FragColor.rgb *= (1.0 - uColor.a);\ngl_FragColor.rgb += uColor.rgb;\n",
       },
       buildSource: function (t) {
         return (
@@ -11960,8 +11838,7 @@ function copyGLTo2DPutImageData(t, e) {
       fragmentSource: {
         multiply:
           "precision highp float;\nuniform sampler2D uTexture;\nuniform sampler2D uImage;\nuniform vec4 uColor;\nvarying vec2 vTexCoord;\nvarying vec2 vTexCoord2;\nvoid main() {\nvec4 color = texture2D(uTexture, vTexCoord);\nvec4 color2 = texture2D(uImage, vTexCoord2);\ncolor.rgba *= color2.rgba;\ngl_FragColor = color;\n}",
-        mask:
-          "precision highp float;\nuniform sampler2D uTexture;\nuniform sampler2D uImage;\nuniform vec4 uColor;\nvarying vec2 vTexCoord;\nvarying vec2 vTexCoord2;\nvoid main() {\nvec4 color = texture2D(uTexture, vTexCoord);\nvec4 color2 = texture2D(uImage, vTexCoord2);\ncolor.a = color2.a;\ngl_FragColor = color;\n}",
+        mask: "precision highp float;\nuniform sampler2D uTexture;\nuniform sampler2D uImage;\nuniform vec4 uColor;\nvarying vec2 vTexCoord;\nvarying vec2 vTexCoord2;\nvoid main() {\nvec4 color = texture2D(uTexture, vTexCoord);\nvec4 color2 = texture2D(uImage, vTexCoord2);\ncolor.a = color2.a;\ngl_FragColor = color;\n}",
       },
       retrieveShader: function (t) {
         var e = this.type + "_" + this.mode,
@@ -12672,26 +12549,7 @@ function copyGLTo2DPutImageData(t, e) {
           r = Math.sqrt(1 / 3) * i,
           n = 1 - e;
         (this.matrix = [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
+          1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0,
         ]),
           (this.matrix[0] = e + n / 3),
           (this.matrix[1] = (1 / 3) * n - r),
@@ -15140,9 +14998,8 @@ function copyGLTo2DPutImageData(t, e) {
       __cachedLines: null,
       lockScalingFlip: !0,
       noScaleCache: !1,
-      _dimensionAffectingProps: b.Text.prototype._dimensionAffectingProps.concat(
-        "width"
-      ),
+      _dimensionAffectingProps:
+        b.Text.prototype._dimensionAffectingProps.concat("width"),
       _wordJoiners: /[ \t\r]/,
       splitByGrapheme: !1,
       initDimensions: function () {

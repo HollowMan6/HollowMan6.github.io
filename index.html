@@ -218,8 +218,7 @@
       }
 
       createNotify("Welcome to my Home Page!\n欢迎访问我的主页！", {
-        body:
-          "📄 本网站Github开源GPL-3.0\nOpen Source Repository for this website on Github\n🇨🇳 大陆用户可以访问备用Gitee站点。",
+        body: "📄 本网站Github开源GPL-3.0\nOpen Source Repository for this website on Github\n🇨🇳 大陆用户可以访问备用Gitee站点。",
       });
 
       var hasNotified = false;
@@ -390,8 +389,7 @@
               "warning"
             );
             createNotify("有一些资源加载失败", {
-              body:
-                "Failed to load some resources\n中国大陆地区用户请确保已经科学上网",
+              body: "Failed to load some resources\n中国大陆地区用户请确保已经科学上网",
             });
             hasNotified = true;
           }
@@ -486,6 +484,7 @@
     </script>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=PT+Sans);
+      @import url(https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe);
 
       body,
       td {
@@ -827,9 +826,10 @@
         var eleNav = document.querySelectorAll(
           "nav.menu > div > ul > li > .menu-links"
         )[index];
-        var activated = eleNav.parentElement.parentElement.parentElement.parentElement.querySelectorAll(
-          ".activate"
-        );
+        var activated =
+          eleNav.parentElement.parentElement.parentElement.parentElement.querySelectorAll(
+            ".activate"
+          );
         for (var i = 0; i < activated.length; i++) {
           activated[i].classList.remove("activate");
         }
@@ -1202,23 +1202,20 @@
                   document.getElementById("locationInMenu").innerHTML =
                     "Your Location By IP: <br/>" + city + state + countryName;
                   if (!countryName) {
-                    document.getElementById(
-                      "location"
-                    ).innerText = document
+                    document.getElementById("location").innerText = document
                       .getElementById("location")
                       .innerText.substr(
                         0,
                         document.getElementById("location").innerText.length - 2
                       );
-                    document.getElementById(
-                      "locationInMenu"
-                    ).innerText = document
-                      .getElementById("locationInMenu")
-                      .innerText.substr(
-                        0,
-                        document.getElementById("locationInMenu").innerText
-                          .length - 2
-                      );
+                    document.getElementById("locationInMenu").innerText =
+                      document
+                        .getElementById("locationInMenu")
+                        .innerText.substr(
+                          0,
+                          document.getElementById("locationInMenu").innerText
+                            .length - 2
+                        );
                   }
                   $("#location").fadeIn();
                   $("#locationInMenu").fadeIn();
@@ -1229,24 +1226,21 @@
                     document.getElementById("locationInMenu").innerHTML =
                       "Your Location By IP: <br/>" + city + state + countryName;
                     if (!countryName) {
-                      document.getElementById(
-                        "location"
-                      ).innerText = document
+                      document.getElementById("location").innerText = document
                         .getElementById("location")
                         .innerText.substr(
                           0,
                           document.getElementById("location").innerText.length -
                             2
                         );
-                      document.getElementById(
-                        "locationInMenu"
-                      ).innerText = document
-                        .getElementById("locationInMenu")
-                        .innerText.substr(
-                          0,
-                          document.getElementById("locationInMenu").innerText
-                            .length - 2
-                        );
+                      document.getElementById("locationInMenu").innerText =
+                        document
+                          .getElementById("locationInMenu")
+                          .innerText.substr(
+                            0,
+                            document.getElementById("locationInMenu").innerText
+                              .length - 2
+                          );
                     }
                     $("#location").fadeIn();
                     $("#locationInMenu").fadeIn();
@@ -1337,7 +1331,7 @@
     </script>
     <style type="text/css">
       * {
-        font-family: "PT Sans", sans-serif;
+        font-family: "PT Sans", "ZCOOL KuaiLe", sans-serif;
       }
 
       body {
@@ -2224,14 +2218,6 @@
               <br />
             </div>
             <p>
-              <img
-                loading="lazy"
-                class="pic"
-                src="https://metrics.lecoq.io/HollowMan6?base.metadata=0"
-                style="margin-left: 8%"
-              />
-            </p>
-            <p>
               <a
                 href="CV/?language=en"
                 target="_blank"
@@ -2277,7 +2263,12 @@
                 />
                 <div
                   dir="ltr"
-                  class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
+                  class="
+                    LI-badge-container-horizontal-light LI-badge-container
+                    horizontal
+                    light
+                    large
+                  "
                   style="display: none"
                 >
                   <div class="LI-profile-badge-header LI-name-container LI-row">

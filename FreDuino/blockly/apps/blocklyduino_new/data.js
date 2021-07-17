@@ -479,10 +479,11 @@ Blockly.Constants.Data.CUSTOM_CONTEXT_MENU_GET_VARIABLE_MIXIN = {
         var option = { enabled: true };
         option.text = variablesList[i].name;
 
-        option.callback = Blockly.Constants.Data.VARIABLE_OPTION_CALLBACK_FACTORY(
-          this,
-          option.text
-        );
+        option.callback =
+          Blockly.Constants.Data.VARIABLE_OPTION_CALLBACK_FACTORY(
+            this,
+            option.text
+          );
         options.push(option);
       }
     } else {

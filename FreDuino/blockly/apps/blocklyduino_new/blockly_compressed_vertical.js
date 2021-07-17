@@ -290,12 +290,13 @@ goog.transpile_ = function (a, b) {
     }
   }
   d ||
-    (d = c.transpile = function (a, b) {
-      goog.logToConsole_(
-        b + " requires transpilation but no transpiler was found."
-      );
-      return a;
-    });
+    (d = c.transpile =
+      function (a, b) {
+        goog.logToConsole_(
+          b + " requires transpilation but no transpiler was found."
+        );
+        return a;
+      });
   return d(a, b);
 };
 goog.typeOf = function (a) {
@@ -564,9 +565,10 @@ goog.defineClass.createSealingConstructor_ = function (a, b) {
 goog.defineClass.isUnsealable_ = function (a) {
   return a && a.prototype && a.prototype[goog.UNSEALABLE_CONSTRUCTOR_PROPERTY_];
 };
-goog.defineClass.OBJECT_PROTOTYPE_FIELDS_ = "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(
-  " "
-);
+goog.defineClass.OBJECT_PROTOTYPE_FIELDS_ =
+  "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(
+    " "
+  );
 goog.defineClass.applyProperties_ = function (a, b) {
   for (var c in b) Object.prototype.hasOwnProperty.call(b, c) && (a[c] = b[c]);
   for (var d = 0; d < goog.defineClass.OBJECT_PROTOTYPE_FIELDS_.length; d++)
@@ -2688,7 +2690,8 @@ goog.labs.userAgent.util.getNativeUserAgentString_ = function () {
 goog.labs.userAgent.util.getNavigator_ = function () {
   return goog.global.navigator;
 };
-goog.labs.userAgent.util.userAgent_ = goog.labs.userAgent.util.getNativeUserAgentString_();
+goog.labs.userAgent.util.userAgent_ =
+  goog.labs.userAgent.util.getNativeUserAgentString_();
 goog.labs.userAgent.util.setUserAgent = function (a) {
   goog.labs.userAgent.util.userAgent_ =
     a || goog.labs.userAgent.util.getNativeUserAgentString_();
@@ -2851,9 +2854,10 @@ goog.object.transpose = function (a) {
   for (c in a) b[a[c]] = c;
   return b;
 };
-goog.object.PROTOTYPE_FIELDS_ = "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(
-  " "
-);
+goog.object.PROTOTYPE_FIELDS_ =
+  "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(
+    " "
+  );
 goog.object.extend = function (a, b) {
   for (var c, d, e = 1; e < arguments.length; e++) {
     d = arguments[e];
@@ -3104,7 +3108,8 @@ goog.async.nextTick = function (a, b, c) {
   (c || goog.async.nextTick.useSetImmediate_())
     ? goog.global.setImmediate(d)
     : (goog.async.nextTick.setImmediate_ ||
-        (goog.async.nextTick.setImmediate_ = goog.async.nextTick.getSetImmediateEmulator_()),
+        (goog.async.nextTick.setImmediate_ =
+          goog.async.nextTick.getSetImmediateEmulator_()),
       goog.async.nextTick.setImmediate_(d));
 };
 goog.async.nextTick.useSetImmediate_ = function () {
@@ -3268,7 +3273,12 @@ goog.Promise.LONG_STACK_TRACES = !1;
 goog.Promise.UNHANDLED_REJECTION_DELAY = 0;
 goog.Promise.State_ = { PENDING: 0, BLOCKED: 1, FULFILLED: 2, REJECTED: 3 };
 goog.Promise.CallbackEntry_ = function () {
-  this.next = this.context = this.onRejected = this.onFulfilled = this.child = null;
+  this.next =
+    this.context =
+    this.onRejected =
+    this.onFulfilled =
+    this.child =
+      null;
   this.always = !1;
 };
 goog.Promise.CallbackEntry_.prototype.reset = function () {
@@ -4568,7 +4578,14 @@ goog.events.PointerFallbackEventType = {
 goog.events.BrowserEvent = function (a, b) {
   goog.events.Event.call(this, a ? a.type : "");
   this.relatedTarget = this.currentTarget = this.target = null;
-  this.button = this.screenY = this.screenX = this.clientY = this.clientX = this.offsetY = this.offsetX = 0;
+  this.button =
+    this.screenY =
+    this.screenX =
+    this.clientY =
+    this.clientX =
+    this.offsetY =
+    this.offsetX =
+      0;
   this.key = "";
   this.charCode = this.keyCode = 0;
   this.metaKey = this.shiftKey = this.altKey = this.ctrlKey = !1;
@@ -5501,20 +5518,17 @@ goog.html.SafeScript.unwrap = function (a) {
 goog.html.SafeScript.stringify_ = function (a) {
   return JSON.stringify(a).replace(/</g, "\\x3c");
 };
-goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse = function (
-  a
-) {
-  return new goog.html.SafeScript().initSecurityPrivateDoNotAccessOrElse_(a);
-};
-goog.html.SafeScript.prototype.initSecurityPrivateDoNotAccessOrElse_ = function (
-  a
-) {
-  this.privateDoNotAccessOrElseSafeScriptWrappedValue_ = a;
-  return this;
-};
-goog.html.SafeScript.EMPTY = goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse(
-  ""
-);
+goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse =
+  function (a) {
+    return new goog.html.SafeScript().initSecurityPrivateDoNotAccessOrElse_(a);
+  };
+goog.html.SafeScript.prototype.initSecurityPrivateDoNotAccessOrElse_ =
+  function (a) {
+    this.privateDoNotAccessOrElseSafeScriptWrappedValue_ = a;
+    return this;
+  };
+goog.html.SafeScript.EMPTY =
+  goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse("");
 goog.fs = {};
 goog.fs.url = {};
 goog.fs.url.createObjectUrl = function (a) {
@@ -5671,11 +5685,13 @@ goog.i18n.bidi.endsWithRtl = function (a, b) {
   );
 };
 goog.i18n.bidi.isRtlExitText = goog.i18n.bidi.endsWithRtl;
-goog.i18n.bidi.rtlLocalesRe_ = /^(ar|ckb|dv|he|iw|fa|nqo|ps|sd|ug|ur|yi|.*[-_](Arab|Hebr|Thaa|Nkoo|Tfng))(?!.*[-_](Latn|Cyrl)($|-|_))($|-|_)/i;
+goog.i18n.bidi.rtlLocalesRe_ =
+  /^(ar|ckb|dv|he|iw|fa|nqo|ps|sd|ug|ur|yi|.*[-_](Arab|Hebr|Thaa|Nkoo|Tfng))(?!.*[-_](Latn|Cyrl)($|-|_))($|-|_)/i;
 goog.i18n.bidi.isRtlLanguage = function (a) {
   return goog.i18n.bidi.rtlLocalesRe_.test(a);
 };
-goog.i18n.bidi.bracketGuardTextRe_ = /(\(.*?\)+)|(\[.*?\]+)|(\{.*?\}+)|(<.*?>+)/g;
+goog.i18n.bidi.bracketGuardTextRe_ =
+  /(\(.*?\)+)|(\[.*?\]+)|(\{.*?\}+)|(<.*?>+)/g;
 goog.i18n.bidi.guardBracketInText = function (a, b) {
   var c = (void 0 === b ? goog.i18n.bidi.hasAnyRtl(a) : b)
     ? goog.i18n.bidi.Format.RLM
@@ -5698,7 +5714,8 @@ goog.i18n.bidi.enforceLtrInHtml = function (a) {
 goog.i18n.bidi.enforceLtrInText = function (a) {
   return goog.i18n.bidi.Format.LRE + a + goog.i18n.bidi.Format.PDF;
 };
-goog.i18n.bidi.dimensionsRe_ = /:\s*([.\d][.\w]*)\s+([.\d][.\w]*)\s+([.\d][.\w]*)\s+([.\d][.\w]*)/g;
+goog.i18n.bidi.dimensionsRe_ =
+  /:\s*([.\d][.\w]*)\s+([.\d][.\w]*)\s+([.\d][.\w]*)\s+([.\d][.\w]*)/g;
 goog.i18n.bidi.leftRe_ = /left/gi;
 goog.i18n.bidi.rightRe_ = /right/gi;
 goog.i18n.bidi.tempRe_ = /%%%%/g;
@@ -5780,7 +5797,8 @@ goog.html.TrustedResourceUrl.prototype.implementsGoogStringTypedString = !0;
 goog.html.TrustedResourceUrl.prototype.getTypedStringValue = function () {
   return this.privateDoNotAccessOrElseTrustedResourceUrlWrappedValue_;
 };
-goog.html.TrustedResourceUrl.prototype.implementsGoogI18nBidiDirectionalString = !0;
+goog.html.TrustedResourceUrl.prototype.implementsGoogI18nBidiDirectionalString =
+  !0;
 goog.html.TrustedResourceUrl.prototype.getDirection = function () {
   return goog.i18n.bidi.Dir.LTR;
 };
@@ -5849,7 +5867,8 @@ goog.html.TrustedResourceUrl.format = function (a, b) {
   );
 };
 goog.html.TrustedResourceUrl.FORMAT_MARKER_ = /%{(\w+)}/g;
-goog.html.TrustedResourceUrl.BASE_URL_ = /^(?:https:)?\/\/[0-9a-z.:[\]-]+\/|^\/[^\/\\]|^about:blank#/i;
+goog.html.TrustedResourceUrl.BASE_URL_ =
+  /^(?:https:)?\/\/[0-9a-z.:[\]-]+\/|^\/[^\/\\]|^about:blank#/i;
 goog.html.TrustedResourceUrl.formatWithParams = function (a, b, c) {
   return goog.html.TrustedResourceUrl.format(a, b).cloneWithParams(c);
 };
@@ -5866,13 +5885,12 @@ goog.html.TrustedResourceUrl.fromConstants = function (a) {
   );
 };
 goog.html.TrustedResourceUrl.TYPE_MARKER_GOOG_HTML_SECURITY_PRIVATE_ = {};
-goog.html.TrustedResourceUrl.createTrustedResourceUrlSecurityPrivateDoNotAccessOrElse = function (
-  a
-) {
-  var b = new goog.html.TrustedResourceUrl();
-  b.privateDoNotAccessOrElseTrustedResourceUrlWrappedValue_ = a;
-  return b;
-};
+goog.html.TrustedResourceUrl.createTrustedResourceUrlSecurityPrivateDoNotAccessOrElse =
+  function (a) {
+    var b = new goog.html.TrustedResourceUrl();
+    b.privateDoNotAccessOrElseTrustedResourceUrlWrappedValue_ = a;
+    return b;
+  };
 goog.html.SafeUrl = function () {
   this.privateDoNotAccessOrElseSafeHtmlWrappedValue_ = "";
   this.SAFE_URL_TYPE_MARKER_GOOG_HTML_SECURITY_PRIVATE_ =
@@ -5911,7 +5929,8 @@ goog.html.SafeUrl.fromConstant = function (a) {
     goog.string.Const.unwrap(a)
   );
 };
-goog.html.SAFE_MIME_TYPE_PATTERN_ = /^(?:audio\/(?:3gpp|3gpp2|aac|midi|mp4|mpeg|ogg|x-m4a|x-wav|webm)|image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|text\/csv|video\/(?:mpeg|mp4|ogg|webm|quicktime))$/i;
+goog.html.SAFE_MIME_TYPE_PATTERN_ =
+  /^(?:audio\/(?:3gpp|3gpp2|aac|midi|mp4|mpeg|ogg|x-m4a|x-wav|webm)|image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|text\/csv|video\/(?:mpeg|mp4|ogg|webm|quicktime))$/i;
 goog.html.SafeUrl.fromBlob = function (a) {
   a = goog.html.SAFE_MIME_TYPE_PATTERN_.test(a.type)
     ? goog.fs.url.createObjectUrl(a)
@@ -5936,7 +5955,8 @@ goog.html.SafeUrl.fromTrustedResourceUrl = function (a) {
     goog.html.TrustedResourceUrl.unwrap(a)
   );
 };
-goog.html.SAFE_URL_PATTERN_ = /^(?:(?:https?|mailto|ftp):|[^:/?#]*(?:[/?#]|$))/i;
+goog.html.SAFE_URL_PATTERN_ =
+  /^(?:(?:https?|mailto|ftp):|[^:/?#]*(?:[/?#]|$))/i;
 goog.html.SafeUrl.sanitize = function (a) {
   if (a instanceof goog.html.SafeUrl) return a;
   a = a.implementsGoogStringTypedString ? a.getTypedStringValue() : String(a);
@@ -5957,9 +5977,10 @@ goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse = function (a) {
   b.privateDoNotAccessOrElseSafeHtmlWrappedValue_ = a;
   return b;
 };
-goog.html.SafeUrl.ABOUT_BLANK = goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(
-  "about:blank"
-);
+goog.html.SafeUrl.ABOUT_BLANK =
+  goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(
+    "about:blank"
+  );
 goog.html.SafeStyle = function () {
   this.privateDoNotAccessOrElseSafeStyleWrappedValue_ = "";
   this.SAFE_STYLE_TYPE_MARKER_GOOG_HTML_SECURITY_PRIVATE_ =
@@ -6024,9 +6045,8 @@ goog.html.SafeStyle.prototype.initSecurityPrivateDoNotAccessOrElse_ = function (
   this.privateDoNotAccessOrElseSafeStyleWrappedValue_ = a;
   return this;
 };
-goog.html.SafeStyle.EMPTY = goog.html.SafeStyle.createSafeStyleSecurityPrivateDoNotAccessOrElse(
-  ""
-);
+goog.html.SafeStyle.EMPTY =
+  goog.html.SafeStyle.createSafeStyleSecurityPrivateDoNotAccessOrElse("");
 goog.html.SafeStyle.INNOCUOUS_STRING = "zClosurez";
 goog.html.SafeStyle.create = function (a) {
   var b = "",
@@ -6204,22 +6224,21 @@ goog.html.SafeStyleSheet.unwrap = function (a) {
   );
   return "type_error:SafeStyleSheet";
 };
-goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse = function (
-  a
-) {
-  return new goog.html.SafeStyleSheet().initSecurityPrivateDoNotAccessOrElse_(
-    a
+goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse =
+  function (a) {
+    return new goog.html.SafeStyleSheet().initSecurityPrivateDoNotAccessOrElse_(
+      a
+    );
+  };
+goog.html.SafeStyleSheet.prototype.initSecurityPrivateDoNotAccessOrElse_ =
+  function (a) {
+    this.privateDoNotAccessOrElseSafeStyleSheetWrappedValue_ = a;
+    return this;
+  };
+goog.html.SafeStyleSheet.EMPTY =
+  goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse(
+    ""
   );
-};
-goog.html.SafeStyleSheet.prototype.initSecurityPrivateDoNotAccessOrElse_ = function (
-  a
-) {
-  this.privateDoNotAccessOrElseSafeStyleSheetWrappedValue_ = a;
-  return this;
-};
-goog.html.SafeStyleSheet.EMPTY = goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse(
-  ""
-);
 goog.html.SafeHtml = function () {
   this.privateDoNotAccessOrElseSafeHtmlWrappedValue_ = "";
   this.SAFE_HTML_TYPE_MARKER_GOOG_HTML_SECURITY_PRIVATE_ =
@@ -6498,30 +6517,27 @@ goog.html.SafeHtml.prototype.initSecurityPrivateDoNotAccessOrElse_ = function (
   this.dir_ = b;
   return this;
 };
-goog.html.SafeHtml.createSafeHtmlTagSecurityPrivateDoNotAccessOrElse = function (
-  a,
-  b,
-  c
-) {
-  var d = null;
-  var e = "<" + a + goog.html.SafeHtml.stringifyAttributes(a, b);
-  goog.isDefAndNotNull(c) ? goog.isArray(c) || (c = [c]) : (c = []);
-  goog.dom.tags.isVoidTag(a.toLowerCase())
-    ? (goog.asserts.assert(
-        !c.length,
-        "Void tag <" + a + "> does not allow content."
-      ),
-      (e += ">"))
-    : ((d = goog.html.SafeHtml.concat(c)),
-      (e += ">" + goog.html.SafeHtml.unwrap(d) + "</" + a + ">"),
-      (d = d.getDirection()));
-  (a = b && b.dir) &&
-    (d = /^(ltr|rtl|auto)$/i.test(a) ? goog.i18n.bidi.Dir.NEUTRAL : null);
-  return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-    e,
-    d
-  );
-};
+goog.html.SafeHtml.createSafeHtmlTagSecurityPrivateDoNotAccessOrElse =
+  function (a, b, c) {
+    var d = null;
+    var e = "<" + a + goog.html.SafeHtml.stringifyAttributes(a, b);
+    goog.isDefAndNotNull(c) ? goog.isArray(c) || (c = [c]) : (c = []);
+    goog.dom.tags.isVoidTag(a.toLowerCase())
+      ? (goog.asserts.assert(
+          !c.length,
+          "Void tag <" + a + "> does not allow content."
+        ),
+        (e += ">"))
+      : ((d = goog.html.SafeHtml.concat(c)),
+        (e += ">" + goog.html.SafeHtml.unwrap(d) + "</" + a + ">"),
+        (d = d.getDirection()));
+    (a = b && b.dir) &&
+      (d = /^(ltr|rtl|auto)$/i.test(a) ? goog.i18n.bidi.Dir.NEUTRAL : null);
+    return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+      e,
+      d
+    );
+  };
 goog.html.SafeHtml.stringifyAttributes = function (a, b) {
   var c = "";
   if (b)
@@ -6560,18 +6576,21 @@ goog.html.SafeHtml.combineAttributes = function (a, b, c) {
   }
   return d;
 };
-goog.html.SafeHtml.DOCTYPE_HTML = goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-  "<!DOCTYPE html>",
-  goog.i18n.bidi.Dir.NEUTRAL
-);
-goog.html.SafeHtml.EMPTY = goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-  "",
-  goog.i18n.bidi.Dir.NEUTRAL
-);
-goog.html.SafeHtml.BR = goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-  "<br>",
-  goog.i18n.bidi.Dir.NEUTRAL
-);
+goog.html.SafeHtml.DOCTYPE_HTML =
+  goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+    "<!DOCTYPE html>",
+    goog.i18n.bidi.Dir.NEUTRAL
+  );
+goog.html.SafeHtml.EMPTY =
+  goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+    "",
+    goog.i18n.bidi.Dir.NEUTRAL
+  );
+goog.html.SafeHtml.BR =
+  goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+    "<br>",
+    goog.i18n.bidi.Dir.NEUTRAL
+  );
 goog.dom.safe = {};
 goog.dom.safe.InsertAdjacentHtmlPosition = {
   AFTERBEGIN: "afterbegin",
@@ -6609,27 +6628,24 @@ goog.dom.safe.setFormElementAction = function (a, b) {
     b instanceof goog.html.SafeUrl
       ? b
       : goog.html.SafeUrl.sanitizeAssertUnchanged(b);
-  goog.dom.asserts.assertIsHTMLFormElement(a).action = goog.html.SafeUrl.unwrap(
-    c
-  );
+  goog.dom.asserts.assertIsHTMLFormElement(a).action =
+    goog.html.SafeUrl.unwrap(c);
 };
 goog.dom.safe.setButtonFormAction = function (a, b) {
   var c =
     b instanceof goog.html.SafeUrl
       ? b
       : goog.html.SafeUrl.sanitizeAssertUnchanged(b);
-  goog.dom.asserts.assertIsHTMLButtonElement(
-    a
-  ).formaction = goog.html.SafeUrl.unwrap(c);
+  goog.dom.asserts.assertIsHTMLButtonElement(a).formaction =
+    goog.html.SafeUrl.unwrap(c);
 };
 goog.dom.safe.setInputFormAction = function (a, b) {
   var c =
     b instanceof goog.html.SafeUrl
       ? b
       : goog.html.SafeUrl.sanitizeAssertUnchanged(b);
-  goog.dom.asserts.assertIsHTMLInputElement(
-    a
-  ).formaction = goog.html.SafeUrl.unwrap(c);
+  goog.dom.asserts.assertIsHTMLInputElement(a).formaction =
+    goog.html.SafeUrl.unwrap(c);
 };
 goog.dom.safe.setStyle = function (a, b) {
   a.style.cssText = goog.html.SafeStyle.unwrap(b);
@@ -6734,100 +6750,89 @@ goog.dom.safe.openInWindow = function (a, b, c, d, e) {
   );
 };
 goog.html.uncheckedconversions = {};
-goog.html.uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b,
-  c
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
-    b,
-    c || null
-  );
-};
-goog.html.uncheckedconversions.safeScriptFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse(
-    b
-  );
-};
-goog.html.uncheckedconversions.safeStyleFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.SafeStyle.createSafeStyleSecurityPrivateDoNotAccessOrElse(b);
-};
-goog.html.uncheckedconversions.safeStyleSheetFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse(
-    b
-  );
-};
-goog.html.uncheckedconversions.safeUrlFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(b);
-};
-goog.html.uncheckedconversions.trustedResourceUrlFromStringKnownToSatisfyTypeContract = function (
-  a,
-  b
-) {
-  goog.asserts.assertString(
-    goog.string.Const.unwrap(a),
-    "must provide justification"
-  );
-  goog.asserts.assert(
-    !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
-    "must provide non-empty justification"
-  );
-  return goog.html.TrustedResourceUrl.createTrustedResourceUrlSecurityPrivateDoNotAccessOrElse(
-    b
-  );
-};
+goog.html.uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract =
+  function (a, b, c) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.SafeHtml.createSafeHtmlSecurityPrivateDoNotAccessOrElse(
+      b,
+      c || null
+    );
+  };
+goog.html.uncheckedconversions.safeScriptFromStringKnownToSatisfyTypeContract =
+  function (a, b) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.SafeScript.createSafeScriptSecurityPrivateDoNotAccessOrElse(
+      b
+    );
+  };
+goog.html.uncheckedconversions.safeStyleFromStringKnownToSatisfyTypeContract =
+  function (a, b) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.SafeStyle.createSafeStyleSecurityPrivateDoNotAccessOrElse(
+      b
+    );
+  };
+goog.html.uncheckedconversions.safeStyleSheetFromStringKnownToSatisfyTypeContract =
+  function (a, b) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.SafeStyleSheet.createSafeStyleSheetSecurityPrivateDoNotAccessOrElse(
+      b
+    );
+  };
+goog.html.uncheckedconversions.safeUrlFromStringKnownToSatisfyTypeContract =
+  function (a, b) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.SafeUrl.createSafeUrlSecurityPrivateDoNotAccessOrElse(b);
+  };
+goog.html.uncheckedconversions.trustedResourceUrlFromStringKnownToSatisfyTypeContract =
+  function (a, b) {
+    goog.asserts.assertString(
+      goog.string.Const.unwrap(a),
+      "must provide justification"
+    );
+    goog.asserts.assert(
+      !goog.string.isEmptyOrWhitespace(goog.string.Const.unwrap(a)),
+      "must provide non-empty justification"
+    );
+    return goog.html.TrustedResourceUrl.createTrustedResourceUrlSecurityPrivateDoNotAccessOrElse(
+      b
+    );
+  };
 goog.math.Size = function (a, b) {
   this.width = a;
   this.height = b;
@@ -7172,12 +7177,13 @@ goog.dom.createTable_ = function (a, b, c, d) {
 };
 goog.dom.constHtmlToNode = function (a) {
   var b = goog.array.map(arguments, goog.string.Const.unwrap);
-  b = goog.html.uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract(
-    goog.string.Const.from(
-      "Constant HTML string, that gets turned into a Node later, so it will be automatically balanced."
-    ),
-    b.join("")
-  );
+  b =
+    goog.html.uncheckedconversions.safeHtmlFromStringKnownToSatisfyTypeContract(
+      goog.string.Const.from(
+        "Constant HTML string, that gets turned into a Node later, so it will be automatically balanced."
+      ),
+      b.join("")
+    );
   return goog.dom.safeHtmlToNode(b);
 };
 goog.dom.safeHtmlToNode = function (a) {
@@ -8050,7 +8056,8 @@ goog.color.normalizedHexColorRe_ = /^#[0-9a-f]{6}$/;
 goog.color.isNormalizedHexColor_ = function (a) {
   return goog.color.normalizedHexColorRe_.test(a);
 };
-goog.color.rgbColorRe_ = /^(?:rgb)?\((0|[1-9]\d{0,2}),\s?(0|[1-9]\d{0,2}),\s?(0|[1-9]\d{0,2})\)$/i;
+goog.color.rgbColorRe_ =
+  /^(?:rgb)?\((0|[1-9]\d{0,2}),\s?(0|[1-9]\d{0,2}),\s?(0|[1-9]\d{0,2})\)$/i;
 goog.color.isValidRgbColor_ = function (a) {
   var b = a.match(goog.color.rgbColorRe_);
   if (b) {
@@ -9289,7 +9296,8 @@ goog.style.getScrollbarWidth = function (a) {
   goog.dom.removeNode(b);
   return a;
 };
-goog.style.MATRIX_TRANSLATION_REGEX_ = /matrix\([0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, ([0-9\.\-]+)p?x?, ([0-9\.\-]+)p?x?\)/;
+goog.style.MATRIX_TRANSLATION_REGEX_ =
+  /matrix\([0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, [0-9\.\-]+, ([0-9\.\-]+)p?x?, ([0-9\.\-]+)p?x?\)/;
 goog.style.getCssTranslation = function (a) {
   a = goog.style.getComputedTransform(a);
   return a
@@ -9662,7 +9670,12 @@ goog.ui.Component.prototype.disposeInternal = function () {
     a.dispose();
   });
   !this.wasDecorated_ && this.element_ && goog.dom.removeNode(this.element_);
-  this.parent_ = this.model_ = this.element_ = this.childIndex_ = this.children_ = null;
+  this.parent_ =
+    this.model_ =
+    this.element_ =
+    this.childIndex_ =
+    this.children_ =
+      null;
   goog.ui.Component.superClass_.disposeInternal.call(this);
 };
 goog.ui.Component.prototype.makeId = function (a) {
@@ -11272,9 +11285,8 @@ goog.ui.Control.prototype.enableMouseEventHandling_ = function (a) {
         (goog.userAgent.isVersionOrHigher(9) ||
           b.listen(c, goog.events.EventType.DBLCLICK, this.handleDblClick),
         this.ieMouseEventSequenceSimulator_ ||
-          ((this.ieMouseEventSequenceSimulator_ = new goog.ui.Control.IeMouseEventSequenceSimulator_(
-            this
-          )),
+          ((this.ieMouseEventSequenceSimulator_ =
+            new goog.ui.Control.IeMouseEventSequenceSimulator_(this)),
           this.registerDisposable(this.ieMouseEventSequenceSimulator_))))
     : (b
         .unlisten(c, goog.events.EventType.MOUSEOVER, this.handleMouseOver)
@@ -11302,7 +11314,10 @@ goog.ui.Control.prototype.disposeInternal = function () {
   goog.ui.Control.superClass_.disposeInternal.call(this);
   this.keyHandler_ && (this.keyHandler_.dispose(), delete this.keyHandler_);
   delete this.renderer_;
-  this.ieMouseEventSequenceSimulator_ = this.extraClassNames_ = this.content_ = null;
+  this.ieMouseEventSequenceSimulator_ =
+    this.extraClassNames_ =
+    this.content_ =
+      null;
 };
 goog.ui.Control.prototype.getContent = function () {
   return this.content_;
@@ -11558,12 +11573,14 @@ goog.ui.Control.IeMouseEventSequenceSimulator_ = function (a) {
 goog.inherits(goog.ui.Control.IeMouseEventSequenceSimulator_, goog.Disposable);
 goog.ui.Control.IeMouseEventSequenceSimulator_.SYNTHETIC_EVENTS_ =
   !goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9);
-goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleMouseDown_ = function () {
-  this.clickExpected_ = !1;
-};
-goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleMouseUp_ = function () {
-  this.clickExpected_ = !0;
-};
+goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleMouseDown_ =
+  function () {
+    this.clickExpected_ = !1;
+  };
+goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleMouseUp_ =
+  function () {
+    this.clickExpected_ = !0;
+  };
 goog.ui.Control.IeMouseEventSequenceSimulator_.makeLeftMouseEvent_ = function (
   a,
   b
@@ -11592,38 +11609,38 @@ goog.ui.Control.IeMouseEventSequenceSimulator_.makeLeftMouseEvent_ = function (
   );
   return c;
 };
-goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleClick_ = function (
-  a
-) {
-  if (this.clickExpected_) this.clickExpected_ = !1;
-  else {
-    var b = a.getBrowserEvent(),
-      c = b.button,
-      d = b.type,
+goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.handleClick_ =
+  function (a) {
+    if (this.clickExpected_) this.clickExpected_ = !1;
+    else {
+      var b = a.getBrowserEvent(),
+        c = b.button,
+        d = b.type,
+        e = goog.ui.Control.IeMouseEventSequenceSimulator_.makeLeftMouseEvent_(
+          b,
+          goog.events.EventType.MOUSEDOWN
+        );
+      this.control_.handleMouseDown(
+        new goog.events.BrowserEvent(e, a.currentTarget)
+      );
       e = goog.ui.Control.IeMouseEventSequenceSimulator_.makeLeftMouseEvent_(
         b,
-        goog.events.EventType.MOUSEDOWN
+        goog.events.EventType.MOUSEUP
       );
-    this.control_.handleMouseDown(
-      new goog.events.BrowserEvent(e, a.currentTarget)
+      this.control_.handleMouseUp(
+        new goog.events.BrowserEvent(e, a.currentTarget)
+      );
+      goog.ui.Control.IeMouseEventSequenceSimulator_.SYNTHETIC_EVENTS_ ||
+        ((b.button = c), (b.type = d));
+    }
+  };
+goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.disposeInternal =
+  function () {
+    this.control_ = null;
+    goog.ui.Control.IeMouseEventSequenceSimulator_.superClass_.disposeInternal.call(
+      this
     );
-    e = goog.ui.Control.IeMouseEventSequenceSimulator_.makeLeftMouseEvent_(
-      b,
-      goog.events.EventType.MOUSEUP
-    );
-    this.control_.handleMouseUp(
-      new goog.events.BrowserEvent(e, a.currentTarget)
-    );
-    goog.ui.Control.IeMouseEventSequenceSimulator_.SYNTHETIC_EVENTS_ ||
-      ((b.button = c), (b.type = d));
-  }
-};
-goog.ui.Control.IeMouseEventSequenceSimulator_.prototype.disposeInternal = function () {
-  this.control_ = null;
-  goog.ui.Control.IeMouseEventSequenceSimulator_.superClass_.disposeInternal.call(
-    this
-  );
-};
+  };
 goog.ui.Container = function (a, b, c) {
   goog.ui.Component.call(this, c);
   this.renderer_ = b || goog.ui.ContainerRenderer.getInstance();
@@ -11769,7 +11786,11 @@ goog.ui.Container.prototype.exitDocument = function () {
 goog.ui.Container.prototype.disposeInternal = function () {
   goog.ui.Container.superClass_.disposeInternal.call(this);
   this.keyHandler_ && (this.keyHandler_.dispose(), (this.keyHandler_ = null));
-  this.renderer_ = this.openItem_ = this.childElementIdMap_ = this.keyEventTarget_ = null;
+  this.renderer_ =
+    this.openItem_ =
+    this.childElementIdMap_ =
+    this.keyEventTarget_ =
+      null;
 };
 goog.ui.Container.prototype.handleEnterItem = function (a) {
   return !0;
@@ -13812,9 +13833,10 @@ goog.ui.ColorPicker.createSimpleColorGrid = function (a) {
   a.setColors(goog.ui.ColorPicker.SIMPLE_GRID_COLORS);
   return a;
 };
-goog.ui.ColorPicker.SIMPLE_GRID_COLORS = "#ffffff #cccccc #c0c0c0 #999999 #666666 #333333 #000000 #ffcccc #ff6666 #ff0000 #cc0000 #990000 #660000 #330000 #ffcc99 #ff9966 #ff9900 #ff6600 #cc6600 #993300 #663300 #ffff99 #ffff66 #ffcc66 #ffcc33 #cc9933 #996633 #663333 #ffffcc #ffff33 #ffff00 #ffcc00 #999900 #666600 #333300 #99ff99 #66ff99 #33ff33 #33cc00 #009900 #006600 #003300 #99ffff #33ffff #66cccc #00cccc #339999 #336666 #003333 #ccffff #66ffff #33ccff #3366ff #3333ff #000099 #000066 #ccccff #9999ff #6666cc #6633ff #6600cc #333399 #330099 #ffccff #ff99ff #cc66cc #cc33cc #993399 #663366 #330033".split(
-  " "
-);
+goog.ui.ColorPicker.SIMPLE_GRID_COLORS =
+  "#ffffff #cccccc #c0c0c0 #999999 #666666 #333333 #000000 #ffcccc #ff6666 #ff0000 #cc0000 #990000 #660000 #330000 #ffcc99 #ff9966 #ff9900 #ff6600 #cc6600 #993300 #663300 #ffff99 #ffff66 #ffcc66 #ffcc33 #cc9933 #996633 #663333 #ffffcc #ffff33 #ffff00 #ffcc00 #999900 #666600 #333300 #99ff99 #66ff99 #33ff33 #33cc00 #009900 #006600 #003300 #99ffff #33ffff #66cccc #00cccc #339999 #336666 #003333 #ccffff #66ffff #33ccff #3366ff #3333ff #000099 #000066 #ccccff #9999ff #6666cc #6633ff #6600cc #333399 #330099 #ffccff #ff99ff #cc66cc #cc33cc #993399 #663366 #330033".split(
+    " "
+  );
 goog.events.MouseWheelHandler = function (a, b) {
   goog.events.EventTarget.call(this);
   this.element_ = a;
@@ -14506,9 +14528,8 @@ goog.userAgent.product.determineVersion_ = function () {
     var a = goog.userAgent.product.execRegExp_(/Version\/(\S+).*Mobile\/(\S+)/);
     if (a) return a[1] + "." + a[2];
   } else if (goog.userAgent.product.ANDROID)
-    return (a = goog.userAgent.product.getFirstRegExpGroup_(
-      /Android\s+([0-9.]+)/
-    ))
+    return (a =
+      goog.userAgent.product.getFirstRegExpGroup_(/Android\s+([0-9.]+)/))
       ? a
       : goog.userAgent.product.getFirstRegExpGroup_(/Version\/([0-9.]+)/);
   return "";
@@ -14579,7 +14600,15 @@ goog.fx.Dragger = function (a, b, c) {
   this.document_ = goog.dom.getOwnerDocument(a);
   this.eventHandler_ = new goog.events.EventHandler(this);
   this.registerDisposable(this.eventHandler_);
-  this.deltaY = this.deltaX = this.startY = this.startX = this.screenY = this.screenX = this.clientY = this.clientX = 0;
+  this.deltaY =
+    this.deltaX =
+    this.startY =
+    this.startX =
+    this.screenY =
+    this.screenX =
+    this.clientY =
+    this.clientX =
+      0;
   this.enabled_ = !0;
   this.dragging_ = !1;
   this.preventMouseDown_ = !0;
@@ -17504,7 +17533,11 @@ goog.ui.tree.TreeControl = function (a, b, c) {
   this.logger_ = goog.log.getLogger("this");
   this.focused_ = !1;
   this.focusedNode_ = null;
-  this.showRootLines_ = this.showRootNode_ = this.showExpandIcons_ = this.showLines_ = !0;
+  this.showRootLines_ =
+    this.showRootNode_ =
+    this.showExpandIcons_ =
+    this.showLines_ =
+      !0;
   if (goog.userAgent.IE)
     try {
       document.execCommand("BackgroundImageCache", !1, !0);
@@ -17731,9 +17764,7 @@ goog.ui.tree.TreeControl.prototype.clearTypeAhead = function () {
 };
 goog.ui.tree.TreeControl.defaultConfig = goog.ui.tree.BaseNode.defaultConfig;
 var Blockly = {};
-Blockly.Blocks = Object(
-  null
-); /*
+Blockly.Blocks = Object(null); /*
 
  Visual Blocks Editor
 
@@ -18537,7 +18568,14 @@ Blockly.Bubble.prototype.setColour = function (a) {
 Blockly.Bubble.prototype.dispose = function () {
   Blockly.Bubble.unbindDragEvents_();
   goog.dom.removeNode(this.bubbleGroup_);
-  this.shape_ = this.content_ = this.workspace_ = this.resizeGroup_ = this.bubbleBack_ = this.bubbleArrow_ = this.bubbleGroup_ = null;
+  this.shape_ =
+    this.content_ =
+    this.workspace_ =
+    this.resizeGroup_ =
+    this.bubbleBack_ =
+    this.bubbleArrow_ =
+    this.bubbleGroup_ =
+      null;
 };
 Blockly.Icon = function (a) {
   this.block_ = a;
@@ -18631,8 +18669,7 @@ Blockly.Comment.prototype.drawIcon_ = function (a) {
     "path",
     {
       class: "blocklyIconSymbol",
-      d:
-        "m6.8,10h2c0.003,-0.617 0.271,-0.962 0.633,-1.266 2.875,-2.405 0.607,-5.534 -3.765,-3.874v1.7c3.12,-1.657 3.698,0.118 2.336,1.25 -1.201,0.998 -1.201,1.528 -1.204,2.19z",
+      d: "m6.8,10h2c0.003,-0.617 0.271,-0.962 0.633,-1.266 2.875,-2.405 0.607,-5.534 -3.765,-3.874v1.7c3.12,-1.657 3.698,0.118 2.336,1.25 -1.201,0.998 -1.201,1.528 -1.204,2.19z",
     },
     a
   );
@@ -20597,16 +20634,17 @@ Blockly.InsertionMarkerManager.prototype.createMarkerBlock_ = function (a) {
   }
   return c;
 };
-Blockly.InsertionMarkerManager.prototype.initAvailableConnections_ = function () {
-  var a = this.topBlock_.getConnections_(!1),
-    b = this.topBlock_.lastConnectionInStack();
-  b &&
-    b != this.topBlock_.nextConnection &&
-    (a.push(b),
-    (this.lastOnStack_ = b),
-    (this.lastMarker_ = this.createMarkerBlock_(b.sourceBlock_)));
-  return a;
-};
+Blockly.InsertionMarkerManager.prototype.initAvailableConnections_ =
+  function () {
+    var a = this.topBlock_.getConnections_(!1),
+      b = this.topBlock_.lastConnectionInStack();
+    b &&
+      b != this.topBlock_.nextConnection &&
+      (a.push(b),
+      (this.lastOnStack_ = b),
+      (this.lastMarker_ = this.createMarkerBlock_(b.sourceBlock_)));
+    return a;
+  };
 Blockly.InsertionMarkerManager.prototype.shouldUpdatePreviews_ = function (
   a,
   b
@@ -20693,7 +20731,10 @@ Blockly.InsertionMarkerManager.prototype.maybeHidePreview_ = function (a) {
     this.localConnection_ &&
     (b || a || this.wouldDeleteBlock_) &&
     this.hidePreview_();
-  this.localConnection_ = this.closestConnection_ = this.markerConnection_ = null;
+  this.localConnection_ =
+    this.closestConnection_ =
+    this.markerConnection_ =
+      null;
 };
 Blockly.InsertionMarkerManager.prototype.hidePreview_ = function () {
   this.highlightingBlock_
@@ -21081,12 +21122,28 @@ Blockly.Tooltip.show_ = function () {
 Blockly.Gesture = function (a, b) {
   this.mouseDownXY_ = null;
   this.currentDragDeltaXY_ = new goog.math.Coordinate(0, 0);
-  this.startWorkspace_ = this.targetBlock_ = this.startBlock_ = this.startField_ = null;
+  this.startWorkspace_ =
+    this.targetBlock_ =
+    this.startBlock_ =
+    this.startField_ =
+      null;
   this.creatorWorkspace_ = b;
-  this.isDraggingBlock_ = this.isDraggingWorkspace_ = this.hasExceededDragRadius_ = !1;
+  this.isDraggingBlock_ =
+    this.isDraggingWorkspace_ =
+    this.hasExceededDragRadius_ =
+      !1;
   this.mostRecentEvent_ = a;
-  this.flyout_ = this.workspaceDragger_ = this.blockDragger_ = this.onUpWrapper_ = this.onMoveWrapper_ = null;
-  this.shouldDuplicateOnDrag_ = this.isEnding_ = this.hasStarted_ = this.calledUpdateIsDragging_ = !1;
+  this.flyout_ =
+    this.workspaceDragger_ =
+    this.blockDragger_ =
+    this.onUpWrapper_ =
+    this.onMoveWrapper_ =
+      null;
+  this.shouldDuplicateOnDrag_ =
+    this.isEnding_ =
+    this.hasStarted_ =
+    this.calledUpdateIsDragging_ =
+      !1;
 };
 Blockly.Gesture.prototype.dispose = function () {
   Blockly.Touch.clearTouchIdentifier();
@@ -21094,7 +21151,12 @@ Blockly.Gesture.prototype.dispose = function () {
   this.creatorWorkspace_.clearGesture();
   this.onMoveWrapper_ && Blockly.unbindEvent_(this.onMoveWrapper_);
   this.onUpWrapper_ && Blockly.unbindEvent_(this.onUpWrapper_);
-  this.flyout_ = this.startWorkspace_ = this.targetBlock_ = this.startBlock_ = this.startField_ = null;
+  this.flyout_ =
+    this.startWorkspace_ =
+    this.targetBlock_ =
+    this.startBlock_ =
+    this.startField_ =
+      null;
   this.blockDragger_ &&
     (this.blockDragger_.dispose(), (this.blockDragger_ = null));
   this.workspaceDragger_ &&
@@ -21466,10 +21528,13 @@ Blockly.utils.getScale_ = function (a) {
     (b = parseFloat(a[0]));
   return b;
 };
-Blockly.utils.getRelativeXY.XY_REGEX_ = /translate\(\s*([-+\d.e]+)([ ,]\s*([-+\d.e]+)\s*\))?/;
+Blockly.utils.getRelativeXY.XY_REGEX_ =
+  /translate\(\s*([-+\d.e]+)([ ,]\s*([-+\d.e]+)\s*\))?/;
 Blockly.utils.getScale_REGEXP_ = /scale\(\s*([-+\d.e]+)\s*\)/;
-Blockly.utils.getRelativeXY.XY_3D_REGEX_ = /transform:\s*translate3d\(\s*([-+\d.e]+)px([ ,]\s*([-+\d.e]+)\s*)px([ ,]\s*([-+\d.e]+)\s*)px\)?/;
-Blockly.utils.getRelativeXY.XY_2D_REGEX_ = /transform:\s*translate\(\s*([-+\d.e]+)px([ ,]\s*([-+\d.e]+)\s*)px\)?/;
+Blockly.utils.getRelativeXY.XY_3D_REGEX_ =
+  /transform:\s*translate3d\(\s*([-+\d.e]+)px([ ,]\s*([-+\d.e]+)\s*)px([ ,]\s*([-+\d.e]+)\s*)px\)?/;
+Blockly.utils.getRelativeXY.XY_2D_REGEX_ =
+  /transform:\s*translate\(\s*([-+\d.e]+)px([ ,]\s*([-+\d.e]+)\s*)px\)?/;
 Blockly.utils.createSvgElement = function (a, b, c) {
   a = document.createElementNS(Blockly.SVG_NS, a);
   for (var d in b) a.setAttribute(d, b[d]);
@@ -22082,7 +22147,12 @@ Blockly.Scrollbar.prototype.dispose = function () {
   Blockly.unbindEvent_(this.onMouseDownHandleWrapper_);
   this.onMouseDownHandleWrapper_ = null;
   goog.dom.removeNode(this.outerSvg_);
-  this.workspace_ = this.svgHandle_ = this.svgBackground_ = this.svgGroup_ = this.outerSvg_ = null;
+  this.workspace_ =
+    this.svgHandle_ =
+    this.svgBackground_ =
+    this.svgGroup_ =
+    this.outerSvg_ =
+      null;
 };
 Blockly.Scrollbar.prototype.setHandleLength_ = function (a) {
   this.handleLength_ = a;
@@ -23370,11 +23440,12 @@ Blockly.WorkspaceSvg.prototype.resize = function () {
   this.scrollbar && this.scrollbar.resize();
   this.updateScreenCalculations_();
 };
-Blockly.WorkspaceSvg.prototype.updateScreenCalculationsIfScrolled = function () {
-  var a = goog.dom.getDocumentScroll();
-  goog.math.Coordinate.equals(this.lastRecordedPageScroll_, a) ||
-    ((this.lastRecordedPageScroll_ = a), this.updateScreenCalculations_());
-};
+Blockly.WorkspaceSvg.prototype.updateScreenCalculationsIfScrolled =
+  function () {
+    var a = goog.dom.getDocumentScroll();
+    goog.math.Coordinate.equals(this.lastRecordedPageScroll_, a) ||
+      ((this.lastRecordedPageScroll_ = a), this.updateScreenCalculations_());
+  };
 Blockly.WorkspaceSvg.prototype.getCanvas = function () {
   return this.svgBlockCanvas_;
 };
@@ -24047,8 +24118,7 @@ Blockly.Mutator.prototype.drawIcon_ = function (a) {
     "path",
     {
       class: "blocklyIconSymbol",
-      d:
-        "m4.203,7.296 0,1.368 -0.92,0.677 -0.11,0.41 0.9,1.559 0.41,0.11 1.043,-0.457 1.187,0.683 0.127,1.134 0.3,0.3 1.8,0 0.3,-0.299 0.127,-1.138 1.185,-0.682 1.046,0.458 0.409,-0.11 0.9,-1.559 -0.11,-0.41 -0.92,-0.677 0,-1.366 0.92,-0.677 0.11,-0.41 -0.9,-1.559 -0.409,-0.109 -1.046,0.458 -1.185,-0.682 -0.127,-1.138 -0.3,-0.299 -1.8,0 -0.3,0.3 -0.126,1.135 -1.187,0.682 -1.043,-0.457 -0.41,0.11 -0.899,1.559 0.108,0.409z",
+      d: "m4.203,7.296 0,1.368 -0.92,0.677 -0.11,0.41 0.9,1.559 0.41,0.11 1.043,-0.457 1.187,0.683 0.127,1.134 0.3,0.3 1.8,0 0.3,-0.299 0.127,-1.138 1.185,-0.682 1.046,0.458 0.409,-0.11 0.9,-1.559 -0.11,-0.41 -0.92,-0.677 0,-1.366 0.92,-0.677 0.11,-0.41 -0.9,-1.559 -0.409,-0.109 -1.046,0.458 -1.185,-0.682 -0.127,-1.138 -0.3,-0.299 -1.8,0 -0.3,0.3 -0.126,1.135 -1.187,0.682 -1.043,-0.457 -0.41,0.11 -0.899,1.559 0.108,0.409z",
     },
     a
   );
@@ -28429,12 +28499,13 @@ Blockly.FieldColourSlider.prototype.showEditor_ = function () {
       Blockly.FieldColourSlider.EYEDROPPER_PATH;
     b.appendChild(c);
     a.appendChild(b);
-    Blockly.FieldColourSlider.eyedropperEventData_ = Blockly.bindEventWithChecks_(
-      b,
-      "mousedown",
-      this,
-      this.activateEyedropperInternal_
-    );
+    Blockly.FieldColourSlider.eyedropperEventData_ =
+      Blockly.bindEventWithChecks_(
+        b,
+        "mousedown",
+        this,
+        this.activateEyedropperInternal_
+      );
   }
   Blockly.DropDownDiv.setColour("#ffffff", "#dddddd");
   Blockly.DropDownDiv.setCategory(this.sourceBlock_.parentBlock_.getCategory());

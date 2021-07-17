@@ -118,57 +118,58 @@
     (m.nts = function () {
       return b.split(f);
     }),
-    (m.off = m.unbind = function (a, b) {
-      if (!a) return void (m._events = j = { n: {} });
-      var c = a.split(g);
-      if (c.length > 1)
-        for (var d = 0, i = c.length; i > d; d++) m.off(c[d], b);
-      else {
-        c = a.split(f);
-        var k,
-          l,
-          n,
-          d,
-          i,
-          o,
-          p,
-          q = [j];
-        for (d = 0, i = c.length; i > d; d++)
-          for (o = 0; o < q.length; o += n.length - 2) {
-            if (((n = [o, 1]), (k = q[o].n), c[d] != h))
-              k[c[d]] && n.push(k[c[d]]);
-            else for (l in k) k[e](l) && n.push(k[l]);
-            q.splice.apply(q, n);
-          }
-        for (d = 0, i = q.length; i > d; d++)
-          for (k = q[d]; k.n; ) {
-            if (b) {
-              if (k.f) {
-                for (o = 0, p = k.f.length; p > o; o++)
-                  if (k.f[o] == b) {
-                    k.f.splice(o, 1);
-                    break;
-                  }
-                !k.f.length && delete k.f;
-              }
-              for (l in k.n)
-                if (k.n[e](l) && k.n[l].f) {
-                  var r = k.n[l].f;
-                  for (o = 0, p = r.length; p > o; o++)
-                    if (r[o] == b) {
-                      r.splice(o, 1);
+    (m.off = m.unbind =
+      function (a, b) {
+        if (!a) return void (m._events = j = { n: {} });
+        var c = a.split(g);
+        if (c.length > 1)
+          for (var d = 0, i = c.length; i > d; d++) m.off(c[d], b);
+        else {
+          c = a.split(f);
+          var k,
+            l,
+            n,
+            d,
+            i,
+            o,
+            p,
+            q = [j];
+          for (d = 0, i = c.length; i > d; d++)
+            for (o = 0; o < q.length; o += n.length - 2) {
+              if (((n = [o, 1]), (k = q[o].n), c[d] != h))
+                k[c[d]] && n.push(k[c[d]]);
+              else for (l in k) k[e](l) && n.push(k[l]);
+              q.splice.apply(q, n);
+            }
+          for (d = 0, i = q.length; i > d; d++)
+            for (k = q[d]; k.n; ) {
+              if (b) {
+                if (k.f) {
+                  for (o = 0, p = k.f.length; p > o; o++)
+                    if (k.f[o] == b) {
+                      k.f.splice(o, 1);
                       break;
                     }
-                  !r.length && delete k.n[l].f;
+                  !k.f.length && delete k.f;
                 }
-            } else {
-              delete k.f;
-              for (l in k.n) k.n[e](l) && k.n[l].f && delete k.n[l].f;
+                for (l in k.n)
+                  if (k.n[e](l) && k.n[l].f) {
+                    var r = k.n[l].f;
+                    for (o = 0, p = r.length; p > o; o++)
+                      if (r[o] == b) {
+                        r.splice(o, 1);
+                        break;
+                      }
+                    !r.length && delete k.n[l].f;
+                  }
+              } else {
+                delete k.f;
+                for (l in k.n) k.n[e](l) && k.n[l].f && delete k.n[l].f;
+              }
+              k = k.n;
             }
-            k = k.n;
-          }
-      }
-    }),
+        }
+      }),
     (m.once = function (a, b) {
       var c = function () {
         return m.unbind(a, c), b.apply(this, arguments);
@@ -766,7 +767,8 @@
           J = (E.round, ""),
           K = " ",
           L = Object.prototype.toString,
-          M = /^\s*((#[a-f\d]{6})|(#[a-f\d]{3})|rgba?\(\s*([\d\.]+%?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+%?(?:\s*,\s*[\d\.]+%?)?)\s*\)|hsba?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?%?)\s*\)|hsla?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?%?)\s*\))\s*$/i,
+          M =
+            /^\s*((#[a-f\d]{6})|(#[a-f\d]{3})|rgba?\(\s*([\d\.]+%?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+%?(?:\s*,\s*[\d\.]+%?)?)\s*\)|hsba?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?%?)\s*\)|hsla?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?%?)\s*\))\s*$/i,
           N = "	\n\f\r   ᠎             　\u2028\u2029",
           O =
             ((d._.separator = new RegExp("[," + N + "]+")),
@@ -1436,23 +1438,24 @@
               (a.parent = function () {
                 return y(this.node.parentNode);
               }),
-              (a.append = a.add = function (a) {
-                if (a) {
-                  if ("set" == a.type) {
-                    var b = this;
-                    return (
-                      a.forEach(function (a) {
-                        b.add(a);
-                      }),
-                      this
-                    );
+              (a.append = a.add =
+                function (a) {
+                  if (a) {
+                    if ("set" == a.type) {
+                      var b = this;
+                      return (
+                        a.forEach(function (a) {
+                          b.add(a);
+                        }),
+                        this
+                      );
+                    }
+                    (a = y(a)),
+                      this.node.appendChild(a.node),
+                      (a.paper = this.paper);
                   }
-                  (a = y(a)),
-                    this.node.appendChild(a.node),
-                    (a.paper = this.paper);
-                }
-                return this;
-              }),
+                  return this;
+                }),
               (a.appendTo = function (a) {
                 return a && ((a = y(a)), a.append(this)), this;
               }),
@@ -1654,26 +1657,27 @@
                 var a = q(this);
                 return a.appendChild(this.node), this;
               }),
-              (a.pattern = a.toPattern = function (a, b, c, d) {
-                var g = w("pattern", q(this));
-                return (
-                  null == a && (a = this.getBBox()),
-                  f(a, "object") &&
-                    "x" in a &&
-                    ((b = a.y), (c = a.width), (d = a.height), (a = a.x)),
-                  e(g.node, {
-                    x: a,
-                    y: b,
-                    width: c,
-                    height: d,
-                    patternUnits: "userSpaceOnUse",
-                    id: g.id,
-                    viewBox: [a, b, c, d].join(" "),
-                  }),
-                  g.node.appendChild(this.node),
-                  g
-                );
-              }),
+              (a.pattern = a.toPattern =
+                function (a, b, c, d) {
+                  var g = w("pattern", q(this));
+                  return (
+                    null == a && (a = this.getBBox()),
+                    f(a, "object") &&
+                      "x" in a &&
+                      ((b = a.y), (c = a.width), (d = a.height), (a = a.x)),
+                    e(g.node, {
+                      x: a,
+                      y: b,
+                      width: c,
+                      height: d,
+                      patternUnits: "userSpaceOnUse",
+                      id: g.id,
+                      viewBox: [a, b, c, d].join(" "),
+                    }),
+                    g.node.appendChild(this.node),
+                    g
+                  );
+                }),
               (a.marker = function (a, b, c, d, g, h) {
                 var i = w("marker", q(this));
                 return (
@@ -2648,16 +2652,17 @@
               this.el("path", b)
             );
           }),
-          (f.group = f.g = function (a) {
-            var b = this.el("g");
-            return (
-              1 == arguments.length && a && !a.type
-                ? b.attr(a)
-                : arguments.length &&
-                  b.add(Array.prototype.slice.call(arguments, 0)),
-              b
-            );
-          }),
+          (f.group = f.g =
+            function (a) {
+              var b = this.el("g");
+              return (
+                1 == arguments.length && a && !a.type
+                  ? b.attr(a)
+                  : arguments.length &&
+                    b.add(Array.prototype.slice.call(arguments, 0)),
+                b
+              );
+            }),
           (f.svg = function (a, b, c, d, e, f, h, i) {
             var j = {};
             return (
@@ -3070,32 +3075,12 @@
             var j = i / 2,
               k = 12,
               l = [
-                -0.1252,
-                0.1252,
-                -0.3678,
-                0.3678,
-                -0.5873,
-                0.5873,
-                -0.7699,
-                0.7699,
-                -0.9041,
-                0.9041,
-                -0.9816,
-                0.9816,
+                -0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699,
+                0.7699, -0.9041, 0.9041, -0.9816, 0.9816,
               ],
               n = [
-                0.2491,
-                0.2491,
-                0.2335,
-                0.2335,
-                0.2032,
-                0.2032,
-                0.1601,
-                0.1601,
-                0.1069,
-                0.1069,
-                0.0472,
-                0.0472,
+                0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601,
+                0.1069, 0.1069, 0.0472, 0.0472,
               ],
               o = 0,
               p = 0;
@@ -4378,29 +4363,31 @@
 
         )
           !(function (b) {
-            (a[b] = f[b] = function (c, d) {
-              return (
-                a.is(c, "function") &&
-                  ((this.events = this.events || []),
-                  this.events.push({
-                    name: b,
-                    f: c,
-                    unbind: p(this.node || document, b, c, d || this),
-                  })),
-                this
-              );
-            }),
-              (a["un" + b] = f["un" + b] = function (a) {
-                for (var c = this.events || [], d = c.length; d--; )
-                  if (c[d].name == b && (c[d].f == a || !a))
-                    return (
-                      c[d].unbind(),
-                      c.splice(d, 1),
-                      !c.length && delete this.events,
-                      this
-                    );
-                return this;
-              });
+            (a[b] = f[b] =
+              function (c, d) {
+                return (
+                  a.is(c, "function") &&
+                    ((this.events = this.events || []),
+                    this.events.push({
+                      name: b,
+                      f: c,
+                      unbind: p(this.node || document, b, c, d || this),
+                    })),
+                  this
+                );
+              }),
+              (a["un" + b] = f["un" + b] =
+                function (a) {
+                  for (var c = this.events || [], d = c.length; d--; )
+                    if (c[d].name == b && (c[d].f == a || !a))
+                      return (
+                        c[d].unbind(),
+                        c.splice(d, 1),
+                        !c.length && delete this.events,
+                        this
+                      );
+                  return this;
+                });
           })(i[t]);
         (f.hover = function (a, b, c, d) {
           return this.mouseover(a, c).mouseout(b, d || c);

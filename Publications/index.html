@@ -8,238 +8,316 @@
   any later version.
 -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Hollow Man, 蒋嵩林, Songlin jiang, Publications, 论文" />
-    <meta name="description" content="这里是Hollow Man(蒋嵩林)的论文。 This is Hollow Man (Songlin Jiang) Publications." />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="keywords"
+      content="Hollow Man, 蒋嵩林, Songlin jiang, Publications, 论文"
+    />
+    <meta
+      name="description"
+      content="这里是Hollow Man(蒋嵩林)的论文。 This is Hollow Man (Songlin Jiang) Publications."
+    />
     <meta name="robots" content="all" />
     <meta name="renderer" content="webkit" />
     <meta name="theme-color" content="#EEEEEE" />
-    <link rel="manifest" href="./manifest.json">
-    <link rel="apple-touch-icon" href="/img/logo.png">
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="/img/logo.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
     <meta name="Author" content="Hollow Man" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
 
-    <script src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js"
-        integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA=" crossorigin="anonymous"></script>
+    <script
+      src="https://g.alicdn.com/code/lib/vue/2.6.4/vue.min.js"
+      integrity="sha256-isEQDc5Dw7wea1s5iMZjBvPuYzjzMrvtlPwE6LtavFA="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://g.alicdn.com/code/lib/axios/0.18.0/axios.min.js"></script>
 
     <title>Hollow Man's Publications</title>
 
     <style>
-        @import url(https://fonts.googleapis.com/css?family=PT+Sans);
+      @import url(https://fonts.googleapis.com/css?family=PT+Sans);
+      @import url(https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe);
 
-        * {
-            font-family: 'PT Sans', sans-serif;
-        }
+      * {
+        font-family: "PT Sans", "ZCOOL KuaiLe", sans-serif;
+      }
 
-        .navbar {
-            background-color: transparent;
-            background-image: -webkit-linear-gradient(left, #009bdf, #f86267);
-            background-image: -moz-linear-gradient(left, #009bdf, #f86267);
-            background-image: -o-linear-gradient(left, #009bdf, #f86267);
-            background-image: -ms-linear-gradient(left, #009bdf, #f86267);
-            background-image: linear-gradient(left, #009bdf, #f86267);
-        }
+      .navbar {
+        background-color: transparent;
+        background-image: -webkit-linear-gradient(left, #009bdf, #f86267);
+        background-image: -moz-linear-gradient(left, #009bdf, #f86267);
+        background-image: -o-linear-gradient(left, #009bdf, #f86267);
+        background-image: -ms-linear-gradient(left, #009bdf, #f86267);
+        background-image: linear-gradient(left, #009bdf, #f86267);
+      }
 
-        .dropdown-item-checked::before {
-            position: absolute;
-            left: .4rem;
-            content: '✓';
-            font-weight: 600;
-        }
+      .dropdown-item-checked::before {
+        position: absolute;
+        left: 0.4rem;
+        content: "✓";
+        font-weight: 600;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-    <script src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg=="
-        crossorigin="anonymous"></script>
-    <script src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
-    </script>
+  <body>
+    <script
+      src="https://g.alicdn.com/code/lib/jquery/3.3.1/jquery.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://g.alicdn.com/code/lib/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha512-5WvZa4N7Jq3TVNCp4rjcBMlc6pT3lZ7gVxjtI6IkKW+uItSa+rFgtFljvZnCxQGj8SUX5DHraKE6Mn/4smK1Cg=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://g.alicdn.com/code/lib/twitter-bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
 
     <div id="app">
+      <nav
+        class="
+          navbar navbar-expand navbar-light
+          bg-light
+          flex-column flex-md-row
+          bd-navbar
+        "
+      >
+        <a href="../" target="_blank" title="" class="navbar-brand">
+          <img
+            src="../img/logo.gif"
+            alt="Arthas"
+            title="Back to Home Page"
+            style="height: 35px"
+            class="img-responsive"
+          />
+        </a>
 
-        <nav class="navbar navbar-expand navbar-light bg-light flex-column flex-md-row bd-navbar">
-            <a href="../" target="_blank" title="" class="navbar-brand">
-                <img src="../img/logo.gif" alt="Arthas" title="Back to Home Page" style="height: 35px;"
-                    class="img-responsive">
-            </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../fund.html" target="_blank">Funding</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/HollowMan6" target="_blank">Github</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
-                            target="_blank">Linkedin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://scholar.google.com/citations?user=F7Z3Fd0AAAAJ"
-                            target="_blank">Google Scholar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mailto:hollowman186@vip.qq.com" target="_blank">Mail ME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md"
-                            target="_blank">
-                            Personal Statement</a>
-                    </li>
-                    <li class="nav-item dropdown active show">
-                        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-publications"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            {{currentPublicationName()}}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="bd-publications">
-                            <a v-for="publication in publications"
-                                v-bind:class="{ 'dropdown-item-checked': publication.id === publicationId }"
-                                class="dropdown-item" v-bind:href='currentUrl() + "?id=" + publication.id'>
-                                {{ publication.name }}
-                            </a>
-                        </div>
-
-                    </li>
-                </ul>
-            </div>
-            <h3 align="center">Hollow Man's Publications</h3>
-        </nav>
-        <div id="showPdf" class="container-fluid px-0">
-            <iframe id="pdfContainer" v-bind:src="currentPdf()" v-bind:style="{height: (calculatePdfSize()-5) + 'px' }"
-                width="100%" frameborder="0"></iframe>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../fund.html" target="_blank"
+                >Funding</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://github.com/HollowMan6"
+                target="_blank"
+                >Github</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://www.linkedin.com/in/%E8%92%8B%E5%B5%A9%E6%9E%97/"
+                target="_blank"
+                >Linkedin</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://scholar.google.com/citations?user=F7Z3Fd0AAAAJ"
+                target="_blank"
+                >Google Scholar</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="mailto:hollowman186@vip.qq.com"
+                target="_blank"
+                >Mail ME</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://github.com/HollowMan6/HollowMan6/blob/master/Personal%20Statement.md"
+                target="_blank"
+              >
+                Personal Statement</a
+              >
+            </li>
+            <li class="nav-item dropdown active show">
+              <a
+                class="nav-item nav-link dropdown-toggle mr-md-2"
+                href="#"
+                id="bd-publications"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                {{currentPublicationName()}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="bd-publications">
+                <a
+                  v-for="publication in publications"
+                  v-bind:class="{ 'dropdown-item-checked': publication.id === publicationId }"
+                  class="dropdown-item"
+                  v-bind:href='currentUrl() + "?id=" + publication.id'
+                >
+                  {{ publication.name }}
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
+        <h3 align="center">Hollow Man's Publications</h3>
+      </nav>
+      <div id="showPdf" class="container-fluid px-0">
+        <iframe
+          id="pdfContainer"
+          v-bind:src="currentPdf()"
+          v-bind:style="{height: (calculatePdfSize()-5) + 'px' }"
+          width="100%"
+          frameborder="0"
+        ></iframe>
+      </div>
     </div>
-</body>
+  </body>
 
-
-<script>
+  <script>
     function register(config) {
-        if ("serviceWorker" in navigator) {
-            var swUrl = config.path + "/" + config.name + "?v=" + config.ver;
-            navigator.serviceWorker
-                .register(swUrl)
-                .then(function (registration) {
-                    if (config && config.onRegster) {
-                        config.onRegster(registration);
+      if ("serviceWorker" in navigator) {
+        var swUrl = config.path + "/" + config.name + "?v=" + config.ver;
+        navigator.serviceWorker
+          .register(swUrl)
+          .then(function (registration) {
+            if (config && config.onRegster) {
+              config.onRegster(registration);
+            }
+            registration.onupdatefound = function (e) {
+              var installingWorker =
+                e.target.installing || e.target.waiting || e.target.active;
+              if (installingWorker == null) {
+                return;
+              }
+              installingWorker.addEventListener("statechange", function (e) {
+                if (installingWorker.state === "installed") {
+                  if (navigator.serviceWorker.controller) {
+                    if (config && config.onUpdate) {
+                      config.onUpdate(registration);
                     }
-                    registration.onupdatefound = function (e) {
-                        var installingWorker =
-                            e.target.installing ||
-                            e.target.waiting ||
-                            e.target.active;
-                        if (installingWorker == null) {
-                            return;
-                        }
-                        installingWorker.addEventListener("statechange", function (e) {
-                            if (installingWorker.state === "installed") {
-                                if (navigator.serviceWorker.controller) {
-                                    if (config && config.onUpdate) {
-                                        config.onUpdate(registration);
-                                    }
-                                } else {
-                                    if (config && config.onSuccess) {
-                                        config.onSuccess(registration);
-                                    }
-                                }
-                            }
-                        });
-                    };
-                })
-                .catch(function (error) {
-                    console.error("serviceWorker Error When Register:", error);
-                });
-        }
+                  } else {
+                    if (config && config.onSuccess) {
+                      config.onSuccess(registration);
+                    }
+                  }
+                }
+              });
+            };
+          })
+          .catch(function (error) {
+            console.error("serviceWorker Error When Register:", error);
+          });
+      }
     }
 
     register({
-        ver: 1,
-        path: "",
-        name: "sw.js"
+      ver: 1,
+      path: "",
+      name: "sw.js",
     });
 
     /** get params in url **/
     function getUrlParam(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&'); // lgtm [js/incomplete-sanitization]
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&"); // lgtm [js/incomplete-sanitization]
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return "";
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
     var app = new Vue({
-        el: '#app',
-        data: {
-            pdfName: "Voting_System_Based_on_Wechat_Pay.pdf",
-            publicationId: "0",
-            publications: [{
-                id: "0",
-                name: "基于微信支付平台的在线投票系统",
-                loc: "Voting_System_Based_on_Wechat_Pay.pdf"
-            }],
+      el: "#app",
+      data: {
+        pdfName: "Voting_System_Based_on_Wechat_Pay.pdf",
+        publicationId: "0",
+        publications: [
+          {
+            id: "0",
+            name: "基于微信支付平台的在线投票系统",
+            loc: "Voting_System_Based_on_Wechat_Pay.pdf",
+          },
+        ],
+      },
+      methods: {
+        currentUrl: function () {
+          return window.location.href.split(/[?#]/)[0];
         },
-        methods: {
-            currentUrl: function () {
-                return window.location.href.split(/[?#]/)[0];
-            },
-            currentPublicationName: function () {
-                for (var index in this.publications) {
-                    if (this.publications[index].id == this.publicationId) {
-                        return this.publications[index].name;
-                    }
-                }
-            },
-            currentPdf: function () {
-                for (var index in this.publications) {
-                    if (this.publications[index].id == this.publicationId) {
-                        this.pdfName = this.publications[index].loc;
-                    }
-                }
-                return "../CV/pdfjs/web/viewer.html?file=../../../Publications/" + this.pdfName + "#page=1";
-            },
-            calculatePdfSize: function () {
-                var e = window;
-                var a = 'inner';
-                if (!('innerWidth' in window)) {
-                    a = 'client';
-                    e = document.documentElement || document.body;
-                }
-                var PdfDiv = document.getElementById("showPdf");
-                var PdfDivRect = PdfDiv.getBoundingClientRect();
-                return e[a + 'Height'] - PdfDivRect.top;
+        currentPublicationName: function () {
+          for (var index in this.publications) {
+            if (this.publications[index].id == this.publicationId) {
+              return this.publications[index].name;
             }
+          }
         },
-        beforeMount() {
-            var id = getUrlParam('id');
-            if (id != null) {
-                this.publicationId = id;
+        currentPdf: function () {
+          for (var index in this.publications) {
+            if (this.publications[index].id == this.publicationId) {
+              this.pdfName = this.publications[index].loc;
             }
+          }
+          return (
+            "../CV/pdfjs/web/viewer.html?file=../../../Publications/" +
+            this.pdfName +
+            "#page=1"
+          );
+        },
+        calculatePdfSize: function () {
+          var e = window;
+          var a = "inner";
+          if (!("innerWidth" in window)) {
+            a = "client";
+            e = document.documentElement || document.body;
+          }
+          var PdfDiv = document.getElementById("showPdf");
+          var PdfDivRect = PdfDiv.getBoundingClientRect();
+          return e[a + "Height"] - PdfDivRect.top;
+        },
+      },
+      beforeMount() {
+        var id = getUrlParam("id");
+        if (id != null) {
+          this.publicationId = id;
         }
-    })
-</script>
-
+      },
+    });
+  </script>
 </html>
