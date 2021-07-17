@@ -1609,7 +1609,7 @@
                 <a
                   class="menu-links"
                   href="javascript:void(0);"
-                  onclick="$('#main-content').animate({scrollTop:$('#gspons').offset().top+document.getElementById('main-content').scrollTop}, 500);"
+                  onclick="$('#main-content').animate({scrollTop:$('#gsponsline').offset().top+document.getElementById('main-content').scrollTop}, 500);"
                 >
                   GitHub Sponsors
                 </a>
@@ -1822,10 +1822,11 @@
             <h4 style="margin-left: 18%">
               谢谢你的捐助。每一点的捐助都将是我前进的动力！
             </h4>
-            <hr id="gspons" class="hr-twill-colorful" />
+            <hr id="gsponsline" class="hr-twill-colorful" />
             <div>
               <p>
                 <iframe
+                  id="gspons"
                   src="github-sponsor.html"
                   class="pic"
                   height="175px"
