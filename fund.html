@@ -48,6 +48,20 @@
     ></script>
     <link id="theme-swal" href="" rel="stylesheet" />
     <script src="js/snap.svg-min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SVXQKXHWX1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SVXQKXHWX1");
+    </script>
     <script type="text/javascript">
       if (
         (navigator.userAgent.indexOf("Chrome") > -1 &&
@@ -147,7 +161,6 @@
       window.addEventListener("beforeinstallprompt", function (event) {
         window.ePrompt = event;
         document.getElementById("web-install").style.display = "";
-        document.getElementById("web-notification").style.marginLeft = "10%";
         document
           .getElementById("web-install")
           .addEventListener("click", function () {
@@ -155,15 +168,12 @@
             window.ePrompt.userChoice.then(function (choiceResult) {
               if (choiceResult.outcome === "accepted") {
                 document.getElementById("web-install").style.display = "none";
-                document.getElementById("web-notification").style.marginLeft =
-                  "30%";
               }
             });
           });
       });
       window.addEventListener("appinstalled", function (evt) {
         document.getElementById("web-install").style.display = "none";
-        document.getElementById("web-notification").style.marginLeft = "30%";
       });
 
       register({
@@ -1803,15 +1813,22 @@
             <p>
               <a
                 id="web-install"
-                style="margin-left: 10%; font-size: 140%; display: none"
+                style="margin-left: 0; font-size: 140%; display: none"
                 >📦 Install Website</a
               >
               <a
                 id="web-notification"
                 href="Site-Notifications/"
-                style="margin-left: 30%; font-size: 140%"
+                style="margin-left: 10%; font-size: 140%"
                 class="love"
                 >📢 Site Notifications</a
+              >
+              <a
+                id="wordpress"
+                href="https://hollowmansblog.wordpress.com/"
+                style="margin-left: 10%; font-size: 140%"
+                class="love"
+                >📰 Blog</a
               >
             </p>
             <h1 id="Funding">❤ Funding</h1>

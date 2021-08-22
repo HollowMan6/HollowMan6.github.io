@@ -4,11 +4,11 @@
   "description": "Welcome! 欢迎! The Repository also includes the Html Pages Source Code of FreDuino Cars 、Story of LZU、FNST Demo(此仓库还包含了FreDuino Cars 、Story of LZU、FNST Demo这几个Html页面的源代码)",
   "main": "index.html",
   "dependencies": {
-    "eslint": "^7.30.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "husky": "^7.0.1",
-    "lint-staged": "^11.0.1",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.2"
   },
   "scripts": {
