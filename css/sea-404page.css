@@ -79,7 +79,6 @@ a.menu-links:visited {
   color: #ffffff;
   text-shadow: 10px 10px 50px #e6e6e6;
   opacity: 0.8;
-  user-select: none;
 }
 
 .error span {
