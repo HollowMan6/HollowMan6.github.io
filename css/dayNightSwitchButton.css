@@ -1,7 +1,6 @@
 .toggle {
   display: block;
   text-align: center;
-  user-select: none;
 }
 
 .toggle--checkbox {
@@ -18,7 +17,7 @@
 }
 
 .toggle--btn:hover {
-  cursor: url('../img/cursor/link.cur'), pointer;
+  cursor: url("../img/cursor/link.cur"), pointer;
 }
 
 .toggle--btn,
@@ -39,14 +38,16 @@
 .toggle--checkbox:after,
 .toggle--feature:before,
 .toggle--feature:after {
-  content: '';
+  content: "";
   display: block;
 }
 
 @keyframes starry_star {
   50% {
     background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: #fff 30px -3px 0 0, #fff 22px 10px 0 -1px, #fff 1px 18px 0 1px, #fff 7px 34px 0 0, rgba(255, 255, 255, 0.1) 15px 24px 0 -1.5px, rgba(255, 255, 255, 0.1) 32px 38px 0 1px;
+    box-shadow: #fff 30px -3px 0 0, #fff 22px 10px 0 -1px, #fff 1px 18px 0 1px,
+      #fff 7px 34px 0 0, rgba(255, 255, 255, 0.1) 15px 24px 0 -1.5px,
+      rgba(255, 255, 255, 0.1) 32px 38px 0 1px;
   }
 }
 
@@ -85,7 +86,6 @@
 }
 
 .toggle--daynight .toggle--btn:before {
-
   position: absolute;
   top: 2px;
   left: 4px;
@@ -105,12 +105,16 @@
   height: 11.2px;
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: #fff 0 0, #fff 3px 0, #fff 6px 0, #fff 9px 0, #fff 11px 0, #fff 14px 0, #fff 16px 0, #fff 21px -1px 0 1px, #fff 16px -7px 0 -2px, #fff 7px -7px 0 1px, #d3d3d3 0 0 0 4px, #d3d3d3 6px 0 0 4px, #d3d3d3 11px 0 0 4px, #d3d3d3 16px 0 0 4px, #d3d3d3 21px -1px 0 5px, #d3d3d3 16px -7px 0 1px, #d3d3d3 7px -7px 0 5px;
+  box-shadow: #fff 0 0, #fff 3px 0, #fff 6px 0, #fff 9px 0, #fff 11px 0,
+    #fff 14px 0, #fff 16px 0, #fff 21px -1px 0 1px, #fff 16px -7px 0 -2px,
+    #fff 7px -7px 0 1px, #d3d3d3 0 0 0 4px, #d3d3d3 6px 0 0 4px,
+    #d3d3d3 11px 0 0 4px, #d3d3d3 16px 0 0 4px, #d3d3d3 21px -1px 0 5px,
+    #d3d3d3 16px -7px 0 1px, #d3d3d3 7px -7px 0 5px;
   transition: opacity 100ms ease-in;
   opacity: 100;
   animation-name: bounceIn;
-  animation-duration: 0.60s;
-  animation-delay: 0.10s;
+  animation-duration: 0.6s;
+  animation-delay: 0.1s;
   animation-fill-mode: backwards;
   animation-timing-function: ease-in-out;
 }
@@ -126,32 +130,42 @@
   border-radius: 50%;
   background-color: #fff;
   opacity: 0;
-  box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 -4px, rgba(255, 255, 255, 0.1) 12px 10px 0 -5px, #fff 38px 18px 0 -3px, rgba(255, 255, 255, 0.1) 32px 34px 0 -4px, #fff 20px 24px 0 -5.5px, rgba(255, 255, 255, 0.1) 5px 38px 0 -3px;
+  box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 -4px,
+    rgba(255, 255, 255, 0.1) 12px 10px 0 -5px, #fff 38px 18px 0 -3px,
+    rgba(255, 255, 255, 0.1) 32px 34px 0 -4px, #fff 20px 24px 0 -5.5px,
+    rgba(255, 255, 255, 0.1) 5px 38px 0 -3px;
   animation: none;
 }
 
-.toggle--daynight .toggle--checkbox:checked+.toggle--btn {
+.toggle--daynight .toggle--checkbox:checked + .toggle--btn {
   border: 5px solid #1c1c1c;
   background-color: #3c4145;
 }
 
-.toggle--daynight .toggle--checkbox:checked+.toggle--btn:before {
+.toggle--daynight .toggle--checkbox:checked + .toggle--btn:before {
   left: 55px;
   background-color: #fff;
   border: 5px solid #e3e3c7;
 }
 
-.toggle--daynight .toggle--checkbox:checked+.toggle--btn:after {
+.toggle--daynight .toggle--checkbox:checked + .toggle--btn:after {
   opacity: 0;
 }
 
-.toggle--daynight .toggle--checkbox:checked+.toggle--btn>.toggle--feature {
+.toggle--daynight .toggle--checkbox:checked + .toggle--btn > .toggle--feature {
   opacity: 1;
-  box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 0, rgba(255, 255, 255, 0.1) 22px 10px 0 -1px, rgba(255, 255, 255, 0.1) 1px 18px 0 1px, rgba(255, 255, 255, 0.1) 7px 34px 0 0, #fff 15px 24px 0 -1.5px, #fff 32px 38px 0 1px;
+  box-shadow: rgba(255, 255, 255, 0.1) 30px -3px 0 0,
+    rgba(255, 255, 255, 0.1) 22px 10px 0 -1px,
+    rgba(255, 255, 255, 0.1) 1px 18px 0 1px,
+    rgba(255, 255, 255, 0.1) 7px 34px 0 0, #fff 15px 24px 0 -1.5px,
+    #fff 32px 38px 0 1px;
   animation: starry_star 5s ease-in-out infinite;
 }
 
-.toggle--daynight .toggle--checkbox:checked+.toggle--btn>.toggle--feature:before {
+.toggle--daynight
+  .toggle--checkbox:checked
+  + .toggle--btn
+  > .toggle--feature:before {
   position: absolute;
   top: -8px;
   left: 75px;

@@ -9,7 +9,7 @@
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <script
       type="text/javascript"
@@ -17,8 +17,8 @@
     ></script>
     <script src="js/confetti.min.js"></script>
     <script src="js/sun.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta
-      charset="UTF-8"
       name="viewport"
       content="width=device-width,initial-scale=0.6,maximum-scale=1.5,minimum-scale=0.6,user-scalable=yes"
     />
@@ -579,15 +579,15 @@
       #progress span {
         position: absolute;
         height: 2px;
-        box-shadow: #535353 1px 0 6px 1px;
-        border-radius: 100%;
-        animation: pulse 2s ease-out 0s infinite;
         -webkit-box-shadow: #535353 1px 0 6px 1px;
         -webkit-border-radius: 100%;
+        box-shadow: #535353 1px 0 6px 1px;
+        border-radius: 100%;
         opacity: 1;
         width: 15px;
         right: -10px;
         -webkit-animation: pulse 2s ease-out 0s infinite;
+        animation: pulse 2s ease-out 0s infinite;
       }
 
       #scrollProgress {
@@ -602,6 +602,7 @@
       }
 
       .swal2-backdrop-show {
+        -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
       }
 
@@ -1781,6 +1782,7 @@
             </p>
             <div>
               <iframe
+                title="GitHub"
                 src="https://ghbtns.com/github-btn.html?user=hollowman6&type=follow&count=true&size=large"
                 frameborder="0"
                 scrolling="0"
