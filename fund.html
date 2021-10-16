@@ -92,6 +92,17 @@
         );
       }
 
+      // For the missed DOMContentLoaded event when Rocket Loader and HTML Auto Minify opened at the same time
+      var inCloudFlare = true;
+      window.addEventListener("DOMContentLoaded", function () {
+        inCloudFlare = false;
+      });
+      if (document.readyState === "loading") {
+        window.addEventListener("load", function () {
+          if (inCloudFlare) window.dispatchEvent(new Event("DOMContentLoaded"));
+        });
+      }
+
       function register(config) {
         if ("serviceWorker" in navigator) {
           var swUrl = config.path + "/" + config.name + "?v=" + config.ver;
