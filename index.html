@@ -271,7 +271,14 @@
         }
       };
 
-      window.addEventListener("DOMContentLoaded", scrollAnimate);
+      if (
+        document.readyState === "interactive" ||
+        document.readyState === "complete"
+      ) {
+        scrollAnimate();
+      } else {
+        window.addEventListener("DOMContentLoaded", scrollAnimate);
+      }
 
       var ballRangeValue = 0;
       var ballRangeTextColor = "rgba(0, 0, 0, 1)";
@@ -383,7 +390,14 @@
         });
       };
 
-      window.addEventListener("DOMContentLoaded", notifyResFailed);
+      if (
+        document.readyState === "interactive" ||
+        document.readyState === "complete"
+      ) {
+        notifyResFailed();
+      } else {
+        window.addEventListener("DOMContentLoaded", notifyResFailed);
+      }
 
       var scrollLocationIndex = window.localStorage.getItem(
         "scrollLocationIndex"
@@ -1110,11 +1124,20 @@
         }
       }
 
-      window.addEventListener("DOMContentLoaded", function () {
+      if (
+        document.readyState === "interactive" ||
+        document.readyState === "complete"
+      ) {
         if (!atNight) {
           $("#SwitchNightMode").fadeIn();
         }
-      });
+      } else {
+        window.addEventListener("DOMContentLoaded", function () {
+          if (!atNight) {
+            $("#SwitchNightMode").fadeIn();
+          }
+        });
+      }
 
       var preNightMode = window.sessionStorage.getItem("Night");
       var countryName = "";
