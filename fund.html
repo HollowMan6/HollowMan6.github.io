@@ -16,7 +16,6 @@
       type="text/javascript"
       src="https://g.alicdn.com/code/lib/jquery/3.5.1/jquery.min.js"
     ></script>
-    <script src="js/confetti.min.js"></script>
     <script src="js/sun.js"></script>
     <meta
       name="viewport"
@@ -36,6 +35,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <title>Thank you! ❤</title>
     <link rel="stylesheet" type="text/css" href="css/menu_bubble.css" />
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -419,7 +419,8 @@
           $("#loading").fadeOut("slow");
           $(".container").show();
           document.getElementById("open-button").click();
-          confetti.start(3000);
+          $(".slide").addClass("slide--current");
+          const slideshow = new Slideshow(document.querySelector(".slideshow"));
           window.clearInterval(changeLoadingMessageTimer);
           if (window.location.hash) {
             setTimeout(
@@ -678,9 +679,6 @@
       $(document).click(function (e) {
         var list = ["❤ Thanks for your sponsor !"];
         textUp(e, 2000, list, 200);
-        if (confetti.isRunning()) {
-          confetti.stop();
-        }
       });
 
       function textUp(e, time, arr, heightUp) {
@@ -812,6 +810,7 @@
           document
             .querySelector("meta[name=theme-color]")
             .setAttribute("content", "#EEEEEE");
+          $(".slide")[0].style.color = "";
           $("body")[0].style.backgroundColor = "";
           $("body")[0].style.color = "";
           if ($("#loading")[0].style.display != "none") {
@@ -894,6 +893,7 @@
           document
             .querySelector("meta[name=color-scheme]")
             .setAttribute("content", "dark");
+          $(".slide")[0].style.color = "#FFFFFF";
           $("body")[0].style.backgroundColor = "#111111";
           $("body")[0].style.color = "#BFBFBF";
           if ($("#loading")[0].style.display != "none") {
@@ -1397,9 +1397,14 @@
         <span id="scrollProgress"></span>
       </div>
     </div>
+    <div class="slideshow">
+      <div class="slide">
+        <div class="slide__bg"></div>
+        <h2 class="word" style="font-size: 86px">Hollow Man Home Page</h2>
+      </div>
+    </div>
     <div id="mouseball"></div>
     <script src="js/Staggered-Mouse-Balls.min.js"></script>
-    <script src="js/canvas-ball.js"></script>
     <script src="js/canvas-ribbon.js"></script>
     <script src="js/canvas-explosion-click.js"></script>
     <script type="text/javascript">
@@ -1426,7 +1431,88 @@
         animateSections: true,
       });
     </script>
-    <script src="live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script>
+    <script src="live2dw/lib/L2Dwidget.min.js"></script>
+    <script src="js/charming.min.js"></script>
+    <script src="js/anime.min.js"></script>
+    <script src="js/wordFx.js"></script>
+    <script>
+      const effects = [
+        {
+          options: {
+            shapeColors: [
+              "#35c394",
+              "#9985ee",
+              "#f54665",
+              "#4718f5",
+              "#f5aa18",
+            ],
+            shapesOnTop: false,
+          },
+          show: {
+            lettersAnimationOpts: {
+              duration: 8000,
+              delay: (t, i) => i * 300,
+              easing: "easeOutElastic",
+              opacity: {
+                value: [0, 1],
+                duration: 2000,
+                easing: "linear",
+              },
+              translateY: (t, i) =>
+                i % 2 === 0 ? ["-80%", "0%"] : ["80%", "0%"],
+              rotate: [90, 0],
+            },
+            shapesAnimationOpts: {
+              duration: () => anime.random(6000, 10000),
+              delay: (t, i) => i * 200,
+              easing: "easeOutElastic",
+              translateX: (t) => {
+                const tx = anime.random(-250, 250);
+                t.dataset.tx = tx;
+                return [0, tx];
+              },
+              translateY: (t) => {
+                const ty = anime.random(-250, 250);
+                t.dataset.ty = ty;
+                return [0, ty];
+              },
+              scale: (t) => {
+                const s = randomBetween(0.3, 0.6);
+                t.dataset.s = s;
+                return [s, s];
+              },
+              rotate: () => anime.random(-90, 90),
+              opacity: {
+                value: 0.3,
+                duration: 1000,
+                easing: "linear",
+              },
+            },
+          },
+        },
+      ];
+
+      class Slideshow {
+        constructor(el) {
+          this.DOM = {};
+          this.DOM.el = el;
+          this.DOM.slides = Array.from(this.DOM.el.querySelectorAll(".slide"));
+          this.DOM.bgs = Array.from(this.DOM.el.querySelectorAll(".slide__bg"));
+          this.DOM.words = Array.from(this.DOM.el.querySelectorAll(".word"));
+          this.slidesTotal = this.DOM.slides.length;
+          this.current = 0;
+          this.words = [];
+          this.DOM.words.forEach((word, pos) => {
+            this.words.push(new Word(word, effects[pos].options));
+          });
+
+          this.isAnimating = true;
+          this.words[this.current]
+            .show(effects[this.current].show)
+            .then(() => (this.isAnimating = false));
+        }
+      }
+    </script>
     <script>
       L2Dwidget.init({
         pluginRootPath: "live2dw/",
