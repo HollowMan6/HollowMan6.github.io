@@ -963,6 +963,10 @@
           for (var i = 0; i < jquerycollect.length; i++) {
             jquerycollect[i].style.filter = "";
           }
+          jquerycollect = $("#programming-language-certificate-images > img");
+          for (var i = 0; i < jquerycollect.length; i++) {
+            jquerycollect[i].style.filter = "";
+          }
           jquerycollect = $("#Softc-images > img");
           for (var i = 0; i < jquerycollect.length; i++) {
             jquerycollect[i].style.filter = "";
@@ -1074,6 +1078,10 @@
             jquerycollect[i].style.filter = "invert(1) hue-rotate(180deg)";
           }
           jquerycollect = $("#certificate-images > img");
+          for (var i = 0; i < jquerycollect.length; i++) {
+            jquerycollect[i].style.filter = "brightness(0.6)";
+          }
+          jquerycollect = $("#programming-language-certificate-images > img");
           for (var i = 0; i < jquerycollect.length; i++) {
             jquerycollect[i].style.filter = "brightness(0.6)";
           }
@@ -3256,7 +3264,7 @@
               />
             </p>
             <h2 align="center">📙 Programming Languages</h2>
-            <p>
+            <p id="programming-language-certificate-images">
               <img
                 loading="lazy"
                 class="pic"
