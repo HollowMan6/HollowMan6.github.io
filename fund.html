@@ -986,7 +986,7 @@
       var state = "";
 
       function CheckatNight() {
-        var url = "https://geoip-db.com/json/";
+        var url = "http://ip-api.com/json/";
         var latitude = null;
         var longitude = null;
         var request = new XMLHttpRequest();
@@ -997,16 +997,16 @@
             if (request.status == 200) {
               var json = JSON.parse(request.responseText);
               try {
-                latitude = json["latitude"];
-                longitude = json["longitude"];
-                if (json["country_name"]) {
-                  countryName = json["country_name"];
+                latitude = json["lat"];
+                longitude = json["lon"];
+                if (json["country"]) {
+                  countryName = json["country"];
                 }
                 if (json["city"]) {
                   city = json["city"] + ", ";
                 }
-                if (json["state"]) {
-                  state = json["state"] + ", ";
+                if (json["regionName"]) {
+                  state = json["regionName"] + ", ";
                 }
               } catch (e) {}
             }
