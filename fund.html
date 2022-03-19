@@ -774,6 +774,7 @@
         var elements = [];
         elements.push(document.getElementById("gspons"));
         elements.push(document.getElementById("Paypal"));
+        elements.push(document.getElementById("Bitcoin"));
         elements.push(document.getElementById("Monero"));
         elements.push(document.getElementById("WeChatTip"));
         elements.push(document.getElementById("Alipay"));
@@ -1760,6 +1761,24 @@
               <li>
                 <img
                   loading="lazy"
+                  src="https://bitcoin.org/img/icons/opengraph.png?1644775669"
+                  width="80%"
+                />
+              </li>
+              <li>
+                <a
+                  class="menu-links"
+                  href="javascript:void(0);"
+                  onclick="$('#main-content').animate({scrollTop:$('#Bitcoin').offset().top+document.getElementById('main-content').scrollTop}, 500);"
+                >
+                  Bitcoin
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <img
+                  loading="lazy"
                   src="https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729"
                   width="80%"
                 />
@@ -1980,8 +1999,27 @@
                   width="100px"
               /></a>
             </p>
-            <hr id="Monero" class="hr-twill-colorful" />
+            <hr id="Bitcoin" class="hr-twill-colorful" />
             <div id="sponsor-pic">
+              <h2>
+                &nbsp;&nbsp;&nbsp;&nbsp;<img
+                  loading="lazy"
+                  src="https://bitcoin.org/img/icons/opengraph.png?1644775669"
+                  width="3%"
+                />
+                Bitcoin
+              </h2>
+              <img
+                loading="lazy"
+                class="pic"
+                src="img/Bitcoin.png"
+                style="margin-left: 24%"
+                onclick="window.open('https://bitcoin.org/','_blank')"
+              />
+              <h5 style="margin-left: 25%">
+                3NLvAa5sVk5TGpgtRQjuc7nSdkPyhu1XN4
+              </h5>
+              <hr id="Monero" class="hr-twill-colorful" />
               <h2>
                 &nbsp;&nbsp;&nbsp;&nbsp;<img
                   loading="lazy"
@@ -2015,7 +2053,7 @@
                 src="img/WeChat-Tip.png"
                 width="279px"
                 height="279px"
-                style="margin-left: 20%"
+                style="margin-left: 20%; margin-bottom: 2%"
                 title="May not be recognized by Wechat under dark mode! 
               暗模式下可能无法被微信识别!"
                 onclick="window.open('https://www.wechat.com','_blank')"
@@ -2036,7 +2074,7 @@
                 src="img/Alipay.jpg"
                 width="247px"
                 height="385px"
-                style="margin-left: 2%"
+                style="margin-left: 2%; margin-bottom: 2%"
                 onclick="window.open('https://www.alipay.com','_blank')"
               />
               <img
@@ -2045,7 +2083,7 @@
                 src="img/Red-Pack.jpg"
                 width="247px"
                 height="385px"
-                style="margin-left: 2%; border-radius: 10px"
+                style="margin-left: 2%; margin-bottom: 2%; border-radius: 10px"
                 onclick="window.open('https://www.alipay.com','_blank')"
               />
             </div>
