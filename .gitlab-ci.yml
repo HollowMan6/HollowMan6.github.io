@@ -3,6 +3,7 @@ image: busybox
 pages:
   stage: deploy
   script:
+    - echo "Deploying Web page..."
   artifacts:
     paths:
       - ./*
