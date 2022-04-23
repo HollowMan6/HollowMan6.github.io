@@ -3,7 +3,7 @@ name: Repo Sync
 on: 
   push:
     branches:
-      - main
+      - master
 
 jobs:
   gitlab:
