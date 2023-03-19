@@ -274,7 +274,7 @@ goog.transpile_ = function (a, b) {
     if (f) {
       (function () {
         eval(f + "\n//# sourceURL=" + e);
-      }.call(goog.global));
+      }).call(goog.global);
       if (
         goog.global.$gwtExport &&
         goog.global.$gwtExport.$jscomp &&
