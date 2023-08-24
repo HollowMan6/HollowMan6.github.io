@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-let opMap;
+const { OPS } = globalThis.pdfjsLib || (await import("pdfjs-lib"));
+
+const opMap = Object.create(null);
+for (const key in OPS) {
+  opMap[OPS[key]] = key;
+}
 
 const FontInspector = (function FontInspectorClosure() {
   let fonts;
@@ -63,7 +68,7 @@ const FontInspector = (function FontInspectorClosure() {
     name: "Font Inspector",
     panel: null,
     manager: null,
-    init(pdfjsLib) {
+    init() {
       const panel = this.panel;
       const tmp = document.createElement("button");
       tmp.addEventListener("click", resetSelection);
@@ -160,7 +165,7 @@ const StepperManager = (function StepperManagerClosure() {
     name: "Stepper",
     panel: null,
     manager: null,
-    init(pdfjsLib) {
+    init() {
       const self = this;
       stepperControls = document.createElement("div");
       stepperChooser = document.createElement("select");
@@ -172,11 +177,6 @@ const StepperManager = (function StepperManagerClosure() {
       this.panel.append(stepperControls, stepperDiv);
       if (sessionStorage.getItem("pdfjsBreakPoints")) {
         breakPoints = JSON.parse(sessionStorage.getItem("pdfjsBreakPoints"));
-      }
-
-      opMap = Object.create(null);
-      for (const key in pdfjsLib.OPS) {
-        opMap[pdfjsLib.OPS[key]] = key;
       }
     },
     cleanup() {
@@ -403,7 +403,7 @@ const Stepper = (function StepperClosure() {
       StepperManager.selectStepper(this.pageIndex, true);
       this.currentIdx = idx;
 
-      const listener = (evt) => {
+      const listener = evt => {
         switch (evt.keyCode) {
           case 83: // step
             document.removeEventListener("keydown", listener);
@@ -457,7 +457,7 @@ const Stats = (function Stats() {
     name: "Stats",
     panel: null,
     manager: null,
-    init(pdfjsLib) {},
+    init() {},
     enabled: false,
     active: false,
     // Stats specific functions.
@@ -521,7 +521,7 @@ const PDFBug = (function PDFBugClosure() {
         });
       }
     },
-    init(pdfjsLib, container, ids) {
+    init(container, ids) {
       this.loadCSS();
       this.enable(ids);
       /*
@@ -552,7 +552,7 @@ const PDFBug = (function PDFBugClosure() {
         const panel = document.createElement("div");
         const panelButton = document.createElement("button");
         panelButton.textContent = tool.name;
-        panelButton.addEventListener("click", (event) => {
+        panelButton.addEventListener("click", event => {
           event.preventDefault();
           this.selectPanel(tool);
         });
@@ -561,7 +561,7 @@ const PDFBug = (function PDFBugClosure() {
         tool.panel = panel;
         tool.manager = this;
         if (tool.enabled) {
-          tool.init(pdfjsLib);
+          tool.init();
         } else {
           panel.textContent =
             `${tool.name} is disabled. To enable add "${tool.id}" to ` +
