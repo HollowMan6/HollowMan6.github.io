@@ -19,7 +19,7 @@
 
 [点击此链接访问](https://hollowman6.github.io)
 
-此仓库还包含了[🚗FreDuino Cars](https://hollowman6.github.io/FreDuino) 、[📱FNST Demo](https://hollowman6.github.io/StyleTrans)、[📕Texter](https://hollowman6.github.io/Texter)、[📄My CV](https://hollowman6.github.io/CV)、[📝My Publications](https://hollowman6.github.io/Publications)、[Jump to Linkedin](https://hollowman6.github.io/Linkedin)这几个Html页面的源代码。
+此仓库还包含了[🚗FreDuino Cars](https://hollowman6.github.io/FreDuino) 、[📱FNST Demo](https://hollowman6.github.io/StyleTrans)、[📕Texter](https://hollowman6.github.io/Texter)、[📄My CV](https://hollowman6.github.io/CV)、[Jump to Linkedin](https://hollowman6.github.io/Linkedin)这几个Html页面的源代码。
 
 * 🚗FreDuino Cars [(源代码)](FreDuino/) 是兰州大学“基于机器人的实践方法”制作机器车的Demo。
 
@@ -30,8 +30,6 @@
 * 📕Texter [(源代码)](Texter/)是我的[2019 InnoCamp Hangzhou BoostMakers 暑期创新特训营 —— TensorFlow Boost](https://blackwalnut.tech/tfboost/introduce)结业项目。
 
 * [📄个人简历](https://hollowman6.github.io/CV/?language=cn) 
-
-* [📝论文](https://hollowman6.github.io/Publications/)
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
 
@@ -48,7 +46,7 @@
 
 [Click here to visit](https://hollowman6.github.io)
 
-The Repository also includes the Html Pages Source Code of [🚗FreDuino Cars](https://hollowman6.github.io/FreDuino), [📱FNST Demo](https://hollowman6.github.io/StyleTrans), [📕Texter](https://hollowman6.github.io/Texter), [📄My CV](https://hollowman6.github.io/CV), [📝My Publications](https://hollowman6.github.io/Publications), [Jump to Linkedin](https://hollowman6.github.io/Linkedin)
+The Repository also includes the Html Pages Source Code of [🚗FreDuino Cars](https://hollowman6.github.io/FreDuino), [📱FNST Demo](https://hollowman6.github.io/StyleTrans), [📕Texter](https://hollowman6.github.io/Texter), [📄My CV](https://hollowman6.github.io/CV), [Jump to Linkedin](https://hollowman6.github.io/Linkedin)
 
 * 🚗FreDuino Cars [(Source Code)](FreDuino/) is the Demo for making a robot car in the course "making a robot car".
 
@@ -59,8 +57,6 @@ Relevant Repository: [Making a Robot Car](https://github.com/HollowMan6/Answers-
 * 📕Texter [(Source Code)](Texter/) is my completion project of [2019 innocamp Hangzhou boostmakers summer innovation special training camp -- tensorflow boost](https://blackwalnut.tech/tfboost/introduction).
 
 * [📄Personal CV](https://hollowman6.github.io/CV/?language=en)
-
-* [📝Publications](https://hollowman6.github.io/Publications/)
 
 * [Linkedin](https://hollowman6.github.io/Linkedin/)
 
